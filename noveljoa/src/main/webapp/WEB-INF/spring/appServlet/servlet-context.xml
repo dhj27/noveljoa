@@ -24,6 +24,7 @@
 	<context:annotation-config />
 	
 	<context:component-scan base-package="kr.co.noveljoa" />
+	<context:component-scan base-package="kr.co.noveljoa.*" />
 	
 	
 	
