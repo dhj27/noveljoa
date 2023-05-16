@@ -2,6 +2,7 @@ package kr.co.noveljoa.user.episode.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.EpListVO;
