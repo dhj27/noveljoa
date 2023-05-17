@@ -1,22 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Dashboard Template · Bootstrap v5.2</title>
-
+    <title></title>
+    
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link href="bootstrap.min.css" rel="stylesheet">
 
-    
+      <!-- jQuery CDN 시작 -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     <!-- jQuery CDN 끝 -->
+      <script type="text/javascript">
+      $(function(){
+    	  /* globals Chart:false, feather:false */
+    	  (() => {
+    	    'use strict'
 
-    
+    	    feather.replace({ 'aria-hidden': 'true' })
 
-<link href="bootstrap.min.css" rel="stylesheet">
 
-    <style>
+    	  })()
+     
+      });
+      </script>
+      
+      <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -68,13 +83,12 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
+        <!-- Custom styles for this template -->
+      <link href="dashboard.css" rel="stylesheet">
+      
+</head>
+<body>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-  </head>
-  <body>
-    
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,31 +112,31 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index2.html">
+            <a class="nav-link" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index3.html">
+            <a class="nav-link" href="memberManagerFrm.do">
               <span data-feather="users" class="align-text-bottom"></span>
              Member
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index4.html">
+            <a class="nav-link" href="novelManagerFrm.do">
               <span data-feather="book-open" class="align-text-bottom"></span>
               Novel
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="index5.html">
+            <a class="nav-link active" href="messageBoardFrm.do">
               <span data-feather="clipboard" class="align-text-bottom"></span>
               Message Board
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index6.html">
+            <a class="nav-link" href="commentManagerFrm.do">
               <span data-feather="message-square" class="align-text-bottom"></span>
               Comment
             </a>
@@ -138,7 +152,6 @@
         <h1 class="h2">Message Board</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
 
-          
                     <div class="btn-group">
     <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span data-feather="list" class="align-text-bottom"></span>
@@ -152,6 +165,7 @@
     <li><a class="dropdown-item" href="#">Q&A게시판</a></li>
   </ul>
 </div>
+          
           
         </div>
       </div>
@@ -289,8 +303,9 @@
 </div>
 
 
-    <script src="bootstrap.bundle.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      
 
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
-  </body>
+</body>
 </html>
