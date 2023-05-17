@@ -6,4 +6,10 @@
   <select id="selectLogin" parameterType="kr.co.noveljoa.admin.vo.MLoginVO" resultType="kr.co.noveljoa.admin.domain.MLoginDomain">
     select id, create_date from manager where id = #{ id } and password = #{ password }
   </select>
+  
+<insert id="insertManager" parameterType="kr.co.noveljoa.admin.vo.InsertMVO">
+insert into manager(id, password, create_date) values(#{ id }, #{ password }, sysdate)
+</insert>
+  
+  
 </mapper>

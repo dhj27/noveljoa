@@ -7,10 +7,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
+import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
 @Controller
 public class ManagerController {
+	
+	@PostMapping("/manager/insert_frm_process.do")
+	public String managerInsertFrm(InsertMVO IMVO, Model model){
+		ManagerLoginService mlService = new ManagerLoginService();
+		boolean loginFlag =  mlService.MakeManager(IMVO);
+		System.out.println(loginFlag);
+		model.addAttribute("loginFlag", loginFlag);
+		
+		return "manager/insert_frm_process";
+		}
+	
+	
 	
 	@GetMapping("/manager/managerLoginFrm.do")
 	public String managerLoginFrm() {
@@ -19,6 +32,7 @@ public class ManagerController {
 	}
 	
 	@PostMapping("/manager/managerLoginProcess.do")
+	
 	public String managerLoginProcess(MLoginVO mlVO  ,Model model) {
 		
 		ManagerLoginService mlService = new ManagerLoginService();
@@ -60,11 +74,6 @@ public class ManagerController {
 		return "manager/commentManagerFrm";
 	}
 	
-	@GetMapping("/manager/managerMemInfo.do")
-	public String managerMemInfo() {
-		
-		return "manager/managerMemInfo";
-	}
-
+	
 	
 }

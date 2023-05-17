@@ -5,9 +5,27 @@ import java.sql.SQLException;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.noveljoa.admin.domain.MLoginDomain;
+import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
 public class ManagerLoginDAO {
+	
+	public int insertManager( InsertMVO IMVO ) {
+		//MyBatis Handler 얻기
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		//Handler 사용
+		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertManager", IMVO);
+		//transaction 완료
+		if( cnt==1 ) {
+			ss.commit();
+		}
+		//연결 끊기
+		if(ss != null) {
+			ss.close();
+		}//end if
+		return cnt;
+	}//insertEmp
+	
 	
 	public MLoginDomain selectLogin(MLoginVO mVO) throws SQLException {
 		MLoginDomain mlDomain = null;  
