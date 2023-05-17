@@ -16,6 +16,6 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="kr/co/noveljoa/user/dao/test_mapper.xml"/>
+    <mapper resource="kr/co/noveljoa/admin/dao/test_mapper.xml"/>
   </mappers>
 </configuration>

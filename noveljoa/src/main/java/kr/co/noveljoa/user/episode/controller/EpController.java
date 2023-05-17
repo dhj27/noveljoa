@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.co.noveljoa.user.episode.service.EpService;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
@@ -12,10 +13,20 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 @Controller
 public class EpController {
 	
+	@GetMapping("/episode/a.do")
+	public String ab() {
+		return "episode/a";
+	}// novelEpList
+	
+	
 	// 소설-에피소드 리스트 보여주기
-	@GetMapping("/novel.do")
-	public String novelEpList() {
-		return "novel";
+	@GetMapping("/novels.do")
+	public String novelEpList(int novelNum, Model model) {
+		// 세션받아오기
+		EpService es = new EpService();
+		
+		
+		return "episode/novel";
 	}// novelEpList
 	
 	

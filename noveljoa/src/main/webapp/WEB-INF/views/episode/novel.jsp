@@ -12,7 +12,7 @@
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -20,8 +20,7 @@
 
 
 <%
-	
-	int userNum = 0;
+	int userNum = 1;
 	int novelNum = 1;
 	
 	String good = "http://localhost/noveljoa/_next/static/images/good_on.png";
@@ -30,12 +29,12 @@
 	// 선택한 회차 화면에 출력
  	// EpisodeDAO epDAO = new EpisodeDAO();
 	NovelLookDomain nLookDomain = null;
-	try{
+	/* try{
 		// 에피소드 화면 출력
 		//nLookDomain = epDAO.selectNovel(novelNum);
 	}catch(SQLException e){
 		e.printStackTrace();
-	}
+	} */
 %>
 
 <script type="text/javascript">
@@ -124,11 +123,11 @@ $(function(){
 	<div class="z-1">
 					
 	<!-- header -->
-	<%if(!session.getAttribute("user_num_member").toString().equals("0")){ %>
+	<%-- <%if(!session.getAttribute("user_num_member").toString().equals("0")){ %> --%>
 	<div>
 		<jsp:include page="../../../_next/header_user_login_search.jsp"/>
-	</div>		
-	<%} %>				
+	<%-- </div>		
+	<%} %> --%>				
 	</div>
 	
 	<main class="flex-1">
