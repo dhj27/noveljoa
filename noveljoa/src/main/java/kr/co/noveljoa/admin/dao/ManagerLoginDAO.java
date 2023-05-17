@@ -12,7 +12,7 @@ public class ManagerLoginDAO {
 	
 	public int insertManager( InsertMVO IMVO ) {
 		//MyBatis Handler 얻기
-		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		//Handler 사용
 		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertManager", IMVO);
 		//transaction 완료
@@ -30,7 +30,7 @@ public class ManagerLoginDAO {
 	public MLoginDomain selectLogin(MLoginVO mVO) throws SQLException {
 		MLoginDomain mlDomain = null;  
 		//MyBatis 얻기
-		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		//transaction완료
 		mlDomain=ss.selectOne("kr.co.noveljoa.admin.Mapper.selectLogin", mVO);

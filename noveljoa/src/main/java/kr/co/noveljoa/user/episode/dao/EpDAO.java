@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
+import kr.co.noveljoa.admin.dao.ManagerMyBatisHandler;
 import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelLookDomain;
@@ -56,7 +57,7 @@ public class EpDAO {
 	// 좋아요 추가
 	public int insertLike(NovelCheckVO nCheckVO) {
 		//1. MyBatis Handler 얻기
-		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		//2. Handler 사용
 		int cnt = ss.insert("kr.co.sist.testMapper2.insertEmp", nCheckVO);

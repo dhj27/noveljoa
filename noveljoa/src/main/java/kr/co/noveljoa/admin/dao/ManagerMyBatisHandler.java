@@ -8,18 +8,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class MyBatisHandler {
+public class ManagerMyBatisHandler {
 	
-	private static MyBatisHandler mbh;
+	private static ManagerMyBatisHandler mbh;
 	private static SqlSessionFactory ssf;
 	
-	private MyBatisHandler() {
+	private ManagerMyBatisHandler() {
 		org.apache.ibatis.logging.LogFactory.useLog4JLogging();
 	}//MyBatisHandler
 	
-	public static MyBatisHandler getInstance() {
+	public static ManagerMyBatisHandler getInstance() {
 		if( mbh == null ) {
-			mbh=new MyBatisHandler();
+			mbh=new ManagerMyBatisHandler();
 		}//end if
 		return mbh;
 	}//getInstance
@@ -28,7 +28,7 @@ public class MyBatisHandler {
 		if( ssf == null ) {
 			//1. 설정파일과 연결
 			try {
-				Reader reader=Resources.getResourceAsReader("kr/co/noveljoa/admin/dao/mybatis-config.xml");
+				Reader reader=Resources.getResourceAsReader("kr/co/noveljoa/admin/dao/manager-mybatis-config.xml");
 				
 				//2. MyBatis Framework생성
 				ssf=new SqlSessionFactoryBuilder().build(reader);
