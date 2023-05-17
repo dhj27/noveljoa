@@ -1,3 +1,4 @@
+<%@page import="org.springframework.ui.Model"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,9 +26,13 @@
 </div>
 <div style="width: 500px">
 
-<c:out value="${ data.id  }"></c:out>
+<c:if test="${ not empty data  }">
+<c:redirect url="dashBoardFrm.do"/>
+</c:if>
+<c:redirect url="managerLoginFrm.do"/>
+<%-- <c:out value="${ data.id  }"></c:out>
 <c:out value="${ data.create_date  }"></c:out>
-<c:out value="${ data  }"></c:out>
+<c:out value="${ data  }"></c:out> --%>
 
 </div>
 </body>

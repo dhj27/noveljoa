@@ -23,11 +23,11 @@
 </head>
 <body>
 <div>
-<%-- <c:import url="/common/jsp/navibar.jsp"/> --%>
+
 </div>
 <div style="width: 500px">
 <c:if test="${ loginFlag }">
-성공했습니다^^
+매니저 아이디 생성 완료
 </c:if>
 
 </div>

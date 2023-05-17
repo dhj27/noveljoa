@@ -9,7 +9,7 @@ import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
 public class ManagerLoginDAO {
-	
+	//매니저 아이디 생성
 	public int insertManager( InsertMVO IMVO ) {
 		//MyBatis Handler 얻기
 		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
@@ -24,9 +24,9 @@ public class ManagerLoginDAO {
 			ss.close();
 		}//end if
 		return cnt;
-	}//insertEmp
+	}//insertManager
 	
-	
+	//로그인
 	public MLoginDomain selectLogin(MLoginVO mVO) throws SQLException {
 		MLoginDomain mlDomain = null;  
 		//MyBatis 얻기
@@ -45,19 +45,14 @@ public class ManagerLoginDAO {
 		return mlDomain;
 	}//selectLogin
 	
-	public static void main(String[] args) {
-		
-		ManagerLoginDAO mDAO = new ManagerLoginDAO();
-		 MLoginVO m = new MLoginVO("manager", "1234");
-		 try {
-			 MLoginDomain md  = mDAO.selectLogin(m);
-			System.out.println(md);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
+	/* 테스트 용
+	 * public static void main(String[] args) {
+	 * 
+	 * ManagerLoginDAO mDAO = new ManagerLoginDAO(); MLoginVO m = new
+	 * MLoginVO("manager", "1234"); try { MLoginDomain md = mDAO.selectLogin(m);
+	 * System.out.println(md); } catch (SQLException e) { e.printStackTrace(); }
+	 * 
+	 * }//main
+	 */	
 
 }//class

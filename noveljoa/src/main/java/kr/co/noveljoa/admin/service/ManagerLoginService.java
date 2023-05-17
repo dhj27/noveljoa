@@ -11,8 +11,10 @@ import kr.co.sist.util.cipher.DataEncrypt;
 
 public class ManagerLoginService {
 	
+	//매니저 로그인
 	public MLoginDomain ManagerLogin(MLoginVO mVO) {
 		try {
+			//일방향성 해시 사용
 			mVO.setPassword(DataEncrypt.messageDigest("MD5", mVO.getPassword() ));
 		} catch (NoSuchAlgorithmException e1) {
 			e1.printStackTrace();
@@ -29,8 +31,10 @@ public class ManagerLoginService {
 		return mlDomain;
 	}
 	
+	//매니저 계정 생성
 	public boolean MakeManager(InsertMVO IMVO) {
 		try {
+			//일방향성 해시 사용
 			IMVO.setPassword( DataEncrypt.messageDigest("MD5", IMVO.getPassword()) );
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();

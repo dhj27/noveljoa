@@ -13,14 +13,9 @@
 #header{  height: 200px; position: relative;
 	background: #FFFFFF url(http://localhost/jsp_prj/common/images/header_bg.png)  repeat-x;}
 
-#logo{ position:absolute;top: 40px;left:100px; width: 150px; font-weight: bold; font-size: 40px;
-	font-family: 고딕 ;}	
-#naviBar{ position:absolute;top:140px;left:0px;height: 60px }	 
 #container{ height: 900px;position: relative; }	 
 
 #footer{ height: 100px;position: relative;  }	 
-#flogo{ position:absolute;top:20px;left:100px;height: 60px;font-weight: bold; font-size: 20px;
-	font-family: 고딕 ; color:#d7d7d7; text-align: right; width:100%;  }	 
 
 </style>
 <!-- jQuery CDN 시작 -->
@@ -67,11 +62,10 @@ $(function() {
 <body>
 <div id="wrap"> 
 <div id="header">  
-	<div id="logo">Class 4.</div>
-	<div id="naviBar">navi ( 1000 x 60)</div>
+	
 </div>
 <div id="container">
-<form action="insert_frm_process.do" method="post" id="frm" name="frm"><!--  ///////////////////////////////////////////// -->
+<form action="insert_frm_process.do" method="post" id="frm" name="frm">
 <table>
 <tr>
 <th>매니저 아이디 생성용</th>
@@ -98,8 +92,7 @@ $(function() {
 
 </form>
 </div>
-<div id="footer">footer ( 1000 x 100)
-	<div id="flogo"> Copyright &copy; Class 4. All rights reserved.</div>
+<div id="footer">
 </div>
 </div>
 </body>
