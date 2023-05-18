@@ -27,10 +27,10 @@ public class AdminController {
 	
 	
 	//select novel
-	@GetMapping("/manager/novelManagerFrm.do")
-	public String novelManageFrm() {
+	@GetMapping("/manager/managerNovelFrm.do")
+	public String managerNovelFrm() {
 		
-		return "manager/novelManagerFrm";
+		return "manager/managerNovelFrm";
 	} 
 //	//select novel process //ajax
 //	@GetMapping("/manager/novelManagerFrm.do")

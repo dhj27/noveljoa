@@ -62,8 +62,6 @@ public class ManagerController {
 	}
 	
 	
-	
-	
 	@GetMapping("/manager/messageBoardFrm.do")
 	public String messageBoardFrm() {
 		
