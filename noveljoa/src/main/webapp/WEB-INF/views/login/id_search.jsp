@@ -99,7 +99,7 @@ if(id == null || id==""){
         
 
        <div id="container">
-       <form id="frm" name="frm" method="post" action="id_search.jsp"> 
+       <form id="frm" name="frm" method="post" action="id_search.do"> 
            <div id="frame">
             <div id="text_id" style="font-size: 50px; font-weight: bold;">아이디 찾기</div>
             <div id="text1">소설조아 계정의<br>
@@ -112,7 +112,7 @@ if(id == null || id==""){
                 <div id="input_phone"><input type="text"style="width:340px;height:20px;" id="phone" name="phone"/></div>
                 <div id="buttonId">
                     <input type="button"class="button" value="확인"  id="next"/>
-                    <input type="button"class="button" value="취소" onclick="loginpage()">
+                    <input type="button"class="button" value="취소" onclick="'window.close()">
                 </div>
             </div>
             </form>

@@ -44,7 +44,7 @@ $(function(){
 	
 	
 	$("#idChk").click(function(){
-		window.open("id_chk_dup.jsp","subWin","width=310,height=310");
+		window.open("id_chk_dup.do","subWin","width=310,height=310");
 		 
  	});
 	

@@ -38,10 +38,10 @@
 
 <script type="text/javascript">
 function idsearch_pop(){ // 아이디 찾기 popup
-	window.open("id_search.jsp","아이디 찾기","height=750px,width=650px,top= 300px, left=500px");
+	window.open("idsearch.do","아이디 찾기","height=750px,width=650px,top= 300px, left=500px");
 }
 function password_pop(){//임시비밀번호 발급 popup
-	window.open("password_issued.jsp","임시비밀번호 발급","height=750px,width=650px,top= 300px, left=500px");
+	window.open("password_issued.do","임시비밀번호 발급","height=750px,width=650px,top= 300px, left=500px");
 }
 $(function(){	
 $("#loginBtn").click(function(){
@@ -63,7 +63,6 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
 });
 });
 </script>
-
 
 </head>
 
@@ -102,7 +101,7 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
                 <input type="button" class="input_button" id="loginBtn" value="로그인" style='cursor:pointer'>
                </div>
                <div id="newmember">
-                <a href="#void" onclick="window.location.href='new_member.jsp'">회원가입</a>
+                <a href="signup.do" >회원가입</a>
               
                </div>
                <div id="idpass">
