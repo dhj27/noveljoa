@@ -30,8 +30,6 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
-	
-	
 	<!-- 한글변환을 위한 filter 설정 -->
 	 <filter>
 		<filter-name>cef</filter-name>
@@ -47,6 +45,4 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping> 
 	
-	
-
 </web-app>

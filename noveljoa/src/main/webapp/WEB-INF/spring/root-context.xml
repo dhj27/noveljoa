@@ -8,5 +8,9 @@
 	<bean id="ns" class="kr.co.noveljoa.user.novel.service.NovelService">
 		<constructor-arg ref="nDAO"/>
 	</bean>
+	<bean id="mDAO" class="kr.co.noveljoa.user.main.MainDAO"/>
+	<bean id="ms" class="kr.co.noveljoa.user.main.MainService">
+		<constructor-arg ref="mDAO"/>
+	</bean>
 		
 </beans>

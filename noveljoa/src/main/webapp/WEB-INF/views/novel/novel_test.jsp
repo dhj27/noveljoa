@@ -21,7 +21,7 @@
 </head>
 <body>
 
-${name }<br>${age }<br>
+${name }<br>${age }<br>${cnt }<br>
 ${ list }
 
 </body>

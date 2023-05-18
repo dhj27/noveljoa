@@ -1,14 +1,14 @@
-package kr.co.noveljoa.user.novel.vo;
+package kr.co.noveljoa.user.novel.domain;
 
-public class NovelVO {
+public class NovelDomain {
 	
 	private String name;
 	private int age;
 	
-	public NovelVO() {
+	public NovelDomain() {
 		super();
 	}
-	public NovelVO(String name, int age) {
+	public NovelDomain(String name, int age) {
 		super();
 		this.name = name;
 		this.age = age;

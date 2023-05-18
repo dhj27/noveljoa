@@ -4,10 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.noveljoa.user.novel.dao.noveljoa.novelMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
 
-<insert id="insertNovel" parameterType="kr.co.noveljoa.user.novel.vo.NovelVO">
-insert into test  
-(name, age)
-values( #{ name }, #{ age })
-</insert>
+	<insert id="insertNovel" parameterType="kr.co.noveljoa.user.novel.vo.NovelVO">
+		insert into test  
+		(name, age)
+		values( #{ name }, #{ age })
+	</insert>
+	
+	<select id="selectNovel" resultType="kr.co.noveljoa.user.novel.domain.NovelDomain">
+		select * from test	<!-- DB 쿼리문 작성 -->
+	</select>
 
 </mapper>
