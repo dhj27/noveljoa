@@ -19,7 +19,7 @@
 		    ) e ON n.num_novel = e.num_novel	
 		LEFT JOIN episode ep ON n.num_novel = ep.num_novel AND e.visit = ep.visit	
 		WHERE n.make >= SYSDATE - #{type}
-		AND e.visit IS NOT NULL and n.open=1 and n.genre=${genre}	
+		AND e.visit IS NOT NULL and n.open=1 <if test="genre!=0">and n.genre like '%'||#{genre}||'%'</if>
 		GROUP BY n.num_novel, n.photo, n.age, n.title, m.id, e.visit, n.story, n.end	
 		ORDER BY e.visit DESC
 	</select>
