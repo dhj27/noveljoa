@@ -17,6 +17,6 @@
   </environments>
   <mappers>
     <mapper resource="kr/co/noveljoa/user/main/main_mapper.xml"/>
-    <mapper resource="kr/co/noveljoa/user/episode_mapper.xml"/>
+    <mapper resource="kr/co/noveljoa/user/episode/domain/episode_mapper.xml"/>
   </mappers>
 </configuration>
