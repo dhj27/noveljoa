@@ -9,6 +9,14 @@ public class EpListMyDomain {
 	private int views;
 	private Date date;
 	
+	public EpListMyDomain() {}
+	
+	public EpListMyDomain(String epTitle, int openStatus, int views, Date date) {
+		this.epTitle = epTitle;
+		this.openStatus = openStatus;
+		this.views = views;
+		this.date = date;
+	}
 	public String getEpTitle() {
 		return epTitle;
 	}

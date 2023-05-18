@@ -7,34 +7,34 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 
 public class EpMyService {
 	
-	// ¿¡ÇÇ¼Òµå »ı¼º
+	// ì—í”¼ì†Œë“œ ìƒì„±
 	public void addEp(EpCreateVO epCreateVO) {
 		
 	}// addEp
 	
 	
-	// ¿¡ÇÇ¼Òµå ¼öÁ¤
+	// ì—í”¼ì†Œë“œ ìˆ˜ì •
 	public String searchEp(EpCheckMyVO epCheckMyVO) {
 		
 		return "";
 	}// searchEp
 	
 	
-	// ¿¡ÇÇ¼Òµå ¼öÁ¤ ÇÁ·Î¼¼½º ajax
+	// ì—í”¼ì†Œë“œ ìˆ˜ì • í”„ë¡œì„¸ìŠ¤ ajax
 	public int editEp(EpUpdateVO epUpdateVO) {
 		
 		return 0;
 	}// editEp
 	
 	
-	// ¿¡ÇÇ¼Òµå »èÁ¦
+	// ì—í”¼ì†Œë“œ ì‚­ì œ
 	public int removeEp(EpCheckMyVO epCheckMyVO) {
 		
 		return 0;
 	}// removeEp
 	
 	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ® ³»¿ë º¸¿©ÁÖ±â ajax
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸ ë‚´ìš© ë³´ì—¬ì£¼ê¸° ajax
 	public String searchEpList(NovelCheckMyVO nCheckMyVO) {
 		
 		return "";

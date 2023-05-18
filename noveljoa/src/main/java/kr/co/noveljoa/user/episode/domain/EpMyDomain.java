@@ -8,6 +8,15 @@ public class EpMyDomain {
 	private String myComment;
 	private int openStatus;
 	
+	public EpMyDomain() {}
+	
+	public EpMyDomain(String novelTitle, String epTitle, String detail, String myComment, int openStatus) {
+		this.novelTitle = novelTitle;
+		this.epTitle = epTitle;
+		this.detail = detail;
+		this.myComment = myComment;
+		this.openStatus = openStatus;
+	}
 	public String getNovelTitle() {
 		return novelTitle;
 	}

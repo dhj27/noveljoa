@@ -8,6 +8,15 @@ public class EpLookDomain {
 	private int bookmark;
 	private String comment;
 	
+	public EpLookDomain() {}
+	
+	public EpLookDomain(String novelTitle, String epTitle, String epDetail, int bookmark, String comment) {
+		this.novelTitle = novelTitle;
+		this.epTitle = epTitle;
+		this.epDetail = epDetail;
+		this.bookmark = bookmark;
+		this.comment = comment;
+	}
 	public String getNovelTitle() {
 		return novelTitle;
 	}

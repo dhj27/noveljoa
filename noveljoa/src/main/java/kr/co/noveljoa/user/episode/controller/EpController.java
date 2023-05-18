@@ -1,5 +1,6 @@
 package kr.co.noveljoa.user.episode.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,99 +14,101 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 @Controller
 public class EpController {
 	
+	@Autowired(required = false)
+	private EpService epService;
+	
+	// test
 	@GetMapping("/episode/a.do")
 	public String ab() {
 		return "episode/a";
 	}// novelEpList
 	
 	
-	// ¼Ò¼³-¿¡ÇÇ¼Òµå ¸®½ºÆ® º¸¿©ÁÖ±â
+	// ì†Œì„¤-ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸ ë³´ì—¬ì£¼ê¸°
 	@GetMapping("/novels.do")
 	public String novelEpList(int novelNum, Model model) {
-		// ¼¼¼Ç¹Ş¾Æ¿À±â
-		EpService es = new EpService();
+		// ì„¸ì…˜ë°›ì•„ì˜¤ê¸°
+		int userNum = (Integer)model.getAttribute("num_member");
 		
+		// ì†Œì„¤ì •ë³´ ì¡°íšŒ
+		// ì•„ì´ë””ë¥¼ ì‚¬ìš©í•˜ì—¬ ì¢‹ì•„ìš”?ì—¬ë¶€ë¥¼ ì¡°íšŒ
+		// ì•„ì´ë””ë¥¼ ì‚¬ìš©í•˜ì—¬ ì‹ ê³ ?ì—¬ë¶€ë¥¼ ì¡°íšŒ
+		// íšŒì°¨ì •ë³´ ì¡°íšŒ 
+		// model ì— ë„£ëŠ”ë‹¤
 		
 		return "episode/novel";
 	}// novelEpList
 	
 	
-	// ¼Ò¼³³»¿ë º¸¿©ÁÖ±â
-	//@GetMapping("")
-	public String searchNovel(int novelNum, Model model) {
-		return "";
-	}// searchNovel
 	
-	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ® ajax
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸ ajax
 	//@GetMapping("")
 	public String searchEpList(EpListVO epListVO) {
 		return "";
 	}// searchEpList
 	
 	
-	// ¿¡ÇÇ¼Òµå ³»¿ë ajax
+	// ì—í”¼ì†Œë“œ ë‚´ìš© ajax
 	//@GetMapping("")
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
 		return "";
 	}// searchEp
 	
 	
-	// Ã¹ È­
+	// ì²« í™”
 	//@GetMapping("")
 	public String firstEp(int novelNum, Model model) {
 		return "";
 	}// firstEp
 	
 	
-	// ÀÌÀü, ´ÙÀ½È­
+	// ì´ì „, ë‹¤ìŒí™”
 	//@GetMapping("")
 	public String prevNextEp(EpCheckVO epCheckVO, Model model) {
 		return "";
 	}// prevNextEp
 	
 	
-	// Á¶È¸¼ö Áõ°¡	
+	// ì¡°íšŒìˆ˜ ì¦ê°€	
 	//@GetMapping("")
 	public String viewsEp(int epNum) {
 		return "";
 	}// viewsEp
 	
 	
-	// ÁÁ¾Æ¿ä Ãß°¡
+	// ì¢‹ì•„ìš” ì¶”ê°€
 	//@GetMapping("")
 	public String addLike(NovelCheckVO nCheckVO, Model model) {
 		return "";
 	}// addLike
 	
 	
-	// ÁÁ¾Æ¿ä »èÁ¦
+	// ì¢‹ì•„ìš” ì‚­ì œ
 	//@GetMapping("")
 	public String cancelLike(NovelCheckVO nCheckVO, Model model) {
 		return "";
 	}// cancelLike
 	
 	
-	// ½Å°í Ãß°¡
+	// ì‹ ê³  ì¶”ê°€
 	//@GetMapping("")
 	public String addReport(NovelReportVO nReportVO , Model model) {
 		return "";
 	}// addReport
 	
 	
-	// ºÏ¸¶Å© Ãß°¡
+	// ë¶ë§ˆí¬ ì¶”ê°€
 	//@GetMapping("")
 	public String addBookmark(EpCheckVO epCheckVO, Model model) {
 		return "";
 	}// addBookmark
 	
 	
-	// ºÏ¸¶Å© »èÁ¦
+	// ë¶ë§ˆí¬ ì‚­ì œ
 	//@GetMapping("")
 	public String cancelBookmark(EpCheckVO epCheckVO, Model model) {
 		return "";
 	}// cancelBookmark
-	
 	
 
 }//class

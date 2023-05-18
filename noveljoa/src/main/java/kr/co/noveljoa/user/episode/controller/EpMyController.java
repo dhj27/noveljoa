@@ -11,7 +11,7 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 @Controller
 public class EpMyController {
 	
-	// ¿¡ÇÇ¼Òµå ÀÛ¼ºÃ¢
+	// ì—í”¼ì†Œë“œ ì‘ì„±ì°½
 	//@GetMapping("")
 	public String writeEpFrm(Model model) {
 		
@@ -19,7 +19,7 @@ public class EpMyController {
 	}// writeEpFrm
 	
 	
-	// ¿¡ÇÇ¼Òµå µî·Ï ÇÁ·Î¼¼½º ajax
+	// ì—í”¼ì†Œë“œ ë“±ë¡ í”„ë¡œì„¸ìŠ¤ ajax
 	//@GetMapping("")
 	public String addEpProcess(EpCreateVO epCreateVO, Model model) {
 		
@@ -27,7 +27,7 @@ public class EpMyController {
 	}// addEpProcess
 	
 	
-	// ¿¡ÇÇ¼Òµå ¼öÁ¤Ã¢
+	// ì—í”¼ì†Œë“œ ìˆ˜ì •ì°½
 	//@GetMapping("")
 	public String editEpFrm(Model model) { //int novelNum ?
 		
@@ -35,7 +35,7 @@ public class EpMyController {
 	}// editEpFrm
 	
 	
-	// ¿¡ÇÇ¼Òµå ¼öÁ¤ ³»¿ë ºÒ·¯¿À±â ajax
+	// ì—í”¼ì†Œë“œ ìˆ˜ì • ë‚´ìš© ë¶ˆëŸ¬ì˜¤ê¸° ajax
 	//@GetMapping("")
 	public String searchEp(EpCheckMyVO epCheckMyVO, Model model) {
 		
@@ -43,7 +43,7 @@ public class EpMyController {
 	}// searchEp
 	
 	
-	// ¿¡ÇÇ¼Òµå ¼öÁ¤ ÇÁ·Î¼¼½º ajax
+	// ì—í”¼ì†Œë“œ ìˆ˜ì • í”„ë¡œì„¸ìŠ¤ ajax
 	//@GetMapping("")
 	public String editEpProcess(EpUpdateVO epUpdateVO, Model model) {
 		
@@ -51,7 +51,7 @@ public class EpMyController {
 	}// editEpProcess
 	
 	
-	// ¿¡ÇÇ¼Òµå »èÁ¦
+	// ì—í”¼ì†Œë“œ ì‚­ì œ
 	//@GetMapping("")
 	public String removeEp(EpCheckMyVO epCheckMyVO, Model model) {
 		
@@ -59,7 +59,7 @@ public class EpMyController {
 	}// removeEp
 	
 	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ®Ã¢
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸ì°½
 	//@GetMapping("")
 	public String epList(Model model) { // int userNum;
 		
@@ -67,7 +67,7 @@ public class EpMyController {
 	}// epList
 	
 	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ® ³»¿ë º¸¿©ÁÖ±â ajax
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸ ë‚´ìš© ë³´ì—¬ì£¼ê¸° ajax
 	//@GetMapping("")
 	public String searchEpList(NovelCheckMyVO nCheckMyVO, Model model) {
 		

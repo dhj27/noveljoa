@@ -1,5 +1,6 @@
-<%@page import="kr.co.noveljoa.user.episode.domain.NovelLookDomain"%>
 <%@page import="java.sql.SQLException"%>
+<%@page import="EpisodeVO.User.LookNovelVO"%>
+<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,29 +13,40 @@
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap"></style>
 
-
 <%
-	int userNum = 1;
-	int novelNum = 1;
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}
+
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	if(novelNum == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 novelNum의 값이 없음");
+			response.sendRedirect("http://localhost/project2/home/main.jsp");
+		</script>
+<%	}
 	
-	String good = "http://localhost/noveljoa/_next/static/images/good_on.png";
-	String goodCancel = "http://localhost/noveljoa/_next/static/images/good_off.png";
+	String good = "http://localhost/project2/_next/static/images/good_on.png";
+	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
 
 	// 선택한 회차 화면에 출력
- 	// EpisodeDAO epDAO = new EpisodeDAO();
-	NovelLookDomain nLookDomain = null;
-	/* try{
+ 	EpisodeDAO epDAO = new EpisodeDAO();
+	LookNovelVO selectNovelVO = null;
+	try{
 		// 에피소드 화면 출력
-		//nLookDomain = epDAO.selectNovel(novelNum);
+		selectNovelVO = epDAO.selectNovel(novelNum);
 	}catch(SQLException e){
 		e.printStackTrace();
-	} */
+	}
 %>
 
 <script type="text/javascript">
@@ -94,7 +106,7 @@ $(function(){
 	}); //private
 	
 	// 신고하기
-	<%-- $("#reportImg").click(function(){
+	$("#reportImg").click(function(){
 		window.open("report_popup.jsp?num_novel=<%=novelNum%>&id=<%= selectNovelVO.getId() %>","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
 		//window.close();
 	});
@@ -106,7 +118,7 @@ $(function(){
 			return;
 		}
 		location.href='episode_read.jsp?num_novel=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>';
-	}); --%>
+	});
 	
 	
 });//ready
@@ -123,11 +135,11 @@ $(function(){
 	<div class="z-1">
 					
 	<!-- header -->
-	<%-- <%if(!session.getAttribute("user_num_member").toString().equals("0")){ %> --%>
+	<%if(!session.getAttribute("user_num_member").toString().equals("0")){ %>
 	<div>
-		<jsp:include page="../../../_next/header_user_login_search.jsp"/>
-	<%-- </div>		
-	<%} %> --%>				
+		<jsp:include page="../_next/header_user_login_search.jsp"/>
+	</div>		
+	<%} %>				
 	</div>
 	
 	<main class="flex-1">
@@ -143,17 +155,17 @@ $(function(){
 					<div class="flex flex-[0_0_auto]">
 						<div class="flex relative shrink-0 items-start overflow-hidden h-181 w-116" style="height: 181px;">
 							<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-							<%-- <img src="http://localhost/project2/_next/static/images/novel_thumb/<%= selectNovelVO.getThumbnail() %>" decoding="async"
-								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"> --%>
+							<img src="http://localhost/project2/_next/static/images/novel_thumb/<%= selectNovelVO.getThumbnail() %>" decoding="async"
+								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
 							</span>
 						</div>
 					</div>
 					<div class="flex flex-col ml-28 flex-1 items-start">
-						<%-- <h1 class="typo-dp1 mb-8 flex items-center break-all"><%= selectNovelVO.getNovelTitle() %></h1> --%>
+						<h1 class="typo-dp1 mb-8 flex items-center break-all"><%= selectNovelVO.getNovelTitle() %></h1>
 						<div class="flex typo-md3 items-center">
-							<%-- <span><%= selectNovelVO.getId() %></span><br><br> --%>
+							<span><%= selectNovelVO.getId() %></span><br><br>
 						</div>
-						<%-- <div><%= selectNovelVO.getIntro() %></div> --%>
+						<div><%= selectNovelVO.getIntro() %></div>
 						<div class="flex mt-30 flex-1 items-end">
 						
 						
@@ -163,7 +175,7 @@ $(function(){
 									&nbsp;&nbsp;&nbsp;
 									
 								<!-- 좋아요 -->
-								<%-- <label><%= epDAO.cntLike(novelNum) %></label>
+								<label><%= epDAO.cntLike(novelNum) %></label>
  								<img id="goodImg" src=<%= epDAO.confirmLike(userNum, novelNum)== 1 ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png"%> alt="좋아요"/>
 
 								<form action="like_process.jsp" id="likeFrm" method="post">
@@ -171,20 +183,20 @@ $(function(){
 									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
 									<input type="hidden" id="id" name="id" value="<%= selectNovelVO.getId() %>"/>
 									<input type="hidden" id="good" name="good" value=""/>
-								</form>	 --%>
+								</form>	
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
 								
 								<!-- 신고 버튼 -->
 								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
-								<%-- <label><%= epDAO.cntReport(novelNum) %></label>
+								<label><%= epDAO.cntReport(novelNum) %></label>
 								
 								<form action="report_popup.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
 									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
 									<input type="hidden" id="id" name=id value="<%= selectNovelVO.getId() %>"/>
-								</form> --%>
+								</form>
 								
 							</div>
 						
@@ -209,7 +221,7 @@ $(function(){
 			<div>
 				<div class="flex items-center">
 					<div class="typo-dp3 mr-6">회차</div>
-					<%-- <span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(<%= epDAO.countEp(novelNum) %>)</span> --%>
+					<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(<%= epDAO.countEp(novelNum) %>)</span>
 				</div>
 				<div class="flex w-full items-center justify-between border-b-1 py-16">
 					<div class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0 ml-8">

@@ -1,17 +1,41 @@
 package kr.co.noveljoa.user.episode.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import kr.co.noveljoa.user.episode.dao.EpDAO;
+import kr.co.noveljoa.user.episode.domain.EpLookDomain;
+import kr.co.noveljoa.user.episode.domain.NovelDomain;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 
+@Component
 public class EpService {
 	
+	@Autowired(required = false)
+	private EpDAO eDAO;
+	
 	// 소설내용 보여주기
-	public String searchNovel(int novelNum) {
-		return "";
+	public NovelDomain searchNovel(int novelNum) {
+		NovelDomain nd = new NovelDomain();
+		
+		
+		return nd;
 	}// searchNovel
 	
+	// 소설 좋아요
+	public int searchNovelLike(int userNum) {
+		
+		return 0;
+	}//searchNovelLike
+	
+	// 소설 신고
+	public int searchNovelReport(int userNum) {
+		
+		return 0;
+	}//searchNovelLike
 	
 	// 에피소드 리스트 ajax
 	public String searchEpList(EpListVO epListVO) {
@@ -20,14 +44,14 @@ public class EpService {
 	
 	
 	// 에피소드 내용 ajax
-	public String searchEp(EpCheckVO epCheckVO) {
-		return "";
+	public EpLookDomain searchEp(EpCheckVO epCheckVO) {
+		return null;
 	}// searchEp
 	
 	
 	// 첫 화
-	public String firstEp(int novelNum) {
-		return "";
+	public EpLookDomain firstEp(int novelNum) {
+		return null;
 	}// firstEp
 	
 	
@@ -71,8 +95,5 @@ public class EpService {
 	public String cancelBookmark(EpCheckVO epCheckVO) {
 		return "";
 	}// cancelBookmark
-	
-	
-
 
 }

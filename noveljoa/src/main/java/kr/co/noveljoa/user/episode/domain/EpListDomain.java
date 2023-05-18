@@ -10,9 +10,19 @@ public class EpListDomain {
 	private Date date;
 	private int bookmark;
 	
+	public EpListDomain() {}	
+	
+	public EpListDomain(int epCnt, String epTitle, int views, Date date, int bookmark) {
+		this.epCnt = epCnt;
+		this.epTitle = epTitle;
+		this.views = views;
+		this.date = date;
+		this.bookmark = bookmark;
+	}
 	public int getEpCnt() {
 		return epCnt;
 	}
+	
 	public void setEpCnt(int epCnt) {
 		this.epCnt = epCnt;
 	}

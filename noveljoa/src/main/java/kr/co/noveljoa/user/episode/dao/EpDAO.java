@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import kr.co.noveljoa.admin.dao.ManagerMyBatisHandler;
 import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
-import kr.co.noveljoa.user.episode.domain.NovelLookDomain;
+import kr.co.noveljoa.user.episode.domain.NovelDomain;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
@@ -18,9 +18,11 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 public class EpDAO {
 	
 	// 소설내용 보여주기
-	public NovelLookDomain selectNovel(int novelNum) {
-		return null;
+	public NovelDomain selectNovel(int novelNum) {
+		NovelDomain nd = new NovelDomain();
 		
+		
+		return null;
 	}// searchNovel
 	
 	
