@@ -20,6 +20,9 @@
      <!-- jQuery CDN 끝 -->
       <script type="text/javascript">
       $(function(){
+    	 
+    		 
+    	 
     	  
     	  /* globals Chart:false, feather:false */
     	  (() => {
@@ -29,64 +32,279 @@
 
      var context = document
                 .getElementById('myChart')
-            var myChart = new Chart(context, {
-                type: 'line', // 차트의 형태
-                data: { // 차트에 들어갈 데이터
-                    labels: [
-                        //x 축
-                    	 'Sunday',
-                         'Monday',
-                         'Tuesday',
-                         'Wednesday',
-                         'Thursday',
-                         'Friday',
-                         'Saturday'
-                    ],
-                    datasets: [
-                        { //데이터
-                            label: '가입자 수', //차트 제목
-                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
-                            data: [
-                            	15339,
-                                21345,
-                                18483,
-                                24003,
-                                23489,
-                                24092,
-                                12034 //x축 label에 대응되는 데이터 값
-                            ],
-                           /* 
-                           이쁜 색깔 목록
-                           'rgba(153, 102, 255, 0.2)'
-                           'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)', */
-                            lineTension: 0,
-                            backgroundColor:  'rgba(255, 99, 132, 0.2)',
-                            borderColor:  'rgba(255, 99, 132, 0.2)',
-                            borderWidth: 4, //경계선 굵기
-                            pointBackgroundColor:  'rgba(255, 99, 132, 0.2)',
-                        }
-              
-                    ]
-                },
-                options: {
-                    scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: false
-                                }
+                var myChart = 
+"<thead class='table-dark'>"+
+"<tr><th scope='col'>총 회원 수</th>"+
+"<th scope='col'>총 소설 수</th>"+
+"<th scope='col'>당일 가입자 수</th>"+
+"<th scope='col'>당일 방문자 수</th>"+
+"<th scope='col'>당일 등록된 소설 수</th>"+
+"<th scope='col'>당일 등록된 에피소드 수</th>"+
+"</tr>"+
+"</thead>"+
+"<tbody>"+
+"<tr>"+
+"<td>1,001</td>"+
+"<td>random</td>"+
+"<td>data</td>"+
+"<td>placeholder</td>"+
+"<td>text</td>"+
+"<td>text</td>"+
+"</tr>"+
+"</tbody>";
+
+
+$("#dTable").html(myChart);
+
+    	    
+		    $("#totalMember").click(function(){
+	            myChart = new Chart(context, {
+	                type: 'line', // 차트의 형태
+	                data: { // 차트에 들어갈 데이터
+	                    labels: [
+	                        //x 축
+	                    	 'Sunday',
+	                         'Monday',
+	                         'Tuesday',
+	                         'Wednesday',
+	                         'Thursday',
+	                         'Friday',
+	                         'Saturday'
+	                    ],
+	                    datasets: [
+	                        { //데이터
+	                            label: '총 회원 수', //차트 제목
+	                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+	                            data: [
+	                            	15339,
+	                                21345,
+	                                18483,
+	                                24003,
+	                                23489,
+	                                24092,
+	                                12034 //x축 label에 대응되는 데이터 값
+	                            ],
+	                           /* 
+	                           이쁜 색깔 목록
+	                           'rgba(153, 102, 255, 0.2)'
+	                           'rgba(255, 99, 132, 0.2)',
+	                            'rgba(54, 162, 235, 0.2)',
+	                            'rgba(255, 206, 86, 0.2)',
+	                            'rgba(75, 192, 192, 0.2)', */
+	                            lineTension: 0,
+	                            backgroundColor:  'rgba(255, 99, 132, 0.2)',
+	                            borderColor:  'rgba(255, 99, 132, 0.2)',
+	                            borderWidth: 4, //경계선 굵기
+	                            pointBackgroundColor:  'rgba(255, 99, 132, 0.2)',
+	                        }
+	              
+	                    ]
+	                },
+	                options: {
+	                    scales: {
+	                        yAxes: [
+	                            {
+	                                ticks: {
+	                                    beginAtZero: false
+	                                }
+	                            }
+	                        ]
+	                    }
+	                },
+	                legend: {
+	                    display: false
+	                  }
+	                
+	            });
+    	    })//click
+    	    
+    	    $("#totalNovel").click(function(){
+                myChart = new Chart(context, {
+                    type: 'line', // 차트의 형태
+                    data: { // 차트에 들어갈 데이터
+                        labels: [
+                            //x 축
+                        	 'Sunday',
+                             'Monday',
+                             'Tuesday',
+                             'Wednesday',
+                             'Thursday',
+                             'Friday',
+                             'Saturday'
+                        ],
+                        datasets: [
+                            { //데이터
+                                label: '총 소설 수', //차트 제목
+                                fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+                                data: [
+                                	15339,
+                                    21345,
+                                    18483,
+                                    24003,
+                                    23489,
+                                    24092,
+                                    12034 //x축 label에 대응되는 데이터 값
+                                ],
+                               /* 
+                               이쁜 색깔 목록
+                               'rgba(153, 102, 255, 0.2)',
+                               'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)', */
+                                lineTension: 0,
+                                backgroundColor:  'rgba(153, 102, 255, 0.2)',
+                                borderColor:  'rgba(153, 102, 255, 0.2)',
+                                borderWidth: 4, //경계선 굵기
+                                pointBackgroundColor:  'rgba(153, 102, 255, 0.2)',
                             }
+                  
                         ]
-                    }
-                },
-                legend: {
-                    display: false
-                  }
-                
-            });
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    legend: {
+                        display: false
+                      }
+                    
+                });
+    	    })//click
+    	    
+    	    $("#join").click(function(){
+                myChart = new Chart(context, {
+                    type: 'line', // 차트의 형태
+                    data: { // 차트에 들어갈 데이터
+                        labels: [
+                            //x 축
+                        	 'Sunday',
+                             'Monday',
+                             'Tuesday',
+                             'Wednesday',
+                             'Thursday',
+                             'Friday',
+                             'Saturday'
+                        ],
+                        datasets: [
+                            { //데이터
+                                label: '가입자 수', //차트 제목
+                                fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+                                data: [
+                                	15339,
+                                    21345,
+                                    18483,
+                                    24003,
+                                    23489,
+                                    24092,
+                                    12034 //x축 label에 대응되는 데이터 값
+                                ],
+                               /* 
+                               이쁜 색깔 목록
+                               'rgba(153, 102, 255, 0.2)'
+                               'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)', */
+                                lineTension: 0,
+                                backgroundColor:   'rgba(54, 162, 235, 0.2)',
+                                borderColor:   'rgba(54, 162, 235, 0.2)',
+                                borderWidth: 4, //경계선 굵기
+                                pointBackgroundColor:   'rgba(54, 162, 235, 0.2)',
+                            }
+                  
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    legend: {
+                        display: false
+                      }
+                    
+                });
+        	    });//click
+    	    
+  			$("#visit").click(function(){
+  	            myChart = new Chart(context, {
+  	                type: 'line', // 차트의 형태
+  	                data: { // 차트에 들어갈 데이터
+  	                    labels: [
+  	                        //x 축
+  	                    	 'Sunday',
+  	                         'Monday',
+  	                         'Tuesday',
+  	                         'Wednesday',
+  	                         'Thursday',
+  	                         'Friday',
+  	                         'Saturday'
+  	                    ],
+  	                    datasets: [
+  	                        { //데이터
+  	                            label: '방문자 수', //차트 제목
+  	                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+  	                            data: [
+  	                            	15339,
+  	                                21345,
+  	                                18483,
+  	                                24003,
+  	                                23489,
+  	                                24092,
+  	                                12034 //x축 label에 대응되는 데이터 값
+  	                            ],
+  	                           /* 
+  	                           이쁜 색깔 목록
+  	                           'rgba(153, 102, 255, 0.2)'
+  	                           'rgba(255, 99, 132, 0.2)',
+  	                            'rgba(54, 162, 235, 0.2)',
+  	                            'rgba(255, 206, 86, 0.2)',
+  	                            'rgba(75, 192, 192, 0.2)', */
+  	                            lineTension: 0,
+  	                            backgroundColor:   'rgba(75, 192, 192, 0.2)',
+  	                            borderColor:   'rgba(75, 192, 192, 0.2)',
+  	                            borderWidth: 4, //경계선 굵기
+  	                            pointBackgroundColor:   'rgba(75, 192, 192, 0.2)',
+  	                        }
+  	              
+  	                    ]
+  	                },
+  	                options: {
+  	                    scales: {
+  	                        yAxes: [
+  	                            {
+  	                                ticks: {
+  	                                    beginAtZero: false
+  	                                }
+  	                            }
+  	                        ]
+  	                    }
+  	                },
+  	                legend: {
+  	                    display: false
+  	                  }
+  	                
+  	            });
+    	    })//click
+    	    
+    	    
+    	    
+    	
+    	    
     	  })()
             
     	  });
@@ -171,7 +389,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dashboard
+              Dashboard <c:out value="${ dashData  }"></c:out>
             </a>
           </li>
           <li class="nav-item">
@@ -215,19 +433,28 @@
             그래프 선택
           </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">회원 수</a></li>
+    <li><a class="dropdown-item" href="#" id="totalMember">총 회원 수</a></li>
+       <li><hr class="dropdown-divider" ></li>
+    <li><a class="dropdown-item" href="#" id="totalNovel">총 소설 수</a></li>
        <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">소설 수</a></li>
-       <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">가입자 수</a></li>
+    <li><a class="dropdown-item" href="#" id="join">가입자 수</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#" id="visit">방문자 수</a></li>
   </ul>
 </div>
-          
-          
+   
         </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table table-hover table-sm" id="dTable">
+           
+        </table>
       </div>
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      
+      
 
       
     </main>

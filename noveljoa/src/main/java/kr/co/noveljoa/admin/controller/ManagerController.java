@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
+import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
@@ -37,14 +39,18 @@ public class ManagerController {
 		
 		ManagerLoginService mlService = new ManagerLoginService();
 		MLoginDomain mlDomain = mlService.ManagerLogin(mlVO);
-		System.out.println(mlDomain);
+		//System.out.println(mlDomain);
 		model.addAttribute("data", mlDomain);
 		
 		return "manager/managerLoginProcess";
 	}
 	
 	@GetMapping("/manager/dashBoardFrm.do")
-	public String dashBoardFrm() {
+	public String dashBoardFrm(Model model) {
+		DashBoardService dbService = new DashBoardService();
+		DashBoardDomain dbDomain = dbService.printDash();
+		model.addAttribute("dashData", dbDomain);
+		
 	
 		return "manager/dashBoardFrm";
 	}
@@ -56,11 +62,7 @@ public class ManagerController {
 	}
 	
 	
-	@GetMapping("/manager/novelManagerFrm.do")
-	public String novelManagerFrm() {
-		
-		return "manager/novelManagerFrm";
-	}
+	
 	
 	@GetMapping("/manager/messageBoardFrm.do")
 	public String messageBoardFrm() {

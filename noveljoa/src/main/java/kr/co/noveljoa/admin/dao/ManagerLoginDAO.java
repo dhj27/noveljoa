@@ -45,14 +45,18 @@ public class ManagerLoginDAO {
 		return mlDomain;
 	}//selectLogin
 	
-	/* 테스트 용
-	 * public static void main(String[] args) {
-	 * 
-	 * ManagerLoginDAO mDAO = new ManagerLoginDAO(); MLoginVO m = new
-	 * MLoginVO("manager", "1234"); try { MLoginDomain md = mDAO.selectLogin(m);
-	 * System.out.println(md); } catch (SQLException e) { e.printStackTrace(); }
-	 * 
-	 * }//main
-	 */	
+//	//테스트 용
+//	  public static void main(String[] args) {
+//	  
+//	  ManagerLoginDAO mDAO = new ManagerLoginDAO(); 
+//	  MLoginVO m = new MLoginVO("manager", "1234"); 
+//	  try { 
+//		  MLoginDomain md = mDAO.selectLogin(m);
+//	  System.out.println(md); 
+//	  } catch (SQLException e) { 
+//		  e.printStackTrace(); 
+//	  }
+//	  
+//	  }//main
 
 }//class

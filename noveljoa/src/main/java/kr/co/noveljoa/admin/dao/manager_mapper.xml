@@ -10,6 +10,21 @@
 <insert id="insertManager" parameterType="kr.co.noveljoa.admin.vo.InsertMVO">
 insert into manager(id, password, create_date) values(#{ id }, #{ password }, sysdate)
 </insert>
+
+<select id="selectDash" resultType="kr.co.noveljoa.admin.domain.DashBoardDomain">
+    SELECT
+  (SELECT COUNT(*) FROM member) AS memberCnt,
+  (SELECT COUNT(*) FROM NOVEL) AS novelCnt,
+  (SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER) )
+	WHERE JOIN = TRUNC(SYSDATE)) AS todaySignUpCnt,
+  (SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history) )
+	 WHERE visit = TRUNC(SYSDATE) ) AS todayVisitCnt,
+	(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(make,'yyyy-MM-DD') make FROM novel) )
+	WHERE make = TRUNC(SYSDATE)) AS todayCreateNovelCnt,
+	(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(make,'yyyy-MM-DD') make FROM episode) )
+	WHERE make = TRUNC(SYSDATE)) AS todayCreateEpCnt
+FROM dual
+</select>
   
   
 </mapper>
