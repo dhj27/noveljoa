@@ -12,40 +12,33 @@ import kr.co.noveljoa.admin.vo.MLoginVO;
 @Controller
 public class AdminController {
 	
-//	@GetMapping("/manager/managerMemInfo.do")
-//	public String managerMemInfo() {
-//	
-//		return "manager/managerMemInfo";
-//	}
-	@GetMapping("/manager/managerReportFrm.do")
-	public String managerReportFrm() {
+	//select member info//회원 정보 보기
+	@GetMapping("/manager/managerMemInfo.do")
+	public String memberInfo(String id, Model model) {
 		
-		return "manager/managerReportFrm";
-	}
-	@GetMapping("/manager/messageFreeBoardFrm.do")
-	public String messageFreeBoardFrm() {
-		
-		return "manager/messageFreeBoardFrm";
-	}
-	@GetMapping("/manager/messageFreeLookFrm.do")
-	public String messageFreeLookFrm() {
-		
-		return "manager/messageFreeLookFrm";
+		return "manager/managerMemInfo";
 	}
 	
-	@GetMapping("/manager/messageQNABoardFrm.do")
-	public String messageQNABoardFrm() {
-		
-		return "manager/messageQNABoardFrm";
-	}
+//	# 강제 중지
+//	+ suspendStop(String id, Model) : String
+//
+//	# 강제 중지 해제
+//	+ suspendClear(String id, Model) : String
 	
-	@GetMapping("/manager/messageQNALookFrm.do")
-	public String messageQNALookFrm() {
+	
+	//select novel
+	@GetMapping("/manager/novelManagerFrm.do")
+	public String novelManageFrm() {
 		
-		return "manager/messageQNALookFrm";
+		return "manager/novelManagerFrm";
+	} 
+	//select novel process //ajax
+	@GetMapping("/manager/novelManagerFrm.do")
+	public String noveManageProcess(String id) {
+		
+		return "manager/novelManagerFrm";
 	}
 	
 
-
 	
-}
+}//class
