@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.noveljoa.user.epiosde.Mapper">
+
+	<!-- 작성한 소설 제목 출력 (에피소드 작성 ) -->
+	<select id="" parameterType="" resultType="">
+		select title 
+		from novel 
+		where num_novel=?
+	</select>
+ 	
+ 	<!-- 에피소드 생성 -->
+	<insert id="">
+		insert into episode(num_episode,num_novel,num_member,title,story,open,visit,make)
+		values (num_episode.nextval, #{num_novel}, #{num_member}, #{title}, #{story}, 1, 0, sysdate)
+	</insert>
+	
+	<!-- 에피소드 수정, userNum은 세션, epNum은 파라미터 -->
+	<update id="">
+		update episode 
+		set title=#{title},story=#{story},open=#{open}  
+		where num_member=? and num_novel=#{num_novel} and num_episode=?
+	</update>
+ 
+	<!-- 에피소드 삭제 -->
+	<delete id="">
+		delete 
+		from episode
+		where num_member=? and num_novel=? and num_episode=?
+	</delete>
+	
+	<!-- 내가 작성한 에피소드 내용보여주는 창 (수정) -->
+	<select id="">
+		select n.title novelTitle, e.title epTitle, e.story epDetail, e.open open 
+		from episode e, novel n 
+		where n.num_novel=e.num_novel and e.num_member=? and e.num_novel=? and e.num_episode=? 
+	</select>
+		
+		
+	<!-- 내 소설에 해당하는 모든 에피소드 리스트 가져오기 -->
+	<select id="">
+		select title,open,visit,make 
+		from episode 
+		where num_member=? and num_novel=?
+	</select>
+  
+  
+</mapper>

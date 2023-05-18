@@ -18,25 +18,10 @@
 	$(function(){
 		
 	});
-	function sendWrite( nNum ){
-		
-		$("#novelNum").val( nNum );
-		$("#hidFrm").submit();
-	}
+	
 </script>
 </head>
 <body>
-
-	<a href="episode/a.do">a</a>
-	<br><br>
-	
-	<a href="#void" onclick="sendWrite( 1 )">episode_write.do</a>
-	<br><br>
-	
-	<form action="episode_write.do" name="hidFrm" id="hidFrm" method="post">
-	<input type="hidden" name="novelNum" id="novelNum"/>
-	</form>
-	
-	
+fasd.kjb;flasd
 </body>
 </html>

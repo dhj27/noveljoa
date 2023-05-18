@@ -36,7 +36,7 @@ public class EpController {
 		// 회차정보 조회 
 		// model 에 넣는다
 		
-		return "episode/novel";
+		return "/episode/novel";
 	}// novelEpList
 	
 	

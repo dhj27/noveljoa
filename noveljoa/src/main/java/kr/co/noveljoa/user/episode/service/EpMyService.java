@@ -7,8 +7,10 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 
 public class EpMyService {
 	
+	
+	
 	// 에피소드 생성
-	public void addEp(EpCreateVO epCreateVO) {
+	public void writeEp(EpCreateVO epCreateVO) {
 		
 	}// addEp
 	
