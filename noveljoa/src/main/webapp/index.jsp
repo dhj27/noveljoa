@@ -34,7 +34,7 @@
 	<br><br>
 	
 	<form action="episode_write.do" name="hidFrm" id="hidFrm" method="post">
-	<input type="hidden" name="novelNum" id="novelNum"/>
+		<input type="hidden" name="novelNum" id="novelNum"/>
 	</form>
 	
 	

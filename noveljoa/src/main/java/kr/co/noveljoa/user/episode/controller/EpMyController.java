@@ -30,8 +30,7 @@ public class EpMyController {
 //		model.addAttribute("novelNum", 1);
 //		model.addAttribute("userNum", 1);
 		
-//		return "episode/episodeMy/episode_write";
-		return "/episode/episodeMy/aaaa";
+		return "episode/episodeMy/episode_write";
 	}// writeEpFrm
 	
 	
