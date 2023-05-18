@@ -30,6 +30,24 @@
 		<jsp:include page="../../../_next/header_user_logout_key.jsp"/>
 		<%}%>
 	</div>
+						<div class="bg-grey10">
+							<div
+								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 relative py-20">
+								<div
+									class="flex mt-16 w-full items-center border-none border-black/10 max-w-full-view first:mt-0">
+									<div class="typo-md3 w-103 flex-[0_0_auto] px-0">장르</div>
+									<div
+										class="grid desktop:flex grid-flow-col flex-wrap max-w-full-view overflow-x-scroll overflow-y-hidden scrolling-touch desktop:overflow-x-visible desktop:overflow-y-visible before:grow-0 after:grow-0 before:content-[&quot;&quot;] after:content-[&quot;&quot;] before:flex-[0_1_0%] after:flex-[0_1_0%] desktop:after:hidden desktop:before:hidden auto-cols-max before:w-16 after:w-16 HorizontalScroll_horizontalScrollbar__5q9CM">
+										<button onclick="location.href='/project2/home/ranking.jsp?type=0'"
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("0")?"bg-black text-white":"text-grey70" %>">전체</button>
+										<button onclick="location.href='/project2/home/ranking.jsp?type=1'"
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("1")?"bg-black text-white":"text-grey70" %>">판타지</button>
+										<button onclick="location.href='/project2/home/ranking.jsp?type=2'"
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("2")?"bg-black text-white":"text-grey70" %>">로맨스</button>
+									</div>
+								</div>
+							</div>
+						</div>
 				<main class="flex-1">
                         <div>
                             <div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
