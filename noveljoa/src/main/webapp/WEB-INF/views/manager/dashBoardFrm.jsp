@@ -28,11 +28,10 @@
     	  (() => {
     	    'use strict'
 
-    	    feather.replace({ 'aria-hidden': 'true' })
+    	    feather.replace({ 'aria-hidden': 'true' });
 
-     var context = document
-                .getElementById('myChart')
-                var myChart = 
+    
+                var table = 
 "<thead class='table-dark'>"+
 "<tr><th scope='col'>총 회원 수</th>"+
 "<th scope='col'>총 소설 수</th>"+
@@ -44,21 +43,30 @@
 "</thead>"+
 "<tbody>"+
 "<tr>"+
-"<td>1,001</td>"+
-"<td>random</td>"+
-"<td>data</td>"+
-"<td>placeholder</td>"+
-"<td>text</td>"+
-"<td>text</td>"+
+"<td>"+${ dashData.memberCnt }+"</td>"+
+"<td>"+${ dashData.novelCnt }+"</td>"+
+"<td>"+${ dashData.todaySignUpCnt }+"</td>"+
+"<td>"+${ dashData.todayVisitCnt }+"</td>"+
+"<td>"+${ dashData.todayCreateNovelCnt }+"</td>"+
+"<td>"+${ dashData.todayCreateEpCnt }+"</td>"+
 "</tr>"+
 "</tbody>";
 
 
-$("#dTable").html(myChart);
 
+$("#dTable").html(table);
+
+let context = document
+.getElementById('myChart');
+let myChart =null;
     	    
 		    $("#totalMember").click(function(){
-	            myChart = new Chart(context, {
+		    	if (myChart) {
+		    	      myChart.destroy();
+		    	      context.innerHTML = '';
+		    	    }
+
+	          myChart = new Chart(context, {
 	                type: 'line', // 차트의 형태
 	                data: { // 차트에 들어갈 데이터
 	                    labels: [
@@ -114,12 +122,17 @@ $("#dTable").html(myChart);
 	                legend: {
 	                    display: false
 	                  }
-	                
+	             
 	            });
     	    })//click
     	    
     	    $("#totalNovel").click(function(){
-                myChart = new Chart(context, {
+    	    	if (myChart) {
+    	    	      myChart.destroy();
+    	    	      context.innerHTML = '';
+    	    	    }
+
+    	    	 myChart = new Chart(context, {
                     type: 'line', // 차트의 형태
                     data: { // 차트에 들어갈 데이터
                         labels: [
@@ -180,7 +193,12 @@ $("#dTable").html(myChart);
     	    })//click
     	    
     	    $("#join").click(function(){
-                myChart = new Chart(context, {
+    	    	if (myChart) {
+    	    	      myChart.destroy();
+    	    	      context.innerHTML = '';
+    	    	    }
+
+    	    	 myChart = new Chart(context, {
                     type: 'line', // 차트의 형태
                     data: { // 차트에 들어갈 데이터
                         labels: [
@@ -241,7 +259,12 @@ $("#dTable").html(myChart);
         	    });//click
     	    
   			$("#visit").click(function(){
-  	            myChart = new Chart(context, {
+  				if (myChart) {
+  			      myChart.destroy();
+  			      context.innerHTML = '';
+  			    }
+
+  				 myChart = new Chart(context, {
   	                type: 'line', // 차트의 형태
   	                data: { // 차트에 들어갈 데이터
   	                    labels: [
@@ -389,7 +412,7 @@ $("#dTable").html(myChart);
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dashboard <c:out value="${ dashData  }"></c:out>
+              Dashboard
             </a>
           </li>
           <li class="nav-item">

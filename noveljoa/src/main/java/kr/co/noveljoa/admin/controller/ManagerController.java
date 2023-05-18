@@ -1,5 +1,7 @@
 package kr.co.noveljoa.admin.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
+import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
+import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
@@ -34,7 +38,6 @@ public class ManagerController {
 	}
 	
 	@PostMapping("/manager/managerLoginProcess.do")
-	
 	public String managerLoginProcess(MLoginVO mlVO  ,Model model) {
 		
 		ManagerLoginService mlService = new ManagerLoginService();
@@ -56,7 +59,11 @@ public class ManagerController {
 	}
 
 	@GetMapping("/manager/memberManagerFrm.do")
-	public String memberManagerFrm() {
+	public String memberManagerFrm(String id, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		List<MemberManageDomain> mmList =  ms.memberManage(id);
+		model.addAttribute("memberData", mmList);
+		model.addAttribute("memId", id);
 		
 		return "manager/memberManagerFrm";
 	}

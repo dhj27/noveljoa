@@ -25,6 +25,26 @@ insert into manager(id, password, create_date) values(#{ id }, #{ password }, sy
 	WHERE make = TRUNC(SYSDATE)) AS todayCreateEpCnt
 FROM dual
 </select>
+
+
+<select id="selectAllMember" resultType="kr.co.noveljoa.admin.domain.MemberManageDomain">
+SELECT m.id as id, m.num_member as num_member,
+  (SELECT COUNT(*) FROM novel where num_member=m.num_member) AS novelcnt,
+  NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visitDate,
+  m.join as joinDate, m.stop AS susPeriod FROM member m CROSS JOIN dual
+</select>
+
+<select id="selectOneMember" resultType="kr.co.noveljoa.admin.domain.MemberManageDomain" parameterType="String">
+ SELECT m.id as id, m.num_member as member,
+  (SELECT COUNT(*) FROM novel where num_member=m.num_member) AS novelcnt,
+  NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visitDate,
+  m.join as joinDate, m.stop AS susPeriod FROM member m CROSS JOIN dual where id = #{ id }
+</select>
+
+
+
+
+
   
   
 </mapper>

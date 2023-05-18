@@ -19,6 +19,11 @@
      <!-- jQuery CDN 끝 -->
       <script type="text/javascript">
       $(function(){
+    	  
+    	  $("#mBtn").click(function(){
+    		  $("#mFrm").submit();
+    	  });
+    	 
      
     	  /* globals Chart:false, feather:false */
     	  (() => {
@@ -91,24 +96,24 @@
       
 </head>
 <body>
-
+<form action="memberManagerFrm.do" id="mFrm" method="get">
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="width: 100px; text-align: center;" >검색</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search" name="id" >
+  <input class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" type="button" style="width: 100px; text-align: center;" value="검색" id="mBtn">
+ <!--  <input class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" id="mBtn"> -->
+    
+  
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <a class="nav-link px-3" href="#">Sign out</a>
     </div>
   </div>
 </header>
-
+</form>
  
 
 <div class="container-fluid">
@@ -119,13 +124,13 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dashboard
+              Dashboard<c:out value="${ memberData  }"></c:out>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="memberManagerFrm.do">
               <span data-feather="users" class="align-text-bottom"></span>
-             Member
+             Member<c:out value="${ memId  }"></c:out>
             </a>
           </li>
           <li class="nav-item">
