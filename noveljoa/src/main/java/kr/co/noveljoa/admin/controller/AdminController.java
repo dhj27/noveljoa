@@ -12,17 +12,17 @@ import kr.co.noveljoa.admin.vo.MLoginVO;
 @Controller
 public class AdminController {
 	
-	//select member info//È¸¿ø Á¤º¸ º¸±â
+	//select member info//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@GetMapping("/manager/managerMemInfo.do")
 	public String memberInfo(String id, Model model) {
 		
 		return "manager/managerMemInfo";
 	}
 	
-//	# °­Á¦ ÁßÁö
+//	# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //	+ suspendStop(String id, Model) : String
 //
-//	# °­Á¦ ÁßÁö ÇØÁ¦
+//	# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //	+ suspendClear(String id, Model) : String
 	
 	
@@ -32,12 +32,12 @@ public class AdminController {
 		
 		return "manager/novelManagerFrm";
 	} 
-	//select novel process //ajax
-	@GetMapping("/manager/novelManagerFrm.do")
-	public String noveManageProcess(String id) {
-		
-		return "manager/novelManagerFrm";
-	}
+//	//select novel process //ajax
+//	@GetMapping("/manager/novelManagerFrm.do")
+//	public String noveManageProcess(String id) {
+//		
+//		return "manager/novelManagerFrm";
+//	}
 	
 
 	
