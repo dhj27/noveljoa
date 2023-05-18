@@ -8,7 +8,7 @@
 			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
 			href="/project2/home/main.jsp"><img
 			class="object-contain" width="157" height="27"
-			src="/project2/_next/static/images/logo.png"
+			src="_next/static/images/logo.png"
 			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
 			alt="소설조아 logo" /></a>
 		<div
@@ -28,7 +28,7 @@
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
 			<a class="mr-16 flex items-center text-grey70"
 				href="/project2/manager/manager_login.jsp"><img
-				src="/project2/_next/static/images/key_black.png" width="24"
+				src="_next/static/images/key_black.png" width="24"
 				height="24"></a>
 			<button
 				class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"

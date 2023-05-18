@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
 <noscript data-n-css=""></noscript>
 
 </head>
@@ -34,27 +34,26 @@
                         <div>
                             <div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
                                 <div class="grid grid-cols-12 grid-rows-[auto] gap-x-12  w-full mt-56 mb-62 gap-y-64 gap-x-0">
+                                    <div class="flex flex-col col-[1/9] pr-26">
+                                        <section>
+                                            <div class="flex flex-wrap w-full items-start desktop:items-center pb-16">
+                                                <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">일간 랭킹</h2>
+                                            </div>
+                                            <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                 <c:choose>
-                                <c:when test="${not empty list }"> <c:forEach var="list" items="${list }" varStatus="rank" >
-                                    <div class="flex flex-col col-[1/9] pr-26">
-                                        <section>
-                                            <div class="flex flex-wrap w-full items-start desktop:items-center pb-16">
-                                                <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">일간 랭킹</h2>
-                                            </div>
-                                            <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
-                                				<c:if test="${rank.first }">
+                                <c:when test="${not empty list }"> <c:forEach var="list" items="${list }" varStatus="rank" begin="0" end="0" step="1" >
                                                 <div class="col-span-2">
                                                     <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="썸네일 이미지" src="/project2/_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="썸네일 이미지" src="_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -84,25 +83,27 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                                <c:if test="${rank.index>1 and rank.index<6 }">
+                                    </c:forEach></c:when><c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                <c:choose>
+                                <c:when test="${not empty list }"> <c:forEach var="list" items="${list }" varStatus="rank" begin="1" end="4" step="1" >
+                                                
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
                                                     <a class="flex items-center" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span>${rank.index }</span>
+                                                                        <span>${rank.count+1 }</span>
                                                                     </div>
                                                                     <div class="flex flex-col flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -127,7 +128,8 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
+                                                </c:forEach></c:when>
+                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
                                             </div>
                                         </section>
                                     </div>
@@ -145,21 +147,22 @@
                                                 </div>
                                             </div>
                                             <div class="flex flex-col">
-                                            <c:if test="${rank.index>5 and rank.index<11 }">
+                                            <c:choose>
+                                <c:when test="${not empty list }"> <c:forEach var="list" items="${list }" varStatus="rank" begin="5" end="9" step="1" >
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                         </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span style="transform: translateY(-100%);">${rank.index}</span>
+                                                                        <span style="transform: translateY(-100%);">${rank.count+5}</span>
                                                                     </div>
                                                         <div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -180,35 +183,33 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                            </div>
-                                        </section>
-                                    </div>
                                     </c:forEach></c:when>
                                     <c:otherwise>자료가 없습니다</c:otherwise>
                                     </c:choose>
+                                            </div>
+                                        </section>
+                                    </div>
 <!--																				-->
-                                    <c:choose>
-                                <c:when test="${not empty list7 }"> <c:forEach var="list" items="${list7 }" varStatus="rank" >
                                     <div class="flex flex-col col-[1/9] pr-26">
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center pb-16">
-                                                <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">일간 랭킹</h2>
+                                                <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">주간 랭킹</h2>
                                             </div>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
-                                				<c:if test="${rank.first }">
+                                <c:choose>
+                                <c:when test="${not empty list7 }"> <c:forEach var="list" items="${list7 }" varStatus="rank" begin="0" end="0" step="1" >
                                                 <div class="col-span-2">
                                                     <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="썸네일 이미지" src="/project2/_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="썸네일 이미지" src="_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -238,25 +239,27 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                                <c:if test="${rank.index>1 and rank.index<6 }">
+                                    </c:forEach></c:when><c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                <c:choose>
+                                <c:when test="${not empty list7 }"> <c:forEach var="list" items="${list7 }" varStatus="rank" begin="1" end="4" step="1" >
+                                                
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
                                                     <a class="flex items-center" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span>${rank.index }</span>
+                                                                        <span>${rank.count+1 }</span>
                                                                     </div>
                                                                     <div class="flex flex-col flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -281,7 +284,8 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
+                                                </c:forEach></c:when>
+                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
                                             </div>
                                         </section>
                                     </div>
@@ -299,21 +303,22 @@
                                                 </div>
                                             </div>
                                             <div class="flex flex-col">
-                                            <c:if test="${rank.index>5 and rank.index<11 }">
+                                            <c:choose>
+                                <c:when test="${not empty list7 }"> <c:forEach var="list" items="${list7 }" varStatus="rank" begin="5" end="9" step="1" >
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                         </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span style="transform: translateY(-100%);">${rank.index}</span>
+                                                                        <span style="transform: translateY(-100%);">${rank.count+5}</span>
                                                                     </div>
                                                         <div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -334,35 +339,33 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                            </div>
-                                        </section>
-                                    </div>
                                     </c:forEach></c:when>
                                     <c:otherwise>자료가 없습니다</c:otherwise>
                                     </c:choose>
+                                            </div>
+                                        </section>
+                                    </div>
 <!--																				-->
-                                    <c:choose>
-                                <c:when test="${not empty list30 }"> <c:forEach var="list" items="${list30 }" varStatus="rank" >
                                     <div class="flex flex-col col-[1/9] pr-26">
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">월간 랭킹</h2>
                                             </div>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
-                                				<c:if test="${rank.first }">
+                                <c:choose>
+                                <c:when test="${not empty list30 }"> <c:forEach var="list" items="${list30 }" varStatus="rank" begin="0" end="0" step="1" >
                                                 <div class="col-span-2">
                                                     <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="썸네일 이미지" src="/project2/_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="썸네일 이미지" src="_next/static/images/novel_thumb/${list.photo }" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -392,25 +395,27 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                                <c:if test="${rank.index>1 and rank.index<6 }">
+                                    </c:forEach></c:when><c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                <c:choose>
+                                <c:when test="${not empty list30 }"> <c:forEach var="list" items="${list30 }" varStatus="rank" begin="1" end="4" step="1" >
+                                                
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
                                                     <a class="flex items-center" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span>${rank.index }</span>
+                                                                        <span>${rank.count+1 }</span>
                                                                     </div>
                                                                     <div class="flex flex-col flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -435,7 +440,8 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:if>
+                                                </c:forEach></c:when>
+                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
                                             </div>
                                         </section>
                                     </div>
@@ -453,21 +459,22 @@
                                                 </div>
                                             </div>
                                             <div class="flex flex-col">
-                                            <c:if test="${rank.index>5 and rank.index<11 }">
+                                            <c:choose>
+                                <c:when test="${not empty list30 }"> <c:forEach var="list" items="${list30 }" varStatus="rank" begin="5" end="9" step="1" >
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=${list.num_novel}">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
-                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <img alt="" src="_next/static/images/novel_thumb/${list.photo}" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
                                                                     <noscript>
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                                                ${list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                                                ${list.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                                                ${list.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                                         </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span style="transform: translateY(-100%);">${rank.index}</span>
+                                                                        <span style="transform: translateY(-100%);">${rank.count+5}</span>
                                                                     </div>
                                                         <div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -488,17 +495,16 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                                </c:if>
-                                            </div>
-                                        </section>
-                                    </div>
                                     </c:forEach></c:when>
                                     <c:otherwise>자료가 없습니다</c:otherwise>
                                     </c:choose>
+                                            </div>
+                                        </section>
+                                            </div>
+                                    </div>
 <!-- 																	 -->
                                 </div>
                                </div>
-                              </div>
                              </main>
 <!-- footer -->
 	<div>
