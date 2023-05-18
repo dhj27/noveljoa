@@ -44,6 +44,8 @@
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("1")?"bg-black text-white":"text-grey70" %>">판타지</button>
 										<button onclick="location.href='main.do?genre=2'"
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("2")?"bg-black text-white":"text-grey70" %>">로맨스</button>
+										<button onclick="location.href='main.do?genre=9'"
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("9")?"bg-black text-white":"text-grey70" %>">자유</button>
 									</div>
 								</div>
 							</div>

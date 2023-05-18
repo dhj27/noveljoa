@@ -24,7 +24,4 @@ public class LoginController {
 		return "id_chk_dub";
 	}
 	
-	@PostMapping("id_search.do")
-	public String 
-	
 }
