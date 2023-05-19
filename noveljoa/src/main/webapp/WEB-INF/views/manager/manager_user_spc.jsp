@@ -138,7 +138,7 @@ function cancelStopPop(){
 
 <%
     String id = request.getParameter("id"); 
-    ManagerDAO mDAO = new ManagerDAO();
+    ManagermanagerMemInfoDAO mDAO = new ManagerDAO();
    	MemberManageInfoVO mVO = mDAO.selectMemberInfoAll(id);
    	
     //전화번호

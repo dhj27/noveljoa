@@ -23,7 +23,8 @@
     	  $("#mBtn").click(function(){
     		  $("#mFrm").submit();
     	  });
-    	 
+    	  
+ 
      
     	  /* globals Chart:false, feather:false */
     	  (() => {
@@ -102,7 +103,7 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search" name="id" >
+  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="아이디 조회" aria-label="아이디 조회" name="id" >
   <input class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" type="button" style="width: 100px; text-align: center;" value="검색" id="mBtn">
  <!--  <input class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" id="mBtn"> -->
     
@@ -124,13 +125,13 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dashboard<c:out value="${ memberData  }"></c:out>
+              Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="memberManagerFrm.do">
               <span data-feather="users" class="align-text-bottom"></span>
-             Member<c:out value="${ memId  }"></c:out>
+             Member
             </a>
           </li>
           <li class="nav-item">
@@ -166,134 +167,35 @@
       </div>
           
     
-  
+  		
       <div class="table-responsive">
         <table class="table table-hover table-sm">
         <thead class="table-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
+              <th scope="col">번호</th>
+              <th scope="col">아이디</th>
+              <th scope="col">소설 작성 수</th>
+              <th scope="col">최근 방문 날짜</th>
+              <th scope="col">가입일</th>
+              <th scope="col">정지 날짜</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
+          <c:forEach var="mdata" items="${ memberData  }">
+          <tr>
+              <td><input type="button" class="btn btn-dark btn-sm" value="${ mdata.num_member }" onclick="location.href='managerMemInfo.do?id=${ mdata.id }' "> </td>
+              <td>${ mdata.id }</td>
+              <td>${ mdata.novelCnt }</td>
+              <td>${ mdata.visitDate }</td>
+              <td>${ mdata.joinDate }</td>
+              <td>${ mdata.susPeriod }</td>
             </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
+          </c:forEach>
+            
           </tbody>
         </table>
       </div>
+
       
     </main>
   </div>

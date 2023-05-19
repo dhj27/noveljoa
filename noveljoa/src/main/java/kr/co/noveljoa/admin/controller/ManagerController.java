@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
+import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
@@ -81,6 +82,16 @@ public class ManagerController {
 		return "manager/commentManagerFrm";
 	}
 	
+	@GetMapping("/manager/managerMemInfo.do")
+	public String memberInfo(String id, Model model) {
+		MemberManageInfoDomain mmiDomain = null;
+		ManagerService1 ms = new ManagerService1();
+		mmiDomain=  ms.memberInfoAll(id);
+		model.addAttribute("memInfo", mmiDomain);
+		
+		
+		return "manager/managerMemInfo";
+	}
 	
 	
 }

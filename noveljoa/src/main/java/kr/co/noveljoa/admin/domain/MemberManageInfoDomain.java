@@ -5,7 +5,7 @@ import java.util.Date;
 public class MemberManageInfoDomain {
 	private String thumbnail, id, name, email, phone;
 	private Date birthDate, visitDate, joinDate, susPeriod;
-	private int novelCnt, commentCnt, reportCnt;
+	private int novelCnt, commentCnt;
 	
 	public MemberManageInfoDomain() {
 	}
@@ -22,7 +22,6 @@ public class MemberManageInfoDomain {
 		this.susPeriod = susPeriod;
 		this.novelCnt = novelCnt;
 		this.commentCnt = commentCnt;
-		this.reportCnt = reportCnt;
 	}
 	public String getThumbnail() {
 		return thumbnail;
@@ -90,18 +89,13 @@ public class MemberManageInfoDomain {
 	public void setCommentCnt(int commentCnt) {
 		this.commentCnt = commentCnt;
 	}
-	public int getReportCnt() {
-		return reportCnt;
-	}
-	public void setReportCnt(int reportCnt) {
-		this.reportCnt = reportCnt;
-	}
+
 	@Override
 	public String toString() {
 		return "MemberManageInfoDomain [thumbnail=" + thumbnail + ", id=" + id + ", name=" + name + ", email=" + email
 				+ ", phone=" + phone + ", birthDate=" + birthDate + ", visitDate=" + visitDate + ", joinDate="
 				+ joinDate + ", susPeriod=" + susPeriod + ", novelCnt=" + novelCnt + ", commentCnt=" + commentCnt
-				+ ", reportCnt=" + reportCnt + "]";
+				+  "]";
 	}
 	
 	

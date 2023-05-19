@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,28 +122,31 @@
       <img src="http://localhost/noveljoa/_next/static/images/profile.PNG" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
+    ${ memInfo.thumbnail  }
+	
+
       <div class="card-body">
-        <h1 class="card-title">김경태`s Information</h1><br>
+        <h1 class="card-title"><c:out value="${ memInfo.id  }"/>`s Information </h1><br>
         <ul>
-       <li><h5 class="card-text">Name : 김경태</h5></li>
-       <li><h5 class="card-text">birth date : 1995/01/25</h5></li>
-       <li><h5 class="card-text">Email : hoon@naver.com</h5></li>
-       <li><h5 class="card-text">Phone Number : 010-2511-1111</h5></li>
-       <li><h5 class="card-text">Number of novels written  : 3
+       <li><h5 class="card-text">이름 : <c:out value="${ memInfo.name  }"/> </h5></li>
+       <li><h5 class="card-text">생년월일 : <fmt:formatDate value="${ memInfo.birthDate}" pattern="yyyy년 MM월 dd일"/> </h5></li>
+       <li><h5 class="card-text">Email : <c:out value="${ memInfo.email  }"/></h5></li>
+       <li><h5 class="card-text">전화번호 : <c:out value="${ memInfo.phone  }"/></h5></li>
+       <li><h5 class="card-text">소설 수  : <c:out value="${ memInfo.novelCnt  }"/>
        <button type="button" class="btn btn-outline-light btn-sm" >
             <span data-feather="arrow-left" class="align-text-bottom"></span>
             Look
           </button>
           </h5>
        </li>
-       <li><h5 class="card-text">Number of comments created : 2
+       <li><h5 class="card-text">댓글 수 : <c:out value="${ memInfo.commentCnt  }"/>
        <button type="button" class="btn btn-outline-light btn-sm" >
             <span data-feather="arrow-left" class="align-text-bottom"></span>
             Look
           </button>
        </h5></li>
-       <li><h5 class="card-text">Visit date : 2023/05/01</h5></li>
-       <li><h5 class="card-text">Account Suspension Date : 2023/05/10
+       <li><h5 class="card-text">최근 방문 날짜 : <fmt:formatDate value="${ memInfo.visitDate }" pattern="yyyy년 MM월 dd일" /></h5></li>
+       <li><h5 class="card-text">정지일 : <fmt:formatDate value="${ memInfo.susPeriod }" pattern="yyyy년 MM월 dd일"/>
              <button type="button" class="btn btn-outline-light btn-sm" >
             <span data-feather="lock" class="align-text-bottom"></span>
             정지

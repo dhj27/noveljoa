@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
+import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 
 public class ManagerService1 {
 	
@@ -18,7 +19,16 @@ public class ManagerService1 {
 		}
 		
 		return mmList;
-	}
+	}//memberManage
+	
+	public MemberManageInfoDomain memberInfoAll(String id) {
+		MemberManageInfoDomain mmiDomain =  null;
+		ManagerDAO1 mDAO = new ManagerDAO1();
+		
+		mmiDomain = mDAO.selectmemberInfoAll(id);
+		
+		return mmiDomain;
+	}//memberInfoAll
 	
 	
 

@@ -12,18 +12,8 @@ import kr.co.noveljoa.admin.vo.MLoginVO;
 @Controller
 public class AdminController {
 	
-	//select member info//ȸ�� ���� ����
-	@GetMapping("/manager/managerMemInfo.do")
-	public String memberInfo(String id, Model model) {
-		
-		return "manager/managerMemInfo";
-	}
-	
-//	# ���� ����
-//	+ suspendStop(String id, Model) : String
-//
-//	# ���� ���� ����
-//	+ suspendClear(String id, Model) : String
+
+
 	
 	
 	//select novel

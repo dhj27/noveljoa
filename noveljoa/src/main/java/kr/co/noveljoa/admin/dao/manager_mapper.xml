@@ -44,6 +44,19 @@ SELECT m.id as id, m.num_member as num_member,
 
 
 
+<select id="selectMemInfo" resultType="kr.co.noveljoa.admin.domain.MemberManageInfoDomain" parameterType="String">
+    SELECT id, name, birth as birthDate, phone, email,
+    NVL(m.photo,'profile_home.png') as thumbnail, join as joinDate , stop as susPeriod,
+    NVL((SELECT COUNT(*) FROM comments WHERE num_member=m.num_member), 0) AS commentCnt,
+    NVL((SELECT COUNT(*) FROM novel WHERE num_member=m.num_member), 0) AS novelCnt,
+    NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member), m.join) AS visitDate
+		FROM member m
+		INNER JOIN dual ON id = #{ id }
+</select>
+
+
+
+
 
   
   
