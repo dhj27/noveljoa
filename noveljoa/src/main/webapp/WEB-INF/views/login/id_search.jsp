@@ -1,5 +1,3 @@
-<%@page import="LoginDAO.LoginDAO"%>
-<%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%
@@ -45,6 +43,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#next").click(function(){
+			console.log('click');
 			var phone = $("#phone").val();
 			var call= /^[0-9]+$/.test(phone);
 			if($("#name").val() == "" || phone == ""){
@@ -52,9 +51,9 @@
 				
 			}else{
 				$("#frm").submit();
-			} 
-		
-		});
+			
+			}
+		}); 
 		
 		$("#phone").on("keyup", function() {
 			   if (!$.isNumeric($(this).val())) {
@@ -63,30 +62,15 @@
 			  } 
 			}); 
 		
+		
+		
+		
 	});	
+	
+	
+	
 </script>
-<jsp:useBean id="fiVO" class="LoginVO.FindIdVO" scope="page"/>
-<jsp:setProperty property="*" name="fiVO"/>
-<%
-LoginDAO lDAO = new LoginDAO();
-String id= lDAO.selectIdFind(fiVO);
-//String resultId= lDAO.selectIdFind(fiVO);
-if("POST".equals(request.getMethod())&& id != null && !id.isEmpty()){
 
-//DataDecrypt dd=new DataDecrypt("FsRt4SfY4US0IWtK4JPJsw==");
-//String id = dd.decryption(resultId);
-
-request.setAttribute("id", id);
-request.getRequestDispatcher("id.jsp").forward(request, response);
-
-
-if(id == null || id==""){
-	%>
-	<script>alert("일치하는 정보가 없습니다");</script>
-<%
-}
-}
-%>
 
 
 </head>
@@ -99,7 +83,7 @@ if(id == null || id==""){
         
 
        <div id="container">
-       <form id="frm" name="frm" method="post" action="id_search.do"> 
+       <form id="frm" name="frm" method="post" action="id_search_check.do"> 
            <div id="frame">
             <div id="text_id" style="font-size: 50px; font-weight: bold;">아이디 찾기</div>
             <div id="text1">소설조아 계정의<br>
