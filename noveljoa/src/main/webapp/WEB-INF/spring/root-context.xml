@@ -12,5 +12,9 @@
 	<bean id="ms" class="kr.co.noveljoa.user.main.MainService">
 		<constructor-arg ref="mDAO"/>
 	</bean>
+	<bean id="rDAO" class="kr.co.noveljoa.user.ranking.RankingDAO"/>
+	<bean id="rs" class="kr.co.noveljoa.user.ranking.RankingService">
+		<constructor-arg ref="rDAO"/>
+	</bean>
 		
 </beans>

@@ -39,13 +39,13 @@
 									<div
 										class="grid desktop:flex grid-flow-col flex-wrap max-w-full-view overflow-x-scroll overflow-y-hidden scrolling-touch desktop:overflow-x-visible desktop:overflow-y-visible before:grow-0 after:grow-0 before:content-[&quot;&quot;] after:content-[&quot;&quot;] before:flex-[0_1_0%] after:flex-[0_1_0%] desktop:after:hidden desktop:before:hidden auto-cols-max before:w-16 after:w-16 HorizontalScroll_horizontalScrollbar__5q9CM">
 										<button onclick="location.href='main.do?genre=0'"
-											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("0")?"bg-black text-white":"text-grey70" %>">전체</button>
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==0?'bg-black text-white':'text-grey70'}">전체</button>
 										<button onclick="location.href='main.do?genre=1'"
-											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("1")?"bg-black text-white":"text-grey70" %>">판타지</button>
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==1?'bg-black text-white':'text-grey70'}">판타지</button>
 										<button onclick="location.href='main.do?genre=2'"
-											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("2")?"bg-black text-white":"text-grey70" %>">로맨스</button>
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==2?'bg-black text-white':'text-grey70'}">로맨스</button>
 										<button onclick="location.href='main.do?genre=9'"
-											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 <%=request.getParameter("genre").equals("9")?"bg-black text-white":"text-grey70" %>">자유</button>
+											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==9?'bg-black text-white':'text-grey70'}">자유</button>
 									</div>
 								</div>
 							</div>
@@ -157,7 +157,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=0">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="ranking.do?type=1&genre=${genre}">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>
@@ -313,7 +313,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=0">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="ranking.do?type=7&genre=${genre}">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>
@@ -469,7 +469,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=0">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="ranking.do?type=30&genre=${genre}">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>

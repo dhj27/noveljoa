@@ -42,7 +42,7 @@ public class RankingDAO {
 					.append("  GROUP BY num_novel	")
 					.append("    ) e ON n.num_novel = e.num_novel	")
 					.append("    LEFT JOIN episode ep ON n.num_novel = ep.num_novel AND e.visit = ep.visit	")
-					.append("    WHERE n.make >= SYSDATE - ").append(i)
+					.append("    WHERE ep.make >= SYSDATE - ").append(i)
 					.append("	AND e.visit IS NOT NULL and n.open=1	")
 					.append("	GROUP BY n.num_novel, n.photo, n.age, n.title, m.id, e.visit, n.story, n.end	")
 					.append("	ORDER BY e.visit DESC ");

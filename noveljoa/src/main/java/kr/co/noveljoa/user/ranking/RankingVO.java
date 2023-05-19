@@ -1,10 +1,10 @@
-package kr.co.noveljoa.user.main;
+package kr.co.noveljoa.user.ranking;
 
-public class MainVO {
+public class RankingVO {
 	private int type,genre;
-	public MainVO() {
+	public RankingVO() {
 	}
-	public MainVO(int type, int genre) {
+	public RankingVO(int type, int genre) {
 		super();
 		this.type = type;
 		this.genre = genre;
