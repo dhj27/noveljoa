@@ -45,6 +45,8 @@ public class ManagerController {
 		MLoginDomain mlDomain = mlService.ManagerLogin(mlVO);
 		//System.out.println(mlDomain);
 		model.addAttribute("data", mlDomain);
+		model.addAttribute("mLogFlag", true);
+		
 		
 		return "manager/managerLoginProcess";
 	}

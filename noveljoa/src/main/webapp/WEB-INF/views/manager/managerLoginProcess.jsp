@@ -26,7 +26,7 @@
 </div>
 <div style="width: 500px">
 
-<c:if test="${ not empty data }">
+<c:if test="${ mLogFlag }">
 <c:redirect url="dashBoardFrm.do"/>
 </c:if>
 <c:redirect url="managerLoginFrm.do"/>

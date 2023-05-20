@@ -34,9 +34,9 @@ public class LoginController {
 	public String idCheck() {
 		return "id_chk_dub";
 	}
-<<<<<<< Updated upstream
-	
-=======
+//<<<<<<< Updated upstream
+//	
+//=======
 
 	@PostMapping("/login/id_search_check.do")
 	public String idSearch(IdSearchVO isVO, Model model) {
@@ -52,6 +52,6 @@ public class LoginController {
 	}
 
 
-
->>>>>>> Stashed changes
 }
+//>>>>>>> Stashed changes
+//}

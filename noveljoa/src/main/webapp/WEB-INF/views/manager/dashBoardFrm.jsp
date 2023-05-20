@@ -412,7 +412,9 @@ let myChart =null;
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
+              <c:if test="${ empty mLogFlag }">
               Dashboard
+              </c:if>
             </a>
           </li>
           <li class="nav-item">
