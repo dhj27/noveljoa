@@ -11,6 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.noveljoa.admin.domain.AllMDomain;
 import kr.co.noveljoa.admin.domain.AllNDomain;
+import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
@@ -111,7 +112,11 @@ public class ManagerController {
 	}
 	
 	@GetMapping("/manager/commentManagerFrm.do")
-	public String commentFrm() {
+	public String commentFrm(String id, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		List<CommentDomain> cdList =  ms.commentManage(id);
+		model.addAttribute("commentData", cdList);
+		model.addAttribute("comId", id);
 		
 		return "manager/commentManagerFrm";
 	}
@@ -164,7 +169,14 @@ public class ManagerController {
 		return "manager/modifyComplete";
 	}
 	
-	
+	@GetMapping("manager/removeComment.do")
+	public String removeComment(int comment_num, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		 Boolean removeFlag =  ms.removeComment(comment_num);
+		 model.addAttribute("removeFlag", removeFlag);
+		 
+		return "manager/removeComment";
+	}
 	
 	
 

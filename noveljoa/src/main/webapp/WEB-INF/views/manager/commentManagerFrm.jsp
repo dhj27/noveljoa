@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,13 @@
      <!-- jQuery CDN 끝 -->
       <script type="text/javascript">
       $(function(){
+    	  
+    	  $("#cBtn").click(function(){
+    		  $("#cFrm").submit();
+    	  });
+    	  
+    	  
+    	  
     	  /* globals Chart:false, feather:false */
     	  (() => {
     	    'use strict'
@@ -89,22 +97,24 @@
 </head>
 <body>
 
+<form action="commentManagerFrm.do" id="cFrm" method="get">
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
+<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="dashBoardFrm.do">소설조아</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="width: 100px; text-align: center;" >검색</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+ <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="아이디 조회" aria-label="아이디 조회" name="id" >
+  <input class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" type="button" style="width: 100px; text-align: center;" value="검색" id="cBtn">
+ <!--  <input class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" id="mBtn"> -->
+    
+  
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+        <a class="nav-link px-3" href="managerLogout.do">Sign out</a>
     </div>
   </div>
 </header>
+</form>
 
 <div class="container-fluid">
   <div class="row">
@@ -151,141 +161,47 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Comment</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-
-          	
-          
-          
+ 
         </div>
       </div>
-
+		
       <div class="table-responsive">
         <table class="table table-hover table-sm">
           <thead class="table-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
+          <tr>
+              <th scope="col">번호</th>
+              <th scope="col">아이디</th>
+              <th scope="col">에피소드 제목</th>
+              <th scope="col">내용</th>
+              <th scope="col">작성 날짜</th>
+               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
+           <c:forEach var="cdata" items="${ commentData  }">
+          <tr>
+          	  <td><input type="button" class="btn btn-dark btn-sm" value="${ cdata.comment_num }" onclick="location.href='managerMemInfo.do?id=${ cdata.id }' "> </td>
+              <td>${ cdata.id }</td>
+              <td>${ cdata.title }</td>
+             <td>
+  			 <c:choose>
+    		 <c:when test="${fn:length(cdata.detail) > 15}">
+     		  ${fn:substring(cdata.detail, 0, 15)}...
+    		 </c:when>
+  		     <c:otherwise>
+   		      ${cdata.detail}
+ 		     </c:otherwise>
+ 			 </c:choose>
+ 			  <input type="button"  value="상세 보기"  class="btn btn-dark btn-sm" onclick="alert(' ${cdata.detail}')">
+			 </td>
+              <td>${ cdata.make }</td>
+            <td> <input type="button"  value="삭제"  class="btn btn-dark btn-sm" id="rBtn" onclick="location.href='removeComment.do?comment_num=${ cdata.comment_num }'"></td>
             </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
+          </c:forEach>
           </tbody>
         </table>
       </div>
-      
+ 
     </main>
   </div>
 </div>

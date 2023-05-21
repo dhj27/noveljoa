@@ -119,7 +119,21 @@ update member set id=#{ id }, name=#{ name }, phone=#{ phone }, email=#{ email }
 		 where num_member= #{ num_member }
 </update>
 
+<select id="selectMComment" resultType="kr.co.noveljoa.admin.domain.CommentDomain" parameterType="String">
+select comment_num, id, title, detail, c.make as make
+		 from member m
+		 inner join comments c on m.num_member = c.num_member
+		 inner join episode e on c.num_episode = e.num_episode
+ <where>
+ <if test="id != null and id!= ''" >
+ id=#{ id }
+ </if>
+ </where>
+</select>
 
+<delete id="deleteComment" parameterType="int">
+delete from comments where comment_num=#{ comment_num }
+</delete>
 
 
   

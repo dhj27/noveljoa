@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
+import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
@@ -52,5 +53,24 @@ public boolean modifyMemInfo(UpdateMemVO uVO) {
 	return cnt==1;
 }//modifyMemInfo
 	
+
+public List<CommentDomain> commentManage(String id) {
+	List<CommentDomain> cdList = null;
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	try {
+		cdList = mDAO.selectCommentManage(id);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return cdList;
+}//memberManage
+
+public boolean removeComment(int comment_num) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.deleteComment(comment_num);
+	
+	return cnt==1;
+}//removeComment
 
 }
