@@ -5,26 +5,16 @@ import java.util.Date;
 public class MemberManageInfoDomain {
 	private String thumbnail, id, name, email, phone;
 	private Date birthDate, visitDate, joinDate, susPeriod;
-	private int novelCnt, commentCnt;
+	private int novelCnt, commentCnt, num_member;
 	
-	public MemberManageInfoDomain() {
-	}
-	public MemberManageInfoDomain(String thumbnail, String id, String name, String email, String phone, Date birthDate,
-			Date visitDate, Date joinDate, Date susPeriod, int novelCnt, int commentCnt, int reportCnt) {
-		this.thumbnail = thumbnail;
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.birthDate = birthDate;
-		this.visitDate = visitDate;
-		this.joinDate = joinDate;
-		this.susPeriod = susPeriod;
-		this.novelCnt = novelCnt;
-		this.commentCnt = commentCnt;
-		
-	}
+
 	
+	public int getNum_member() {
+		return num_member;
+	}
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
+	}
 	public String getThumbnail() {
 		return thumbnail;
 	}

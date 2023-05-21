@@ -45,7 +45,7 @@ SELECT m.id as id, m.num_member as num_member,
 
 
 <select id="selectMemInfo" resultType="kr.co.noveljoa.admin.domain.MemberManageInfoDomain" parameterType="String">
-    SELECT id, name, birth as birthDate, phone, email,
+    SELECT num_member, id, name, birth as birthDate, phone, email,
     NVL(m.photo,'profile_home.png') as thumbnail, join as joinDate , stop as susPeriod,
     NVL((SELECT COUNT(*) FROM comments WHERE num_member=m.num_member), 0) AS commentCnt,
     NVL((SELECT COUNT(*) FROM novel WHERE num_member=m.num_member), 0) AS novelCnt,
@@ -101,6 +101,23 @@ select
 (SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE)) AS vCnt0
 from dual
 </select>
+
+<update id="updateStop" parameterType="String">
+update member set stop
+			=sysdate+60
+			where id = #{ id }
+</update>
+
+<update id="updateUnStop" parameterType="String">
+update member set stop
+			= null
+			where id = #{ id }
+</update>
+
+<update id="updateMemInfo" parameterType="kr.co.noveljoa.admin.vo.UpdateMemVO">
+update member set id=#{ id }, name=#{ name }, phone=#{ phone }, email=#{ email }
+		 where num_member= #{ num_member }
+</update>
 
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
 public class ManagerService1 {
 	
@@ -30,6 +31,26 @@ public class ManagerService1 {
 		return mmiDomain;
 	}//memberInfoAll
 	
+	public boolean stopId(String id) {
+		ManagerDAO1 mDAO = new ManagerDAO1();
+		int cnt = mDAO.updateStop(id);
+		
+		return cnt==1;
+	}//stopId
+	
+public boolean unStopId(String id) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.updateUnStop(id);
+	
+	return cnt==1;
+	}//stopId
+
+public boolean modifyMemInfo(UpdateMemVO uVO) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.updateMemInfo(uVO);
+	
+	return cnt==1;
+}//modifyMemInfo
 	
 
 }

@@ -22,6 +22,7 @@ import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
+import kr.co.noveljoa.admin.vo.UpdateMemVO;
 @SessionAttributes({"mFlag"})
 @Controller
 public class ManagerController {
@@ -125,6 +126,48 @@ public class ManagerController {
 		
 		return "manager/managerMemInfo";
 	}
+	
+	@PostMapping("manager/stopId.do")
+	public String StopId(String id, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		 Boolean stopFlag =  ms.stopId(id);
+		 model.addAttribute("stopFlag", stopFlag);
+		 
+		return "manager/stopComplete";
+	}
+	
+	@PostMapping("manager/unStopId.do")
+	public String UnStopId(String id, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean stopFlag =  ms.unStopId(id);
+		model.addAttribute("stopFlag", stopFlag);
+		
+		return "manager/stopComplete";
+	}
+	
+	@PostMapping("manager/modifyMemInfoFrm.do")
+	public String modifyMemInfoFrm(String id, Model model) {
+		MemberManageInfoDomain mmiDomain = null;
+		ManagerService1 ms = new ManagerService1();
+		mmiDomain=  ms.memberInfoAll(id);
+		model.addAttribute("memInfo", mmiDomain);
+		
+		return "manager/modifyMemInfoFrm";
+	}
+	
+	@PostMapping("manager/modifyMemInfoProcess.do")
+	public String modifyMemInfo(UpdateMemVO uVO, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean modifyFlag = ms.modifyMemInfo(uVO);
+		model.addAttribute("modifyFlag", modifyFlag);
+		
+		return "manager/modifyComplete";
+	}
+	
+	
+	
+	
+
 	
 	
 }

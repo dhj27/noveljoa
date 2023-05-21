@@ -29,19 +29,12 @@
 
     	  })()
     	  
-    	  $("#sBtn").click(function(){
-    		$("#sfrm").submit();  
-    	  });
       
-    	  $("#usBtn").click(function(){
-      		$("#usfrm").submit();  
-      	  });
+    
     	  
-    	  $("#modBtn").click(function(){
-        		$("#modFrm").submit();  
-        	  });
-    	  
-    	  
+    	  $("#modifyBtn").click(function(){
+    		$("#modifyFrm").submit();  
+    	  }); 
     	  
      
       });
@@ -104,17 +97,6 @@
       
 </head>
 <body>
-<form action="stopId.do" id="sfrm" method="post">
-        <input type="hidden" value="${ memInfo.id  }" name="id"><!-- 정지 서브밋으로 넘길 값 -->
-        </form>
-        
-<form action="unStopId.do" id="usfrm" method="post">
-        <input type="hidden" value="${ memInfo.id  }" name="id"><!--  서브밋으로 넘길 값 -->
-        </form>
-        
-    <form action="modifyMemInfoFrm.do" id="modFrm" method="post">
-        <input type="hidden" value="${ memInfo.id  }" name="id">
-        </form>
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="dashBoardFrm.do">소설조아</a>
@@ -132,7 +114,7 @@
   <div class="row">
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">회원 정보</h1>
+        <h1 class="h2">수정 페이지</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
         </div>
       </div>
@@ -145,42 +127,18 @@
     <div class="col-md-8">
 
       <div class="card-body">
-        <h1 class="card-title"><c:out value="${ memInfo.id  }"/>`s Information </h1><br>
+        <h1 class="card-title"><c:out value="${ memInfo.name  }"/>님의 수정페이지 </h1><br>
+        <form action="modifyMemInfoProcess.do" id="modifyFrm" method="post">
+        <input type="hidden" value="${ memInfo.num_member  }" name="num_member">
         <ul>
-       <li><h5 class="card-text">이름 : <c:out value="${ memInfo.name  }"/> </h5></li>
-       <li><h5 class="card-text">생년월일 : <fmt:formatDate value="${ memInfo.birthDate}" pattern="yyyy년 MM월 dd일"/> </h5></li>
-       <li><h5 class="card-text">Email : <c:out value="${ memInfo.email  }"/></h5></li>
-       <li><h5 class="card-text">전화번호 : <c:out value="${ memInfo.phone  }"/></h5></li>
-       <li><h5 class="card-text">소설 수  : <c:out value="${ memInfo.novelCnt  }"/>
-       <button type="button" class="btn btn-outline-light btn-sm" >
-            <span data-feather="arrow-left" class="align-text-bottom"></span>
-            Look
-          </button>
-          </h5>
-       </li>
-       <li><h5 class="card-text">댓글 수 : <c:out value="${ memInfo.commentCnt  }"/>
-       <button type="button" class="btn btn-outline-light btn-sm" >
-            <span data-feather="arrow-left" class="align-text-bottom"></span>
-            Look
-          </button>
-       </h5></li>
-       <li><h5 class="card-text">최근 방문 날짜 : <fmt:formatDate value="${ memInfo.visitDate }" pattern="yyyy년 MM월 dd일" /></h5></li>
-       <li><h5 class="card-text">정지일 : <fmt:formatDate value="${ memInfo.susPeriod }" pattern="yyyy년 MM월 dd일"/>
-        
-             <button type="button" class="btn btn-outline-light btn-sm" id=sBtn >
-            <span data-feather="lock" class="align-text-bottom"></span>
-            정지
-          </button>
-   
-       <button type="button" class="btn btn-outline-light btn-sm" id="usBtn">
-            <span data-feather="unlock" class="align-text-bottom"></span>
-            정지 해제
-          </button>
-       </h5></li>
+       <li><h5 class="card-text">이름 : <input type="text"  value="<c:out value="${ memInfo.name  }"/>" name="name">  </h5></li>
+       <li><h5 class="card-text">아이디 : <input type="text"  value="<c:out value="${ memInfo.id  }"/>"  name="id">  </h5></li>
+       <li><h5 class="card-text">Email : <input type="text"  value="<c:out value="${ memInfo.email  }"/>"  name="email"></h5></li>
+       <li><h5 class="card-text">전화번호 : <input type="text"  value="<c:out value="${ memInfo.phone  }"/>"  name="phone"></h5></li>
         </ul>
+		</form>
 
-
-<button type="button" class="btn btn-outline-light btn-sm" id="modBtn">
+<button type="button" class="btn btn-outline-light btn-sm" id="modifyBtn">
             <span data-feather="edit-2" class="align-text-bottom"></span>
            수정
           </button>
