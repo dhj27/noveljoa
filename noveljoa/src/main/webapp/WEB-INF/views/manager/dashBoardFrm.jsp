@@ -59,6 +59,41 @@ $("#dTable").html(table);
 let context = document
 .getElementById('myChart');
 let myChart =null;
+
+// 오늘 날짜 객체 생성
+var today = new Date();
+var year = today.getFullYear().toString();
+// 변수명을 각각 다르게 선언하여 날짜 저장
+var date0 = today;
+var date1 = new Date();
+date1.setDate(today.getDate() - 1);
+var date2 = new Date();
+date2.setDate(today.getDate() - 2);
+var date3 = new Date();
+date3.setDate(today.getDate() - 3);
+var date4 = new Date();
+date4.setDate(today.getDate() - 4);
+var date5 = new Date();
+date5.setDate(today.getDate() - 5);
+var date6 = new Date();
+date6.setDate(today.getDate() - 6);
+
+//날짜를 년-월-일 형식으로 변환하는 함수
+function formatDate(date) {
+  var month = (date.getMonth() + 1).toString().padStart(2, '0');
+  var day = date.getDate().toString().padStart(2, '0');
+  return month + '-' + day;
+}
+
+var formattedDate0 = formatDate(date0);
+var formattedDate1 = formatDate(date1);
+var formattedDate2 = formatDate(date2);
+var formattedDate3 = formatDate(date3);
+var formattedDate4 = formatDate(date4);
+var formattedDate5 = formatDate(date5);
+var formattedDate6 = formatDate(date6);
+
+
     	    
 		    $("#totalMember").click(function(){
 		    	if (myChart) {
@@ -71,26 +106,26 @@ let myChart =null;
 	                data: { // 차트에 들어갈 데이터
 	                    labels: [
 	                        //x 축
-	                    	 'Sunday',
-	                         'Monday',
-	                         'Tuesday',
-	                         'Wednesday',
-	                         'Thursday',
-	                         'Friday',
-	                         'Saturday'
+	                    	formattedDate6,
+	                    	formattedDate5,
+	                    	formattedDate4,
+	                    	formattedDate3,
+	                    	formattedDate2,
+	                    	formattedDate1,
+	                    	formattedDate0
 	                    ],
 	                    datasets: [
 	                        { //데이터
 	                            label: '총 회원 수', //차트 제목
 	                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
 	                            data: [
-	                            	15339,
-	                                21345,
-	                                18483,
-	                                24003,
-	                                23489,
-	                                24092,
-	                                12034 //x축 label에 대응되는 데이터 값
+	                            	${ allMemCnt.allMCnt6 },
+                                	${ allMemCnt.allMCnt5 },
+                                	${ allMemCnt.allMCnt4 },
+                                	${ allMemCnt.allMCnt3 },
+                                	${ allMemCnt.allMCnt2 },
+                                	${ allMemCnt.allMCnt1 },
+                                	${ allMemCnt.allMCnt0 }  //x축 label에 대응되는 데이터 값
 	                            ],
 	                           /* 
 	                           이쁜 색깔 목록
@@ -137,26 +172,26 @@ let myChart =null;
                     data: { // 차트에 들어갈 데이터
                         labels: [
                             //x 축
-                        	 'Sunday',
-                             'Monday',
-                             'Tuesday',
-                             'Wednesday',
-                             'Thursday',
-                             'Friday',
-                             'Saturday'
+                        	formattedDate6,
+	                    	formattedDate5,
+	                    	formattedDate4,
+	                    	formattedDate3,
+	                    	formattedDate2,
+	                    	formattedDate1,
+	                    	formattedDate0
                         ],
                         datasets: [
                             { //데이터
                                 label: '총 소설 수', //차트 제목
                                 fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                                 data: [
-                                	15339,
-                                    21345,
-                                    18483,
-                                    24003,
-                                    23489,
-                                    24092,
-                                    12034 //x축 label에 대응되는 데이터 값
+                                	${ allNovCnt.allNCnt6 },
+                                	${ allNovCnt.allNCnt5 },
+                                	${ allNovCnt.allNCnt4 },
+                                	${ allNovCnt.allNCnt3 },
+                                	${ allNovCnt.allNCnt2 },
+                                	${ allNovCnt.allNCnt1 },
+                                	${ allNovCnt.allNCnt0 } //x축 label에 대응되는 데이터 값
                                 ],
                                /* 
                                이쁜 색깔 목록
@@ -203,26 +238,26 @@ let myChart =null;
                     data: { // 차트에 들어갈 데이터
                         labels: [
                             //x 축
-                        	 'Sunday',
-                             'Monday',
-                             'Tuesday',
-                             'Wednesday',
-                             'Thursday',
-                             'Friday',
-                             'Saturday'
+                        	formattedDate6,
+	                    	formattedDate5,
+	                    	formattedDate4,
+	                    	formattedDate3,
+	                    	formattedDate2,
+	                    	formattedDate1,
+	                    	formattedDate0
                         ],
                         datasets: [
                             { //데이터
                                 label: '가입자 수', //차트 제목
                                 fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                                 data: [
-                                	15339,
-                                    21345,
-                                    18483,
-                                    24003,
-                                    23489,
-                                    24092,
-                                    12034 //x축 label에 대응되는 데이터 값
+                                	${ joinCnt.jCnt6 },
+                                	${ joinCnt.jCnt5 },
+                                	${ joinCnt.jCnt4 },
+                                	${ joinCnt.jCnt3 },
+                                	${ joinCnt.jCnt2 },
+                                	${ joinCnt.jCnt1 },
+                                	${ joinCnt.jCnt0 }  //x축 label에 대응되는 데이터 값
                                 ],
                                /* 
                                이쁜 색깔 목록
@@ -269,26 +304,26 @@ let myChart =null;
   	                data: { // 차트에 들어갈 데이터
   	                    labels: [
   	                        //x 축
-  	                    	 'Sunday',
-  	                         'Monday',
-  	                         'Tuesday',
-  	                         'Wednesday',
-  	                         'Thursday',
-  	                         'Friday',
-  	                         'Saturday'
+  	                    	formattedDate6,
+	                    	formattedDate5,
+	                    	formattedDate4,
+	                    	formattedDate3,
+	                    	formattedDate2,
+	                    	formattedDate1,
+	                    	formattedDate0
   	                    ],
   	                    datasets: [
   	                        { //데이터
   	                            label: '방문자 수', //차트 제목
   	                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
   	                            data: [
-  	                            	15339,
-  	                                21345,
-  	                                18483,
-  	                                24003,
-  	                                23489,
-  	                                24092,
-  	                                12034 //x축 label에 대응되는 데이터 값
+  	                            	${ visitCnt.vCnt6 },
+                                	${ visitCnt.vCnt5 },
+                                	${ visitCnt.vCnt4 },
+                                	${ visitCnt.vCnt3 },
+                                	${ visitCnt.vCnt2 },
+                                	${ visitCnt.vCnt1 },
+                                	${ visitCnt.vCnt0 }  //x축 label에 대응되는 데이터 값
   	                            ],
   	                           /* 
   	                           이쁜 색깔 목록
@@ -391,15 +426,14 @@ let myChart =null;
     
 </head>
 <body>
-
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="dashBoardFrm.do">소설조아</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="managerLogout.do">Sign out</a>
     </div>
   </div>
 </header>
@@ -412,9 +446,7 @@ let myChart =null;
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="dashBoardFrm.do">
               <span data-feather="home" class="align-text-bottom"></span>
-              <c:if test="${ empty mLogFlag }">
               Dashboard
-              </c:if>
             </a>
           </li>
           <li class="nav-item">

@@ -6,17 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.noveljoa.admin.domain.AllMDomain;
+import kr.co.noveljoa.admin.domain.AllNDomain;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.domain.TodayJoinDomain;
+import kr.co.noveljoa.admin.domain.TodayVisitDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
-
+@SessionAttributes({"mFlag"})
 @Controller
 public class ManagerController {
 	
@@ -30,6 +36,14 @@ public class ManagerController {
 		return "manager/insert_frm_process";
 		}
 	
+	@GetMapping("/manager/managerLogout.do")
+	public String managerLogout(SessionStatus ss) {
+		ss.setComplete();//세션에 모든 값 삭제
+		System.out.println("------------------------------------------------세션값 삭제" );
+		
+		return "redirect:managerLoginFrm.do";
+	}
+	
 	
 	
 	@GetMapping("/manager/managerLoginFrm.do")
@@ -41,24 +55,41 @@ public class ManagerController {
 	@PostMapping("/manager/managerLoginProcess.do")
 	public String managerLoginProcess(MLoginVO mlVO  ,Model model) {
 		
+		
 		ManagerLoginService mlService = new ManagerLoginService();
 		MLoginDomain mlDomain = mlService.ManagerLogin(mlVO);
 		//System.out.println(mlDomain);
 		model.addAttribute("data", mlDomain);
-		model.addAttribute("mLogFlag", true);
+        model.addAttribute("mFlag", mlDomain != null);
+			
+	
 		
-		
-		return "manager/managerLoginProcess";
+		return  "manager/managerLoginProcess";
 	}
 	
 	@GetMapping("/manager/dashBoardFrm.do")
 	public String dashBoardFrm(Model model) {
+		System.out.println("------------------------------------------------------------------" + model.getAttribute("mFlag"));
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/dashBoardFrm";
+		}
 		DashBoardService dbService = new DashBoardService();
 		DashBoardDomain dbDomain = dbService.printDash();
-		model.addAttribute("dashData", dbDomain);
+		AllMDomain amDomain = dbService.graphAllMember();
+		AllNDomain anDomain = dbService.graphAllNovel();
+		TodayJoinDomain tjDomain = dbService.graphJoin();
+		TodayVisitDomain tvDomain = dbService.graphVisit();
 		
+		model.addAttribute("dashData", dbDomain);
+		model.addAttribute("allMemCnt", amDomain);
+		model.addAttribute("allNovCnt", anDomain);
+		model.addAttribute("joinCnt", tjDomain);
+		model.addAttribute("visitCnt", tvDomain);
 	
-		return "manager/dashBoardFrm";
+		return url;
 	}
 
 	@GetMapping("/manager/memberManagerFrm.do")

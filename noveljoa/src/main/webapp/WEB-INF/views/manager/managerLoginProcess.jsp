@@ -26,10 +26,13 @@
 </div>
 <div style="width: 500px">
 
-<c:if test="${ mLogFlag }">
+  <c:if test="${ not empty data }">
 <c:redirect url="dashBoardFrm.do"/>
 </c:if>
-<c:redirect url="managerLoginFrm.do"/>
+<c:redirect url="managerLoginFrm.do"/> 
+
+
+
 <%-- 
 값 테스트
 <c:out value="${ data.id  }"></c:out>

@@ -22,7 +22,9 @@ public class MemberManageInfoDomain {
 		this.susPeriod = susPeriod;
 		this.novelCnt = novelCnt;
 		this.commentCnt = commentCnt;
+		
 	}
+	
 	public String getThumbnail() {
 		return thumbnail;
 	}

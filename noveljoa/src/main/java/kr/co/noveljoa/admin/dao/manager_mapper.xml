@@ -35,7 +35,7 @@ SELECT m.id as id, m.num_member as num_member,
 </select>
 
 <select id="selectOneMember" resultType="kr.co.noveljoa.admin.domain.MemberManageDomain" parameterType="String">
- SELECT m.id as id, m.num_member as member,
+ SELECT m.id as id, m.num_member as num_member,
   (SELECT COUNT(*) FROM novel where num_member=m.num_member) AS novelcnt,
   NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visitDate,
   m.join as joinDate, m.stop AS susPeriod FROM member m CROSS JOIN dual where id = #{ id }
@@ -54,6 +54,53 @@ SELECT m.id as id, m.num_member as num_member,
 		INNER JOIN dual ON id = #{ id }
 </select>
 
+<select id="selectAllMemCnt" resultType="kr.co.noveljoa.admin.domain.AllMDomain">
+select
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-6)]]> ) as allMCnt6,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-5)]]> ) as allMCnt5,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-4)]]> ) as allMCnt4,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-3)]]> ) as allMCnt3,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-2)]]> ) as allMCnt2,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate-1)]]> ) as allMCnt1,
+(SELECT COUNT(*) FROM member <![CDATA[ where join<(sysdate)]]> ) as allMCnt0
+from dual
+</select>
+
+<select id="selectAllNovCnt" resultType="kr.co.noveljoa.admin.domain.AllNDomain">
+ select
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-6)]]> ) as allNCnt6,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-5)]]> ) as allNCnt5,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-4)]]> ) as allNCnt4,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-3)]]> ) as allNCnt3,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-2)]]> ) as allNCnt2,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate-1)]]> ) as allNCnt1,
+ (SELECT COUNT(*) FROM novel <![CDATA[ where make<(sysdate)]]> ) as allNCnt0
+from dual
+</select>
+
+<select id="selectTodayJoinCnt" resultType="kr.co.noveljoa.admin.domain.TodayJoinDomain">
+select
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-6)) AS jCnt6,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-5)) AS jCnt5,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-4)) AS jCnt4,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-3)) AS jCnt3,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-2)) AS jCnt2,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE-1)) AS jCnt1,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(JOIN,'yyyy-MM-DD') JOIN FROM MEMBER)) WHERE JOIN = TRUNC(SYSDATE)) AS jCnt0
+from dual
+</select>
+
+<select id="selectTodayVisitCnt" resultType="kr.co.noveljoa.admin.domain.TodayVisitDomain">
+select
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-6)) AS vCnt6,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-5)) AS vCnt5,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-4)) AS vCnt4,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-3)) AS vCnt3,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-2)) AS vCnt2,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE-1)) AS vCnt1,
+(SELECT COUNT(*) FROM ( SELECT * FROM (SELECT to_char(visit,'yyyy-MM-DD') visit FROM history)) WHERE visit = TRUNC(SYSDATE)) AS vCnt0
+from dual
+</select>
 
 
 

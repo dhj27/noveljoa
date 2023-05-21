@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -140,10 +141,11 @@
 <body>
 
 <main class="form-signin w-100 m-auto">
-  <form action="managerLoginProcess.do"  method="post" id="mFrm">
+  <form action="managerLoginProcess.do" method="post" id="mFrm">
   <div style="text-align: center;">
     <img class="mb-4" src="../_next/static/images/manager.png" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Like Novel Manager</h1>
+    <%System.out.print(request.getAttribute("mFlag")); %>
     </div>
 
     <div class="form-floating">

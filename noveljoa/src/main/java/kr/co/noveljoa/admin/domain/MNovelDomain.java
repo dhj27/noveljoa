@@ -7,16 +7,7 @@ public class MNovelDomain {
 	private int novelNum, likeCnt, reportCnt;
 	private Date createDate;
 	
-	public MNovelDomain() {
-	}
-	public MNovelDomain(String novelTitle, String id, int novelNum, int likeCnt, int reportCnt, Date createDate) {
-		this.novelTitle = novelTitle;
-		this.id = id;
-		this.novelNum = novelNum;
-		this.likeCnt = likeCnt;
-		this.reportCnt = reportCnt;
-		this.createDate = createDate;
-	}
+	
 	public String getNovelTitle() {
 		return novelTitle;
 	}

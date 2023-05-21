@@ -7,14 +7,7 @@ public class MLoginDomain {
 	private String id;
 	private Date create_date;
 	
-	public MLoginDomain() {
-		
-	}
 
-	public MLoginDomain(String id, Date create_date) {
-		this.id = id;
-		this.create_date = create_date;
-	}
 	
 	public String getId() {
 		return id;
