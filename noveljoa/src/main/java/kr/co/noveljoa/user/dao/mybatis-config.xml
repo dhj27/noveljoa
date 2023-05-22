@@ -15,9 +15,12 @@
       </dataSource>
     </environment>
   </environments>
+  
   <mappers>
     <mapper resource="kr/co/noveljoa/user/main/main_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/ranking/ranking_mapper.xml"/>
-    <mapper resource="kr/co/noveljoa/user/episode/domain/episode_mapper.xml"/>
+    <!-- <mapper resource="kr/co/noveljoa/user/episode/domain/episode_mapper.xml"/> -->
+    <mapper resource="kr/co/noveljoa/user/episode/domain/episodeMy_mapper.xml"/>
   </mappers>
+  
 </configuration>

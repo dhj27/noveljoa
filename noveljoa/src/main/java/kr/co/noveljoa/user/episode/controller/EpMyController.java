@@ -23,23 +23,31 @@ public class EpMyController {
 	public String showEpFrm(Model model) {
 		
 //		int userNum = (Integer)model.getAttribute("num_member");
+//		int novelNum = (Integer)model.getAttribute("num_novel");
 //		String novelTitle = (String) model.getAttribute("novelTitle");
 		
-//		model.addAttribute("novelNum", 1);
-//		model.addAttribute("novelTitle", "s");
-//		model.addAttribute("novelNum", 1);
-//		model.addAttribute("userNum", 1);
+		model.addAttribute("userNum", 1);
+		model.addAttribute("novelNum", 5);
+		model.addAttribute("novelTitle", 5);
 		
 		return "episode/episodeMy/episode_write";
 	}// writeEpFrm
-	
-	
+		
 	
 	// 에피소드 등록 프로세스 ajax
-	@PostMapping("episode_write_process.do")
+	@PostMapping("/episode_write_process.do")
 	public String addEpProcess(EpCreateVO epCreateVO, Model model) {
 		
-		return "";
+		System.out.println("----------------"+ epCreateVO);
+		int result = ems.writeEp(epCreateVO);
+		
+		if(result == 1) {
+			model.addAttribute("result", "완료!");
+		}else {
+			model.addAttribute("result", "실패");
+		}
+		
+		return "episode/episodeMy/episode_write_process";
 	}// addEpProcess
 	
 	

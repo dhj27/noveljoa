@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,57 +16,58 @@
 <link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <script type="text/javascript">
 
 	$(function(){
 		
 		// 글자 수 제한
-		$("#detail").keyup(function(){
-			var detailLength = $(this).val();
-			$("#length").text(detailLength.length);
+		$("#story").keyup(function(){
+			var storyLength = $(this).val();
+			$("#length").text(storyLength.length);
 			
-			if(detailLength.length >= 2000){
+			if(storyLength.length >= 2000){
 				alert("2000자 까지만 입력할 수 있습니다.");
 				return;
 			} 
-		}); // detail
+		}); // story
+		
 		
 		// 등록 이벤트
 		$("#register").click(function(){
-			var epTitle = $("#epTitle").val();
-			var detail = $("#detail").val();
+			var title = $("#title").val();
+			var story = $("#story").val();
 			
 			// 소설 제목수 검사
-			if(epTitle.length == 0 || epTitle == ""){
+			if(title.length == 0 || title == ""){
 				alert("에피소드 제목을 입력해주세요");
-				$("#epTitle").focus();
+				$("#title").focus();
 				return;
-			}else if(epTitle.length >= 20){
+			}else if(title.length >= 20){
 				alert("에피소드 제목은 20글자를 넘길 수 없습니다.");
 				return;
 			}
 			
-			if( epTitle.trim() == "" ){
+			if( title.trim() == "" ){
 				alert("제목은 빈칸이 될 수 없습니다.");
-				$("#epTitle").focus();
+				$("#title").focus();
 				return;
 			}
 			
 			// 소설 내용 수 검사
-			if(detail.length == 0 || detail == ""){
+			if(story.length == 0 || story == ""){
 				alert("소설의 내용을 입력해주세요");
-				$("#detail").focus();
+				$("#story").focus();
 				return;
 			}
 			
-			if( detail.trim() == "" ){
+			if( story.trim() == "" ){
 				alert("소설의 내용은 빈칸이 될 수 없습니다.");
-				$("#detail").focus();
+				$("#story").focus();
 				return;
 			}
 			
-			alert("에피소드가 등록되었습니다.");
+
 			$("#epFrm").submit();
 		});
 		
@@ -73,11 +75,6 @@
 	
 </script>
 </head>
-
-<%
-	/* int userNum = 1;
-	int novelNum = 1; */
-%>
 
 <body>
 	<div id="__next" data-reactroot="">
@@ -94,7 +91,7 @@
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
-					<%-- <div class="truncate after:inline-block after:w-0"> <c:out value="${novelTitle}"/></div> --%>
+					<div class="truncate after:inline-block after:w-0"> <c:out value="${novelTitle}"/></div>
 				</div>
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
@@ -103,18 +100,17 @@
 				</div>
 			</header>
 			
-			
 			<!-- 에피소드 작성 내용 -->
 			<div class="h-0 flex-[1_1_auto] overflow-auto">
 				<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 					
-					<%-- <input type="hidden" id="num_novel" name="num_novel" value="${novelNum }" />
-					<input type="hidden" id="num_member " name="num_member " value="${userNum }" />
-					 --%>
+					<input type="hidden" id="num_novel" name="num_novel" value="${ novelNum }" />
+					<input type="hidden" id="num_member" name="num_member" value="${ userNum }" />
+					
 					<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"
-						id="epTitle" name="epTitle" maxlength="50" placeholder="제목을 입력하세요 " autofocus="autofocus">
+						id="title" name="title" maxlength="50" placeholder="제목을 입력하세요 " autofocus="autofocus">
 					<textarea class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none border-0 !p-0 text-15"
-						id="detail" name="detail" rows="50" maxlength="2000" placeholder="내용을 입력하세요"></textarea>
+						id="story" name="story" rows="50" maxlength="2000" placeholder="내용을 입력하세요"></textarea>
 					
 				</div>
 			</div>
@@ -134,9 +130,10 @@
 			</div>
 			
 			<div class="flex h-81 border-t-1 border-black/10 bg-white py-12 px-18 desktop:h-100 desktop:py-24 desktop:px-0">
-			<label class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none 
-						outline-none my-0 mx-auto max-w-[648px] flex-[1_1_100%] border-0 !p-0 text-13 desktop:text-15">
-			</label>
+				<input type="text" style="font-size: 15px;"
+					   id="cmt" name="cmt" maxlength="100" placeholder="코멘트을 입력하세요" 
+						class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none 
+						outline-none my-0 mx-auto max-w-[648px] flex-[1_1_100%] border-0 !p-0 text-13 desktop:text-15"/>
 			</div>		
 		</form>
 		

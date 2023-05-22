@@ -2,63 +2,60 @@ package kr.co.noveljoa.user.episode.vo;
 
 public class EpUpdateVO {
 	
-	private int userNum;
-	private int novelNum;
-	private int epNum;
-	private String epTitle;
-	private String detail;
-	private String myComment;
-	private int openStatus;
+	private int num_episode;
+	private int num_novel;
+	private int num_member;
+	private String title;
+	private String story;
+	private String cmt;
+	private int open;
 	
-	
-	public int getUserNum() {
-		return userNum;
+	public int getNum_episode() {
+		return num_episode;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setNum_episode(int num_episode) {
+		this.num_episode = num_episode;
 	}
-	public int getNovelNum() {
-		return novelNum;
+	public int getNum_novel() {
+		return num_novel;
 	}
-	public void setNovelNum(int novelNum) {
-		this.novelNum = novelNum;
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
-	public int getEpNum() {
-		return epNum;
+	public int getNum_member() {
+		return num_member;
 	}
-	public void setEpNum(int epNum) {
-		this.epNum = epNum;
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
 	}
-	public String getEpTitle() {
-		return epTitle;
+	public String getTitle() {
+		return title;
 	}
-	public void setEpTitle(String epTitle) {
-		this.epTitle = epTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getDetail() {
-		return detail;
+	public String getStory() {
+		return story;
 	}
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setStory(String story) {
+		this.story = story;
 	}
-	public String getMyComment() {
-		return myComment;
+	public String getCmt() {
+		return cmt;
 	}
-	public void setMyComment(String myComment) {
-		this.myComment = myComment;
+	public void setCmt(String cmt) {
+		this.cmt = cmt;
 	}
-	public int getOpenStatus() {
-		return openStatus;
+	public int getOpen() {
+		return open;
 	}
-	public void setOpenStatus(int openStatus) {
-		this.openStatus = openStatus;
+	public void setOpen(int open) {
+		this.open = open;
 	}
 	@Override
 	public String toString() {
-		return "EpUpdateVO [userNum=" + userNum + ", novelNum=" + novelNum + ", epNum=" + epNum + ", epTitle=" + epTitle
-				+ ", detail=" + detail + ", myComment=" + myComment + ", openStatus=" + openStatus + "]";
+		return "EpUpdateVO [num_episode=" + num_episode + ", num_novel=" + num_novel + ", num_member=" + num_member
+				+ ", title=" + title + ", story=" + story + ", cmt=" + cmt + ", open=" + open + "]";
 	}
 	
-	
-
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>title</title>
+<title>에피소드 테스트</title>
 
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -17,12 +17,16 @@
 	
 	$(function(){
 		
-	});
-	function sendWrite( nNum ){
+		$("#epWriteOpen").click(function(){
+			$("#novelNum").val();
+			$("#hidFrm").submit();
+		});
 		
-		$("#novelNum").val( nNum );
-		$("#hidFrm").submit();
-	}
+		
+		 
+	});
+	
+	
 </script>
 </head>
 <body>
@@ -30,9 +34,7 @@
 	<a href="episode/a.do">a</a>
 	<br><br>
 	
-	<a href="#void" onclick="sendWrite( 1 )">episode_write.do</a>
-	<br><br>
-	
+	<input type="button" id="epWriteOpen" value="에피소드 등록창" />
 	<form action="episode_write.do" name="hidFrm" id="hidFrm" method="post">
 		<input type="hidden" name="novelNum" id="novelNum"/>
 	</form>

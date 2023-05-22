@@ -4,10 +4,10 @@ public class NovelCheckMyVO {
 	
 	private int userNum;
 	private int novelNum;
-	private int sortNum;
+	//private int sortNum;
 	
 	public int getUserNum() {
-		return userNum;
+		return userNum;     
 	}
 	public void setUserNum(int userNum) {
 		this.userNum = userNum;
@@ -18,16 +18,10 @@ public class NovelCheckMyVO {
 	public void setNovelNum(int novelNum) {
 		this.novelNum = novelNum;
 	}
-	public int getSortNum() {
-		return sortNum;
-	}
-	public void setSortNum(int sortNum) {
-		this.sortNum = sortNum;
-	}
 	@Override
 	public String toString() {
-		return "NovelCheckMyVO [userNum=" + userNum + ", novelNum=" + novelNum + ", sortNum=" + sortNum + "]";
+		return "NovelCheckMyVO [userNum=" + userNum + ", novelNum=" + novelNum + "]";
 	}
-	
 
+	
 }
