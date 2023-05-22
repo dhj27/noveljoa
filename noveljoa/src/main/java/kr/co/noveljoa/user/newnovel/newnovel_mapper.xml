@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newnovelMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
+
+	<select id="insertNewNovel" parameterType="kr.co.noveljoa.user.newnovel.NewNovelVO">
+	insert into novel(num_novel,num_member,title,age,photo,story,open,end,make,genre)
+	values(num_novel.nextval,${user_num_member},"${title}",${age},"${photo}","${story}",${open},0,sysdate,${genre})
+	</select>
+
+</mapper>

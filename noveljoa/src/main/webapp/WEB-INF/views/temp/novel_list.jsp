@@ -1,8 +1,3 @@
-<%@page import="EpisodeVO.User.LookNovelVO"%>
-<%@page import="EpisodeDAO.EpisodeDAO"%>
-<%@page import="novel.NovelListVO"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="novel.NovelListDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +17,7 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<%
+<%-- <%
 	//int novelNum = 44;
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	
@@ -35,7 +30,7 @@
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
-%>
+%> --%>
 
 <script type="text/javascript">
 function edit(){
@@ -106,7 +101,7 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 					
 <!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_login_search.jsp"/>
+		<jsp:include page="../../../_next/header_user_login_search.jsp"/>
 	</div>						
 				</div>
 				<main class="flex-1">
@@ -117,10 +112,10 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 							<div class="flex flex-col min-h-[100vh]">
 								<div
 									class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
-									<%
+									<%-- <%
 									try{
 										NovelListVO nVO=nDAO.selectNovel(request.getParameter("num_novel"));
-									%>
+									%> --%>
 									<header class="relative overflow-hidden">
 										<div class="flex my-48">
 											<div class="flex flex-[0_0_auto]">
@@ -166,11 +161,11 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 											</div>
 										</div>
 									</header>
-									<%
+									<%-- <%
 									}catch(SQLException se){
 										se.printStackTrace();
 									}
-									%>
+									%> --%>
 								</div>
 								<div class="border-b-1 border-black/10">
 									<div
@@ -216,7 +211,7 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 						</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 </body>
 

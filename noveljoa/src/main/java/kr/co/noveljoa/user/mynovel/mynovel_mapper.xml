@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myNovelMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
+
+	<select id="selectMyNovel" parameterType="kr.co.noveljoa.user.mynovel.MyNovelVO" resultType="kr.co.noveljoa.user.mynovel.MyNovelDomain">
+	select n.num_novel, n.photo, n.title, n.age, n.open, n.end 
+	from novel n, member m 
+	where (n.num_member = m.num_member) and (m.num_member = #{user_num_member}) order by n.make
+	<if test="order_novel == 0">desc</if>
+	</select>
+
+</mapper>
