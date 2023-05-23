@@ -1,12 +1,10 @@
-<%@page import="EpisodeVO.My.LookMyEpisodeVO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%
     request.setCharacterEncoding("UTF-8");
-    %>
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,56 +22,16 @@
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<%
-	if(session.getAttribute("user_num_member")==null){
-		response.sendRedirect("../login/loginpage.jsp");
-		return;
-	}
-	 
-	int userNum = (Integer)session.getAttribute("user_num_member");
-	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
-	int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	
-
-	if(num_novel == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/noveljoa/home/main.jsp";
-		</script>
-<%
-}	
-
-	if(epNum == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 epNum의 값이 없음");
-			location.href="http://localhost/noveljoa/novel/novel_list.jsp?num_novel=" + num_novel;
-		</script>
-<%
-}	
-	
-	// 선택한 회차 화면에 출력
-	EpisodeMyDAO mDAO = new EpisodeMyDAO();
-	LookMyEpisodeVO selectVO = null;
-	try{
-		// 에피소드 화면 출력
-		selectVO = mDAO.selectEpisode(userNum, num_novel, epNum);
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-%>
-
 <script type="text/javascript">
 
 $(function(){
 	
 	// 글자 수 제한
-	$("#detail").keyup(function(){
-		var detail = $(this).val().length;
-		$("#epLength").text(detail);
+	$("#story").keyup(function(){
+		var story = $(this).val().length;
+		$("#epLength").text(story);
 			
-		if(detail >= 2000){
+		if(story >= 2000){
 			alert("2000자 까지만 입력할 수 있습니다.");
 			return;
 		}  
@@ -81,51 +39,51 @@ $(function(){
 	
 	// 등록 이벤트
 	$("#edit").click(function(){
-		var epTitle = $("#epTitle").val();
-		var detail = $("#detail").val();
+		var title = $("#title").val();
+		var story = $("#story").val();
 		
 		// 소설 제목수 검사
-		if(epTitle.length == 0 || epTitle == ""){
+		if(title.length == 0 || title == ""){
 			alert("에피소드 제목을 입력해주세요");
-			$("#epTitle").focus();
+			$("#title").focus();
 			return;
-		}else if(epTitle.length >= 20){
+		}else if(title.length >= 20){
 			alert("에피소드 제목은 20글자를 넘길 수 없습니다.");
 			return;
 		}
 		
-		if( epTitle.trim() == ""){
+		if( title.trim() == ""){
 			alert("에피소드 제목은 빈칸이 될 수 없습니다.");
-			$("#epTitle").focus();
+			$("#title").focus();
 			return;
 		}
 		
 		// 소설 내용 수 검사
-		if(detail.length == 0 || detail == ""){
+		if(story.length == 0 || story == ""){
 			alert("에피소드 내용을 입력해주세요");
-			$("#detail").focus();
+			$("#story").focus();
 			return;
 		}
 		
-		if( detail.trim() == "" ){
+		if( story.trim() == "" ){
 			alert("에피소드 내용은 빈칸이 될 수 없습니다.");
-			$("#detail").focus();
+			$("#story").focus();
 			return;
 		}
 		
 		$("#editFrm").submit();
-		alert("에피소드가 수정되었습니다.");
+		/* alert("에피소드가 수정되었습니다."); */
 	});
 
 	
 	// 에피소드 공개
 	$("#private").click(function(){
 		if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환
-			$("#openStatus").val(0);
+			$("#open").val(0);
 			$(this).val("비공개");
 			alert("비공개 되었습니다!");
 		}else if($(this).val() == "비공개"){	// 버튼이 비공개로 되어있으면 공개로 전환
-			$("#openStatus").val(1);
+			$("#open").val(1);
 			$(this).val("공개");
 			alert("공개 되었습니다!");
 		}
@@ -134,17 +92,18 @@ $(function(){
 	
 	// 에피소드 삭제
 	$("#delete").click(function(){
-		window.open("episode_delete_popup.jsp?num_novel=<%=num_novel%>&epNum=<%=epNum%>","popup","width=400,height=300,resizable=no,top="
-				+(window.screenY+100)	+",left="+(window.screenX+100)); 
-		window.close();
-	}); //delete 
+		if( confirm("정말 삭제하시겠니??")){
+			document.editFrm.action="episode_remove.do";
+			//삭제시 필요한 값, 에피번호, 사용자아이디
+			$("#editFrm").submit();
+		}
+	}); // delete
 	
 }); // ready
 	
 	
 </script>
 </head>
-
 
 					
 <body>
@@ -153,22 +112,22 @@ $(function(){
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
-		<form id="editFrm" action="episode_edit_process.jsp" method="post" class="flex flex-col h-full">
+		<form id="editFrm" name="editFrm" action="episode_edit_process.do" method="post" class="flex flex-col h-full">
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="http://localhost/noveljoa/novel/novel_list.jsp?num_novel=<%= num_novel%>">
-						<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" />
+					<a href="http://localhost/noveljoa/novel/novel_list.jsp">
+						<img width="20" height="20" src="../noveljoa/_next/static/images/list.png" />
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
-					<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold;"><%= selectVO.getNovelTitle() %></label>
+					<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold;">${ showEpDetail.novelTitle }</label>
 				</div>
 				
 				<!-- 버튼들 -->
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
 						<input type="button" id="edit" value="수정" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
-						<input type="button" id="private" value="<%= selectVO.getOpenStatus() == 1 ? "공개":"비공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
+						<input type="button" id="private" value="${showEpDetail.open == 1 ? '공개':'비공개'}" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
 						<input type="button" id="delete" value="삭제" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>
 					</div>
 				</div>
@@ -179,16 +138,16 @@ $(function(){
 				<div class="h-0 flex-[1_1_auto] overflow-auto">
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
-						<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
-						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
-						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
-						<input type="hidden" id="openStatus" name="openStatus" value="<%= selectVO.getOpenStatus() %>"/>
+						<input type="hidden" id="num_novel" name="num_novel" value="${ chkVO.num_novel}" />
+						<input type="hidden" id="num_member" name="num_member" value="${ chkVO.num_member }" />
+						<input type="hidden" id="num_episode" name="num_episode" value="${ chkVO.num_episode }" />
 						
+						<input type="hidden" id="open" name="open" value="1"/>
 						<!-- 에피소드 제목 -->
 						<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"
-							id="epTitle" name="epTitle" maxlength="50" value= "<%= selectVO.getEpTitle() %>">
+							id="title" name="title" maxlength="50" value= "${showEpDetail.epTitle}">
 						<textarea class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none border-0 !p-0 text-15"
-							id="detail" name="detail" rows="50" maxlength="2000" placeholder="내용을 입력하세요"><%= selectVO.getEpDetail() %> </textarea>
+							id="story" name="story" rows="50" maxlength="2000" placeholder="내용을 입력하세요"><c:out value="${showEpDetail.epDetail }"/></textarea>
 					</div>
 				</div>
 			
@@ -207,10 +166,11 @@ $(function(){
 			</div>
 			
 			<div class="flex h-81 border-t-1 border-black/10 bg-white py-12 px-18 desktop:h-100 desktop:py-24 desktop:px-0">
-			<label class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none 
-						outline-none my-0 mx-auto max-w-[648px] flex-[1_1_100%] border-0 !p-0 text-13 desktop:text-15">
-			</label>
-			</div>
+				<input type="text" style="font-size: 15px;" value= "${showEpDetail.cmt}"
+					   id="cmt" name="cmt" maxlength="40" placeholder="코멘트을 입력하세요" 
+						class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none 
+						outline-none my-0 mx-auto max-w-[648px] flex-[1_1_100%] border-0 !p-0 text-13 desktop:text-15"/>
+			</div>	
 				
 		</form>
 		

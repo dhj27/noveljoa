@@ -4,19 +4,11 @@ public class EpMyDomain {
 	
 	private String novelTitle;
 	private String epTitle;
-	private String detail;
-	private String myComment;
-	private int openStatus;
+	private String epDetail;
+	private String cmt;
+	private int open;
 	
-	public EpMyDomain() {}
 	
-	public EpMyDomain(String novelTitle, String epTitle, String detail, String myComment, int openStatus) {
-		this.novelTitle = novelTitle;
-		this.epTitle = epTitle;
-		this.detail = detail;
-		this.myComment = myComment;
-		this.openStatus = openStatus;
-	}
 	public String getNovelTitle() {
 		return novelTitle;
 	}
@@ -29,28 +21,28 @@ public class EpMyDomain {
 	public void setEpTitle(String epTitle) {
 		this.epTitle = epTitle;
 	}
-	public String getDetail() {
-		return detail;
+	public String getEpDetail() {
+		return epDetail;
 	}
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setEpDetail(String epDetail) {
+		this.epDetail = epDetail;
 	}
-	public String getMyComment() {
-		return myComment;
+	public String getCmt() {
+		return cmt;
 	}
-	public void setMyComment(String myComment) {
-		this.myComment = myComment;
+	public void setCmt(String cmt) {
+		this.cmt = cmt;
 	}
-	public int getOpenStatus() {
-		return openStatus;
+	public int getOpen() {
+		return open;
 	}
-	public void setOpenStatus(int openStatus) {
-		this.openStatus = openStatus;
+	public void setOpen(int open) {
+		this.open = open;
 	}
 	@Override
 	public String toString() {
-		return "EpMyDomain [novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", detail=" + detail + ", myComment="
-				+ myComment + ", openStatus=" + openStatus + "]";
+		return "EpMyDomain [novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", epDetail=" + epDetail
+				+ ", cmt=" + cmt + ", open=" + open + "]";
 	}
 	
 }

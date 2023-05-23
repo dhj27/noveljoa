@@ -4,40 +4,47 @@ import java.util.Date;
 
 public class NovelReportVO {
 	
-	private int userNum;
-	private int novelNum;
-	private int reportCode;
-	private Date reportDate;
+	private int num_member;
+	private int num_novel;
+	private String id;
+	private int reason_code;
+	private Date report_date;
 	
-	public int getUserNum() {
-		return userNum;
+	public int getNum_member() {
+		return num_member;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
 	}
-	public int getNovelNum() {
-		return novelNum;
+	public int getNum_novel() {
+		return num_novel;
 	}
-	public void setNovelNum(int novelNum) {
-		this.novelNum = novelNum;
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
-	public int getReportCode() {
-		return reportCode;
+	public String getId() {
+		return id;
 	}
-	public void setReportCode(int reportCode) {
-		this.reportCode = reportCode;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public Date getReportDate() {
-		return reportDate;
+	public int getReason_code() {
+		return reason_code;
 	}
-	public void setReportDate(Date reportDate) {
-		this.reportDate = reportDate;
+	public void setReason_code(int reason_code) {
+		this.reason_code = reason_code;
+	}
+	public Date getReport_date() {
+		return report_date;
+	}
+	public void setReport_date(Date report_date) {
+		this.report_date = report_date;
 	}
 	@Override
 	public String toString() {
-		return "NovelReportVO [userNum=" + userNum + ", novelNum=" + novelNum + ", reportCode=" + reportCode
-				+ ", reportDate=" + reportDate + "]";
+		return "NovelReportVO [num_member=" + num_member + ", num_novel=" + num_novel + ", id=" + id + ", reason_code="
+				+ reason_code + ", report_date=" + report_date + "]";
 	}
-
+	
 	
 }

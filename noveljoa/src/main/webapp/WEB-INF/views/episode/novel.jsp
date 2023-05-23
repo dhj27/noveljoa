@@ -1,6 +1,4 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeVO.User.LookNovelVO"%>
-<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -91,7 +91,7 @@
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
-					<div class="truncate after:inline-block after:w-0"> <c:out value="${novelTitle}"/></div>
+					<div class="truncate after:inline-block after:w-0"> ${novelTitle}</div> <%-- <c:out value="${novelTitle}"/> --%>
 				</div>
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">

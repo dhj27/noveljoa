@@ -22,23 +22,13 @@
 	$(function(){
 		$("#delete").click(function(){
 			$("#removeFrm").submit();
-			opener.parent.location.href="http://localhost/noveljoa/novel/novel_list.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
+			<%-- opener.parent.location.href="http://localhost/noveljoa/novel/novel_list.jsp?num_novel=" + <%=request.getParameter("num_novel")%>; --%>
 		}); //delete
 		
 	});// ready
 
 </script>
 </head>
-<%
-	if(session.getAttribute("user_num_member")==null){
-		response.sendRedirect("../login/loginpage.jsp");
-		return; 
-	}
- 
-	int userNum = (Integer)session.getAttribute("user_num_member");
-	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
-	int epNum = Integer.parseInt(request.getParameter("epNum"));
-%>
 
 <body>
 	<div class="flex rounded-t-0 relative z-1 max-h-[70%] flex-col overflow-hidden bg-white"
@@ -50,11 +40,10 @@
 		</div>
 		</div>
 		
-		<form id="removeFrm" action="episode_delete_process.jsp" method="post">
-		
-			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
-			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
-			<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />		
+		<form id="removeFrm" action="episode_delete_process.do" method="post">
+			<input type="hidden" id="num_novel" name="num_novel" value="${ novelNum }" />
+			<input type="hidden" id="num_member" name="num_member" value="${ userNum }" />
+			<input type="hidden" id="num_episode" name="num_episode" value="${ epNum }" />	
 					
 			<div class="w-full shrink-0" style="position: relative; bottom: 18px">
 			

@@ -16,13 +16,7 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 @Component
 public class EpMyDAO {
 	
-	// select
-	public EpMyDomain selectEpisode(EpCheckMyVO epCheckMyVO) {
-		return null;
-	}// selectEpisode
-		
 	
-	// insert
 	public int insertEpisode(EpCreateVO epCreateVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
@@ -41,7 +35,6 @@ public class EpMyDAO {
 	}// addEp
 	
 	
-	// edit
 	public int updateEpisode(EpUpdateVO epUpdateVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
@@ -60,7 +53,6 @@ public class EpMyDAO {
 	}// editEp
 	
 	
-	// 
 	public int deleteEpisode(EpCheckMyVO epCheckMyVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
@@ -79,7 +71,20 @@ public class EpMyDAO {
 	}// removeEp
 	
 	
-	// selectList
+	
+	public EpMyDomain selectEpisode(EpCheckMyVO epCheckMyVO) {
+		EpMyDomain emd = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		emd = ss.selectOne("selectEp", epCheckMyVO);
+		
+		if(ss != null) {ss.close();}
+		
+		return emd;
+	}// selectEpisode
+		
+	
 	public List<EpListMyDomain> selectEpisodeList(NovelCheckMyVO nCheckMyVO) {
 		List<EpListMyDomain> list = null;
 		

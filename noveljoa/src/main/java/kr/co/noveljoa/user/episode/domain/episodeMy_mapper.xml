@@ -10,43 +10,43 @@
 		values (num_episode.nextval, #{num_novel}, #{num_member}, #{title}, #{story}, #{cmt}, 1, 0, sysdate)
 	</insert>
 	
-	<!-- 에피소드 수정, userNum은 세션, epNum은 파라미터 -->
-	<!-- <update id="updateEp" parameterType="kr.co.noveljoa.user.episode.vo.EpUpdateVO">
+	<!-- 에피소드 수정 -->
+	<update id="updateEp" parameterType="kr.co.noveljoa.user.episode.vo.EpUpdateVO">
 		update episode 
 		set title=#{title},story=#{story},open=#{open}, cmt=#{cmt}
 		where num_member=#{num_member} 
 		  and num_novel=#{num_novel} 
-		  and num_episode=#{num_episode}	
-	</update> -->
+		  and num_episode=#{num_episode}
+	</update>
  
 	<!-- 에피소드 삭제 -->
-	<!-- <delete id="deleteEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO">
+	<delete id="deleteEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO">
 		delete 
 		from episode
 		where num_member=#{num_member} 
 		  and num_novel=#{num_novel} 
 		  and num_episode=#{num_episode}
-	</delete> -->
+	</delete>
 	
 	<!-- 내가 작성한 에피소드 내용보여주는 창 (수정) -->
-<!-- 	<select id="selectEp" resultType="kr.co.noveljoa.user.episode.domain.EpMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO" >
+	<select id="selectEp" resultType="kr.co.noveljoa.user.episode.domain.EpMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO" >
 		
-		select n.title novelTitle, e.title epTitle, e.story epDetail, e.open open 
+		select n.title novelTitle, e.title epTitle, e.story epDetail, e.cmt cmt, e.open open 
 		from episode e, novel n 
 		where n.num_novel=e.num_novel 
 		  and e.num_member=#{num_member} 
 		  and e.num_novel=#{num_novel} 
 		  and e.num_episode=#{num_episode}
 		
-	</select> -->
+	</select>
 		
 	<!-- 내 소설에 해당하는 모든 에피소드 리스트 가져오기 -->
-<!-- 	<select id="selectEpList" resultType="kr.co.noveljoa.user.episode.domain.EpListMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckMyVO">
+	<select id="selectEpList" resultType="kr.co.noveljoa.user.episode.domain.EpListMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckMyVO">
 		select title,open,visit,make 
 		from episode 
 		where num_member=#{num_member}  
 		  and num_novel=#{num_novel} 
-	</select> -->
+	</select>
   
   
 </mapper>

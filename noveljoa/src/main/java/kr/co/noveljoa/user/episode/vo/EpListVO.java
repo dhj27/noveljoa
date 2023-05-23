@@ -2,24 +2,22 @@ package kr.co.noveljoa.user.episode.vo;
 
 public class EpListVO {
 	
-	private int novelNum;
-	private int sortNum;
-	
-	public int getNovelNum() {
-		return novelNum;
+	private int num_novel;
+	//private int sortNum;
+
+	public int getNum_novel() {
+		return num_novel;
 	}
-	public void setNovelNum(int novelNum) {
-		this.novelNum = novelNum;
+
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
-	public int getSortNum() {
-		return sortNum;
-	}
-	public void setSortNum(int sortNum) {
-		this.sortNum = sortNum;
-	}
+
 	@Override
 	public String toString() {
-		return "EpListVO [novelNum=" + novelNum + ", sortNum=" + sortNum + "]";
+		return "EpListVO [num_novel=" + num_novel + "]";
 	}
+	
+	
 	
 }

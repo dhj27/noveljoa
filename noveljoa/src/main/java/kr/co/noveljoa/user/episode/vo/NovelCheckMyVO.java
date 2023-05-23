@@ -2,26 +2,28 @@ package kr.co.noveljoa.user.episode.vo;
 
 public class NovelCheckMyVO {
 	
-	private int userNum;
-	private int novelNum;
+	private int num_member;
+	private int num_novel;
 	//private int sortNum;
 	
-	public int getUserNum() {
-		return userNum;     
+	
+	public int getNum_member() {
+		return num_member;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
 	}
-	public int getNovelNum() {
-		return novelNum;
+	public int getNum_novel() {
+		return num_novel;
 	}
-	public void setNovelNum(int novelNum) {
-		this.novelNum = novelNum;
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
 	@Override
 	public String toString() {
-		return "NovelCheckMyVO [userNum=" + userNum + ", novelNum=" + novelNum + "]";
+		return "NovelCheckMyVO [num_member=" + num_member + ", num_novel=" + num_novel + "]";
 	}
-
+	
+	
 	
 }

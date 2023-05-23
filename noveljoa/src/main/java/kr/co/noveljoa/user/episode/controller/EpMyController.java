@@ -3,8 +3,9 @@ package kr.co.noveljoa.user.episode.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.noveljoa.user.episode.service.EpMyService;
 import kr.co.noveljoa.user.episode.vo.EpCheckMyVO;
@@ -18,10 +19,15 @@ public class EpMyController {
 	@Autowired(required = false)
 	private EpMyService ems;
 	
+	@GetMapping("/index.do")
+	public String index() {
+		return "episode/index";
+	}
+	
 	// 에피소드 작성창
 	@PostMapping("/episode_write.do")
 	public String showEpFrm(Model model) {
-		
+		// 모델에 등록되어있던 값을 가져와서 넣는다
 //		int userNum = (Integer)model.getAttribute("num_member");
 //		int novelNum = (Integer)model.getAttribute("num_novel");
 //		String novelTitle = (String) model.getAttribute("novelTitle");
@@ -38,7 +44,6 @@ public class EpMyController {
 	@PostMapping("/episode_write_process.do")
 	public String addEpProcess(EpCreateVO epCreateVO, Model model) {
 		
-		System.out.println("----------------"+ epCreateVO);
 		int result = ems.writeEp(epCreateVO);
 		
 		if(result == 1) {
@@ -51,35 +56,55 @@ public class EpMyController {
 	}// addEpProcess
 	
 	
-	// 에피소드 수정창
-	//@GetMapping("")
-	public String editEpFrm(Model model) { //int novelNum ?
+	// 에피소드 수정창c
+	@PostMapping("/episode_edit.do")
+	public String editEpFrm(EpCheckMyVO epCheckMyVO, Model model) { 
 		
-		return "";
+//		int userNum = (Integer)model.getAttribute("num_member");
+//		int novelNum = (Integer)model.getAttribute("num_novel");
+//		int epNum = (Integer)model.getAttribute("num_episode");
+		
+		epCheckMyVO.setNum_member(1);
+		epCheckMyVO.setNum_novel(1);
+		epCheckMyVO.setNum_episode(9);
+		
+		model.addAttribute("chkVO", epCheckMyVO);
+		
+		System.out.println(epCheckMyVO);
+		
+		model.addAttribute("showEpDetail", ems.searchEp(epCheckMyVO));
+		return "episode/episodeMy/episode_edit";
 	}// editEpFrm
 	
 	
-	// 에피소드 수정 내용 불러오기 ajax
-	//@GetMapping("")
-	public String searchEp(EpCheckMyVO epCheckMyVO, Model model) {
-		
-		return "";
-	}// searchEp
-	
-	
-	// 에피소드 수정 프로세스 ajax
-	//@GetMapping("")
+	// 에피소드 수정 프로세스
+	@ResponseBody
+	@PostMapping("/episode_edit_process.do")
 	public String editEpProcess(EpUpdateVO epUpdateVO, Model model) {
+				
+		int result = ems.editEp(epUpdateVO);
+		String msg = "";
+				
+		System.out.println(epUpdateVO);
 		
-		return "";
+		if(result == 1) {
+			msg = "<script charset='utf-8'>alert('성공'); location.href='index.do'</script> ";
+		}else {
+			msg = "<script charset='utf-8'>alert('실패'); location.href='episode_edit.do'</script> ";
+		}
+		
+		return msg;
 	}// editEpProcess
 	
 	
-	// 에피소드 삭제
-	//@GetMapping("")
+	// 에피소드 삭제 : 필요한 값을 받는다.
+	@PostMapping("/episode_remove.do")
 	public String removeEp(EpCheckMyVO epCheckMyVO, Model model) {
+		//삭제작업 수행
 		
-		return "";
+		 int cnt=1;
+		 model.addAttribute("removeResult", cnt);
+		return "forward:episode/episodeMy/index";
 	}// removeEp
 	
 	
