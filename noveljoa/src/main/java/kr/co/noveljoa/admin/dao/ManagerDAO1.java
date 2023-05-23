@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.noveljoa.admin.domain.CommentDomain;
+import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
@@ -149,16 +150,35 @@ public class ManagerDAO1 {
 		return cnt;
 	}
 	
+	public List<FreeBoardDomain> selectFreeBoard() throws SQLException {
+		List<FreeBoardDomain> fbList = null;  
+		//1. MyBatis Handler 얻기
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		//2. 쿼리 수행 후 결과 얻기
+		fbList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoard");
+		
+		ss.commit();
+		//3. MyBatis Handler 닫기
+				if(ss != null) {
+					ss.close();
+				}//end if
+
+		
+		return fbList;
+	}//selectLogin
+	
+	
 	
 //	//테스트
 //	 public static void main(String[] args) throws SQLException {
 //		  
 //			  ManagerDAO1 mDAO = new ManagerDAO1(); 
-//			  int cnt = mDAO.deleteComment(3);
+//			  List<FreeBoardDomain> list = mDAO.selectFreeBoard();
 //		  
 //			
 //				
-//				  System.out.println(cnt);
+//				  System.out.println(list);
 //				 
 //		
 //		  

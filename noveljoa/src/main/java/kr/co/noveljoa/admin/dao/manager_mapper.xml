@@ -135,6 +135,12 @@ select comment_num, id, title, detail, c.make as make
 delete from comments where comment_num=#{ comment_num }
 </delete>
 
+<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain">
+		 select BOARD_NUM, m.name as uname, TITLE, MAKE, VIEWS
+		 from board b
+		 inner join member m on b.NUM_MEMBER = m.NUM_MEMBER
+</select>
+
 
   
   

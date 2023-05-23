@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
 import kr.co.noveljoa.admin.domain.CommentDomain;
+import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
@@ -72,5 +73,17 @@ public boolean removeComment(int comment_num) {
 	
 	return cnt==1;
 }//removeComment
+
+public List<FreeBoardDomain> printFreeBoard() {
+	List<FreeBoardDomain> fbList = null;
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	try {
+		fbList = mDAO.selectFreeBoard();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return fbList;
+}//memberManage
 
 }

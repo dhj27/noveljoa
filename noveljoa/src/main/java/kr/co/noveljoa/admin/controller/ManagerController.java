@@ -13,6 +13,7 @@ import kr.co.noveljoa.admin.domain.AllMDomain;
 import kr.co.noveljoa.admin.domain.AllNDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
+import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
@@ -178,8 +179,24 @@ public class ManagerController {
 		return "manager/removeComment";
 	}
 	
+	@GetMapping("manager/messageFreeLookFrm2.do")
+	public String messageFreeLookFrm2() {
+		return "manager/messageFreeLookFrm2";
+	}
+	
+	@GetMapping("manager/messageQNALookFrm2.do")
+	public String messageQNALookFrm2(Model model) {
+		ManagerService1 ms = new ManagerService1();
+		List<FreeBoardDomain> fdList =  ms.printFreeBoard();
+		model.addAttribute("freeBoardData", fdList);
+		
+		return "manager/messageQNALookFrm2";
+	}
+	@GetMapping("manager/messageQNALookFrm3.do")
+	public String messageQNALookFrm3() {
+		return "manager/messageQNALookFrm3";
+	}
 	
 
-	
 	
 }
