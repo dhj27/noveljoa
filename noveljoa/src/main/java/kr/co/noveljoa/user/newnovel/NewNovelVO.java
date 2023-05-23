@@ -73,5 +73,11 @@ public class NewNovelVO {
 	public void setStory(String story) {
 		this.story = story;
 	}
+
+	@Override
+	public String toString() {
+		return "NewNovelVO [user_num_member=" + user_num_member + ", age=" + age + ", open=" + open + ", genre=" + genre
+				+ ", title=" + title + ", photo=" + photo + ", story=" + story + "]";
+	}
 	
 }

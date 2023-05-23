@@ -63,8 +63,8 @@ public class MyNovelController {
 		NewNovelService nns=ac.getBean(NewNovelService.class);
 		((FileSystemXmlApplicationContext)ac).close();
 		
-		String resourceDir = request.getSession().getServletContext().getRealPath("/_next/static/images/novel_thumb");
-		File saveDir=new File(resourceDir);
+//		String resourceDir = request.getSession().getServletContext().getRealPath("/_next/static/images/novel_thumb");
+		File saveDir=new File("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/_next/static/images/novel_thumb");
 		int fileSize=1024*1024*30;	//30mb
 		
 		try {

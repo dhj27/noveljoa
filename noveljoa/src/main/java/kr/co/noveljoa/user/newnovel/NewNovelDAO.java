@@ -17,9 +17,9 @@ public class NewNovelDAO {
 		}
 		int cnt=ss.insert("newnovelMapper.insertNewNovel",nnVO);
 		//3. transaction 완료
-//		if(list!=null) {
-//			ss.commit();
-//		}//end if
+		if(cnt == 1) {
+			ss.commit();
+		}//end if
 		//4. 연결끊기
 		if(ss!=null) {ss.close();}//end if
 				
