@@ -10,6 +10,8 @@ import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.vo.FreeBoardVO;
+import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
 public class ManagerDAO1 {
@@ -168,17 +170,35 @@ public class ManagerDAO1 {
 		return fbList;
 	}//selectLogin
 	
+	public int insertFreeBoard( FreeBoardVO fbVO ) {
+		//1. MyBatis Handler 얻기
+
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		//2. 쿼리 수행 후 결과 얻기
+		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertBoard", fbVO);
+		//3. MyBatis Handler 닫기
+		if( cnt==1 ) {
+			ss.commit();
+		}//end if
+		if(ss != null) {
+			ss.close();
+		}//end if
+		return cnt;
+	}//insertFreeBoard
+	
 	
 	
 //	//테스트
 //	 public static void main(String[] args) throws SQLException {
 //		  
 //			  ManagerDAO1 mDAO = new ManagerDAO1(); 
-//			  List<FreeBoardDomain> list = mDAO.selectFreeBoard();
+//			  FreeBoardVO fbVO = new FreeBoardVO(2, 2, "testtitle", "test1detail", "test2id");
+//			  
+//			  int cnt = mDAO.insertFreeBoard(fbVO);
 //		  
 //			
 //				
-//				  System.out.println(list);
+//				  System.out.println(cnt);
 //				 
 //		
 //		  

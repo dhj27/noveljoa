@@ -8,6 +8,7 @@ import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
 public class ManagerService1 {
@@ -85,5 +86,12 @@ public List<FreeBoardDomain> printFreeBoard() {
 	
 	return fbList;
 }//memberManage
+
+public boolean addFreeBoard(FreeBoardVO fbVO) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.insertFreeBoard(fbVO);
+	
+	return cnt==1;
+}//removeComment
 
 }

@@ -27,6 +27,10 @@
 
 
     	  })()
+    	  
+    	  $("#bBtn").click(function(){
+    		$("#bFrm").submit();
+    	  });
      
       });
       </script>
@@ -121,6 +125,9 @@
 
 <div class="container-fluid">
   <div class="row">
+  <form action="messageQNALookFrmInfo.do" id="bFrm">
+  
+  </form>
 
 
     <main class="">
@@ -129,7 +136,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
 
                     <!--  c if로 -->
-    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="bBtn">
             <span class="align-text-bottom"></span>
             글 작성
           </button>
@@ -143,19 +150,19 @@
             <tr>
               <th scope="col" style="width: 80px">NO</th>
               <th scope="col" style="width: 400px">제목</th>
-              <th scope="col" style="width: 80px">글쓴이</th>
+              <th scope="col" style="width: 80px">작성자</th>
               <th scope="col" style="width: 80px">작성시간</th>
-              <th scope="col" style="width: 80px">좋아요 수</th>
+              <th scope="col" style="width: 80px">조회수</th>
             </tr>
           </thead>
           <tbody>
            <c:forEach var="fdata" items="${ freeBoardData  }">
             <tr>
-              <td>${  fdata.board_num }</td>
-              <td>${  fdata.title }</td>
-              <td>${  fdata.uname }</td>
-              <td>${  fdata.make }</td>
-              <td>${  fdata.views }</td>
+              <td><a>${  fdata.board_num }</a></td>
+              <td><a href="#">${  fdata.title }</a></td>
+              <td><a>${  fdata.id }</a></td>
+              <td><a>${  fdata.make }</a></td>
+              <td><a>${  fdata.views }</a></td>
             </tr>
             </c:forEach>
            

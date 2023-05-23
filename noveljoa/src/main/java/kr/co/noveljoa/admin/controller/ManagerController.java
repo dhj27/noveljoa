@@ -22,6 +22,7 @@ import kr.co.noveljoa.admin.domain.TodayVisitDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
+import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
@@ -192,11 +193,21 @@ public class ManagerController {
 		
 		return "manager/messageQNALookFrm2";
 	}
-	@GetMapping("manager/messageQNALookFrm3.do")
-	public String messageQNALookFrm3() {
-		return "manager/messageQNALookFrm3";
+	
+	
+	@GetMapping("manager/messageQNALookFrmInfo.do")
+	public String messageQNALookFrmInfo() {
+		
+		return "manager/messageQNALookFrmInfo";
 	}
 	
+	@GetMapping("manager/boardComplete.do")
+	public String messageQNALookFrm3(FreeBoardVO fVO, Model model ) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean boardFlag = ms.addFreeBoard(fVO);
+		model.addAttribute("boardFlag", boardFlag);
+		return "manager/boardComplete";
+	}
 
 	
 }

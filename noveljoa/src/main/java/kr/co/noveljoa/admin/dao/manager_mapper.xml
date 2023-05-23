@@ -136,10 +136,15 @@ delete from comments where comment_num=#{ comment_num }
 </delete>
 
 <select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain">
-		 select BOARD_NUM, m.name as uname, TITLE, MAKE, VIEWS
+		 select BOARD_NUM, m.id as id, TITLE, MAKE, VIEWS
 		 from board b
 		 inner join member m on b.NUM_MEMBER = m.NUM_MEMBER
 </select>
+
+<insert id="insertBoard" parameterType="kr.co.noveljoa.admin.vo.FreeBoardVO">
+	 insert into board (board_num, num_member, title, detail, make)
+			values (board_seq.nextval, #{ num_member }, #{ title }, #{ detail }, sysdate )
+</insert>
 
 
   
