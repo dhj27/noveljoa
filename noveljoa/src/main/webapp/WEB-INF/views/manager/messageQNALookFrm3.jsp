@@ -4,41 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.104.2">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-<meta name="next-head-count" content="2" />
-<link rel="preconnect" href="https://fonts.gstatic.com"
-	crossorigin="anonymous" />
-<link rel="stylesheet"
-	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
-<link rel="preload"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	as="style" />
-<link rel="stylesheet"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	data-n-g="" />
-<link rel="stylesheet" type="text/css"
-	href="/noveljoa/_next/static/css/login.css" />
-<link rel="canonical" href="dashboard.js">
-<link href="bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title></title>
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link href="bootstrap.min.css" rel="stylesheet">
 
-<script src="bootstrap.bundle.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-	integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-	crossorigin="anonymous"></script>
-
-<!-- jQuery CDN 시작 -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- jQuery CDN 끝 -->
-<script type="text/javascript">
+      <!-- jQuery CDN 시작 -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     <!-- jQuery CDN 끝 -->
+      <script type="text/javascript">
       $(function(){
     	  /* globals Chart:false, feather:false */
     	  (() => {
@@ -99,232 +78,121 @@
 	text-align: center;
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
+	
+   
+  }
+  
+        .nav-item {
+   margin-left: 150px; font-size: 25px; 
+   
+  }
 }
 </style>
-<!-- Custom styles for this template -->
-<link href="dashboard.css" rel="stylesheet">
 </head>
 
 
+
 <body>
+ <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+<a
+			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
+			href="/noveljoa/home/main.jsp"><img class="object-contain"
+			width="157" height="60" src="/noveljoa/_next/static/images/logo.png"
+			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
+			alt="소설조아 logo" /></a>
 
-	<div id="__next" data-reactroot="">
-		<div
-			style="display: none; background-color: canvas; color-scheme: light"></div>
-		<div class="lightMode h-full">
-			<div class="flex flex-col h-full">
-				<div class="z-1"></div>
+		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">홈</a></li>
+  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">랭킹</a></li>
+  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">자유게시판</a></li>
+</ul>
 
-
-
-
-				<header
-					class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-					<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
-					<button
-						class="navbar-toggler position-absolute d-md-none collapsed"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<input
-						class="form-control form-control-dark w-100 rounded-0 border-0"
-						type="text" placeholder="Search" aria-label="Search"> <a
-						class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
-						style="width: 100px; text-align: center;">검색</a>
-					<button
-						class="navbar-toggler position-absolute d-md-none collapsed"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="navbar-nav">
-						<div class="nav-item text-nowrap">
-							<a class="nav-link px-3" href="#">Sign out</a>
-						</div>
-					</div>
-				</header>
+      <div class="col-md-3 text-end">
+      <a class=""
+				href="/noveljoa/manager/manager_login.jsp"><img
+				src="/noveljoa/_next/static/images/key_black.png" width="24"
+				height="24" style="margin-right: 30px;"></a>
+				<!--  c if로 -->
+        <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->
+        <button type="button" class="btn btn-dark me-2" >로그아웃</button>
+      </div>
+      </header>
 
 
-				<div class="container-fluid">
-					<div class="row">
-						<!-- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> -->
+			 	<div class="container-fluid">
+				
+				<table  class="table table-hover table-sm">
+				<thead class="table-dark">
+				<tr>
+				<th colspan="4">제목</th>
+				</tr>
+			  </thead>
+			  
+			<tbody>
+			<tr>
+  			<th>아이디</th>
+			<td>여**</td>
+			<th>등록일</th>
+			<td>2023-05-23 21:21:29</td>
+			</tr>
+			<tr>
+			<th>조회수</th>
+			<td colspan="3">8</td>
+			</tr>
+			<tr>
+			<td colspan="4">
+			경찰 두명이 서있길래 물어보니 행사 지원이란다. 그려려니하고 보니 킥보드 안전보호구및 2인 탑승...면허? 보자고도 안한다.삼십분 보다가 물었다 행사지원이라고...그럼 위법행위인 키보드는...? 이라고 물었드만 바쁘다나 뭐라나...하...난 갸들 근처오면 신호등 없는 행단보도 건너는것도 무섭드만...차량 운전자는 서행이나 서기라도 하지...행사 지원이라서...바빠서...그런거 단속 안한단다.  무면허인지도 모르는데 면허증 제시해달라는게 몇시간 걸리나? 여긴 청주대 근처이다.킥보드 단속 바빠서?  세금 내는 국민에게 할소리냐?바쁘지않게 경찰을 없에면 되겠네 그래야 조금이나마 세금 덜 내니까.윗대가리에 
+<br /> 앉아 있으려면 대가리는 악세사리가 아니였으면 한다.통행권이 보장되야 안전하다고 본다, 뭔 개소리냐고? 밤 늦게다녀도 안전하다고 느끼듯이 낮에도 편안하게 다닐수 있게 해달라는 말이다.그리고 경찰이 벼슬도 아니고 만만해보이단 이유로 민원인들에게 강입적인 행동 많이 보인다.경찰이 참...권위가 어디 까지인지...만만해보이면 말까고 쉬워보이면 무시하네...민중의 지팡이 소리는 이제 들어갔나? 아니면 민중을 때리는 지팡이인가? 행사 운운하지말고 기본부터 지키자 그래야 국민들도 존중한다
+			</td>
+			</tr>
+			</tbody>
+		</table>
+					
+					
+							
+<form class="">
+<div class="row">
+  <div class="col-md-6">
+    <textarea class="form-control" placeholder="댓글을 작성해주세요." name="body" maxlength="500"></textarea>
+  </div>
+  <div class="col-md-6">
+    <input type="button" value="등록" class="btn btn-dark">
+  </div>
+</div>
+</form>
+		
+						
+<hr>
+<h5>댓글 리스트</h5>
+<table  class="table table-hover table-sm">
+				<thead class="table-dark">
+				<tr>
+				<th style="width: 600px">작성자 : ㅁㄴㅇ</th>
+				<th style="width: 600px">작성일 : 2023-05-23 21:21:29</th>
+				<th style="width: 150px"></th>
+				<th></th>
+				</tr>
+			  </thead>
+			  
+			<tbody>
+			<tr>
+ 			<td colspan="3"> 물어보니 행사 지야 안전어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지하다고 </td>
+ 			<td>
+ 			<input type="button" value="수정"  class="btn btn-dark">
+			<input type="button" value="삭제"  class="btn btn-dark">
+			</td>
+			</tr>
+			</tbody>
+		</table>
 
 
-						<main class="flex-1">
-
-							<div
-								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
-								<div
-									class="grid grid-cols-12 grid-rows-[auto] gap-x-12  w-full mt-32 mb-80 flex-1 desktop:mt-48 desktop:mb-0">
-									<div class="flex flex-col col-span-full">
-										<div>
-											<div class="flex items-center">
-												<div class="typo-dp3 mr-6"></div>
-												<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60"></span>
-											</div>
-											<div
-												class="flex w-full items-center justify-between border-b-1 py-16">
-												<div
-													class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0 ml-8">
-													<path fill-rule="evenodd" clip-rule="evenodd"
-														d="M7.99936 11L2.99872 6.06282L4.05259 4.99541L7.99936 8.8921L11.9461 4.99541L13 6.06282L7.99936 11Z"
-														fill="currentColor"></path>
-												</div>
-											</div>
-										</div>
-
-
-										<article
-											class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
-											<div
-												class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2"></div>
-											<div class="flex flex-1 flex-col desktop:flex-row">
-												<div
-													class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
-													<h3
-														class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
-														<div class="truncate after:inline-block after:w-0 shrink">
-															저 왜 정지됐나여;;</div>
-													</h3>
-													<div
-														class="flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0">
-														<span>아이디</span> <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
-														<span>작성일</span> <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
-														<span>조회수</span>
-													</div>
-												</div>
-												<div class="flex justify-center items-center">
-													<button style="height: 33px"
-														class="border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium rounded-full"
-														type="submit">삭제</button>
-												</div>
-											</div>
-										</article>
-
-
-
-										<article
-											class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
-											<div
-												class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2"></div>
-											<div
-												class="flex flex-1 flex-col justify-start overflow-hidden"
-												style="height: 400px">
-												풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈풀어주셈
-											</div>
-											<div
-												class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2"></div>
-										</article>
-									</div>
-								</div>
-							</div>
-					</div>
-
-
-					<div
-						class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 mt-32 desktop:mt-47">
-						<div class="flex flex-col flex-1"></div>
-					</div>
-
-					<div
-						class="flex flex-col my-0 mx-auto min-h-full w-full max-w-[700px] bg-subBackground text-mainText">
+					
+</div> 
 
 
 
-						<div class="flex flex-col">
-							<div
-								class="border-commentFormLine border-t-1 bg-commentTextForm p-16 desktop:rounded-3  desktop:border-1 bg-commentTextForm">
-								<div style="height: 30px">
-									<button
-										class="flex items-center cursor-pointer typo-md3-b text-subText"
-										type="button">매니저</button>
-								</div>
-
-								<form class="flex flex-col w-full">
-									<textarea placeholder="답변을 입력하세요." name="body" maxlength="500"
-										class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 min-h-[66px] border-none !bg-transparent !p-0 text-commentText"></textarea>
-									<div class="flex mt-8 w-full items-center justify-between">
-										<label class="flex typo-md3 items-start"></label>
-										<div class="flex items-center">
-											<span class="typo-x-sm"> <span
-												class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
-												<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">
-													/ 500</span>
-											</span>
-											<button
-												class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full"
-												type="submit">등록</button>
-										</div>
-									</div>
-								</form>
-							</div>
-
-						</div>
-						<div class="mt-40">
-							<div class="border-b-1 pb-8">
-								<div class="flex items-end justify-between text-14">
-									<div class="flex items-center">
-										<h2 class="typo-lg3-b mr-6 desktop:typo-lg1">답변</h2>
-										<span
-											class="typo-g-sm2 -mb-[0.2em] !desktop:typo-g-lg1 !typo-g-lg3 desktop:text-grey60"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div class="border-commentLine border-b-1 py-20 px-10">
-
-
-								<div class="flex flex-col relative text-mainText">
-									<div class="flex flex-wrap mb-8 items-center">
-										<div class="flex mb-2 items-center desktop:mb-0">
-											<span class="typo-sm1-b">매니저</span>
-										</div>
-										<div class="flex typo-sm2 items-center text-grey60 ml-16">
-											<span>작성일</span><span class="order-2 mx-4 desktop:order-none"></span>
-										</div>
-									</div>
-									<div class="typo-md2 desktop:typo-md1">
-										<div class="whitespace-pre-wrap">어쩔 내 맴 </div>
-									</div>
-									<div class="flex justify-end">
-										<button style="align-items: right;"
-											class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full"
-											type="submit">수정</button>
-										<button style="align-items: right;"
-											class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full"
-											type="submit">삭제</button>
-									</div>
-								</div>
-
-
-
-							</div>
-
-
-							<!--  		<div class="flex flex-col mb-120 shrink-0 items-center text-center">
- 		<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" class="mb-8">
- 		<path fill-rule="evenodd" clip-rule="evenodd" d="M33.8755 14.9089C33.8755 7.77953 28.2565 2 21.3251 2H14.5503C7.61898 2 2 7.77953 2 14.9089C2 22.0383 7.61898 27.8179 14.5504 27.8179H18.4061V34.1386L27.5759 26.1052C31.339 23.878 33.8755 19.6986 33.8755 14.9089ZM21.3251 3.54286C27.4281 3.54286 32.3755 8.63162 32.3755 14.9089C32.3755 19.1477 30.12 22.8455 26.7726 24.8004L26.7108 24.8365L19.9061 30.7978V26.275H14.5504C8.44741 26.275 3.5 21.1862 3.5 14.9089C3.5 8.63162 8.44741 3.54286 14.5503 3.54286H21.3251Z" fill="#CCCCCC"></path>
- 		<path d="M12.3125 15.3338C12.3125 15.9551 11.8088 16.4588 11.1875 16.4588C10.5662 16.4588 10.0625 15.9551 10.0625 15.3338C10.0625 14.7124 10.5662 14.2088 11.1875 14.2088C11.8088 14.2088 12.3125 14.7124 12.3125 15.3338Z" fill="#CCCCCC"></path>
- 		<path d="M19.0625 15.3338C19.0625 15.9551 18.5588 16.4588 17.9375 16.4588C17.3162 16.4588 16.8125 15.9551 16.8125 15.3338C16.8125 14.7124 17.3162 14.2088 17.9375 14.2088C18.5588 14.2088 19.0625 14.7124 19.0625 15.3338Z" fill="#CCCCCC"></path>
- 		<path d="M24.6875 16.4588C25.3088 16.4588 25.8125 15.9551 25.8125 15.3338C25.8125 14.7124 25.3088 14.2088 24.6875 14.2088C24.0662 14.2088 23.5625 14.7124 23.5625 15.3338C23.5625 15.9551 24.0662 16.4588 24.6875 16.4588Z" fill="#CCCCCC"></path>
- 		</svg>
- 		답변이 없습니다.<br>
- 		답변을 남겨주세요.
- 		</div> -->
-
-						</div>
-					</div>
-
-					</main>
-
-
-
-					</main>
-				</div>
-			</div>
+<script src="bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+			
 </body>
 </html>

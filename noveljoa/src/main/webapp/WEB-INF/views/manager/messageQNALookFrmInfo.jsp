@@ -122,8 +122,8 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 <a
 			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/project2/home/main.jsp"><img class="object-contain"
-			width="157" height="60" src="/project2/_next/static/images/logo.png"
+			href="/noveljoa/home/main.jsp"><img class="object-contain"
+			width="157" height="60" src="/noveljoa/_next/static/images/logo.png"
 			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
 			alt="소설조아 logo" /></a>
 
@@ -135,8 +135,8 @@
 
       <div class="col-md-3 text-end">
       <a class=""
-				href="/project2/manager/manager_login.jsp"><img
-				src="/project2/_next/static/images/key_black.png" width="24"
+				href="/noveljoa/manager/manager_login.jsp"><img
+				src="/noveljoa/_next/static/images/key_black.png" width="24"
 				height="24" style="margin-right: 30px;"></a>
 				<!--  c if로 -->
         <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->

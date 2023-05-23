@@ -185,6 +185,8 @@ public class ManagerController {
 		return "manager/messageFreeLookFrm2";
 	}
 	
+
+	
 	@GetMapping("manager/messageQNALookFrm2.do")
 	public String messageQNALookFrm2(Model model) {
 		ManagerService1 ms = new ManagerService1();
@@ -209,5 +211,9 @@ public class ManagerController {
 		return "manager/boardComplete";
 	}
 
+	@GetMapping("manager/messageQNALookFrm3.do")
+	public String messageQNALookFrm3() {
+		return "manager/messageQNALookFrm3";
+	}
 	
 }
