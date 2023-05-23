@@ -33,7 +33,7 @@ select{width: 150px;height: 25px;border-radius: 3px; background-color: #e8f0fe;b
 
 #buttonId{width: 300px; height: 40px;position: absolute; top: 300px;display: flex;justify-content: center;}
 .button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
-.button1{width:100px;height: 60%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
+.button1{width:80px;height: 60%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
 
 </style>
 <!-- jQuery CDN 시작 -->
@@ -41,8 +41,6 @@ select{width: 150px;height: 25px;border-radius: 3px; background-color: #e8f0fe;b
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
 $(function(){
-	
-	
 	$("#idChk").click(function(){
 		window.open("id_chk_dup.do","subWin","width=310,height=310");
 		 
@@ -54,9 +52,6 @@ $(function(){
 	    $(this).val("");
 	  } 
 	}); 
-	 	
-	 	
-	
 	
 	$("#email_select").change(function(){
 		if($("#email_select").val()=="self"){ //직접 입력시
@@ -69,8 +64,8 @@ $(function(){
 	});
 	
 	$("#idBtn").click(function(){
-		 if($("#name").val()=="" || $("#id").val()=="" || $("#pw").val()=="" || $("#pw_chk").val()=="" || $("#birthDate").val()==""
-			 || $("#phone").val()=="" || $("#email").val()=="" || $("#email2").val()==""){
+		 if($("#name").val()=="" || $("#id").val()=="" || $("#pw").val()=="" || $("#pw_chk").val()=="" || $("#birth").val()==""
+			 || $("#phone").val()=="" || $("#email1").val()=="" || $("#email2").val()==""){
 			 alert("빈칸을 모두 채워주세요");
 			return;
 		 }else if($("#pw").val().length < 8){
@@ -79,12 +74,69 @@ $(function(){
 		}else if($("#pw").val() != $("#pw_chk").val()){
 			alert("비밀번호와 비밀번호 확인이 다릅니다");
 			return;
+		}else if($("#emailcode").val()=="emailunCheck"){
+			alert("이메일 인증을 해주세요");
+
+		}else if($("emailcomplete").val() == "0"){
+			alert("이메일 인증 코드가 잘못되었습니다");
 		}else{
+			
 			$("#frm").submit();
+		}
+	});
+	
+	$("#emailCheck").click(function(){
+		let email = $("#email1").val()+"@"+$("#email2").val();
+		
+		$("#email").val(email);
+		
+		if($("#emailcode").val()=="emailunCheck"){
+			
+		$.ajax({
+			url : "mailCheck.do",
+			type : "post",
+			data : {"email":email},
+			dataType : "json",
+			
+			success : function(email){
+				console.log(email.code);
+				$("#emailcode").val(email.code);
+				alert("인증메일이 발송되었습니다");
+			}
+			
+		})
+		}else{
+			alert("인증메일이 발송되었습니다");
+		}
+	});
+	
+	$("#Check").click(function(){
+		if($("#emailcode").val() == $("#emailChk").val()){
+			$("emailcomplete").val("1");
 			
 		}
-		
 	});
+	
+	$("#email1").on("keydown",function(event){
+		
+	if($("#emailcode").val()!="emailunCheck"){
+		if (event.which !== 13) {
+			$("emailcomplete").val("0");
+			$("#emailcode").val("emailunCheck");
+			alert("인증코드가 초기화되었습니다. 다시 인증해주세요");
+		}
+		
+	$("#email2").change(function(){
+		$("emailcomplete").val("0");
+		$("#emailcode").val("emailunCheck");
+		alert("인증코드가 초기화되었습니다. 다시 인증해주세요");
+	
+});
+	}
+		});
+	
+	
+	
 	
 }); 
 
@@ -99,14 +151,14 @@ $(function(){
 			<div class="flex flex-col h-full">
 			
 <!-- header -->
-	<div>
+	<%-- <div>
 		<jsp:include page="../_next/header_user_logout_key.jsp"/> 
-	</div>
+	</div> --%>
 	
     <div id="wrap">
    
 
-<form action="signup.jsp" name="frm" method="post" id="frm">
+<form action="new_member3.do" name="frm" method="post" id="frm">
        <div id="container">
            <div id="frame">
             <div id="text_new" style="font-size: 50px; font-weight: bold;">회원가입</div>
@@ -126,25 +178,33 @@ $(function(){
                     <td align="center"class="td1">비밀번호 확인</td><td><input type="password" placeholder="비밀번호 확인" name="pw_chk" id="pw_chk"></td>
                 </tr> 
                 <tr>
-                    <td align="center"class="td1">생년월일</td><td><input type="date" name="birthDate" id="birthDate"></td>
+                    <td align="center"class="td1">생년월일</td><td><input type="date" name="birth" id="birth"></td>
                 </tr>
                 <tr>
                     <td align="center"class="td1">전화번호 (-없이)</td><td><input type="text" placeholder="전화번호" name="phone" id="phone"></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">이메일</td><td><input type="text" placeholder="이메일" name="email" id="email"> @ 
-                    <input type="text" id="email2" name="email2">
+                    <td align="center"class="td1">이메일</td><td><input type="text" placeholder="이메일" name="email1" id="email1"> @ 
+                    <input type="text" id="email2" name="email2"><input type="hidden" value="" id="email">
                         <select id="email_select">
                         <option value="self">직접입력</option>
                         <option value="naver.com">naver</option>
                         <option value="daum.net">daum</option>
-                        <option value="gmail.com">gmail</option>
-                    </select></td>
+                        <option value="gmail.com">gmail</option><!-- 히든을 사용하여 이메일 인증을 하면 어떨까  -->
+                    </select>
+                     <input type="button" class="button1" id = "emailCheck" value="인증" style='cursor:pointer'>
+                    </td>
+                </tr>
+                <tr>
+                <td>이메일 인증</td><td> <input type="text" placeholder="코드 입력" name="emailChk" id="emailChk"/>
+                 <input type="button" class="button1" id = "Check" value="인증 확인" style='cursor:pointer'>
+                <input type="hidden" value="emailunCheck" id="emailcode"/><input type="hidden" value="0" id="emailcomplete"/>
+                </td>
                 </tr>
             </table>
             <div id="buttonId">
                 <input type="button"class="button" value="확인" id = "idBtn" name="idBtn" style='cursor:pointer'>
-                <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
+                <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.do'" style='cursor:pointer'>
                 
             </div>
            </div>
@@ -156,9 +216,9 @@ $(function(){
     </div>
 </div>
 	<!-- footer -->
-	<div>
+	<%-- <div>
 		<jsp:include page="../_next/footer.jsp"/>
-	</div>
+	</div> --%>
 			</div>
 		</div>
 		<div id="modal-normal"></div>

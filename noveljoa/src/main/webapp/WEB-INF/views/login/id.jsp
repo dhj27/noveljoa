@@ -36,9 +36,6 @@
 </style>
 
 </script>
-<%
-String id=(String)request.getAttribute("id");
-%>
 </head>
 <body>
 		<div
@@ -51,7 +48,7 @@ String id=(String)request.getAttribute("id");
            <div id="frame">
             <div id="text_pass" style="font-size: 50px; font-weight: bold;">아이디 찾기</div>
                 <div id="text1">고객님의 계정은</div>
-                <div id="input_pass"><input type="text"style="width:340px;height:20px;" value="<%=id %>" disabled="disabled"></div>
+                <div id="input_pass"><input type="text"style="width:340px;height:20px;" value="${idSearch}" disabled="disabled"></div>
                 <div id="text2">입니다</div>
                 </div>
             <div id="buttonId">

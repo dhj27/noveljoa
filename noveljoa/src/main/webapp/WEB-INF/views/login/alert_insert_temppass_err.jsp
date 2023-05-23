@@ -14,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
-alert("일치하는 정보가 존재하지 않습니다");
+alert("임시비밀번호 발급 오류");
 history.back();
 </script>
 </head>

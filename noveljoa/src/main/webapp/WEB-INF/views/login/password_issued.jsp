@@ -72,7 +72,7 @@
                 비밀번호를 재설정합니다</div>
             <div id="text2">본인확인을 위해<br>
                 아이디와 전화번호, 이메일을 입력해주세요</div>
-                <form action="password_issued_dao.jsp" method="post" id="frm" name="frm">
+                <form action="reset_password.do" method="post" id="frm" name="frm">
                 <div id="idtext">아이디</div>
                 <div id="input_id">
                 <input type="text"style="width:340px;height:20px;" id="id" name="id"></div>

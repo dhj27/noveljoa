@@ -1,5 +1,3 @@
-<%@page import="LoginDAO.LoginDAO"%>
-<%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,16 +22,43 @@
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
 $(function(){
+	let id;
 	$("#btn").click(function(){
-		
-		
-		$("#frm").submit(); //스스로에게 POST방식으로 값 전달 request.getParameter 사용하기 위해. get도 가능하지만 보안상 이유
-	});
-});
+		id=$("#id").val();
+		let idKey = 'id';
+		if(id.length < 6){
+			$("#select_result").text("6자 이상으로 작성해주세요.");
+		}else{
+			
+		$.ajax({
+			url:"id_chk.do",
+			type : "post",
+			data: {"id" :id},
+			dataType : "json",
+			
+			success : function(data){
+				if(data.idCheck == null){
+					$("#select_result").html("<a href='#void' id='sendId'>"+id+"</a>는 사용 가능한 아이디입니다. 사용하시겠습니까?");
+				}else{
+					$("#select_result").html("중복된 아이디입니다. 다른 아이디를 입력해주세요");
+				}
+				
+				
+	}});
+			
+		}
 
-function sendId(id){
-	opener.window.document.frm.id.value=id;
-	self.close();
+
+	});
+	
+	$(document).on("click", "#sendId", function() {
+		opener.window.document.frm.id.value=id;
+	window.close();
+	});
+	});
+	
+function sendId(){
+	
 }//sendId
 </script>
 
@@ -44,7 +69,7 @@ function sendId(id){
 <br/>
 <h1><label>아이디 중복 확인</label></h1><br/>
 </div>
-<form action="id_chk_dup.jsp" method="post" id="frm">
+<form id="frm">
 <div id="body">
 <label>아이디</label>
 <input type="text" id="id"  name="id" class="inputBox" autofocus="autofocus" style="width:150px"/>
@@ -52,39 +77,9 @@ function sendId(id){
 </div>
 </form>
 </div>
-<%
-String id=request.getParameter("id");
-if("POST".equals(request.getMethod())&& !"".equals(id)){
-	if(id.length() <7){
-		%>
-		7자 이상으로 작성해주세요
-		<%
-	}else{
-	LoginDAO lDAO = new LoginDAO();
-	try{
-		/* DataEncrypt de = new DataEncrypt("FsRt4SfY4US0IWtK4JPJsw==");
-		String id_de = de.encryption(id);
-	String resultId=lDAO.selectIdCheck(id_de); */
-	String resultId=lDAO.selectIdCheck(id);
-	
-%>
-<div id="select_result">
-<%
-if("".equals(resultId)){ //데이터베이스 검색 결과 아이디 없음%>
-하신 <span style="font-weight: bold; color: #0142BA;font-size: 20px" ><%=id %></span>는 사용 가능합니다<br/>
-<a href="#void" onclick="sendId('<%=id %>')">아이디 사용</a>
-	
-<%}else{ // 아이디가 중복일 경우%>
- 중복된 아이디입니다
-<%}
-}catch(SQLException e){
-	e.printStackTrace();
-	%>
-	데이터 베이스 접근 오류
-<%}%>
 
-<%}
-	} %>
+<div id="select_result">
+
 </div>
 </body>
 </html>

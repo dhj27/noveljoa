@@ -14,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
-alert("일치하는 정보가 존재하지 않습니다");
+alert("회원가입 오류(데이터베이스에 저장 x)");
 history.back();
 </script>
 </head>

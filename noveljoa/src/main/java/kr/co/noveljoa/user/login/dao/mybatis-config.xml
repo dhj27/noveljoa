@@ -19,5 +19,7 @@
   </environments>
   <mappers>
     <mapper resource="kr/co/noveljoa/user/login/dao/select_mapper1.xml"/>
+    <mapper resource="kr/co/noveljoa/user/login/dao/update_mapper1.xml"/>
+    <mapper resource="kr/co/noveljoa/user/login/dao/insert_mapper1.xml"/>
   </mappers>
 </configuration>

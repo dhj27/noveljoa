@@ -53,7 +53,7 @@ font-size: 25px; font-weight: bold; text-align: center;line-height: 2;}
 			
 <!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_logout_key.jsp"/> 
+		<jsp:include page="../../../_next/header_user_logout_key.jsp"/>
 	</div>
 	
     <div id="wrap">
@@ -70,7 +70,7 @@ font-size: 25px; font-weight: bold; text-align: center;line-height: 2;}
                 </div>
 
             <div id="buttonId">
-                <input type="button"class="button" value="확인" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
+                <input type="button"class="button" value="확인" onclick="window.location.href='loginpage.do'" style='cursor:pointer'>
             </div>
            </div>
        </div>
@@ -80,7 +80,7 @@ font-size: 25px; font-weight: bold; text-align: center;line-height: 2;}
 </div>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 			</div>
 		</div>

@@ -76,15 +76,15 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
 		<div class="lightMode h-full">
 			<div class="flex flex-col h-full">
 <!-- header -->
-	<div>
+	<%-- <div>
 		<jsp:include page="../_next/header_user_logout_key.jsp"/> 
-	</div>
+	</div> --%>
 	
     <div id="wrap">
         <div id="header">
 
         </div>
-        <form action="login_dao.jsp" name="frm" id="frm" method="post" >
+        <form action="login_dao.do" name="frm" id="frm" method="post" >
         <div id="container">
             <div id="zoa" style="font-size: 40px; font-weight: bold; text-align: center;">소설조아</div>
             <div id="loginId">
@@ -101,7 +101,7 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
                 <input type="button" class="input_button" id="loginBtn" value="로그인" style='cursor:pointer'>
                </div>
                <div id="newmember">
-                <a href="signup.do" >회원가입</a>
+                <a href="signup.do">회원가입</a>
               
                </div>
                <div id="idpass">
@@ -119,9 +119,9 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
     </div>
 
 	<!-- footer -->
-	<div>
+	<%-- <div>
 		<jsp:include page="../_next/footer.jsp"/>
-	</div>
+	</div> --%>
 			</div>
 		</div>
 		<div id="modal-normal"></div>
