@@ -15,12 +15,23 @@
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
 $(function(){
-	alert("소설이 비공개되었습니다.");
-	history.back();
 });
 </script>
 </head>
 <body>
-
+<c:choose>
+  <c:when test="${privateFlag}">
+    <script type="text/javascript">
+	    alert("해당 소설이 비공개로 전환되었습니다.");
+	    history.back();
+    </script>
+  </c:when>
+  <c:otherwise>
+    <script type="text/javascript">
+	    alert("해당 번호의 소설은 존재하지 않습니다.");
+	    history.back();
+    </script>
+  </c:otherwise>
+</c:choose>
 </body>
 </html>

@@ -131,9 +131,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="messageBoardFrm.do">
+            <a class="nav-link" href="messageQNABoardFrm.do">
               <span data-feather="clipboard" class="align-text-bottom"></span>
-              Message Board
+              Q&A Board
             </a>
           </li>
           <li class="nav-item">
@@ -171,7 +171,7 @@
           </thead>
           <c:if test="${empty novelList }">
 			<tr>
-			<td colspan="6"><c:out value="${param.id }"/>해당 아이디의 소설이 존재하지 않습니다.</td>
+			<td colspan="6"><c:out value="${param.id }"/>소설이 존재하지 않습니다.</td>
          	</tr>
           </c:if>
          <c:forEach var="novel" items="${novelList}">
@@ -187,7 +187,6 @@
           
         </table>
       </div>
-      
     </main>
   </div>
 </div>

@@ -101,7 +101,7 @@
   </button>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="managerLogout.do">Sign out</a>
     </div>
   </div>
 </header>
@@ -130,9 +130,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="messageBoardFrm.do">
+            <a class="nav-link active" href="messageQNABoardFrm.do">
               <span data-feather="clipboard" class="align-text-bottom"></span>
-              Message Board
+              Q&A Board
             </a>
           </li>
           <li class="nav-item">
@@ -149,25 +149,7 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Message Board</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-
-                    <div class="btn-group">
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <span data-feather="list" class="align-text-bottom"></span>
-            Q&A게시판
-          </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="/noveljoa/manager/messageBoardFrm.do">의견게시판</a></li>
-       <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="/noveljoa/manager/messageFreeBoardFrm.do">자유게시판</a></li>
-       <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="/noveljoa/manager/messageQNABoardFrm.do">Q&A게시판</a></li>
-  </ul>
-</div>
-          
-          
-        </div>
+        <h1 class="h2">Q&A Board</h1>
       </div>
 
       <div class="table-responsive">
@@ -182,123 +164,24 @@
               <th scope="col">답변여부</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
-          </tbody>
+          <c:if test="${empty qnaList }">
+			<tr>
+			<td colspan="6"><c:out value="${param.id }"/>소설이 존재하지 않습니다.</td>
+         	</tr>
+          </c:if>
+         <c:forEach var="qna" items="${qnaList}">
+			<tr>
+			<td><input type="button" class="btn btn-dark btn-sm" value="${qna.novelNum }" onclick="location.href='messageQNALookFrm.do?boardNum=${qna.board}'"></td>
+			<td><c:out value="${qna.novelTitle }"/></td>
+			<td><c:out value="${qna.id }"/></td>
+			<td><c:out value="${qna.likeCnt }"/></td>
+			<td><c:out value="${qna.reportCnt }"/></td>
+			<td><c:out value="${qna.createDate }"/></td>
+			</tr>
+		</c:forEach>
+          
         </table>
       </div>
-      
     </main>
   </div>
 </div>

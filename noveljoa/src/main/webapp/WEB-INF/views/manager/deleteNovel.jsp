@@ -15,12 +15,23 @@
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
   $(function(){
-    alert("소설이 삭제되었습니다.");
-    window.location.href = "managerNovelFrm.do";
   });
 </script>
 </head>
 <body>
-
+<c:choose>
+  <c:when test="${deleteFlag}">
+    <script type="text/javascript">
+	    alert("해당 소설이 삭제되었습니다.");
+	    location.href = "managerNovelFrm.do";
+    </script>
+  </c:when>
+  <c:otherwise>
+    <script type="text/javascript">
+	    alert("해당 번호의 소설은 존재하지 않습니다.");
+	    history.back();
+    </script>
+  </c:otherwise>
+</c:choose>
 </body>
 </html>
