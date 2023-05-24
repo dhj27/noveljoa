@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mylikeMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
+
+	<select id="selectMyLike" parameterType="kr.co.noveljoa.user.mylike.MyLikeVO" resultType="kr.co.noveljoa.user.mylike.MyLikeDomain">
+		select n.photo, n.title, m.id, n.num_novel, n.age, n.end, e.num_episodes, e.max_make 
+		from member m	
+		join novel n ON n.num_member = m.num_member 
+		join liken l ON n.num_novel = l.num_novel 
+		LEFT JOIN (	
+			SELECT num_novel, COUNT(*) AS num_episodes, MAX(make) AS max_make	
+			FROM episode	
+			GROUP BY num_novel	
+		) e ON n.num_novel = e.num_novel	
+		WHERE l.num_member = #{num_member} 
+		<if test="search != null and search != ''">
+			AND n.title LIKE '%'||#{search}||'%'
+		</if>
+		order by e.max_make
+		<if test="type=0">
+			DESC
+		</if>
+	</select>
+	
+	<delete id="deleteMyLike" parameterType="kr.co.noveljoa.user.mylike.MyLikeVO">
+		delete from liken 
+		where num_member=#{num_member} and num_novel=#{num_novel}
+	</delete>
+
+</mapper>

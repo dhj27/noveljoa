@@ -16,6 +16,10 @@
 	<bean id="mns" class="kr.co.noveljoa.user.mynovel.MyNovelService">
 		<constructor-arg ref="mnDAO"/>
 	</bean>
+	<bean id="mlDAO" class="kr.co.noveljoa.user.mylike.MyLikeDAO"/>
+	<bean id="mls" class="kr.co.noveljoa.user.mylike.MyLikeService">
+		<constructor-arg ref="mlDAO"/>
+	</bean>
 	<bean id="nnDAO" class="kr.co.noveljoa.user.newnovel.NewNovelDAO"/>
 	<bean id="nns" class="kr.co.noveljoa.user.newnovel.NewNovelService">
 		<constructor-arg ref="nnDAO"/>
