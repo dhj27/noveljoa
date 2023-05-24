@@ -147,6 +147,75 @@ delete from comments where comment_num=#{ comment_num }
 </insert>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- /////////////////////////eh//////////////////////////// -->
+<select id="selectAllNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain"> 
+SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
+    (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
+    (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
+FROM novel n
+LEFT JOIN member m ON n.num_member = m.num_member
+ORDER BY novelNum asc
+</select>
+
+<select id="searchNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain" parameterType="String"> 
+SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
+    (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
+    (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
+FROM novel n
+LEFT JOIN member m ON n.num_member = m.num_member
+ORDER BY novelNum asc
+where id = #{id}
+</select> 
+
+<select id="selectReport" resultType="kr.co.noveljoa.admin.domain.MNovelLookDomain" parameterType="Integer"> 
+select n.title as novelTitle, n.photo as thumbnail, n.story as intro, n.age as ageAble, m.id as id,
+	(select reason_code from report where num_novel = n.num_novel group by reason_code
+	order by count(*) desc fetch first 1 row only) as reportReason,
+	(select count(*) from report where num_novel = n.num_novel) as reportCnt, n.num_novel as novelNum
+from novel n join member m on n.num_member = m.num_member left join report r on n.num_novel = r.num_novel
+where n.num_novel = #{num_novel} group by n.title, n.photo, n.story, n.age, m.id, n.num_novel
+</select>
+
+
+<delete id="deleteNovel" parameterType="Integer">
+delete from novel where num_novel = #{novelNum}
+</delete>
+
+<update id="updatePublic" parameterType="Integer">
+UPDATE novel
+SET open = 1
+WHERE num_novel = #{novelNum}
+</update>
+
+<update id="updatePrivate" parameterType="Integer">
+UPDATE novel
+SET open = 0
+WHERE num_novel = #{novelNum}
+</update>
+
+
+
+
+
+
   
   
 </mapper>
