@@ -75,11 +75,11 @@ public boolean removeComment(int comment_num) {
 	return cnt==1;
 }//removeComment
 
-public List<FreeBoardDomain> printFreeBoard() {
+public List<FreeBoardDomain> printFreeBoard(int board_num) {
 	List<FreeBoardDomain> fbList = null;
 	ManagerDAO1 mDAO = new ManagerDAO1();
 	try {
-		fbList = mDAO.selectFreeBoard();
+		fbList = mDAO.selectFreeBoard(board_num);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}

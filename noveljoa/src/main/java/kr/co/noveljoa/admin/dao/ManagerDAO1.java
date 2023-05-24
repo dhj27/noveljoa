@@ -152,13 +152,13 @@ public class ManagerDAO1 {
 		return cnt;
 	}
 	
-	public List<FreeBoardDomain> selectFreeBoard() throws SQLException {
+	public List<FreeBoardDomain> selectFreeBoard(int board_num) throws SQLException {
 		List<FreeBoardDomain> fbList = null;  
 		//1. MyBatis Handler 얻기
 		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		//2. 쿼리 수행 후 결과 얻기
-		fbList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoard");
+		fbList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoard", board_num);
 		
 		ss.commit();
 		//3. MyBatis Handler 닫기

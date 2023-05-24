@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -29,7 +30,6 @@ import kr.co.noveljoa.admin.vo.UpdateMemVO;
 @SessionAttributes({"mFlag"})
 @Controller
 public class ManagerController {
-	
 	@PostMapping("/manager/insert_frm_process.do")
 	public String managerInsertFrm(InsertMVO IMVO, Model model){
 		ManagerLoginService mlService = new ManagerLoginService();
@@ -188,9 +188,14 @@ public class ManagerController {
 
 	
 	@GetMapping("manager/messageQNALookFrm2.do")
-	public String messageQNALookFrm2(Model model) {
+	public String messageQNALookFrm2(@RequestParam(name = "board_num", required = false) Integer board_num, Model model) {
+		//기본자료형 int는 null로 선언할 수 없다.
+		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
+		if (board_num == null) {
+			board_num = 0;
+		  }
 		ManagerService1 ms = new ManagerService1();
-		List<FreeBoardDomain> fdList =  ms.printFreeBoard();
+		List<FreeBoardDomain> fdList =  ms.printFreeBoard(board_num);
 		model.addAttribute("freeBoardData", fdList);
 		
 		return "manager/messageQNALookFrm2";
@@ -204,16 +209,31 @@ public class ManagerController {
 	}
 	
 	@GetMapping("manager/boardComplete.do")
-	public String messageQNALookFrm3(FreeBoardVO fVO, Model model ) {
+	public String boardComplete(FreeBoardVO fVO, Model model ) {
 		ManagerService1 ms = new ManagerService1();
 		Boolean boardFlag = ms.addFreeBoard(fVO);
 		model.addAttribute("boardFlag", boardFlag);
 		return "manager/boardComplete";
 	}
-
+	
 	@GetMapping("manager/messageQNALookFrm3.do")
-	public String messageQNALookFrm3() {
+	public String messageQNALookFrm3(@RequestParam(name = "board_num", required = false) Integer board_num, Model model) {
+		//기본자료형 int는 null로 선언할 수 없다.
+		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
+		if (board_num == null) {
+			board_num = 0;
+		  }
+		ManagerService1 ms = new ManagerService1();
+		List<FreeBoardDomain> fdList =  ms.printFreeBoard(board_num);
+		model.addAttribute("freeBoardData2", fdList.get(0));
+		
 		return "manager/messageQNALookFrm3";
+	}
+	
+	@GetMapping("manager/example.do")
+	public String example() {
+		
+		return "manager/example";
 	}
 	
 }

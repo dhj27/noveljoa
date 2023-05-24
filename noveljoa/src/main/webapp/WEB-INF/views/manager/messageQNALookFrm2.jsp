@@ -132,7 +132,7 @@
 
     <main class="">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">자유게시판</h1>
+        <h1 class="h2">QNA 게시판</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
 
                     <!--  c if로 -->
@@ -145,7 +145,7 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-hover table-sm">
+        <table class="table table-hover table-sm" >
            <thead class="table-dark">
             <tr>
               <th scope="col" style="width: 80px">NO</th>
@@ -156,10 +156,11 @@
             </tr>
           </thead>
           <tbody>
+         
            <c:forEach var="fdata" items="${ freeBoardData  }">
             <tr>
               <td><a>${  fdata.board_num }</a></td>
-              <td><a href="#">${  fdata.title }</a></td>
+              <td><a href="messageQNALookFrm3.do?board_num=${ fdata.board_num  }">${  fdata.title }</a></td>
               <td><a>${  fdata.id }</a></td>
               <td><a>${  fdata.make }</a></td>
               <td><a>${  fdata.views }</a></td>

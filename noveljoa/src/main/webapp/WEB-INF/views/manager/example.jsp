@@ -124,24 +124,24 @@
 				<table  class="table table-hover table-sm">
 				<thead class="table-dark">
 				<tr>
-				<th colspan="4">제목 : ${  freeBoardData2.title }</th>
+				<th colspan="4">d<%-- 제목 : ${  freeBoardData2.title } --%></th>
 				</tr>
 			  </thead>
 			  
 			<tbody>
 			<tr>
   			<th>아이디</th>
-			<td>${  freeBoardData2.id }</td>
+			<td>d<%-- ${  freeBoardData2.id } --%></td>
 			<th>등록일</th>
-			<td>${  freeBoardData2.make }</td>
+			<td>d<%-- ${  freeBoardData2.make } --%></td>
 			</tr>
 			<tr>
 			<th>조회수</th>
-			<td colspan="3">${  freeBoardData2.views }</td>
+			<td colspan="3"><%-- ${  freeBoardData2.views } --%></td>
 			</tr>
 			<tr>
 			<td colspan="4">
-			${  freeBoardData2.detail }
+			<%-- ${  freeBoardData2.detail } --%>
 			</td>
 			</tr>
 			</tbody>

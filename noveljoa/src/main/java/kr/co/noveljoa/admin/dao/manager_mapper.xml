@@ -131,19 +131,25 @@ select comment_num, id, title, detail, c.make as make
  </where>
 </select>
 
-<delete id="deleteComment" parameterType="int">
+<delete id="deleteComment" parameterType="integer">
 delete from comments where comment_num=#{ comment_num }
 </delete>
 
-<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain">
-		 select BOARD_NUM, m.id as id, TITLE, MAKE, VIEWS
+<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain" parameterType="integer">
+		 select board_num, m.id as id, title, make, views, detail
 		 from board b
-		 inner join member m on b.NUM_MEMBER = m.NUM_MEMBER
+		 inner join member m on b.num_member = m.num_member
+		 <where>
+ <if test="board_num !=null and board_num != ''">
+ board_num=#{ board_num }
+ </if>
+ </where>
 </select>
 
+
 <insert id="insertBoard" parameterType="kr.co.noveljoa.admin.vo.FreeBoardVO">
-	 insert into board (board_num, num_member, title, detail, make)
-			values (board_seq.nextval, #{ num_member }, #{ title }, #{ detail }, sysdate )
+	 insert into board (board_num, num_member, title, detail, make, views)
+			values (board_seq.nextval, #{ num_member }, #{ title }, #{ detail }, sysdate, #{ views } )
 </insert>
 
 

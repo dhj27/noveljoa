@@ -7,9 +7,6 @@ public class FreeBoardVO {
 	
 	private int num_member, views;
 	private String title, detail, uid;
-	
-	
-	
 	public int getNum_member() {
 		return num_member;
 	}
@@ -45,6 +42,10 @@ public class FreeBoardVO {
 		return "FreeBoardVO [num_member=" + num_member + ", views=" + views + ", title=" + title + ", detail=" + detail
 				+ ", uid=" + uid + "]";
 	}
+	
+	
+	
+
 	
 	
 	
