@@ -12,5 +12,11 @@
 	<select id="selectCountEp" parameterType="int" resultType="int">
 	select count(*) from episode where num_novel = #{num_novel}
 	</select>
+	<select id="selectAllEp" parameterType="int" resultType="kr.co.noveljoa.user.writernovel.EpDomain">
+	select num_novel, num_episode ,title, visit, make	
+	from episode 
+	where num_novel = #{num_novel}	
+	order by num_episode desc
+	</select>
 
 </mapper>
