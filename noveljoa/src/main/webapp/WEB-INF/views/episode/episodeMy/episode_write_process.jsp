@@ -20,6 +20,10 @@
 <script type="text/javascript">
 	$(function(){
 		
+		$("#ret").click(function(){
+			location.replace("index.do");
+		});
+		
 	});//ready
 </script>
 

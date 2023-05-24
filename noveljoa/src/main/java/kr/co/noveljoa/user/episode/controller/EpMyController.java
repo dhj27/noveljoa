@@ -88,11 +88,11 @@ public class EpMyController {
 		System.out.println(epUpdateVO);
 		
 		if(result == 1) {
-			msg = "<script charset='utf-8'>alert('성공'); location.href='index.do'</script> ";
+			msg = "<script>alert(\"success\"); location.replace('index.do')</script>";
 		}else {
-			msg = "<script charset='utf-8'>alert('실패'); location.href='episode_edit.do'</script> ";
+			msg = "<script>alert('fail'); location.href='episode_edit.do'</script>";
 		}
-		
+		System.out.println(msg);
 		return msg;
 	}// editEpProcess
 	
@@ -100,16 +100,30 @@ public class EpMyController {
 	// 에피소드 삭제 : 필요한 값을 받는다.
 	@PostMapping("/episode_remove.do")
 	public String removeEp(EpCheckMyVO epCheckMyVO, Model model) {
-		//삭제작업 수행
 		
-		 int cnt=1;
-		 model.addAttribute("removeResult", cnt);
+		String msg = "";
+//		int userNum = (Integer)model.getAttribute("num_member");
+//		int novelNum = (Integer)model.getAttribute("num_novel");
+//		int epNum = (Integer)model.getAttribute("num_episode");
+		
+		epCheckMyVO.setNum_member(1);
+		epCheckMyVO.setNum_novel(1);
+		epCheckMyVO.setNum_episode(9);
+		
+		int result = ems.removeEp(epCheckMyVO);
+		
+		if(result == 1) {
+			msg="success";
+		}else {
+			msg="fail";
+		}
+		
 		return "forward:episode/episodeMy/index";
 	}// removeEp
 	
 	
 	// 에피소드 리스트창
-	//@GetMapping("")
+	@PostMapping("/episode_novel.do")
 	public String epList(Model model) { // int userNum;
 		
 		return "";
