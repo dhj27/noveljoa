@@ -4,13 +4,12 @@ import java.sql.Date;
 
 public class SignupVO {
 
-	private String name, id, pw, email;
-	private int phone;
+	private String name, id, pw, email,phone;
 	private Date birth;
 	public SignupVO() {
 		super();
 	}
-	public SignupVO(String name, String id, String pw, String email, int phone, Date birth) {
+	public SignupVO(String name, String id, String pw, String email, String phone, Date birth) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -43,10 +42,10 @@ public class SignupVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public Date getBirth() {

@@ -112,8 +112,11 @@ $(function(){
 	
 	$("#Check").click(function(){
 		if($("#emailcode").val() == $("#emailChk").val()){
+			alert("이메일이 인증되었습니다");
 			$("emailcomplete").val("1");
 			
+		}else{
+			alert("인증코드가 옳바르지않습니다");
 		}
 	});
 	
@@ -185,7 +188,7 @@ $(function(){
                 </tr>
                 <tr>
                     <td align="center"class="td1">이메일</td><td><input type="text" placeholder="이메일" name="email1" id="email1"> @ 
-                    <input type="text" id="email2" name="email2"><input type="hidden" value="" id="email">
+                    <input type="text" id="email2" name="email2"><input type="hidden" value="" id="email" name="email">
                         <select id="email_select">
                         <option value="self">직접입력</option>
                         <option value="naver.com">naver</option>
