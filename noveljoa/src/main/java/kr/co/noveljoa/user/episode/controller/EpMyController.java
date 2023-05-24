@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.noveljoa.user.episode.service.EpMyService;
 import kr.co.noveljoa.user.episode.vo.EpCheckMyVO;
@@ -33,7 +32,7 @@ public class EpMyController {
 //		String novelTitle = (String) model.getAttribute("novelTitle");
 		
 		model.addAttribute("userNum", 1);
-		model.addAttribute("novelNum", 5);
+		model.addAttribute("novelNum", 1);
 		model.addAttribute("novelTitle", 5);
 		
 		return "episode/episodeMy/episode_write";
@@ -56,7 +55,7 @@ public class EpMyController {
 	}// addEpProcess
 	
 	
-	// 에피소드 수정창c
+	// 에피소드 수정창 보이기
 	@PostMapping("/episode_edit.do")
 	public String editEpFrm(EpCheckMyVO epCheckMyVO, Model model) { 
 		
@@ -65,12 +64,12 @@ public class EpMyController {
 //		int epNum = (Integer)model.getAttribute("num_episode");
 		
 		epCheckMyVO.setNum_member(1);
-		epCheckMyVO.setNum_novel(1);
-		epCheckMyVO.setNum_episode(9);
+		epCheckMyVO.setNum_novel(5);
+		epCheckMyVO.setNum_episode(28);
 		
 		model.addAttribute("chkVO", epCheckMyVO);
 		
-		System.out.println(epCheckMyVO);
+		System.out.println("edit " + epCheckMyVO);
 		
 		model.addAttribute("showEpDetail", ems.searchEp(epCheckMyVO));
 		return "episode/episodeMy/episode_edit";
@@ -78,22 +77,26 @@ public class EpMyController {
 	
 	
 	// 에피소드 수정 프로세스
-	@ResponseBody
 	@PostMapping("/episode_edit_process.do")
 	public String editEpProcess(EpUpdateVO epUpdateVO, Model model) {
-				
 		int result = ems.editEp(epUpdateVO);
+		
 		String msg = "";
+		String url = "";
 				
 		System.out.println(epUpdateVO);
 		
 		if(result == 1) {
-			msg = "<script>alert(\"success\"); location.replace('index.do')</script>";
+			msg = "에피소드 수정 성공";
+			url= "index.do";
 		}else {
-			msg = "<script>alert('fail'); location.href='episode_edit.do'</script>";
+			msg = "에피소드 수정 실패";
+			url= "episode_edit.do";
 		}
-		System.out.println(msg);
-		return msg;
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "episode/episode_process";
 	}// editEpProcess
 	
 	
@@ -101,24 +104,36 @@ public class EpMyController {
 	@PostMapping("/episode_remove.do")
 	public String removeEp(EpCheckMyVO epCheckMyVO, Model model) {
 		
-		String msg = "";
+//		System.out.println(model.getAttribute("chkVO.num_novel"));
 //		int userNum = (Integer)model.getAttribute("num_member");
 //		int novelNum = (Integer)model.getAttribute("num_novel");
 //		int epNum = (Integer)model.getAttribute("num_episode");
-		
-		epCheckMyVO.setNum_member(1);
-		epCheckMyVO.setNum_novel(1);
-		epCheckMyVO.setNum_episode(9);
+//		
+//		System.out.println("+++++++++++++++++++++" +userNum+"/"+novelNum+"/"+epNum);
+//		
+//		epCheckMyVO.setNum_member(userNum);
+//		epCheckMyVO.setNum_novel(novelNum);
+//		epCheckMyVO.setNum_episode(epNum);
 		
 		int result = ems.removeEp(epCheckMyVO);
 		
+		String msg = "";
+		String url = "";
+		
+		System.out.println(epCheckMyVO);
+		
 		if(result == 1) {
-			msg="success";
+			msg = "에피소드 삭제 성공";
+			url= "index.do";
 		}else {
-			msg="fail";
+			msg = "에피소드 삭제 실패";
+			url= "episode_edit.do";
 		}
 		
-		return "forward:episode/episodeMy/index";
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "episode/episode_process";
 	}// removeEp
 	
 	
