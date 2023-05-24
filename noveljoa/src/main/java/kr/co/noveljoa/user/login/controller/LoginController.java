@@ -1,5 +1,7 @@
 package kr.co.noveljoa.user.login.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.json.simple.JSONObject;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.service.LoginService;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -49,6 +53,34 @@ public class LoginController {
 	public String signupPage() {
 		
 		return "login/new_member2";
+	}
+	@PostMapping("homepage.do")
+	public String login(LoginVO lVO,Model model) {
+	
+		List<LoginDomain> list = new ArrayList<LoginDomain>();
+		
+		list = ls.login(lVO);
+		
+		if(list.isEmpty()) {
+			return "login/alert_noneid";
+		}else {	
+			 String id = null;
+		     String name = null;
+		     String photo = null;
+		     int numMember = 0;
+			for(LoginDomain LD : list) {
+				id = LD.getId();
+				name = LD.getName();
+				photo = LD.getPhoto();
+				numMember = LD.getNum_member();
+			}
+			model.addAttribute("id", id);
+			model.addAttribute("name", name);
+			model.addAttribute("photo", photo);
+			model.addAttribute("num_member", numMember);
+		
+		return "home/main";
+		}
 	}
 
 	@PostMapping("id_search_check.do")

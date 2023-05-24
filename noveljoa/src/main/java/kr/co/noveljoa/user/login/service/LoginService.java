@@ -1,10 +1,15 @@
 package kr.co.noveljoa.user.login.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.noveljoa.user.login.dao.LoginDAO;
+import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -68,6 +73,15 @@ public class LoginService {
 		code = lDAO.emailCheck(email);
 		
 		return code;
+	}
+	
+	public List<LoginDomain> login(LoginVO lVO) {
+		
+		List<LoginDomain> list = new ArrayList<LoginDomain>();
+		
+		list = lDAO.login(lVO);
+		
+		return list;
 	}
 	
 	

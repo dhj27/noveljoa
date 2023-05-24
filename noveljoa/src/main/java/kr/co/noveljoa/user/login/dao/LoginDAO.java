@@ -1,6 +1,8 @@
 package kr.co.noveljoa.user.login.dao;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -14,7 +16,9 @@ import javax.mail.internet.MimeMessage;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -149,6 +153,25 @@ public class LoginDAO {
 		}
 		
 		return code;
+		
+	}
+	
+	public List<LoginDomain> login(LoginVO lVO) {
+		
+		List<LoginDomain> list = new ArrayList<LoginDomain>();
+		
+		//Handler
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		list = ss.selectList("login", lVO);
+		//3. MyBatis Handler 
+		if(ss != null) {ss.close();}
+		
+		return list;
+		
+		
+	}
+	
+	public static void main(String[] args) {
 		
 	}
 }

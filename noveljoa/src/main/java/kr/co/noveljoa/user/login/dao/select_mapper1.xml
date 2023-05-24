@@ -19,4 +19,9 @@ select	id
 from 	member
 where 	id = #{id}
 </select>
+<select id="login" resultType="kr.co.noveljoa.user.login.domain.LoginDomain" parameterType="kr.co.noveljoa.user.login.vo.LoginVO">
+select	num_member, id, name, photo
+from 	member
+where 	id = #{id} and pw = #{pw}
+</select>
 </mapper>
