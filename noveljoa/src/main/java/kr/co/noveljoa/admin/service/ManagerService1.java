@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
+import kr.co.noveljoa.admin.domain.BoardCommentDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.vo.BoardCommentVO;
 import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
@@ -92,6 +94,26 @@ public boolean addFreeBoard(FreeBoardVO fbVO) {
 	int cnt = mDAO.insertFreeBoard(fbVO);
 	
 	return cnt==1;
-}//removeComment
+}//addFreeBoard
+
+public List<BoardCommentDomain> printFreeBoardComment(int board_num) {
+	List<BoardCommentDomain> bclist = null;
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	try {
+		bclist = mDAO.selectBoardComment(board_num);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return bclist;
+}//BoardCommentDomain
+
+
+public boolean addBoardComment(BoardCommentVO bcVO) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.insertBoardComment(bcVO);
+	
+	return cnt==1;
+}//addBoardComment
 
 }

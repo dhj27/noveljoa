@@ -20,10 +20,17 @@
       <script type="text/javascript">
       $(function(){
     	  /* globals Chart:false, feather:false */
+    	   
     	  (() => {
     	    'use strict'
     	    feather.replace({ 'aria-hidden': 'true' })
-    	  })()
+    	  })();
+    	  
+    	 $("#cBtn").click(function(){
+    		 $("#cFrm").submit();
+    	 }); 
+    	  
+    	  
       });
       </script>
 
@@ -124,7 +131,7 @@
 				<table  class="table table-hover table-sm">
 				<thead class="table-dark">
 				<tr>
-				<th colspan="4">제목 : ${  freeBoardData2.title }</th>
+				<th colspan="4">제목 : ${  freeBoardData2.title } </th>
 				</tr>
 			  </thead>
 			  
@@ -149,13 +156,16 @@
 					
 					
 							
-<form class="">
+<form class="" id="cFrm" action="messageQNALookFrm3_process.do">
 <div class="row">
   <div class="col-md-6">
-    <textarea class="form-control" placeholder="댓글을 작성해주세요." name="body" maxlength="500"></textarea>
+  <!-- 임시 벨류값에 세션에 저장된 아이디 값 넣어야함 -->
+  <input type="hidden" name="board_num" value="${  param.board_num }">
+  <input type="hidden" name="num_member" value="3">
+    <textarea class="form-control" placeholder="댓글을 작성해주세요." name="detail" maxlength="500"></textarea>
   </div>
   <div class="col-md-6">
-    <input type="button" value="등록" class="btn btn-dark">
+    <input type="button" value="등록" class="btn btn-dark" id="cBtn">
   </div>
 </div>
 </form>
@@ -164,40 +174,25 @@
 <hr>
 <h5>댓글 리스트</h5>
 <table  class="table table-hover table-sm">
+<c:forEach var="freeBoardcmt" items="${  freeBoardCMTData }" >
 				<tr class="table-secondary">
-				<th style="width: 600px">작성자 : ㅁㄴㅇ</th>
-				<th style="width: 600px">작성일 : 2023-05-23 21:21:29</th>
+				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }</th>
+				<th style="width: 600px">작성일 : ${  freeBoardcmt.make }</th>
 				<th style="width: 150px"></th>
 				<th></th>
 				</tr>
 			<tr>
- 			<td colspan="3"> 물어보니 행사 지야 안전어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지하다고 </td>
+ 			<td colspan="3">  ${  freeBoardcmt.detail } </td>
  			<td>
- 			<input type="button" value="답변"  class="btn btn-secondary btn-sm">
+ 			<!-- <input type="button" value="답변"  class="btn btn-secondary btn-sm"> -->
  			<input type="button" value="수정"  class="btn btn-secondary btn-sm">
 			<input type="button" value="삭제"  class="btn btn-secondary btn-sm">
 			</td>
 			</tr>
 			<tr>
-			<th>매니저 답장 : ayo ayo ayo ayo ayo ayo ayo ayo ayo <th>
+			<!-- <th>매니저 답장 : ayo ayo ayo ayo ayo ayo ayo ayo ayo <th> -->
 			</tr>
-							<tr class="table-secondary">
-				<th style="width: 600px">작성자 : ㅁㄴㅇ</th>
-				<th style="width: 600px">작성일 : 2023-05-23 21:21:29</th>
-				<th style="width: 150px"></th>
-				<th></th>
-				</tr>
-			<tr>
- 			<td colspan="3"> 물어보니 행사 지야 안전어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지어보니 행사 지하다고 </td>
- 			<td>
- 			<input type="button" value="답변"  class="btn btn-secondary btn-sm">
- 			<input type="button" value="수정"  class="btn btn-secondary btn-sm">
-			<input type="button" value="삭제"  class="btn btn-secondary btn-sm">
-			</td>
-			</tr>
-			<tr>
-			<th>매니저 답장 : ayo ayo ayo ayo ayo ayo ayo ayo ayo <th>
-			</tr>
+			</c:forEach>				
 			
 
 		</table>

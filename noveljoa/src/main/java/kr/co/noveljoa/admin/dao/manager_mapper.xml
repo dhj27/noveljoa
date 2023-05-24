@@ -152,7 +152,17 @@ delete from comments where comment_num=#{ comment_num }
 			values (board_seq.nextval, #{ num_member }, #{ title }, #{ detail }, sysdate, #{ views } )
 </insert>
 
+<select id="selectBoardComment" resultType="kr.co.noveljoa.admin.domain.BoardCommentDomain" parameterType="integer">
+		 		 select 
+		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail
+		 from board_cmt bc
+		 where board_num=#{ board_num }
+</select>
 
+<insert id="insertBoardComment" parameterType="kr.co.noveljoa.admin.vo.BoardCommentVO">
+			insert into board_cmt (board_cmt_num, board_num, num_member, detail, make)
+			values (board_cmt_seq.nextval, #{ board_num }, #{ num_member }, #{ detail }, sysdate)
+</insert>
 
 
 

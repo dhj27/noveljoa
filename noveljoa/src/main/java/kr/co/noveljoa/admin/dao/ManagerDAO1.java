@@ -6,10 +6,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.co.noveljoa.admin.domain.BoardCommentDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
+import kr.co.noveljoa.admin.vo.BoardCommentVO;
 import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
@@ -168,7 +170,7 @@ public class ManagerDAO1 {
 
 		
 		return fbList;
-	}//selectLogin
+	}//selectFreeBoard
 	
 	public int insertFreeBoard( FreeBoardVO fbVO ) {
 		//1. MyBatis Handler 얻기
@@ -186,21 +188,50 @@ public class ManagerDAO1 {
 		return cnt;
 	}//insertFreeBoard
 	
+	public List<BoardCommentDomain> selectBoardComment(int board_num) throws SQLException {
+		List<BoardCommentDomain> bcList = null;  
+		//1. MyBatis Handler 얻기
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		//2. 쿼리 수행 후 결과 얻기
+		bcList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoardComment", board_num);
+		
+		ss.commit();
+		//3. MyBatis Handler 닫기
+				if(ss != null) {
+					ss.close();
+				}//end if
+
+		
+		return bcList;
+	}//selectBoardComment
 	
 	
+	public int insertBoardComment( BoardCommentVO bcVO ) {
+		//1. MyBatis Handler 얻기
+
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		//2. 쿼리 수행 후 결과 얻기
+		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertBoardComment", bcVO);
+		//3. MyBatis Handler 닫기
+		if( cnt==1 ) {
+			ss.commit();
+		}//end if
+		if(ss != null) {
+			ss.close();
+		}//end if
+		return cnt;
+	}//insertFreeBoard
+	
+	
+//	
 //	//테스트
 //	 public static void main(String[] args) throws SQLException {
 //		  
 //			  ManagerDAO1 mDAO = new ManagerDAO1(); 
-//			  FreeBoardVO fbVO = new FreeBoardVO(2, 2, "testtitle", "test1detail", "test2id");
-//			  
-//			  int cnt = mDAO.insertFreeBoard(fbVO);
-//		  
-//			
-//				
-//				  System.out.println(cnt);
-//				 
+//List<BoardCommentDomain> d = mDAO.selectBoardComment(1);
 //		
+//System.out.println(d);
 //		  
 //		  }//main
 	

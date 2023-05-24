@@ -12,6 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.noveljoa.admin.domain.AllMDomain;
 import kr.co.noveljoa.admin.domain.AllNDomain;
+import kr.co.noveljoa.admin.domain.BoardCommentDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
 import kr.co.noveljoa.admin.domain.FreeBoardDomain;
@@ -23,6 +24,7 @@ import kr.co.noveljoa.admin.domain.TodayVisitDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
+import kr.co.noveljoa.admin.vo.BoardCommentVO;
 import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
@@ -217,23 +219,34 @@ public class ManagerController {
 	}
 	
 	@GetMapping("manager/messageQNALookFrm3.do")
-	public String messageQNALookFrm3(@RequestParam(name = "board_num", required = false) Integer board_num, Model model) {
+	public String messageQNALookFrm3(int board_num, Model model) {
+		//@RequestParam(name = "board_num", required = false) Integer
 		//기본자료형 int는 null로 선언할 수 없다.
 		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
-		if (board_num == null) {
-			board_num = 0;
-		  }
+//		if (board_num == null) {
+//			board_num = 0;
+//		  }
 		ManagerService1 ms = new ManagerService1();
 		List<FreeBoardDomain> fdList =  ms.printFreeBoard(board_num);
 		model.addAttribute("freeBoardData2", fdList.get(0));
+		//System.out.println(board_num);
+	List<BoardCommentDomain> bclist = ms.printFreeBoardComment(board_num);
+	model.addAttribute("freeBoardCMTData", bclist);
 		
 		return "manager/messageQNALookFrm3";
+	}//messageQNALookFrm3
+	
+	@GetMapping("manager/messageQNALookFrm3_process.do")
+	public String messageQNALookFrm3Process(BoardCommentVO bcVO, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean boardCommentFlag =  ms.addBoardComment(bcVO);
+		model.addAttribute("boardCommentFlag", boardCommentFlag);
+		
+		return "manager/messageQNALookFrm3_process";
 	}
 	
-	@GetMapping("manager/example.do")
-	public String example() {
-		
-		return "manager/example";
-	}
+	
+	
 	
 }
+	
