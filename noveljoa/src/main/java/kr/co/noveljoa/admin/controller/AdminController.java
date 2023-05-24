@@ -72,7 +72,7 @@ public class AdminController {
 			model.addAttribute("publicFlag", as.publicNovel(novelNum.get()));
 		}//end if
 		
-		return "manager/publicNovel";
+		return "manager/publicNovel";//ddd
 	}//publicReportNovel
 	
 	
