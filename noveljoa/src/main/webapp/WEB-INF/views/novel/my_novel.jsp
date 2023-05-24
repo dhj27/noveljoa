@@ -127,7 +127,7 @@ if(session.getAttribute("user_id")!=null){
 										class="border-black/10 desktop:border-b-1 desktop:pt-24 desktop:pb-24">
 										<div class="flex items-center py-8 desktop:py-0">
 											<a class="relative flex flex-1 items-center" onclick="novel(${select.num_novel })">
-												<form action="/project2/novel/novel_list.jsp" id="${select.num_novel }" method="post">
+												<form action="writer_novel.do" id="${select.num_novel }" method="post">
 													<input type="hidden" name="num_novel" value="${select.num_novel }">
 												</form>
 												<div

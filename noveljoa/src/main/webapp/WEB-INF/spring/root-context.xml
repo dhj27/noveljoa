@@ -20,5 +20,13 @@
 	<bean id="nns" class="kr.co.noveljoa.user.newnovel.NewNovelService">
 		<constructor-arg ref="nnDAO"/>
 	</bean>
+	<bean id="wnDAO" class="kr.co.noveljoa.user.writernovel.WriterNovelDAO"/>
+	<bean id="wns" class="kr.co.noveljoa.user.writernovel.WriterNovelService">
+		<constructor-arg ref="wnDAO"/>
+	</bean>
+	<bean id="enDAO" class="kr.co.noveljoa.user.editnovel.EditNovelDAO"/>
+	<bean id="ens" class="kr.co.noveljoa.user.editnovel.EditNovelService">
+		<constructor-arg ref="enDAO"/>
+	</bean>
 		
 </beans>
