@@ -29,7 +29,7 @@ public class MyNovelController {
 	@GetMapping("/test.do")
 	public String test(Model model) {
 		
-		model.addAttribute("user_num_member",2);
+		model.addAttribute("user_num_member",1);
 		model.addAttribute("user_id","aa");
 		model.addAttribute("user_name","김기린");
 		model.addAttribute("user_photo","a.png");

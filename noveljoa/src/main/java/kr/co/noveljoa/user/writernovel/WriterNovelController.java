@@ -2,9 +2,12 @@ package kr.co.noveljoa.user.writernovel;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -107,9 +110,8 @@ public class WriterNovelController {
 		return "novel/delete_novel_popup";
 	}
 	
-	
-	@PostMapping("/delete_novel_process.do")
 	@ResponseBody
+	@PostMapping("/delete_novel_process.do")
 	public String deleteNovel(int num_novel) {
 		
 		ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");
@@ -121,6 +123,35 @@ public class WriterNovelController {
 		jsonTemp.put("data", ens.delete(num_novel));
 		
 		return jsonTemp.toJSONString();
+	}
+	
+	@ResponseBody
+	@PostMapping("/select_ep_list.do")
+	public String selectEpList(int num_novel) {
+		
+		ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");
+		WriterNovelService ens=ac.getBean(WriterNovelService.class);
+		((FileSystemXmlApplicationContext)ac).close();
+		
+		List<EpDomain> list=ens.selectAllEp(num_novel);
+		
+		JSONArray jsonArr=new JSONArray();
+		JSONObject jsonTemp = null;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		for(EpDomain ed:list) {
+			jsonTemp=new JSONObject();
+			
+			jsonTemp.put("num_novel", ed.getNum_novel());
+			jsonTemp.put("num_episode", ed.getNum_episode());
+			jsonTemp.put("title", ed.getTitle());
+			jsonTemp.put("visit", ed.getVisit());
+			jsonTemp.put("make", sdf.format(ed.getMake()));
+			
+			jsonArr.add(jsonTemp);
+		}
+		
+		return jsonArr.toJSONString();
 	}
 
 }

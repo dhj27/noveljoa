@@ -2,9 +2,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%
-    request.setCharacterEncoding("UTF-8");
-%>
+<% request.setCharacterEncoding("UTF-8"); %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -141,7 +139,6 @@ $(function(){
 						<input type="hidden" id="num_novel" name="num_novel" value="${ chkVO.num_novel}" />
 						<input type="hidden" id="num_member" name="num_member" value="${ chkVO.num_member }" />
 						<input type="hidden" id="num_episode" name="num_episode" value="${ chkVO.num_episode }" />
-						
 						<input type="hidden" id="open" name="open" value="1"/>
 						<!-- 에피소드 제목 -->
 						<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"

@@ -105,7 +105,6 @@
 <link href="dashboard.css" rel="stylesheet">
 </head>
 
-
 <body>
 
 	<div id="__next" data-reactroot="">
@@ -115,46 +114,25 @@
 			<div class="flex flex-col h-full">
 				<div class="z-1"></div>
 
-
-
-
-				<header
-					class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-					<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
-					<button
-						class="navbar-toggler position-absolute d-md-none collapsed"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<input
-						class="form-control form-control-dark w-100 rounded-0 border-0"
-						type="text" placeholder="Search" aria-label="Search"> <a
-						class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
-						style="width: 100px; text-align: center;">검색</a>
-					<button
-						class="navbar-toggler position-absolute d-md-none collapsed"
-						type="button" data-bs-toggle="collapse"
-						data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="navbar-nav">
-						<div class="nav-item text-nowrap">
-							<a class="nav-link px-3" href="#">Sign out</a>
-						</div>
-					</div>
-				</header>
-
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" >
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">소설조아</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="managerLogout.do">Sign out</a>
+    </div>
+  </div>
+</header>
 
 				<div class="container-fluid">
 					<div class="row">
 						<!-- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> -->
-
-
 						<main class="flex-1">
-
 							<div
 								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
 								<div
@@ -175,7 +153,6 @@
 												</div>
 											</div>
 										</div>
-
 
 										<article
 											class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
@@ -204,8 +181,6 @@
 											</div>
 										</article>
 
-
-
 										<article
 											class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
 											<div
@@ -222,7 +197,6 @@
 								</div>
 							</div>
 					</div>
-
 
 					<div
 						class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 mt-32 desktop:mt-47">

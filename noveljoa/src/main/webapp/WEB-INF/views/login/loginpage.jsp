@@ -55,7 +55,7 @@ $("#loginBtn").click(function(){
 	}
 });
 
-$(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이 눌려진다
+$(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이 눌린다
     if (event.which == 13) {
         event.preventDefault();
         $("#loginBtn").click();
@@ -76,15 +76,15 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
 		<div class="lightMode h-full">
 			<div class="flex flex-col h-full">
 <!-- header -->
-	<%-- <div>
-		<jsp:include page="../_next/header_user_logout_key.jsp"/> 
-	</div> --%>
+	 <div>
+		<jsp:include page="../../../_next/header_user_logout_key.jsp"/> 
+	</div> 
 	
     <div id="wrap">
         <div id="header">
 
         </div>
-        <form action="login_dao.do" name="frm" id="frm" method="post" >
+        <form action="homepage.do" name="frm" id="frm" method="post" >
         <div id="container">
             <div id="zoa" style="font-size: 40px; font-weight: bold; text-align: center;">소설조아</div>
             <div id="loginId">
@@ -119,9 +119,9 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
     </div>
 
 	<!-- footer -->
-	<%-- <div>
-		<jsp:include page="../_next/footer.jsp"/>
-	</div> --%>
+	<div>
+		<jsp:include page="../../../_next/footer.jsp"/>
+	</div>
 			</div>
 		</div>
 		<div id="modal-normal"></div>

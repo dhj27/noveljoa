@@ -1,5 +1,7 @@
 package kr.co.noveljoa.user.writernovel;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.noveljoa.user.dao.MyBatisHandler;
@@ -30,6 +32,15 @@ public class WriterNovelDAO {
 		if(ss!=null) {ss.close();}//end if
 		
 		return cnt;
+	}
+	public List<EpDomain> selectAllEp(int num_novel){
+		List<EpDomain> list=null;
+		
+		SqlSession ss=MyBatisHandler.getInstance().getMyBatisHandler(false);
+		list=ss.selectList("writerNovelMapper.selectAllEp",num_novel);
+		if(ss!=null) {ss.close();}//end if
+		
+		return list;
 	}
 
 }

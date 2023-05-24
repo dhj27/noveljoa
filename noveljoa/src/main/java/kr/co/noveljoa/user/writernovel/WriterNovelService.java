@@ -1,5 +1,7 @@
 package kr.co.noveljoa.user.writernovel;
 
+import java.util.List;
+
 public class WriterNovelService {
 	
 	private WriterNovelDAO wnDAO;
@@ -16,6 +18,13 @@ public class WriterNovelService {
 		int cnt=wnDAO.countEp(num_novel);
 		
 		return cnt;
+	}
+	public List<EpDomain> selectAllEp(int num_novel) {
+		List<EpDomain> list=null;
+		
+		list=wnDAO.selectAllEp(num_novel);
+		
+		return list;
 	}
 
 }

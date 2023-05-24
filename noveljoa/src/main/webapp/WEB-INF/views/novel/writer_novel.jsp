@@ -41,9 +41,10 @@ $(function () {
 	$("#del_novel").click(function () {
 		$("#del_frm").submit();
 	})
-	 <%-- $.ajax({
-			url : "novel_jsonarr_data.jsp",
+	 $.ajax({
+			url : "select_ep_list.do",
 			data : "num_novel=<%=request.getParameter("num_novel")%>",
+			type: "post",
 			dataType : "JSON",
 			error : function(xhr){
 				alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
@@ -59,15 +60,15 @@ $(function () {
 				 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 							+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 							+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-							+ "<a class='flex w-full shrink' href='../episode/episodeMy/episode_edit.jsp?num_novel="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
+							+ "<a class='flex w-full shrink' href='../episode/episodeMy/episode_edit.jsp?num_novel="+jsonObj.num_novel+"&epNum="+jsonObj.num_episode+"'>"
 							+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 							+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
-							+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
+							+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.title+"</div></h3>"
 							+ "<div class='flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0'>"
 							+ "<div class='flex flex-wrap items-center text-grey60'>"
-							+ "<span>"+ jsonObj.viewCnt+"</span>"
+							+ "<span>"+ jsonObj.visit+"</span>"
 							+ "<span class='mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8'>|</span>"
-							+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.createDate + "</span>"
+							+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.make + "</span>"
 							+ "</div></div></div></a></div></article><br>"; 
 				});//each
 				
@@ -77,7 +78,7 @@ $(function () {
 				
 				$("#empTab").append(article);
 			}
-		});//ajax --%>
+		});//ajax
 })
 
 </script>

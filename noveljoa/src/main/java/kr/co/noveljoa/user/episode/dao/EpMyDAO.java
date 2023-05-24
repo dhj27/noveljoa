@@ -16,11 +16,12 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 @Component
 public class EpMyDAO {
 	
+	public String map = "kr.co.noveljoa.user.episode.epiosdeMyMapper.";
 	
 	public int insertEpisode(EpCreateVO epCreateVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		int cnt = ss.insert("kr.co.noveljoa.user.episode.epiosdeMyMapper.insertEp", epCreateVO);
+		int cnt = ss.insert(map+"insertEp", epCreateVO);
 		
 		if(cnt == 1) {
 			System.out.println("episode commit");
@@ -38,7 +39,7 @@ public class EpMyDAO {
 	public int updateEpisode(EpUpdateVO epUpdateVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		int cnt = ss.update("kr.co.noveljoa.user.episode.epiosdeMyMapper.updateEp", epUpdateVO);
+		int cnt = ss.update(map+"updateEp", epUpdateVO);
 		
 		if(cnt == 1) {
 			System.out.println("episode edit commit");
@@ -56,7 +57,7 @@ public class EpMyDAO {
 	public int deleteEpisode(EpCheckMyVO epCheckMyVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		int cnt = ss.delete("kr.co.noveljoa.user.episode.epiosdeMyMapper.deleteEp", epCheckMyVO);
+		int cnt = ss.delete(map+"deleteEp", epCheckMyVO);
 		
 		if(cnt == 1) {
 			System.out.println("episode delete commit");
@@ -77,7 +78,7 @@ public class EpMyDAO {
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		emd = ss.selectOne("selectEp", epCheckMyVO);
+		emd = ss.selectOne(map+"selectEp", epCheckMyVO);
 		
 		if(ss != null) {ss.close();}
 		
@@ -90,13 +91,13 @@ public class EpMyDAO {
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		list = ss.selectList("kr.co.noveljoa.user.episode.epiosdeMyMapper.deleteEp", nCheckMyVO);
+		list = ss.selectList(map+"selectEpList", nCheckMyVO);
 		
 		if(list != null) {
-			System.out.println("episode List commit");
+			System.out.println("episode List");
 			ss.commit();
 		}else {
-			System.out.println("episode List rollback");
+			System.out.println("episode List fail");
 			ss.rollback();
 		}
 		

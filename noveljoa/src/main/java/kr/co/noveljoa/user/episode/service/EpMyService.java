@@ -28,14 +28,6 @@ public class EpMyService {
 	}// addEp
 	
 	
-	// 에피소드 수정창
-	public EpMyDomain searchEp(EpCheckMyVO epCheckMyVO) {
-		EpMyDomain emd = epMyDAO.selectEpisode(epCheckMyVO);
-		
-		return emd;
-	}// searchEp
-	
-	
 	// 에피소드 수정 프로세스 ajax
 	public int editEp(EpUpdateVO epUpdateVO) {
 		int cnt = epMyDAO.updateEpisode(epUpdateVO);
@@ -46,14 +38,23 @@ public class EpMyService {
 	
 	// 에피소드 삭제
 	public int removeEp(EpCheckMyVO epCheckMyVO) {
+		int cnt = epMyDAO.deleteEpisode(epCheckMyVO);
 		
-		return 0;
+		return cnt;
 	}// removeEp
+
+	
+	// 에피소드 수정창
+	public EpMyDomain searchEp(EpCheckMyVO epCheckMyVO) {
+		EpMyDomain emd = epMyDAO.selectEpisode(epCheckMyVO);
+		
+		return emd;
+	}// searchEp
 	
 	
 	// 에피소드 리스트 내용 보여주기 ajax
 	public String searchEpList(NovelCheckMyVO nCheckMyVO) {
-		
+		epMyDAO.selectEpisodeList(nCheckMyVO);
 		return "";
 	}// searchEpList
 

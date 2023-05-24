@@ -218,8 +218,10 @@ WHERE num_novel = #{novelNum}
 </update>
 
 
+<!-- /////////////////////////////board/////////////////////////////////////// -->
+<select id="" resultType="kr.co.noveljoa.admin.domain.MBoardDomain"> 
 
-
+</select>
 
 
   
