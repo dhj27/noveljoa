@@ -186,18 +186,8 @@ public class LoginController {
 		return jsonObject.toJSONString();
 	}
 	
-	@PostMapping("my_like.do")
-	public ModelAndView like(ModelAndView mav) {
-		mav.setViewName("novel/my_like");
-		
-		return mav;
-	}
-	@PostMapping("my_novel_space.do")
-	public ModelAndView myNovel(ModelAndView mav) {
-		mav.setViewName("temp/my_novel_space");
-		
-		return mav;
-	}
+
+
 	
 	@GetMapping("my_page.do")
 	public ModelAndView mypage(ModelAndView mav) {
