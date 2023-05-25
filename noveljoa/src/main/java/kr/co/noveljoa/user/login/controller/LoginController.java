@@ -85,7 +85,7 @@ public class LoginController {
 			model.addAttribute("photo", photo);
 			model.addAttribute("num_member", numMember);
 		
-		return "home/main";
+		return "forward:main.do";
 		}
 	}
 
@@ -195,13 +195,18 @@ public class LoginController {
 		mav.setViewName("login/my_page");
 		
 		return mav;
+	}
+	/*
+	 * @GetMapping("info.do") public ModelAndView info(ModelAndView mav) {
+	 * 
+	 * mav.
+	 * 
+	 * }
+	 */
 		
+	
 	}
 	
-	
-	
-
-}
 
 
 

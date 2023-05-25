@@ -149,7 +149,7 @@ $(function(){
        <div id="container">
            <div id="frame">
             <div id="text_mypage"><c:out value="${ id }"/>님의 마이페이지</div>
-            <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"style='cursor:pointer'/></div>
+            <div id="img_change"><img src="_next/static/images/mypage.PNG" id="profile"style='cursor:pointer'/></div>
             <div id="text_logout"><a href="#void" id="logout" style="color: blue">로그아웃</a></div>
             <div id="img_profile"><img src="_next/static/images/profile_images/<%=session.getAttribute("photo") %>" class="profile"  id="imgpf" name="imgpf" style='cursor:pointer'/>
             <input type="file" id="file" name="file" style="display:none" /></div>
@@ -171,8 +171,6 @@ $(function(){
 		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 			</div>
-		</div>
 		<div id="modal-normal"></div>
-	</div>
 </body>
 </html>

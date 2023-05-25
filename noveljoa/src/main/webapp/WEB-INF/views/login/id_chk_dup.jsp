@@ -57,9 +57,6 @@ $(function(){
 	});
 	});
 	
-function sendId(){
-	
-}//sendId
 </script>
 
 </head>
@@ -73,6 +70,7 @@ function sendId(){
 <div id="body">
 <label>아이디</label>
 <input type="text" id="id"  name="id" class="inputBox" autofocus="autofocus" style="width:150px"/>
+<input type="text" style="display: none;"/><!-- input type="text"가 하나만 있으면 엔터 눌렀을 때 자동으로 submit하므로 안보이는 input을 하나 더 만든다 -->
 <input type="button" class="btnBorder" value="중복확인" id="btn"/>
 </div>
 </form>
