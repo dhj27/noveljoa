@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
+
+	<select id="selectSearch" parameterType="kr.co.noveljoa.user.search.SearchVO" resultType="kr.co.noveljoa.user.search.SearchDomain">
+	    select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make, n.age, n.end 
+		from member m	
+		join novel n ON n.num_member = m.num_member 
+		LEFT JOIN (	
+			SELECT num_novel, COUNT(*) AS num_episodes, MAX(make) AS max_make	
+			FROM episode	
+			GROUP BY num_novel	
+		) e ON n.num_novel = e.num_novel
+		WHERE n.open=1	
+		and e.max_make is not null
+		<if test="genre!=0">
+			and n.genre=#{genre}
+		</if>
+		<choose>
+			<when test="type==1">and m.id LIKE '%'||${search}||'%'</when>
+			<otherwise>and n.title LIKE '%'||${search}||'%'</otherwise>
+		</choose>
+		order by e.max_make desc
+	</select>
+
+</mapper>

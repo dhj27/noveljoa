@@ -21,7 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.co.noveljoa.user.newnovel.NewNovelService;
 import kr.co.noveljoa.user.newnovel.NewNovelVO;
 
-@SessionAttributes({"user_num_member","user_id","user_name","user_photo"})
+@SessionAttributes({"num_member","id","name","photo"})
 
 @Controller
 public class MyNovelController {
@@ -29,10 +29,10 @@ public class MyNovelController {
 	@GetMapping("/test.do")
 	public String test(Model model) {
 		
-		model.addAttribute("user_num_member",1);
-		model.addAttribute("user_id","aa");
-		model.addAttribute("user_name","김기린");
-		model.addAttribute("user_photo","a.png");
+		model.addAttribute("num_member",1);
+		model.addAttribute("id","aa");
+		model.addAttribute("name","김기린");
+		model.addAttribute("photo","a.png");
 		
 		return "redirect:/my_novel.do";
 	}
@@ -43,7 +43,7 @@ public class MyNovelController {
 			MyNovelService mns=ac.getBean(MyNovelService.class);
 			((FileSystemXmlApplicationContext)ac).close();
 			
-			MyNovelVO mnVO=new MyNovelVO(order_novel,model.getAttribute("user_num_member").toString());
+			MyNovelVO mnVO=new MyNovelVO(order_novel,model.getAttribute("num_member").toString());
 			List<MyNovelDomain> list=mns.search(mnVO);
 
 			model.addAttribute("list",list);
@@ -70,7 +70,7 @@ public class MyNovelController {
 		try {
 			MultipartRequest mr=new MultipartRequest(request, saveDir.getAbsolutePath(), fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
-			int user_num_member=Integer.parseInt(model.getAttribute("user_num_member").toString());
+			int num_member=Integer.parseInt(model.getAttribute("num_member").toString());
 			int age=Integer.parseInt(mr.getParameter("age"));
 			int open=Integer.parseInt(mr.getParameter("age"));
 			int genre=Integer.parseInt(mr.getParameter("genre"));
@@ -78,7 +78,7 @@ public class MyNovelController {
 			String fileName=mr.getFilesystemName("filephoto");
 			String story=mr.getParameter("story");
 			
-			NewNovelVO nnVO=new NewNovelVO(user_num_member,age, open, genre, title, fileName, story);
+			NewNovelVO nnVO=new NewNovelVO(num_member,age, open, genre, title, fileName, story);
 			nns.insert(nnVO);
 			
 		} catch (IOException e) {

@@ -6,7 +6,7 @@
 
 	<select id="insertNewNovel" parameterType="kr.co.noveljoa.user.newnovel.NewNovelVO">
 	insert into novel(num_novel,num_member,title,age,photo,story,open,end,make,genre)
-	values(num_novel.nextval,#{user_num_member},#{title},#{age},#{photo},#{story},#{open},0,sysdate,#{genre})
+	values(num_novel.nextval,#{num_member},#{title},#{age},#{photo},#{story},#{open},0,sysdate,#{genre})
 	</select>
 
 </mapper>

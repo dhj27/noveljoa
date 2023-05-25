@@ -1,8 +1,3 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="novel.MyNovelDAO"%>
-<%@page import="novel.MyNovelVO"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,8 +37,8 @@ function new_novel() {
 
 </head>
 <%
-if(session.getAttribute("user_id")!=null){
-	String id=session.getAttribute("user_id").toString();
+if(session.getAttribute("id")!=null){
+	String id=session.getAttribute("id").toString();
 %>
 
 <body>
@@ -71,7 +66,7 @@ if(session.getAttribute("user_id")!=null){
 										<div
 											class="mb-24 px-6 py-8 desktop:mb-0 desktop:px-0 desktop:py-0">
 											<h1 class="typo-dp2 mb-6 desktop:typo-dp1">
-												<div>${user_num_member }님의</div>
+												<div>${num_member }님의</div>
 												<div class="-mt-4 desktop:mt-0">창작공간</div>
 											</h1>
 										</div>

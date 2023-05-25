@@ -98,7 +98,7 @@ $(function(){
 </head>
 
 <%
-String id=session.getAttribute("user_id").toString();
+String id=session.getAttribute("id").toString();
 %>
 
 <%

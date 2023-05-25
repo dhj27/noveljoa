@@ -1,6 +1,3 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="novel.NewNovelVO"%>
-<%@page import="novel.NewNovelDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -123,7 +120,7 @@ $(function(){
 												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">작가명<span
 												class="typo-md3 ml-3 text-secondary-text">*</span></label>
 											<div class="flex flex-col w-full desktop:flex-row">
-												<input type="text" name="id" value="${user_id}">
+												<input type="text" name="id" value="${id}">
 												<input type="hidden" name="num_novel" value="${num_novel}">
 											</div>
 										</div>

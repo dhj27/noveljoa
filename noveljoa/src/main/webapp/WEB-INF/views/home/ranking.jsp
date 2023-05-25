@@ -1,7 +1,3 @@
-<%@page import="novel.RankingVO"%>
-<%@page import="java.util.List"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="novel.RankingDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,7 +28,7 @@
 			<div class="flex flex-col h-full">
 <!-- header -->
 	<div>
-		<%if(session.getAttribute("user_id")!=null){ %>
+		<%if(session.getAttribute("id")!=null){ %>
 		<jsp:include page="../../../_next/header_user_login_search.jsp"/>
 		<%}else{ %>
 		<jsp:include page="../../../_next/header_user_logout_key.jsp"/>

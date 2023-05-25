@@ -12,6 +12,10 @@
 	<bean id="rs" class="kr.co.noveljoa.user.ranking.RankingService">
 		<constructor-arg ref="rDAO"/>
 	</bean>
+	<bean id="sDAO" class="kr.co.noveljoa.user.search.SearchDAO"/>
+	<bean id="ss" class="kr.co.noveljoa.user.search.SearchService">
+		<constructor-arg ref="sDAO"/>
+	</bean>
 	<bean id="mnDAO" class="kr.co.noveljoa.user.mynovel.MyNovelDAO"/>
 	<bean id="mns" class="kr.co.noveljoa.user.mynovel.MyNovelService">
 		<constructor-arg ref="mnDAO"/>

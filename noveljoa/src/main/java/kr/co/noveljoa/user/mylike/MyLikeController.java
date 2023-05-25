@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-@SessionAttributes({"user_num_member","user_id","user_name","user_photo"})
+@SessionAttributes({"num_member","id","name","photo"})
 
 @Controller
 public class MyLikeController {
@@ -19,10 +19,10 @@ public class MyLikeController {
 	@GetMapping("/test2.do")
 	public String test(Model model) {
 		
-		model.addAttribute("user_num_member",1);
-		model.addAttribute("user_id","aa");
-		model.addAttribute("user_name","김기린");
-		model.addAttribute("user_photo","a.png");
+		model.addAttribute("num_member",1);
+		model.addAttribute("id","aa");
+		model.addAttribute("name","김기린");
+		model.addAttribute("photo","a.png");
 		
 		return "redirect:/my_like.do";
 	}
@@ -34,7 +34,7 @@ public class MyLikeController {
 		MyLikeService mls=ac.getBean(MyLikeService.class);
 		((FileSystemXmlApplicationContext)ac).close();
 		
-		int num_member=Integer.parseInt(model.getAttribute("user_num_member").toString());
+		int num_member=Integer.parseInt(model.getAttribute("num_member").toString());
 		MyLikeVO rVO=new MyLikeVO(num_member, type, search);
 		List<MyLikeDomain> list=mls.search(rVO);
 		
@@ -51,7 +51,7 @@ public class MyLikeController {
 		MyLikeService mls=ac.getBean(MyLikeService.class);
 		((FileSystemXmlApplicationContext)ac).close();
 		
-		int num_member=Integer.parseInt(model.getAttribute("user_num_member").toString());
+		int num_member=Integer.parseInt(model.getAttribute("num_member").toString());
 		DeleteLikeVO dlVO=new DeleteLikeVO(num_member, num_novel);
 		mls.delete(dlVO);
 		MyLikeVO mlVO=new MyLikeVO(num_member, type, search);

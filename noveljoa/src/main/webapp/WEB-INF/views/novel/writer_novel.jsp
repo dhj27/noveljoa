@@ -132,7 +132,7 @@ $(function () {
 														</span>
 												</h1>
 												<div class="flex typo-md3 items-center">
-													<span>${user_id}</span>
+													<span>${id}</span>
 												</div>
 												<div class="flex mt-30 flex-1 items-end">
 													<div class="flex items-center">

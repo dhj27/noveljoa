@@ -7,7 +7,7 @@
 	<select id="selectMyNovel" parameterType="kr.co.noveljoa.user.mynovel.MyNovelVO" resultType="kr.co.noveljoa.user.mynovel.MyNovelDomain">
 	select n.num_novel, n.photo, n.title, n.age, n.open, n.end 
 	from novel n, member m 
-	where (n.num_member = m.num_member) and (m.num_member = #{user_num_member}) order by n.make
+	where (n.num_member = m.num_member) and (m.num_member = #{num_member}) order by n.make
 	<if test="order_novel == 0">desc</if>
 	</select>
 

@@ -1,15 +1,15 @@
 package kr.co.noveljoa.user.newnovel;
 
 public class NewNovelVO {
-	private int user_num_member,age,open,genre;
+	private int num_member,age,open,genre;
 	private String title,photo,story;
 	
 	public NewNovelVO() {
 	}
 
-	public NewNovelVO(int user_num_member, int age, int open, int genre, String title, String photo, String story) {
+	public NewNovelVO(int num_member, int age, int open, int genre, String title, String photo, String story) {
 		super();
-		this.user_num_member = user_num_member;
+		this.num_member = num_member;
 		this.age = age;
 		this.open = open;
 		this.genre = genre;
@@ -18,12 +18,12 @@ public class NewNovelVO {
 		this.story = story;
 	}
 
-	public int getUser_num_member() {
-		return user_num_member;
+	public int getNum_member() {
+		return num_member;
 	}
 
-	public void setUser_num_member(int user_num_member) {
-		this.user_num_member = user_num_member;
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
 	}
 
 	public int getAge() {
@@ -76,7 +76,7 @@ public class NewNovelVO {
 
 	@Override
 	public String toString() {
-		return "NewNovelVO [user_num_member=" + user_num_member + ", age=" + age + ", open=" + open + ", genre=" + genre
+		return "NewNovelVO [num_member=" + num_member + ", age=" + age + ", open=" + open + ", genre=" + genre
 				+ ", title=" + title + ", photo=" + photo + ", story=" + story + "]";
 	}
 	

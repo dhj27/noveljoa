@@ -29,7 +29,7 @@
 				height="24"></a> &nbsp; &nbsp; &nbsp; <a
 				class="mr-16 flex items-center text-grey70"
 				href="/project2/login/my_page.jsp"><img
-				src="_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" width="48"
+				src="_next/static/images/profile_images/<%=session.getAttribute("photo") %>" width="48"
 				height="48"></a>
 		</div>
 	</div>

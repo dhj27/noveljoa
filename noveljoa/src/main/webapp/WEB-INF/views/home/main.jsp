@@ -24,7 +24,7 @@
 			<div class="flex flex-col h-full">
 <!-- header -->
 	<div>
-		<%if(session.getAttribute("user_id")!=null){ %>
+		<%if(session.getAttribute("id")!=null){ %>
 		<jsp:include page="../../../_next/header_user_login_search.jsp"/>
 		<%}else{ %>
 		<jsp:include page="../../../_next/header_user_logout_key.jsp"/>
