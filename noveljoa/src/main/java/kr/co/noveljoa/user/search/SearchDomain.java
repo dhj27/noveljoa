@@ -1,28 +1,24 @@
 package kr.co.noveljoa.user.search;
 
+import java.sql.Date;
+
 public class SearchDomain {
-	private String photo,title,id,story;
-	private int num_novel, age,like,visit,rank, episode,end;
+	private String photo,title,id;
+	private int num_novel, age, num_episodes,end;
+	private Date max_make;
 	public SearchDomain() {
 	}
-	public SearchDomain(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank, int episode, int end) {
-		this.num_novel=num_novel;
+	public SearchDomain(String photo, String title, String id, int num_novel, int age, int num_episodes, int end,
+			Date max_make) {
+		super();
 		this.photo = photo;
 		this.title = title;
 		this.id = id;
-		this.story = story;
-		this.age = age;
-		this.like = like;
-		this.visit = visit;
-		this.rank = rank;
-		this.episode = episode;
-		this.end = end;
-	}
-	public int getNum_novel() {
-		return num_novel;
-	}
-	public void setNum_novel(int num_novel) {
 		this.num_novel = num_novel;
+		this.age = age;
+		this.num_episodes = num_episodes;
+		this.end = end;
+		this.max_make = max_make;
 	}
 	public String getPhoto() {
 		return photo;
@@ -42,11 +38,11 @@ public class SearchDomain {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getStory() {
-		return story;
+	public int getNum_novel() {
+		return num_novel;
 	}
-	public void setStory(String story) {
-		this.story = story;
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
 	public int getAge() {
 		return age;
@@ -54,29 +50,11 @@ public class SearchDomain {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getLike() {
-		return like;
+	public int getNum_episodes() {
+		return num_episodes;
 	}
-	public void setLike(int like) {
-		this.like = like;
-	}
-	public int getVisit() {
-		return visit;
-	}
-	public void setVisit(int visit) {
-		this.visit = visit;
-	}
-	public int getRank() {
-		return rank;
-	}
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-	public int getEpisode() {
-		return episode;
-	}
-	public void setEpisode(int episode) {
-		this.episode = episode;
+	public void setNum_episodes(int num_episodes) {
+		this.num_episodes = num_episodes;
 	}
 	public int getEnd() {
 		return end;
@@ -84,5 +62,10 @@ public class SearchDomain {
 	public void setEnd(int end) {
 		this.end = end;
 	}
-	
+	public Date getMax_make() {
+		return max_make;
+	}
+	public void setMax_make(Date max_make) {
+		this.max_make = max_make;
+	}
 }

@@ -4,13 +4,13 @@ import java.util.List;
 
 public class SearchService {
 	
-	private SearchDAO rDAO;
+	private SearchDAO sDAO;
 	
-	public SearchService(SearchDAO rDAO) {
-		this.rDAO=rDAO;
+	public SearchService(SearchDAO sDAO) {
+		this.sDAO=sDAO;
 	}
-	public List<SearchDomain> search(SearchVO rVO) {
-		List<SearchDomain> list=rDAO.selectRanking(rVO);
+	public List<SearchDomain> search(SearchVO sVO) {
+		List<SearchDomain> list=sDAO.selectSearch(sVO);
 		
 		return list;
 	}

@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SearchController {
 	
 	
-	@GetMapping("/ranking.do")
-	public String test(@RequestParam(defaultValue = "0") int genre,@RequestParam(defaultValue = "1") int type,Model model) {
+	@GetMapping("/search.do")
+	public String test(@RequestParam(defaultValue = "0") int genre,@RequestParam(defaultValue = "0") int type,@RequestParam(defaultValue = "") String search, Model model) {
 		
 		ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");
-		SearchService rs=ac.getBean(SearchService.class);
+		SearchService ss=ac.getBean(SearchService.class);
 		((FileSystemXmlApplicationContext)ac).close();
 		
-		SearchVO rVO=new SearchVO(type, genre);
-		List<SearchDomain> list=rs.search(rVO);
+		SearchVO sVO=new SearchVO(type, genre, search);
+		List<SearchDomain> list=ss.search(sVO);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("type",type);
 		model.addAttribute("genre",genre);
+		model.addAttribute("search",search);
 		
-		return "home/ranking";
+		return "home/search";
 	}
 
 }
