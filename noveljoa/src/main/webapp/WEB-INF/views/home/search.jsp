@@ -56,7 +56,7 @@ function selectNovel(num_novel){
                                  <select name="genre" class="typo-sm1 desktop:text-grey70" style="width: 50px">
 								 	<option value="0" ${genre==0?"selected":""}>전체</option>
 								 	<option value="1" ${genre==1?"selected":""}>판타지</option>
-								 	<option value="2" ${genre==2?"selected":""}>무협</option>
+								 	<option value="2" ${genre==2?"selected":""}>로맨스</option>
 								 	<option value="9" ${genre==9?"selected":""}>자유</option>
 								 </select>
                                  <input type="search" onKeypress="javascript:if(event.keyCode==13){findNovel()}"

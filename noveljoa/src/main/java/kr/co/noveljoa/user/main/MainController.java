@@ -45,7 +45,7 @@ public class MainController {
 		return "redirect:/main.do";
 	}
 
-	@GetMapping("/main.do")
+	@PostMapping("/main.do")
 	public String test(@RequestParam(defaultValue = "0") int genre,Model model) {
 			
 			ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");

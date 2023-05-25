@@ -34,9 +34,9 @@ public class MyNovelController {
 		model.addAttribute("name","김기린");
 		model.addAttribute("photo","a.png");
 		
-		return "redirect:/my_novel.do";
+		return "forward:/my_novel.do";
 	}
-	@GetMapping("/my_novel.do")
+	@PostMapping("/my_novel.do")
 	public String myNovel(@RequestParam(defaultValue = "0") int order_novel,Model model) {
 			
 			ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");
@@ -85,7 +85,7 @@ public class MyNovelController {
 			e.printStackTrace();
 		}//end catch
 		
-		return "redirect:/my_novel.do";
+		return "forward:my_novel.do";
 	}
 
 }

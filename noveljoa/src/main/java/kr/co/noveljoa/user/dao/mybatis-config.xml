@@ -24,7 +24,7 @@
     <mapper resource="kr/co/noveljoa/user/mylike/mylike_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/newnovel/newnovel_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/writernovel/writernovel_mapper.xml"/>
-    <mapper resource="kr/co/noveljoa/user/editnovel/editnovel_mapper.xml"/>
+    <mapper resource="kr/co/noveljoa/user/noveledit/editnovel_mapper.xml"/>
     <!-- <mapper resource="kr/co/noveljoa/user/episode/domain/episode_mapper.xml"/> -->
     <mapper resource="kr/co/noveljoa/user/episode/domain/episodeMy_mapper.xml"/>
   </mappers>

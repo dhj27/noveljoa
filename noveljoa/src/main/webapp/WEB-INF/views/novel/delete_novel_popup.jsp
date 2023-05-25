@@ -33,7 +33,8 @@ function del() {
 			console.log(xhr.status);
 		},
 		success : function( json ){
-			opener.parent.location="my_novel.do";
+			//opener.parent.location="my_novel.do";
+			opener.window.openForward();
 			self.close();
 		}
 	});

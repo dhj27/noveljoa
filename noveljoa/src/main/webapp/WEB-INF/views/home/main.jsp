@@ -15,6 +15,21 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
 <link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
 <noscript data-n-css=""></noscript>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+function main0(){
+	$("#main0").submit()
+};
+function main1(){
+	$("#main1").submit()
+};
+function main2(){
+	$("#main2").submit()
+};
+function main9(){
+	$("#main9").submit()
+};
+</script>
 
 </head>
 <body>
@@ -38,14 +53,18 @@
 									<div class="typo-md3 w-103 flex-[0_0_auto] px-0">장르</div>
 									<div
 										class="grid desktop:flex grid-flow-col flex-wrap max-w-full-view overflow-x-scroll overflow-y-hidden scrolling-touch desktop:overflow-x-visible desktop:overflow-y-visible before:grow-0 after:grow-0 before:content-[&quot;&quot;] after:content-[&quot;&quot;] before:flex-[0_1_0%] after:flex-[0_1_0%] desktop:after:hidden desktop:before:hidden auto-cols-max before:w-16 after:w-16 HorizontalScroll_horizontalScrollbar__5q9CM">
-										<button onclick="location.href='main.do?genre=0'"
+										<button onclick="main0()"
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==0?'bg-black text-white':'text-grey70'}">전체</button>
-										<button onclick="location.href='main.do?genre=1'"
+											<form id="main0" action="main.do" method="post"><input type="hidden" name="genre" value="0"></form>
+										<button onclick="main1()"
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==1?'bg-black text-white':'text-grey70'}">판타지</button>
-										<button onclick="location.href='main.do?genre=2'"
+											<form id="main1" action="main.do" method="post"><input type="hidden" name="genre" value="1"></form>
+										<button onclick="main2()"
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==2?'bg-black text-white':'text-grey70'}">로맨스</button>
-										<button onclick="location.href='main.do?genre=9'"
+											<form id="main2" action="main.do" method="post"><input type="hidden" name="genre" value="2"></form>
+										<button onclick="main9()"
 											class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 ${genre==9?'bg-black text-white':'text-grey70'}">자유</button>
+											<form id="main9" action="main.do" method="post"><input type="hidden" name="genre" value="9"></form>
 									</div>
 								</div>
 							</div>
@@ -148,8 +167,7 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:forEach></c:when>
-                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                                </c:forEach></c:when></c:choose>
                                             </div>
                                         </section>
                                     </div>
@@ -304,8 +322,7 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:forEach></c:when>
-                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                                </c:forEach></c:when></c:choose>
                                             </div>
                                         </section>
                                     </div>
@@ -460,8 +477,7 @@
                                                         </article>
                                                     </a>
                                                 </div>
-                                                </c:forEach></c:when>
-                                    <c:otherwise>자료가 없습니다</c:otherwise></c:choose>
+                                                </c:forEach></c:when></c:choose>
                                             </div>
                                         </section>
                                     </div>

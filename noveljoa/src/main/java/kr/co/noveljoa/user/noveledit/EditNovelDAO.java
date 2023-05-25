@@ -1,4 +1,4 @@
-package kr.co.noveljoa.user.editnovel;
+package kr.co.noveljoa.user.noveledit;
 
 import org.apache.ibatis.session.SqlSession;
 

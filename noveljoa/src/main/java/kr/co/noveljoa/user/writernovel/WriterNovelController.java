@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kr.co.noveljoa.user.editnovel.EditNovelService;
-import kr.co.noveljoa.user.editnovel.EditNovelVO;
 import kr.co.noveljoa.user.newnovel.NewNovelService;
 import kr.co.noveljoa.user.newnovel.NewNovelVO;
+import kr.co.noveljoa.user.noveledit.EditNovelService;
+import kr.co.noveljoa.user.noveledit.EditNovelVO;
 
 @Controller
 public class WriterNovelController {
@@ -99,7 +99,7 @@ public class WriterNovelController {
 			e.printStackTrace();
 		}//end catch
 		
-		return "redirect:writer_novel.do?num_novel="+num_novel;
+		return "forward:writer_novel.do?num_novel="+num_novel;
 	}
 	
 	@PostMapping("/delete_novel_popup.do")

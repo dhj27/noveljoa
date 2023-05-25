@@ -33,6 +33,11 @@
 %> --%>
 
 <script type="text/javascript">
+
+function openForward(){
+	$("#open").submit();
+}
+
 function edit(){
 	$("#edit_frm").submit();
 }
@@ -85,6 +90,8 @@ $(function () {
 </head>
 <form action="delete_novel_popup.do" id="del_frm" method="post" target="del_popup" onsubmit="window.open('delete_novel_popup.jsp','del_popup','width= 504, height= 354, top = 100, left = 100');">
 <input type="hidden" name="num_novel" value="${param.num_novel }">
+</form>
+<form id="open" action="my_novel.do" method="post">
 </form>
 
 <body>

@@ -66,7 +66,7 @@ if(session.getAttribute("id")!=null){
 										<div
 											class="mb-24 px-6 py-8 desktop:mb-0 desktop:px-0 desktop:py-0">
 											<h1 class="typo-dp2 mb-6 desktop:typo-dp1">
-												<div>${num_member }님의</div>
+												<div>${id }님의</div>
 												<div class="-mt-4 desktop:mt-0">창작공간</div>
 											</h1>
 										</div>

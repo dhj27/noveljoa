@@ -32,8 +32,8 @@
 	<bean id="wns" class="kr.co.noveljoa.user.writernovel.WriterNovelService">
 		<constructor-arg ref="wnDAO"/>
 	</bean>
-	<bean id="enDAO" class="kr.co.noveljoa.user.editnovel.EditNovelDAO"/>
-	<bean id="ens" class="kr.co.noveljoa.user.editnovel.EditNovelService">
+	<bean id="enDAO" class="kr.co.noveljoa.user.noveledit.EditNovelDAO"/>
+	<bean id="ens" class="kr.co.noveljoa.user.noveledit.EditNovelService">
 		<constructor-arg ref="enDAO"/>
 	</bean>
 		

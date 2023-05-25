@@ -1,4 +1,4 @@
-package kr.co.noveljoa.user.editnovel;
+package kr.co.noveljoa.user.noveledit;
 
 public class EditNovelVO {
 	private int num_novel,age,open,genre,end;
