@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +57,7 @@ public class LoginController {
 		return "login/new_member2";
 	}
 	@PostMapping("homepage.do")
-	public String login(LoginVO lVO,Model model) {
+	public String login(LoginVO lVO,Model model,HttpSession session) {
 	
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
 		
@@ -74,10 +76,10 @@ public class LoginController {
 				photo = LD.getPhoto();
 				numMember = LD.getNum_member();
 			}
-			model.addAttribute("id", id);
-			model.addAttribute("name", name);
-			model.addAttribute("photo", photo);
-			model.addAttribute("num_member", numMember);
+			session.setAttribute("id", id);
+			session.setAttribute("name", name);
+			session.setAttribute("photo", photo);
+			session.setAttribute("num_member", numMember);
 		
 		return "home/main";
 		}
