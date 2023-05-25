@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.noveljoa.user.login.domain.LoginDomain;
@@ -175,6 +176,36 @@ public class LoginController {
 		jsonObject.put("code", ls.emailCheck(email));
 		
 		return jsonObject.toJSONString();
+	}
+	
+	@PostMapping("logout.do")
+	public @ResponseBody String logout(SessionStatus ss) {
+		JSONObject jsonObject = new JSONObject();
+		ss.setComplete();
+		
+		return jsonObject.toJSONString();
+	}
+	
+	@PostMapping("my_like.do")
+	public ModelAndView like(ModelAndView mav) {
+		mav.setViewName("novel/my_like");
+		
+		return mav;
+	}
+	@PostMapping("my_novel_space.do")
+	public ModelAndView myNovel(ModelAndView mav) {
+		mav.setViewName("temp/my_novel_space");
+		
+		return mav;
+	}
+	
+	@GetMapping("my_page.do")
+	public ModelAndView mypage(ModelAndView mav) {
+		
+		mav.setViewName("login/my_page");
+		
+		return mav;
+		
 	}
 	
 	

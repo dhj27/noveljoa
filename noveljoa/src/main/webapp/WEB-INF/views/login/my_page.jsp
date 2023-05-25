@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" style="height: 1000px;">
 <head>
@@ -8,8 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 <title>마이페이지 | 소설조아</title>
-<link rel="preconnect" href="https://fonts.gstatic.com"
-	crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.gstatic.com"crossorigin="anonymous" />
 <link rel="stylesheet"
 	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"
@@ -35,12 +34,9 @@
 			
 <!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_login_search.jsp"/> 
+		<jsp:include page="../../../_next/header_user_login_search.jsp"/> 
 	</div>
 	
-</style>
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href=/html_prj/common/main_v20230217.css">
 <style type="text/css">
 #wrap{ width: 1300px;height: 1200px;margin: 0px auto;}
 
@@ -69,19 +65,21 @@ request.setCharacterEncoding("UTF-8");
 $(function(){
 	$("#logout").click(function(){
 		 $.ajax({
-		      url: "logout.jsp",
+		      url: "logout.do",
+		      type : "post",
+		      dataType : "json",
 		      error : function(xhr){
 					alert("서버에서 문제가 발생하였습니다");
 					console.log("에러코드 : "+xhr.status);
 				},
 		      success: function(){
 		        alert("로그아웃 되었습니다.");
-		        window.location.href = "loginpage.jsp";
+		        window.location.href = "loginpage.do";
 		      }
 		    });
 	});	
 	$("#profile").click(function(){
-		window.location.href="info.jsp";
+		window.location.href="info.do";
 	});
 	$("#myNovel").click(function(){
 	$("#frm_myNovel").submit(); 
@@ -134,10 +132,13 @@ $(function(){
 
 
 </script>
-<form id="frm_myNovel" action="../novel/my_novel_space.jsp" method="post">
+<c:if test="${ empty id }">
+<c:redirect url="loginpage.do"/>
+</c:if>
+<form id="frm_myNovel" action="my_nove.do" method="post">
 <input type="hidden"name="order_novel"value="0">
 </form>
-<form id="frm_like" action="like.jsp" method="post">
+<form id="frm_like" action="my_like.do" method="post">
 <input type="hidden"name="search">
 <input type="hidden"name="order_novel"value="0">
 </form>
@@ -147,13 +148,13 @@ $(function(){
 
        <div id="container">
            <div id="frame">
-            <div id="text_mypage"><%=session.getAttribute("user_id") %>님의 마이페이지</div>
+            <div id="text_mypage"><c:out value="${ id }"/>님의 마이페이지</div>
             <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"style='cursor:pointer'/></div>
             <div id="text_logout"><a href="#void" id="logout" style="color: blue">로그아웃</a></div>
-            <div id="img_profile"><img src="../_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" class="profile"  id="imgpf" name="imgpf" style='cursor:pointer'/>
+            <div id="img_profile"><img src="../_next/static/images/profile_images/<c:out value="${ photo }"/>" class="profile"  id="imgpf" name="imgpf" style='cursor:pointer'/>
             <input type="file" id="file" name="file" style="display:none" /></div>
             
-            <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("user_name") %>님" class="name"></div>
+            <div id="input_name"><input type="text" readonly value="<c:out value="${ name }"/>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설" style='cursor:pointer'></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요" style='cursor:pointer'></div>
             
@@ -167,7 +168,7 @@ $(function(){
 </div>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 			</div>
 		</div>
