@@ -18,10 +18,10 @@ public class MyLikeDAO {
 				
 		return list;
 	}
-	public int deleteMyLike(MyLikeVO mlVO){
+	public int deleteMyLike(DeleteLikeVO dlVO){
 		
 		SqlSession ss=MyBatisHandler.getInstance().getMyBatisHandler(false);
-		int cnt=ss.delete("mylikeMapper.deleteMyLike",mlVO);
+		int cnt=ss.delete("mylikeMapper.deleteMyLike",dlVO);
 		if(cnt==1) {
 			ss.commit();
 		}//end if

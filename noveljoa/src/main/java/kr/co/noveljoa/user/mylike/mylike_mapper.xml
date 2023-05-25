@@ -5,12 +5,12 @@
 <mapper namespace="mylikeMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
 
 	<select id="selectMyLike" parameterType="kr.co.noveljoa.user.mylike.MyLikeVO" resultType="kr.co.noveljoa.user.mylike.MyLikeDomain">
-		select n.photo, n.title, m.id, n.num_novel, n.age, n.end, e.num_episodes, e.max_make 
+		select n.photo, n.title, m.id, n.num_novel, n.age, n.end, e.num_episode, e.max_make 
 		from member m	
 		join novel n ON n.num_member = m.num_member 
 		join liken l ON n.num_novel = l.num_novel 
 		LEFT JOIN (	
-			SELECT num_novel, COUNT(*) AS num_episodes, MAX(make) AS max_make	
+			SELECT num_novel, COUNT(*) AS num_episode, MAX(make) AS max_make	
 			FROM episode	
 			GROUP BY num_novel	
 		) e ON n.num_novel = e.num_novel	
@@ -19,12 +19,12 @@
 			AND n.title LIKE '%'||#{search}||'%'
 		</if>
 		order by e.max_make
-		<if test="type=0">
+		<if test="type==0">
 			DESC
 		</if>
 	</select>
 	
-	<delete id="deleteMyLike" parameterType="kr.co.noveljoa.user.mylike.MyLikeVO">
+	<delete id="deleteMyLike" parameterType="kr.co.noveljoa.user.mylike.DeleteLikeVO">
 		delete from liken 
 		where num_member=#{num_member} and num_novel=#{num_novel}
 	</delete>

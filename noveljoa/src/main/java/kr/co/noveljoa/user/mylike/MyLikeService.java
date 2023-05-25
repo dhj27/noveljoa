@@ -9,13 +9,13 @@ public class MyLikeService {
 	public MyLikeService(MyLikeDAO mlDAO) {
 		this.mlDAO=mlDAO;
 	}
-	public List<MyLikeDomain> search(MyLikeVO rVO) {
-		List<MyLikeDomain> list=mlDAO.selectMyLike(rVO);
+	public List<MyLikeDomain> search(MyLikeVO mlVO) {
+		List<MyLikeDomain> list=mlDAO.selectMyLike(mlVO);
 		
 		return list;
 	}
-	public void delete(MyLikeVO rVO) {
-		mlDAO.deleteMyLike(rVO);
+	public void delete(DeleteLikeVO dlVO) {
+		mlDAO.deleteMyLike(dlVO);
 	}
 
 }
