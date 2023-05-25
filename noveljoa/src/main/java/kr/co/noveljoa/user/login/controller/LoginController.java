@@ -59,7 +59,7 @@ public class LoginController {
 		
 		return "login/new_member2";
 	}
-	@PostMapping("homepage.do")
+	@GetMapping("homepage.do")
 	public String login(LoginVO lVO,Model model) {
 	
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
@@ -196,13 +196,16 @@ public class LoginController {
 		
 		return mav;
 	}
-	/*
-	 * @GetMapping("info.do") public ModelAndView info(ModelAndView mav) {
-	 * 
-	 * mav.
-	 * 
-	 * }
-	 */
+	
+	  @GetMapping("info.do") public String info(Model model) {
+	  
+		  String id=(String)model.getAttribute("Id");
+		  
+		  
+		  
+		  return "";
+	  }
+	 
 		
 	
 	}

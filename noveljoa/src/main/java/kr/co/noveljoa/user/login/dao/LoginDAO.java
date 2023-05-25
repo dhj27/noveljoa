@@ -171,7 +171,6 @@ public class LoginDAO {
 		
 	}
 	
-	public static void main(String[] args) {
-		
-	}
+	public 
+	
 }
