@@ -135,7 +135,7 @@ select comment_num, id, title, detail, c.make as make
 delete from comments where comment_num=#{ comment_num }
 </delete>
 
-<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain" parameterType="integer">
+<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain" parameterType="java.util.Map">
 		 select board_num, m.id as id, title, make, views, detail
 		 from board b
 		 inner join member m on b.num_member = m.num_member
@@ -143,6 +143,10 @@ delete from comments where comment_num=#{ comment_num }
  <if test="board_num !=null and board_num != ''">
  board_num=#{ board_num }
  </if>
+ <if test="id !=null and id !=''" >
+ m.id = #{ id }
+ </if>
+ 
  </where>
 </select>
 
@@ -154,7 +158,7 @@ delete from comments where comment_num=#{ comment_num }
 
 <select id="selectBoardComment" resultType="kr.co.noveljoa.admin.domain.BoardCommentDomain" parameterType="integer">
 		 		 select 
-		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail
+		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail, board_cmt_num
 		 from board_cmt bc
 		 where board_num=#{ board_num }
 </select>
@@ -165,8 +169,21 @@ delete from comments where comment_num=#{ comment_num }
 </insert>
 
 
+<!-- 유저 게시판 글 삭제 -->
+<delete id="deleteBoard" parameterType="integer">
+delete from board where board_num=#{ board_num }
+</delete>
 
+<!-- 유저 게시판 글 댓글 변경-->
+<update id="updateBoardComment" parameterType="kr.co.noveljoa.admin.vo.updateBoardCommentVO">
+			update board_cmt set detail=#{ detail }
+			where num_member = #{ num_member } and board_cmt_num=#{ board_cmt_num }
+</update>
 
+<!-- 유저 게시판 글 댓글 삭제 -->
+<delete id="deleteBoardComment" parameterType="integer">
+delete from board_cmt where board_cmt_num=#{ board_cmt_num }
+</delete>
 
 
 

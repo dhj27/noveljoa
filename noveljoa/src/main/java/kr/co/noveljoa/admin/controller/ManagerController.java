@@ -1,6 +1,8 @@
 package kr.co.noveljoa.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +28,11 @@ import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.admin.vo.BoardCommentVO;
 import kr.co.noveljoa.admin.vo.FreeBoardVO;
+import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
+import kr.co.noveljoa.admin.vo.updateBoardCommentVO;
 @SessionAttributes({"mFlag"})
 @Controller
 public class ManagerController {
@@ -182,32 +186,34 @@ public class ManagerController {
 		return "manager/removeComment";
 	}
 	
-	@GetMapping("manager/messageFreeLookFrm2.do")
-	public String messageFreeLookFrm2() {
-		return "manager/messageFreeLookFrm2";
-	}
-	
 
 	
-	@GetMapping("manager/messageQNALookFrm2.do")
-	public String messageQNALookFrm2(@RequestParam(name = "board_num", required = false) Integer board_num, Model model) {
+	@GetMapping("manager/memQNALookListFrm.do")
+	public String QNALookFrm(@RequestParam(name = "board_num", required = false) Integer board_num,
+			 @RequestParam(name = "id", required = false) String id, Model model) {
 		//기본자료형 int는 null로 선언할 수 없다.
 		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
 		if (board_num == null) {
 			board_num = 0;
 		  }
 		ManagerService1 ms = new ManagerService1();
-		List<FreeBoardDomain> fdList =  ms.printFreeBoard(board_num);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		 paramMap.put("id",id);
+		   paramMap.put("board_num", board_num);
+		List<FreeBoardDomain> fdList =  ms.printFreeBoard(paramMap);
 		model.addAttribute("freeBoardData", fdList);
 		
-		return "manager/messageQNALookFrm2";
+		return "manager/memQNALookListFrm";
+			
+			   
 	}
 	
 	
-	@GetMapping("manager/messageQNALookFrmInfo.do")
+	@GetMapping("manager/memQNAWriteFrm.do")
 	public String messageQNALookFrmInfo() {
 		
-		return "manager/messageQNALookFrmInfo";
+		return "manager/memQNAWriteFrm";
 	}
 	
 	@GetMapping("manager/boardComplete.do")
@@ -218,8 +224,9 @@ public class ManagerController {
 		return "manager/boardComplete";
 	}
 	
-	@GetMapping("manager/messageQNALookFrm3.do")
-	public String messageQNALookFrm3(int board_num, Model model) {
+	@GetMapping("manager/memQNALookFrm.do")
+	public String memQNALookFrm(@RequestParam(name = "board_num", required = false) Integer board_num,
+			 @RequestParam(name = "id", required = false) String id, Model model) {
 		//@RequestParam(name = "board_num", required = false) Integer
 		//기본자료형 int는 null로 선언할 수 없다.
 		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
@@ -227,24 +234,63 @@ public class ManagerController {
 //			board_num = 0;
 //		  }
 		ManagerService1 ms = new ManagerService1();
-		List<FreeBoardDomain> fdList =  ms.printFreeBoard(board_num);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		 paramMap.put("id",id);
+		   paramMap.put("board_num", board_num);
+		List<FreeBoardDomain> fdList =  ms.printFreeBoard(paramMap);
 		model.addAttribute("freeBoardData2", fdList.get(0));
 		//System.out.println(board_num);
 	List<BoardCommentDomain> bclist = ms.printFreeBoardComment(board_num);
 	model.addAttribute("freeBoardCMTData", bclist);
 		
-		return "manager/messageQNALookFrm3";
-	}//messageQNALookFrm3
+		return "manager/memQNALookFrm";
+	}//messageQNALookFrm
 	
-	@GetMapping("manager/messageQNALookFrm3_process.do")
-	public String messageQNALookFrm3Process(BoardCommentVO bcVO, Model model) {
+	@GetMapping("manager/memQNALookFrm_process.do")
+	public String memQNALookFrm_process(BoardCommentVO bcVO, Model model) {
 		ManagerService1 ms = new ManagerService1();
 		Boolean boardCommentFlag =  ms.addBoardComment(bcVO);
 		model.addAttribute("boardCommentFlag", boardCommentFlag);
 		
-		return "manager/messageQNALookFrm3_process";
+		return "manager/memQNALookFrm_process";
+	}//messageQNALookFrm3Process
+	
+	
+	@GetMapping("manager/removeBoard.do")
+	public String removeBoard(int board_num, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean removeBoardFlag =  ms.removeBoard(board_num);
+		model.addAttribute("removeBoardFlag", removeBoardFlag);
+		
+		return "manager/removeBoard";
+	}//removeBoard
+	
+	public String example() {
+		return "";
 	}
 	
+	
+	//클릭시 서브밋해 example 폼이 켜지고 거기에 수정을 작성해 그거에 대한 아래를 보내 바꿀거임 
+	@GetMapping("manager/modifyBoardComment.do")
+	public String modifyBoardComment(updateBoardCommentVO ubcVO, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean modifyBoardCommentFlag =  ms.modifyBoardComment(ubcVO);
+		model.addAttribute("modifyBoardCommentFlag", modifyBoardCommentFlag);
+		
+		return "manager/modifyBoardComment";
+	}//modifyBoard
+	
+	@GetMapping("manager/removeBoardComment.do")
+	public String removeBoardComment(int board_cmt_num, Model model) {
+		ManagerService1 ms = new ManagerService1();
+		Boolean removeBoardCommentFlag =  ms.removeBoardComment(board_cmt_num);
+		System.out.println(board_cmt_num);
+		model.addAttribute("board_cmt_num", board_cmt_num);
+		model.addAttribute("removeBoardCommentFlag", removeBoardCommentFlag);
+		
+		
+		return "manager/removeBoardComment";
+	}//removeBoard
 	
 	
 	

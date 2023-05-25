@@ -151,6 +151,7 @@
 <input type="text" name="title" placeholder="제목을 작성하세요."  class="form-control" style="width:200px; margin-bottom: 30px"/>
   <textarea id="summernote" name="detail"></textarea>
 <br>
+
 <input type="button" value="뒤로 가기" onclick="history.back()" class="btn btn-dark">
 <input type="button" value="올리기" class="btn btn-dark" id="bBtn">
 </form>

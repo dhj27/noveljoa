@@ -156,7 +156,7 @@
 					
 					
 							
-<form class="" id="cFrm" action="messageQNALookFrm3_process.do">
+<form class="" id="cFrm" action="memQNALookFrm_process.do">
 <div class="row">
   <div class="col-md-6">
   <!-- 임시 벨류값에 세션에 저장된 아이디 값 넣어야함 -->
@@ -178,15 +178,15 @@
 				<tr class="table-secondary">
 				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }</th>
 				<th style="width: 600px">작성일 : ${  freeBoardcmt.make }</th>
-				<th style="width: 150px"></th>
+				<th style="width: 150px">${  freeBoardcmt.board_cmt_num }</th>
 				<th></th>
 				</tr>
 			<tr>
  			<td colspan="3">  ${  freeBoardcmt.detail } </td>
  			<td>
- 			<!-- <input type="button" value="답변"  class="btn btn-secondary btn-sm"> -->
- 			<input type="button" value="수정"  class="btn btn-secondary btn-sm">
-			<input type="button" value="삭제"  class="btn btn-secondary btn-sm">
+ 			<!-- <input type="button" value="답변"  class="btn btn-secondary btn-sm"> --><!-- }&num_member=에서 세션값 받아와야함 --><!-- board_num=${  param.board_num }& -->
+ 			<input type="button" value="수정"  class="btn btn-secondary btn-sm" onclick="location.href='modifyBoardComment.do?board_cmt_num=${  freeBoardcmt.board_cmt_num }&detail=${ freeBoardcmt.detail  }&num_member=${ freeBoardData2.num_member  }'" >
+			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" onclick="location.href='removeBoardComment.do?board_cmt_num=${ freeBoardcmt.board_cmt_num  }&board_num=${  param.board_num }' ">
 			</td>
 			</tr>
 			<tr>

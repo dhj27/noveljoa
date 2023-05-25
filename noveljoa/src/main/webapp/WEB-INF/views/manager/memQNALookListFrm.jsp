@@ -31,6 +31,10 @@
     	  $("#bBtn").click(function(){
     		$("#bFrm").submit();
     	  });
+      
+    	  $("#myBtn").click(function(){
+      		$("#myFrm").submit();
+      	  });
      
       });
       </script>
@@ -125,7 +129,7 @@
 
 <div class="container-fluid">
   <div class="row">
-  <form action="messageQNALookFrmInfo.do" id="bFrm">
+  <form action="memQNAWriteFrm.do" id="bFrm">
   
   </form>
 
@@ -134,8 +138,16 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">QNA 게시판</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
+        <!-- 아이디값을 아이디 세션값으로 받아와야함 -->
+        <form action="memQNALookListFrm.do?board_num" id="myFrm">
+        <input type="hidden" value="bb" name="id">
+        </form>
 
                     <!--  c if로 -->
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="myBtn" style="margin-right: 20px ">
+            <span class="align-text-bottom"></span>
+            내 글 보기
+          </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" id="bBtn">
             <span class="align-text-bottom"></span>
             글 작성
@@ -159,11 +171,12 @@
          
            <c:forEach var="fdata" items="${ freeBoardData  }">
             <tr>
-              <td><a>${  fdata.board_num }</a></td>
-              <td><a href="messageQNALookFrm3.do?board_num=${ fdata.board_num  }">${  fdata.title }</a></td>
-              <td><a>${  fdata.id }</a></td>
-              <td><a>${  fdata.make }</a></td>
-              <td><a>${  fdata.views }</a></td>
+              <td>${  fdata.board_num }</td>
+              <td><a href="memQNALookFrm.do?board_num=${ fdata.board_num  }">${  fdata.title }</a></td>
+              <td>${  fdata.id }</td>
+              <td>${  fdata.make }</td>
+              <td>${  fdata.views } 			
+			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" id="removeBtn"   onclick="location.href='removeBoard.do?board_num=${  fdata.board_num }'"></td>
             </tr>
             </c:forEach>
            

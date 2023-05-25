@@ -2,6 +2,7 @@ package kr.co.noveljoa.admin.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
 import kr.co.noveljoa.admin.domain.BoardCommentDomain;
@@ -11,7 +12,9 @@ import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.vo.BoardCommentVO;
 import kr.co.noveljoa.admin.vo.FreeBoardVO;
+import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
+import kr.co.noveljoa.admin.vo.updateBoardCommentVO;
 
 public class ManagerService1 {
 	
@@ -77,11 +80,11 @@ public boolean removeComment(int comment_num) {
 	return cnt==1;
 }//removeComment
 
-public List<FreeBoardDomain> printFreeBoard(int board_num) {
+public List<FreeBoardDomain> printFreeBoard(Map<String, Object> paramMap) {
 	List<FreeBoardDomain> fbList = null;
 	ManagerDAO1 mDAO = new ManagerDAO1();
 	try {
-		fbList = mDAO.selectFreeBoard(board_num);
+		fbList = mDAO.selectFreeBoard(paramMap);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
@@ -115,5 +118,28 @@ public boolean addBoardComment(BoardCommentVO bcVO) {
 	
 	return cnt==1;
 }//addBoardComment
+
+
+public boolean removeBoard(int board_num) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.deleteBoard(board_num);
+	
+	return cnt==1;
+}//removeBoard
+
+
+public boolean modifyBoardComment(updateBoardCommentVO ubcVO) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.updateBoardComment(ubcVO);
+	
+	return cnt==1;
+}//modifyBoardComment
+
+public boolean removeBoardComment(int board_cmt_num) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.deleteBoardComment(board_cmt_num);
+	
+	return cnt==1;
+}//modifyBoardComment
 
 }

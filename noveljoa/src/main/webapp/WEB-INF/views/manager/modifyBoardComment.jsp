@@ -20,8 +20,8 @@
       </script>
 </head>
 <body>
-<c:if test="${ boardFlag  }">
+<%-- <c:if test="${ removeBoardFlag  }">
 <c:redirect url="memQNALookListFrm.do" />
-</c:if>
+</c:if>  --%>
 </body>
 </html>

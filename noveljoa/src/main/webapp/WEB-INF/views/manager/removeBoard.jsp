@@ -20,8 +20,8 @@
       </script>
 </head>
 <body>
- <c:if test="${ boardCommentFlag  }">
-<c:redirect url="messageQNALookFrm3.do?board_num=${ param.board_num }" />
-</c:if>
+<c:if test="${ removeBoardFlag  }">
+<c:redirect url="memQNALookListFrm.do" />
+</c:if> 
 </body>
 </html>

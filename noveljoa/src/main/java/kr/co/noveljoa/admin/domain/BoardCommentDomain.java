@@ -4,8 +4,17 @@ import java.sql.Date;
 
 public class BoardCommentDomain {
 	 private String id, detail;
+	 private  int board_cmt_num;
 	private Date make;
 	
+	
+	
+	public int getBoard_cmt_num() {
+		return board_cmt_num;
+	}
+	public void setBoard_cmt_num(int board_cmt_num) {
+		this.board_cmt_num = board_cmt_num;
+	}
 	public String getId() {
 		return id;
 	}
@@ -26,8 +35,11 @@ public class BoardCommentDomain {
 	}
 	@Override
 	public String toString() {
-		return "BoardCommentDomain [id=" + id + ", detail=" + detail + ", make=" + make + "]";
+		return "BoardCommentDomain [id=" + id + ", detail=" + detail + ", board_cmt_num=" + board_cmt_num + ", make="
+				+ make + "]";
 	}
+
+	
 	
 	
 	
