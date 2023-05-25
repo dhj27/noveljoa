@@ -12,15 +12,8 @@ public class SearchDAO {
 	public List<SearchDomain> selectSearch(SearchVO sVO){
 		List<SearchDomain> list=null;
 		
-		//1. MyBatis Handler얻기
 		SqlSession ss=MyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. Handler 사용
 		list=ss.selectList("searchMapper.selectSearch",sVO);
-		//3. transaction 완료
-//		if(list!=null) {
-//			ss.commit();
-//		}//end if
-		//4. 연결끊기
 		if(ss!=null) {ss.close();}//end if
 				
 		return list;

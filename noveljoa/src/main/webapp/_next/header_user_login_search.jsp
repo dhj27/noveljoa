@@ -24,7 +24,7 @@
 		</div>
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
 			<a class="mr-16 flex items-center text-grey70"
-				href="/project2/novel/search_before.jsp?search="><img
+				href="search.do"><img
 				src="_next/static/images/search.png" width="24"
 				height="24"></a> &nbsp; &nbsp; &nbsp; <a
 				class="mr-16 flex items-center text-grey70"

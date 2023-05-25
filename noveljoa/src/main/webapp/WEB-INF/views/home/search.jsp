@@ -43,15 +43,25 @@ function selectNovel(num_novel){
                      <div
                         class="mt-40 mb-32 px-18 desktop:mt-50 desktop:mb-42 desktop:px-0">
                         <div class="w-full">
-                           <form id="frm">
+                           <form id="frm" action="search.do">
                               <div
                                  class="flex items-center rounded-4 border-1 border-grey30 py-4 px-16">
                                  <div id="searchimg" class="flex h-16 w-16 items-center text-grey60" onclick="findNovel()">
-                                    <img width="20" height="20" viewBox="0 0 20 20" src="/project2/_next/static/images/search.png"/>
-                                 </div>
+                                    <img width="20" height="20" viewBox="0 0 20 20" src="_next/static/images/search.png"/>
+                                 </div>&nbsp&nbsp&nbsp
+                                 <select name="type" class="typo-sm1 desktop:text-grey70" style="width: 40px">
+								 	<option value="0" ${type==0?"selected":""}>제목</option>
+								 	<option value="1" ${type==1?"selected":""}>작가</option>
+								 </select>&nbsp
+                                 <select name="genre" class="typo-sm1 desktop:text-grey70" style="width: 50px">
+								 	<option value="0" ${genre==0?"selected":""}>전체</option>
+								 	<option value="1" ${genre==1?"selected":""}>판타지</option>
+								 	<option value="2" ${genre==2?"selected":""}>무협</option>
+								 	<option value="9" ${genre==9?"selected":""}>자유</option>
+								 </select>
                                  <input type="search" onKeypress="javascript:if(event.keyCode==13){findNovel()}"
                                     class="typo-md3 py-14 px-16 outline-none rounded-3 border-1 border-grey30 placeholder:text-grey60 w-full border-0 text-16 outline-none desktop:!text-16"
-                                    name="search" placeholder="검색어 입력" maxLength="100" />
+                                    name="search" placeholder="검색어 입력" maxLength="100" value="${search}" />
                               </div>
                            </form>
                         </div>
@@ -63,14 +73,7 @@ function selectNovel(num_novel){
                   
                   <div class="col-span-full grid gap-x-64 desktop:grid-cols-2" style="margin: 0 auto">
                         
-                        <%
-                                                SearchDAO sDAO=new SearchDAO();
-                                                                  try{
-                                                                     List<SearchVO> selectList=sDAO.selectNovelAll(request.getParameter("search"));
-                                                                     pageContext.setAttribute("selList", selectList);
-                                                %>
-                        
-                        <c:forEach var="select" items="${selList}" >
+                        <c:forEach var="select" items="${list}" >
                            <div class="px-18 py-12 desktop:px-0 desktop:py-24" style="border: 1px solid #333">
                               <div
                                  class="flex items-center flex-row w-full flex-row-reverse"
@@ -79,39 +82,34 @@ function selectNovel(num_novel){
                                     class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" style="background-color: #fff"></div>
                                  <div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
-                                                                            <span class="truncate" style="font-size: 18px">&nbsp;${select.subject}</span>
+                                                                            <span class="truncate" style="font-size: 18px">&nbsp;${select.title}</span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">&nbsp;${select.id}</p><br/>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                &nbsp;최신화 : ${select.episode} 화
+                                                                                &nbsp;최신화 : ${select.num_episodes} 화
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4">&nbsp;<fmt:formatDate value="${select.make}" pattern="yyyy-MM-dd HH:mm"/></span>
+                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4">&nbsp;<fmt:formatDate value="${select.max_make}" pattern="yyyy-MM-dd HH:mm"/></span>
                                                                             </span>
                                                                         </div>
                                  </div>
                                  <div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')">
                                     <img
                                           alt="ㄴㄹㅇㄹ"
-                                          srcset="/project2/_next/static/images/novel_thumb/${select.photo}"
-                                          src="/project2/_next/static/images/novel_thumb/${select.photo}" decoding="async"
+                                          srcset="_next/static/images/novel_thumb/${select.photo}"
+                                          src="_next/static/images/novel_thumb/${select.photo}" decoding="async"
                                           data-nimg="fixed"
                                           style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
                                           >
-                                          ${select.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
-                                          ${select.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+                                          ${select.age==1?"<img class='absolute top-4 right-4' src='_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                          ${select.end==1?"<img class='absolute top-4 left-4' src='_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
                                  </div>
                               </div>
                            </div>
                         </c:forEach>
                            
-                           <% 
-                        }catch(Exception e){
-                           e.printStackTrace();
-                        }
-                        %>
                         </div>
                   
                </div>

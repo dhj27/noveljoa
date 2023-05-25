@@ -18,10 +18,12 @@
 		<if test="genre!=0">
 			and n.genre=#{genre}
 		</if>
-		<choose>
-			<when test="type==1">and m.id LIKE '%'||${search}||'%'</when>
-			<otherwise>and n.title LIKE '%'||${search}||'%'</otherwise>
-		</choose>
+		<if test="search != ''">
+			<choose>
+				<when test="type==1">and m.id LIKE '%'||#{search}||'%'</when>
+				<otherwise>and n.title LIKE '%'||#{search}||'%'</otherwise>
+			</choose>
+		</if>
 		order by e.max_make desc
 	</select>
 
