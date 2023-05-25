@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.noveljoa.user.login.domain.LoginDomain;
@@ -23,6 +23,8 @@ import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
 
+
+@SessionAttributes({"id","name","photo","num_member"}) //세션에 값 여러개 설정할 때
 @Controller
 public class LoginController {
 
@@ -57,7 +59,7 @@ public class LoginController {
 		return "login/new_member2";
 	}
 	@PostMapping("homepage.do")
-	public String login(LoginVO lVO,Model model,HttpSession session) {
+	public String login(LoginVO lVO,Model model) {
 	
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
 		
@@ -76,10 +78,11 @@ public class LoginController {
 				photo = LD.getPhoto();
 				numMember = LD.getNum_member();
 			}
-			session.setAttribute("id", id);
-			session.setAttribute("name", name);
-			session.setAttribute("photo", photo);
-			session.setAttribute("num_member", numMember);
+			
+			model.addAttribute("id", id);
+			model.addAttribute("name", name);
+			model.addAttribute("photo", photo);
+			model.addAttribute("num_member", numMember);
 		
 		return "home/main";
 		}
