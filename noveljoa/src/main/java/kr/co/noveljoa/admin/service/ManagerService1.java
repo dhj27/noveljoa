@@ -140,6 +140,13 @@ public boolean removeBoardComment(int board_cmt_num) {
 	int cnt = mDAO.deleteBoardComment(board_cmt_num);
 	
 	return cnt==1;
-}//modifyBoardComment
+}//removeBoardComment
+
+
+public void modifyBoardCnt(int board_num) {
+	ManagerDAO1 mDAO = new ManagerDAO1();
+	int cnt = mDAO.updateBoardCnt(board_num);
+	
+}//modifyBoardCnt
 
 }

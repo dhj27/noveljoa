@@ -234,6 +234,7 @@ public class ManagerController {
 //			board_num = 0;
 //		  }
 		ManagerService1 ms = new ManagerService1();
+		ms.modifyBoardCnt(board_num);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		 paramMap.put("id",id);
 		   paramMap.put("board_num", board_num);

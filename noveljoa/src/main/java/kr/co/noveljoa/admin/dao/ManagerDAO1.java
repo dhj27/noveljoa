@@ -279,12 +279,30 @@ public class ManagerDAO1 {
 				return cnt;
 	}//updateComment
 	
+	public int updateBoardCnt(int board_num) {
+		//1. MyBatis Handler 얻기
+		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		//2. 쿼리 수행 후 결과 얻기
+		int cnt = ss.update("kr.co.noveljoa.admin.Mapper.updateBoardCnt",board_num);
+		if( cnt==1 ) {
+		ss.commit();
+		}//end if
+		//3. MyBatis Handler 닫기
+		if(ss!=null) {
+			ss.close();
+		}
+		
+		return cnt;
+		
+	}
+	
+	
 	
 //	//테스트
 //	 public static void main(String[] args) throws SQLException {
 //		  
 //			  ManagerDAO1 mDAO = new ManagerDAO1(); 
-//			  int cnt = mDAO.deleteBoardComment(27);
+//			  int cnt = mDAO.updateBoardCnt(33);
 //			  
 //			  System.out.println(cnt);
 //		  

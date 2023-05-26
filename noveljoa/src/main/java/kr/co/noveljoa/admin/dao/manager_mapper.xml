@@ -185,6 +185,11 @@ delete from board where board_num=#{ board_num }
 delete from board_cmt where board_cmt_num=#{ board_cmt_num }
 </delete>
 
+<!--  유저 게시판 글 조회수 -->
+<update id="updateBoardCnt" parameterType="integer">
+update board set views=(views+1) where board_num=#{ board_num }
+</update>
+
 
 
 
