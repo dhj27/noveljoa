@@ -185,7 +185,8 @@
  			<td colspan="3">  ${  freeBoardcmt.detail } </td>
  			<td>
  			<!-- <input type="button" value="답변"  class="btn btn-secondary btn-sm"> --><!-- }&num_member=에서 세션값 받아와야함 --><!-- board_num=${  param.board_num }& -->
- 			<input type="button" value="수정"  class="btn btn-secondary btn-sm" onclick="location.href='modifyBoardComment.do?board_cmt_num=${  freeBoardcmt.board_cmt_num }&detail=${ freeBoardcmt.detail  }&num_member=${ freeBoardData2.num_member  }'" >
+ 			<!-- num_member=3에서 세션에서 받기 -->
+ 			<input type="button" value="수정"  class="btn btn-secondary btn-sm" onclick="location.href='modifyBoardComment.do?board_cmt_num=${  freeBoardcmt.board_cmt_num }&detail=${ freeBoardcmt.detail  }&num_member=3&board_num=${  param.board_num }'" >
 			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" onclick="location.href='removeBoardComment.do?board_cmt_num=${ freeBoardcmt.board_cmt_num  }&board_num=${  param.board_num }' ">
 			</td>
 			</tr>

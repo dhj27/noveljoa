@@ -265,19 +265,21 @@ public class ManagerController {
 		return "manager/removeBoard";
 	}//removeBoard
 	
-	public String example() {
-		return "";
+	@GetMapping("manager/modifyBoardComment.do")
+	public String modifyBoardComment() {
+		
+		return "manager/modifyBoardComment";
 	}
 	
 	
 	//클릭시 서브밋해 example 폼이 켜지고 거기에 수정을 작성해 그거에 대한 아래를 보내 바꿀거임 
-	@GetMapping("manager/modifyBoardComment.do")
+	@GetMapping("manager/modifyBoardComment_process.do")
 	public String modifyBoardComment(updateBoardCommentVO ubcVO, Model model) {
 		ManagerService1 ms = new ManagerService1();
 		Boolean modifyBoardCommentFlag =  ms.modifyBoardComment(ubcVO);
 		model.addAttribute("modifyBoardCommentFlag", modifyBoardCommentFlag);
 		
-		return "manager/modifyBoardComment";
+		return "manager/modifyBoardComment_process";
 	}//modifyBoard
 	
 	@GetMapping("manager/removeBoardComment.do")

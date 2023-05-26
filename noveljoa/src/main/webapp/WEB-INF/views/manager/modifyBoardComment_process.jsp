@@ -15,23 +15,13 @@
      <!-- jQuery CDN 끝 -->
       <script type="text/javascript">
       $(function(){
-    	  
-    	  $("#modBtn").click(function(){
-     		 $("#modFrm").submit();
-     	 }); 
      
       });
       </script>
 </head>
 <body>
-<form action="modifyBoardComment_process.do" id="modFrm">
-<input type="hidden" value="${ param.board_num  }" name="board_num">
-<input type="hidden" value="${ param.board_cmt_num  }" name="board_cmt_num">
-<input type="hidden" value="${ param.num_member  }" name="num_member">
- <textarea class="form-control is-invalid" placeholder="${ param.detail  }" name="detail" style="height: 500px"></textarea><br>
-			<div class="d-grid gap-2">
-			<input  type="button" value="수정"  class="btn btn-danger btn-sm" id="modBtn" style="height: 100px">
-			</div>
-			</form>
+ <c:if test="${ modifyBoardCommentFlag  }">
+<c:redirect url="memQNALookFrm.do?board_num=${ param.board_num  }" />
+</c:if>  >
 </body>
 </html>
