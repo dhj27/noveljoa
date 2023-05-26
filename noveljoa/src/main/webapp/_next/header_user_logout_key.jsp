@@ -26,6 +26,9 @@ $(function(){
 				<a href="ranking.do" class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16" >
 					<div class="relative">랭킹</div>
 				</a>
+				<a href="memQNALookListFrm.do?board_num=0" class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16" >
+					<div class="relative">게시판</div>
+				</a>
 			</div>
 		</div>
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
