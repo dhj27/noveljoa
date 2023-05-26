@@ -28,6 +28,15 @@
 			$("#updateEpFrm").submit();
 		});
 		
+		$("#cmtOpen").click(function(){
+			$("#novelNum").val();
+			$("#cmtFrm").submit();
+		});
+		
+		$("#novelOpen").click(function(){
+			$("#novelNum").val();
+			$("#novelFrm").submit();
+		});
 		 
 	});
 	
@@ -50,6 +59,17 @@
 		<input type="hidden" name="userNum" id="userNum"/>
 		<input type="hidden" name="novelNum" id="novelNum"/>
 		<input type="hidden" name="epNum" id="epNum"/>
+	</form>
+	
+	<input type="button" id="cmtOpen" value="댓글창" />
+	<form action="episode/comment.do" name="cmtFrm" id="cmtFrm" method="post">
+		<input type="hidden" name="userNum" id="userNum"/>
+		<input type="hidden" name="novelNum" id="novelNum"/>
+	</form>
+	 
+	<input type="button" id="novelOpen" value="소설 창" />
+	<form action="novels.do" name="novelFrm" id="novelFrm" method="get">
+		<input type="hidden" name="novelNum" id="novelNum" value="2"/>
 	</form>
 	
 	

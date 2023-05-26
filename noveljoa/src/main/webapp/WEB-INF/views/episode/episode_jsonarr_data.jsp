@@ -1,5 +1,3 @@
-<%@page import="EpisodeVO.ListEpisodeVO"%>
-<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.json.simple.JSONArray"%>

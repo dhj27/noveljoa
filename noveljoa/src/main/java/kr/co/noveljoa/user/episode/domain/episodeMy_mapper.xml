@@ -29,7 +29,8 @@
 	</delete>
 	
 	<!-- 내가 작성한 에피소드 내용보여주는 창 (수정) -->
-	<select id="selectEp" resultType="kr.co.noveljoa.user.episode.domain.EpMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO" >
+	<select id="selectEp" resultType="kr.co.noveljoa.user.episode.domain.EpMyDomain" 
+		parameterType="kr.co.noveljoa.user.episode.vo.EpCheckMyVO" >
 		
 		select n.title novelTitle, e.title epTitle, e.story epDetail, e.cmt cmt, e.open open 
 		from episode e, novel n 
@@ -41,7 +42,8 @@
 	</select>
 		
 	<!-- 내 소설에 해당하는 모든 에피소드 리스트 가져오기 -->
-	<select id="selectEpList" resultType="kr.co.noveljoa.user.episode.domain.EpListMyDomain" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckMyVO">
+	<select id="selectEpList" resultType="kr.co.noveljoa.user.episode.domain.EpListMyDomain" 
+		parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckMyVO">
 		select title,open,visit,make 
 		from episode 
 		where num_member=#{num_member}  

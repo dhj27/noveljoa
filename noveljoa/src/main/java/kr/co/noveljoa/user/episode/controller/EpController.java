@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.noveljoa.user.episode.service.EpService;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
@@ -17,6 +19,11 @@ public class EpController {
 	@Autowired(required = false)
 	private EpService epService;
 	
+	@PostMapping("/episode/comment.do")
+	public String cmt() {
+		return "episode/comment";
+	}
+	
 	// test
 	@GetMapping("/episode/a.do")
 	public String ab() {
@@ -24,24 +31,31 @@ public class EpController {
 	}// novelEpList
 	
 	
-	// 소설-에피소드 리스트 보여주기
+	// 소설내용 보여주기
 	@GetMapping("/novels.do")
-	public String novelEpList(int novelNum, Model model) {
+	public String novelDetail(int novelNum, Model model) {
 		// 세션받아오기
-		int userNum = (Integer)model.getAttribute("num_member");
-		
-		// 소설정보 조회
-		// 아이디를 사용하여 좋아요?여부를 조회
-		// 아이디를 사용하여 신고?여부를 조회
-		// 회차정보 조회 
-		// model 에 넣는다
-		
+//		int userNum = (Integer)model.getAttribute("num_member");
+//		novelNum = (Integer)model.getAttribute("num_novel");
+//		model.addAttribute("novelNum", 1);
+		model.addAttribute("searchNovel", epService.searchNovel(novelNum));
+		System.out.println(epService.searchNovel(novelNum));
 		return "/episode/novel";
-	}// novelEpList
+	}// novelDetail
+	
+	
+	@ResponseBody
+	@GetMapping("/novelLikeReport.do")
+	public String novelLikeReport(NovelCheckVO nCheckVO, Model model) {
+		
+		return "";
+	}//novelLikeReport
+	
 	
 	
 	
 	// 에피소드 리스트 ajax
+	//@ResponseBody
 	//@GetMapping("")
 	public String searchEpList(EpListVO epListVO) {
 		return "";

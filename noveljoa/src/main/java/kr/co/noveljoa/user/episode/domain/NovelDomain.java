@@ -11,31 +11,11 @@ public class NovelDomain {
 	private String photo;
 	private int open;
 	private int end;
-	private Date date;
+	private Date make;
 	private int genre;
 	private int likeCnt;
 	private int reportCnt;
 	
-	public NovelDomain() {}
-	
-	
-	
-	public NovelDomain(String novelTitle, String age, String id, String intro, String photo, int open, int end,
-			Date date, int genre, int likeCnt, int reportCnt) {
-		this.novelTitle = novelTitle;
-		this.age = age;
-		this.id = id;
-		this.intro = intro;
-		this.photo = photo;
-		this.open = open;
-		this.end = end;
-		this.date = date;
-		this.genre = genre;
-		this.likeCnt = likeCnt;
-		this.reportCnt = reportCnt;
-	}
-
-
 
 	public String getNovelTitle() {
 		return novelTitle;
@@ -79,11 +59,11 @@ public class NovelDomain {
 	public void setEnd(int end) {
 		this.end = end;
 	}
-	public Date getDate() {
-		return date;
+	public Date getMake() {
+		return make;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setMake(Date make) {
+		this.make = make;
 	}
 	public int getGenre() {
 		return genre;
@@ -107,7 +87,7 @@ public class NovelDomain {
 	@Override
 	public String toString() {
 		return "NovelDomain [novelTitle=" + novelTitle + ", age=" + age + ", id=" + id + ", intro=" + intro + ", photo="
-				+ photo + ", open=" + open + ", end=" + end + ", date=" + date + ", genre=" + genre + ", likeCnt="
+				+ photo + ", open=" + open + ", end=" + end + ", make=" + make + ", genre=" + genre + ", likeCnt="
 				+ likeCnt + ", reportCnt=" + reportCnt + "]";
 	}
 	

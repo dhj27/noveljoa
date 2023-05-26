@@ -26,9 +26,6 @@ public class EpMyDAO {
 		if(cnt == 1) {
 			System.out.println("episode commit");
 			ss.commit();
-		}else {
-			System.out.println("episode rollback");
-			ss.rollback();
 		}
 		
 		if( ss != null) { ss.close(); }
@@ -92,14 +89,6 @@ public class EpMyDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		list = ss.selectList(map+"selectEpList", nCheckMyVO);
-		
-		if(list != null) {
-			System.out.println("episode List");
-			ss.commit();
-		}else {
-			System.out.println("episode List fail");
-			ss.rollback();
-		}
 		
 		if( ss != null) { ss.close(); }
 		return list;

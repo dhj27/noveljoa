@@ -17,81 +17,90 @@ public class EpService {
 	@Autowired(required = false)
 	private EpDAO eDAO;
 	
-	// ¼Ò¼³³»¿ë º¸¿©ÁÖ±â
+	// ì†Œì„¤ ë‚´ìš© ë³´ì—¬ì£¼ê¸°
 	public NovelDomain searchNovel(int novelNum) {
-		NovelDomain nd = new NovelDomain();
-		
+		NovelDomain nd = eDAO.selectNovel(novelNum);		
+		System.out.println(eDAO.selectNovel(novelNum));
 		
 		return nd;
 	}// searchNovel
 	
-	// ¼Ò¼³ ÁÁ¾Æ¿ä
+	// ì†Œì„¤ ì¢‹ì•„ìš” ì„ íƒ
 	public int searchNovelLike(int userNum) {
 		
 		return 0;
 	}//searchNovelLike
 	
-	// ¼Ò¼³ ½Å°í
+	// ì†Œì„¤ ì‹ ê³  ì„ íƒ
 	public int searchNovelReport(int userNum) {
 		
 		return 0;
 	}//searchNovelLike
 	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ® ajax
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸
 	public String searchEpList(EpListVO epListVO) {
 		return "";
 	}// searchEpList
 	
 	
-	// ¿¡ÇÇ¼Òµå ³»¿ë ajax
+	// ì—í”¼ì†Œë“œ ë‚´ìš© 
 	public EpLookDomain searchEp(EpCheckVO epCheckVO) {
-		return null;
+		EpLookDomain eld = eDAO.selectEpisode(epCheckVO);
+		return eld;
 	}// searchEp
 	
 	
-	// Ã¹ È­
+	// ì²« í™”
 	public EpLookDomain firstEp(int novelNum) {
-		return null;
+		EpLookDomain eld = eDAO.selectFirstEpisode(novelNum);
+		return eld;
 	}// firstEp
 	
 	
-	// ÀÌÀü, ´ÙÀ½È­
-	public String prevNextEp(EpCheckVO epCheckVO) {
+	// ì´ì „í™”
+	public String prevEp(EpCheckVO epCheckVO) {
+		return "";
+	}// prevNextEp
+	
+	// ë‹¤ìŒí™”
+	public String nextEp(EpCheckVO epCheckVO) {
 		return "";
 	}// prevNextEp
 	
 	
-	// Á¶È¸¼ö Áõ°¡	
+	// ì¡°íšŒìˆ˜ ì¦ê°€
 	public String viewsEp(int epNum) {
+		int views = eDAO.updateViewsEpisode(epNum);
+		
 		return "";
 	}// viewsEp
 	
 	
-	// ÁÁ¾Æ¿ä Ãß°¡
+	// ì¢‹ì•„ìš” ì¶”ê°€
 	public String addLike(NovelCheckVO nCheckVO) {
 		return "";
 	}// addLike
 	
 	
-	// ÁÁ¾Æ¿ä »èÁ¦
+	// ì¢‹ì•„ìš” ì·¨ì†Œ
 	public String cancelLike(NovelCheckVO nCheckVO) {
 		return "";
 	}// cancelLike
 	
 	
-	// ½Å°í Ãß°¡
+	// ì‹ ê³  ì¶”ê°€
 	public String addReport(NovelReportVO nReportVO ) {
 		return "";
 	}// addReport
 	
 	
-	// ºÏ¸¶Å© Ãß°¡
+	// ë¶ë§ˆí¬ ì¶”ê°€
 	public String addBookmark(EpCheckVO epCheckVO) {
 		return "";
 	}// addBookmark
 	
 	
-	// ºÏ¸¶Å© »èÁ¦
+	// ë¶ë§ˆí¬ ì·¨ì†Œ
 	public String cancelBookmark(EpCheckVO epCheckVO) {
 		return "";
 	}// cancelBookmark

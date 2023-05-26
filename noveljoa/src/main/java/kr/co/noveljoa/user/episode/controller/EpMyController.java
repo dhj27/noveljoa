@@ -26,10 +26,10 @@ public class EpMyController {
 	// 에피소드 작성창
 	@PostMapping("/episode_write.do")
 	public String showEpFrm(Model model) {
-		// 모델에 등록되어있던 값을 가져와서 넣는다
+		// 세션에 들어있는 값은 그냥 가져오면 됨
+		// 근데 소설번호하고 소설제목이 애매함
+		// 소설 작성은 파라미터를 hidden으로 해서 받고 값 넣기
 //		int userNum = (Integer)model.getAttribute("num_member");
-//		int novelNum = (Integer)model.getAttribute("num_novel");
-//		String novelTitle = (String) model.getAttribute("novelTitle");
 		
 		model.addAttribute("userNum", 1);
 		model.addAttribute("novelNum", 1);
@@ -59,13 +59,12 @@ public class EpMyController {
 	@PostMapping("/episode_edit.do")
 	public String editEpFrm(EpCheckMyVO epCheckMyVO, Model model) { 
 		
+		// 이전 모델이 설정한 값으로 값이 들어온다
 //		int userNum = (Integer)model.getAttribute("num_member");
-//		int novelNum = (Integer)model.getAttribute("num_novel");
-//		int epNum = (Integer)model.getAttribute("num_episode");
 		
 		epCheckMyVO.setNum_member(1);
 		epCheckMyVO.setNum_novel(5);
-		epCheckMyVO.setNum_episode(28);
+		epCheckMyVO.setNum_episode(42);
 		
 		model.addAttribute("chkVO", epCheckMyVO);
 		
@@ -103,17 +102,6 @@ public class EpMyController {
 	// 에피소드 삭제 : 필요한 값을 받는다.
 	@PostMapping("/episode_remove.do")
 	public String removeEp(EpCheckMyVO epCheckMyVO, Model model) {
-		
-//		System.out.println(model.getAttribute("chkVO.num_novel"));
-//		int userNum = (Integer)model.getAttribute("num_member");
-//		int novelNum = (Integer)model.getAttribute("num_novel");
-//		int epNum = (Integer)model.getAttribute("num_episode");
-//		
-//		System.out.println("+++++++++++++++++++++" +userNum+"/"+novelNum+"/"+epNum);
-//		
-//		epCheckMyVO.setNum_member(userNum);
-//		epCheckMyVO.setNum_novel(novelNum);
-//		epCheckMyVO.setNum_episode(epNum);
 		
 		int result = ems.removeEp(epCheckMyVO);
 		

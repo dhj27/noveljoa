@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-<title>글 수정 | 카카오페이지 스테이지</title>
+<title>글 수정 | 소설조아</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap">
 <link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/0bde5e3867c0e9b2.css" />
@@ -99,7 +99,6 @@ $(function(){
 	
 }); // ready
 	
-	
 </script>
 </head>
 
@@ -110,6 +109,7 @@ $(function(){
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
+		<!-- 수정 폼 -->
 		<form id="editFrm" name="editFrm" action="episode_edit_process.do" method="post" class="flex flex-col h-full">
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>

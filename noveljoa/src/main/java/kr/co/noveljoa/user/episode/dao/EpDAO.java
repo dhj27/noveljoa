@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import kr.co.noveljoa.admin.dao.ManagerMyBatisHandler;
+import kr.co.noveljoa.user.dao.MyBatisHandler;
 import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelDomain;
@@ -17,85 +17,197 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 @Component
 public class EpDAO {
 	
-	// ¼Ò¼³³»¿ë º¸¿©ÁÖ±â
+	public String map = "kr.co.noveljoa.user.episode.episodeMapper.";
+	
+	public static void main(String[] args) {
+		new EpDAO().selectNovel(2);
+//		new EpDAO().selectFirstEpisode(2);
+		
+	}
+	
+	// ì†Œì„¤ ë‚´ìš© ë³´ì—¬ì£¼ê¸°
 	public NovelDomain selectNovel(int novelNum) {
-		NovelDomain nd = new NovelDomain();
+		NovelDomain nd = null;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		
-		return null;
+		nd = ss.selectOne("kr.co.noveljoa.user.episode.episodeMapper.selectNovel", novelNum);
+		System.out.println("dao: "+novelNum);
+		return nd;
 	}// searchNovel
 	
 	
-	// ¿¡ÇÇ¼Òµå ¸®½ºÆ® ajax
+	// ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸
 	public List<EpListDomain> selectEpisodeList(EpListVO epListVO) {
-		return null;
+		
+		List<EpListDomain> list = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		list = ss.selectList(map+"selectEpList", epListVO);
+		
+		if( ss != null) { ss.close(); }
+		return list;
 	}// searchEpList
 	
 	
-	// ¿¡ÇÇ¼Òµå ³»¿ë ajax
+	// ì—í”¼ì†Œë“œ ë‚´ìš© 
 	public EpLookDomain selectEpisode(EpCheckVO epCheckVO) {
-		return null;
+		EpLookDomain ed = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		ed = ss.selectOne(map+"selectEp", epCheckVO);
+		
+		return ed;
 	}// searchEp
 	
 	
-	// Ã¹ È­
+	// ì²« í™”
 	public EpLookDomain selectFirstEpisode(int novelNum) {
-		return null;
+		EpLookDomain ed = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		ed = ss.selectOne(map+"selectEpFirst", novelNum);
+		
+		return ed;
 	}// firstEp
 	
 	
-	// ÀÌÀü, ´ÙÀ½È­
-	public EpLookDomain selectPrevNextEpisode(EpCheckVO epCheckVO) {
-		return null;
+	// ì´ì „í™”
+	public EpLookDomain selectPrevEpisode(EpCheckVO epCheckVO) {
+		EpLookDomain ed = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		ed = ss.selectOne(map+"selectEpPrev", epCheckVO);
+		
+		return ed;
 	}// prevNextEp
 	
 	
-	// Á¶È¸¼ö Áõ°¡	
+	// ë‹¤ìŒí™”
+	public EpLookDomain selectNextEpisode(EpCheckVO epCheckVO) {
+		EpLookDomain ed = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		ed = ss.selectOne(map+"selectEpNext", epCheckVO);
+		
+		return ed;
+	}// prevNextEp
+	
+	
+	// ì¡°íšŒìˆ˜ ì¦ê°€
 	public int updateViewsEpisode(int epNum) {
-		return epNum;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		int cnt = ss.update(map+"updateViews", epNum);
+		
+		if(cnt == 1) {
+			System.out.println("episode view +");
+			ss.commit();
+		}else {
+			System.out.println("episode view rollback");
+			ss.rollback();
+		}
+		
+		return cnt;
 	}// viewsEp
 	
 	
-	// ÁÁ¾Æ¿ä Ãß°¡
+	// ì¢‹ì•„ìš” ì¶”ê°€
 	public int insertLike(NovelCheckVO nCheckVO) {
-		//1. MyBatis Handler ¾ò±â
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		//2. Handler »ç¿ë
-		int cnt = ss.insert("kr.co.sist.testMapper2.insertEmp", nCheckVO);
+		int cnt = ss.insert(map+"insertLike", nCheckVO);
 		
-		//3. transaction ¿Ï·á
 		if(cnt == 1) {
+			System.out.println("episode like commit");
 			ss.commit();
+		}else {
+			System.out.println("episode like rollback");
+			ss.rollback();
 		}
 		
-		//4. ¿¬°á ²÷±â
 		if( ss != null) { ss.close(); }
 		return cnt;
 	}// addLike
 	
 	
-	// ÁÁ¾Æ¿ä »èÁ¦
+	// ì¢‹ì•„ìš” ì·¨ì†Œ
 	public int deleteLike(NovelCheckVO nCheckVO) {
-		return 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		int cnt = ss.delete(map+"deleteLike", nCheckVO);
+		
+		if(cnt == 1) {
+			System.out.println("episode like cancel commit");
+			ss.commit();
+		}else {
+			System.out.println("episode like cancel rollback");
+			ss.rollback();
+		}
+		
+		if( ss != null) { ss.close(); }
+		return cnt;
 	}// cancelLike
 	
 	
-	// ½Å°í Ãß°¡
+	// ì‹ ê³  ì¶”ê°€
 	public int insertReport(NovelReportVO nReportVO ) {
-		return 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		int cnt = ss.insert(map+"insertReport", nReportVO);
+		
+		if(cnt == 1) {
+			System.out.println("episode report commit");
+			ss.commit();
+		}else {
+			System.out.println("episode report rollback");
+			ss.rollback();
+		}
+		
+		if( ss != null) { ss.close(); }
+		return cnt;
 	}// addReport
 	
 	
-	// ºÏ¸¶Å© Ãß°¡
+	// ë¶ë§ˆí¬ ì¶”ê°€
 	public int insertBookmark(EpCheckVO epCheckVO) {
-		return 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		int cnt = ss.insert(map+"insertBookmark", epCheckVO);
+		
+		if(cnt == 1) {
+			System.out.println("episode bookmark commit");
+			ss.commit();
+		}else {
+			System.out.println("episode bookmark rollback");
+			ss.rollback();
+		}
+		
+		if( ss != null) { ss.close(); }
+		return cnt;
 	}// addBookmark
 	
 	
-	// ºÏ¸¶Å© »èÁ¦
+	// ë¶ë§ˆí¬ ì·¨ì†Œ
 	public int deleteBookmark(EpCheckVO epCheckVO) {
-		return 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		int cnt = ss.delete(map+"deleteBookmark", epCheckVO);
+		
+		if(cnt == 1) {
+			System.out.println("episode bookmark commit");
+			ss.commit();
+		}else {
+			System.out.println("episode bookmark rollback");
+			ss.rollback();
+		}
+		
+		if( ss != null) { ss.close(); }
+		return cnt;
 	}// cancelBookmark
 	
 }
