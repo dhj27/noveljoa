@@ -8,7 +8,6 @@ public class EpMyDomain {
 	private String cmt;
 	private int open;
 	
-	
 	public String getNovelTitle() {
 		return novelTitle;
 	}

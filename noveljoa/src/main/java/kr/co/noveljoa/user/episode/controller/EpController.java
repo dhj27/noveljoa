@@ -63,8 +63,17 @@ public class EpController {
 	
 	
 	// 에피소드 내용 ajax
-	@GetMapping("/episode.do")
+	@GetMapping("/read.do")
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
+		epCheckVO.setNum_member(1);
+		epCheckVO.setNum_novel(5);
+		epCheckVO.setNum_episode(41);
+		
+//		model.addAttribute("ep", epCheckVO);
+		System.out.println("ep story: "+epCheckVO);
+		
+		model.addAttribute("ep", epService.searchEp(epCheckVO));
+		
 		return "/episode/episode_read";
 	}// searchEp
 	

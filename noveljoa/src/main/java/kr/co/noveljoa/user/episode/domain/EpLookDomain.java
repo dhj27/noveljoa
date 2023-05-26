@@ -2,20 +2,32 @@ package kr.co.noveljoa.user.episode.domain;
 
 public class EpLookDomain {
 	
+	private int num_member;
+	private int num_novel;
+	private int num_episode;
+	
 	private String novelTitle;
 	private String epTitle;
 	private String epDetail;
 	private int bookmark;
-	private String comment;
 	
-	public EpLookDomain() {}
-	
-	public EpLookDomain(String novelTitle, String epTitle, String epDetail, int bookmark, String comment) {
-		this.novelTitle = novelTitle;
-		this.epTitle = epTitle;
-		this.epDetail = epDetail;
-		this.bookmark = bookmark;
-		this.comment = comment;
+	public int getNum_member() {
+		return num_member;
+	}
+	public void setNum_member(int num_member) {
+		this.num_member = num_member;
+	}
+	public int getNum_novel() {
+		return num_novel;
+	}
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
+	}
+	public int getNum_episode() {
+		return num_episode;
+	}
+	public void setNum_episode(int num_episode) {
+		this.num_episode = num_episode;
 	}
 	public String getNovelTitle() {
 		return novelTitle;
@@ -41,18 +53,12 @@ public class EpLookDomain {
 	public void setBookmark(int bookmark) {
 		this.bookmark = bookmark;
 	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+	
 	@Override
 	public String toString() {
-		return "EpLookDomain [novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", epDetail=" + epDetail
-				+ ", bookmark=" + bookmark + ", comment=" + comment + "]";
+		return "EpLookDomain [num_member=" + num_member + ", num_novel=" + num_novel + ", num_episode=" + num_episode
+				+ ", novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", epDetail=" + epDetail + ", bookmark="
+				+ bookmark + "]";
 	}
-	
-	
 
 }

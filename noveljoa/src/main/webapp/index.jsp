@@ -81,9 +81,11 @@
 	
 	
 	<input type="button" id="epOpen" value="에피소드 창" />
-	<form action="episode.do" name="epFrm" id="epFrm" method="get">
+	<form action="read.do" name="epFrm" id="epFrm" method="get">
 		<input type="hidden" name="novelNum" id="novelNum" value="5"/>
-		<input type="hidden" name="epNum" id="epNum" value="43"/>
+		<input type="hidden" name="epNum" id="epNum" value="41"/>
+		<input type="hidden" name="userNum" id="userNum" value="91"/>
+		
 	</form>
 	<br><br>
 	

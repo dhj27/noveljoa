@@ -36,14 +36,16 @@
 	</select> -->
 		
 	<!-- 에피소드 내용 보여주기 -->
-	<!-- <select id="selectEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
-		select n.title novelTitle, e.title epTitle, e.story epDetail
+	<select id="selectEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
+		select n.title novelTitle, e.title epTitle, e.story epDetail, 
+			(select count(*) from BOOKMARK b 
+			 where num_member=#{num_member} and num_episode=#{num_episode}) bookmark 
 		from episode e, novel n
 		where n.num_novel=e.num_novel 
 		  and e.num_novel=#{num_novel} 
-		  and e.num_episode=#{num_episode} 
-		  and e.open=1	 
-	</select> -->
+		  and e.num_episode=#{num_episode}
+		  and e.open=1		  
+	</select>
 	
 	
     <!-- 첫화 보여주기 -->
