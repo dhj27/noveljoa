@@ -5,28 +5,23 @@
 <mapper namespace="mybookmarkMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
 
 	<select id="selectMyBookmark" parameterType="kr.co.noveljoa.user.mybookmark.MyBookmarkVO" resultType="kr.co.noveljoa.user.mybookmark.MyBookmarkDomain">
-		select n.photo, n.title, m.id, n.num_novel, n.age, n.end, e.num_episode, e.max_make 
-		from member m	
-		join novel n ON n.num_member = m.num_member 
-		join liken l ON n.num_novel = l.num_novel 
-		LEFT JOIN (	
-			SELECT num_novel, COUNT(*) AS num_episode, MAX(make) AS max_make	
-			FROM episode	
-			GROUP BY num_novel	
-		) e ON n.num_novel = e.num_novel	
-		WHERE l.num_member = #{num_member} 
+		SELECT n.title, n.photo, n.age, n.open, n.end, n.genre, e.num_episode, e.num_novel, e.title etitle, e.open eopen, e.make emake
+		FROM bookmark b
+		JOIN episode e ON b.num_episode = e.num_episode
+		JOIN novel n ON e.num_novel = n.num_novel
+		WHERE b.num_member = #{num_member}
 		<if test="search != null and search != ''">
 			AND n.title LIKE '%'||#{search}||'%'
 		</if>
-		order by e.max_make
+		order by emake
 		<if test="type==0">
 			DESC
 		</if>
 	</select>
 	
 	<delete id="deleteMyBookmark" parameterType="kr.co.noveljoa.user.mybookmark.DeleteBookmarkVO">
-		delete from liken 
-		where num_member=#{num_member} and num_novel=#{num_novel}
+		delete from bookmark 
+		where num_member=#{num_member} and num_episode=#{num_episode}
 	</delete>
 
 </mapper>

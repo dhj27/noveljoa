@@ -16,18 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class MyBookmarkController {
 
-
-	@GetMapping("/test2.do")
-	public String test(Model model) {
-		
-		model.addAttribute("num_member",1);
-		model.addAttribute("id","aa");
-		model.addAttribute("name","김기린");
-		model.addAttribute("photo","a.png");
-		
-		return "redirect:/my_like.do";
-	}
-	
 	@PostMapping("/my_bookmark.do")
 	public String selectList(@RequestParam(defaultValue = "0") int type,@RequestParam(defaultValue = "") String search,Model model) {
 		

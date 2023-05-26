@@ -4,23 +4,26 @@ import java.sql.Date;
 
 public class MyBookmarkDomain {
 	
-	private String photo,title,id;
-	private int num_novel, age,num_episode,end;
-	private Date max_make;
+	private String photo,title,etitle;
+	private int age,open,end,genre,num_episode,num_novel,eopen;
+	private Date emake;
 	
 	public MyBookmarkDomain() {
 	}
-	public MyBookmarkDomain(String photo, String title, String id, int num_novel, int age, int num_episode, int end,
-			Date max_make) {
+	public MyBookmarkDomain(String photo, String title, String etitle, int age, int open, int end, int genre,
+			int num_episode, int num_novel, int eopen, Date emake) {
 		super();
 		this.photo = photo;
 		this.title = title;
-		this.id = id;
-		this.num_novel = num_novel;
+		this.etitle = etitle;
 		this.age = age;
-		this.num_episode = num_episode;
+		this.open = open;
 		this.end = end;
-		this.max_make = max_make;
+		this.genre = genre;
+		this.num_episode = num_episode;
+		this.num_novel = num_novel;
+		this.eopen = eopen;
+		this.emake = emake;
 	}
 	
 	public String getPhoto() {
@@ -35,17 +38,11 @@ public class MyBookmarkDomain {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getId() {
-		return id;
+	public String getEtitle() {
+		return etitle;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public int getNum_novel() {
-		return num_novel;
-	}
-	public void setNum_novel(int num_novel) {
-		this.num_novel = num_novel;
+	public void setEtitle(String etitle) {
+		this.etitle = etitle;
 	}
 	public int getAge() {
 		return age;
@@ -53,11 +50,11 @@ public class MyBookmarkDomain {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getNum_episode() {
-		return num_episode;
+	public int getOpen() {
+		return open;
 	}
-	public void setNum_episode(int num_episode) {
-		this.num_episode = num_episode;
+	public void setOpen(int open) {
+		this.open = open;
 	}
 	public int getEnd() {
 		return end;
@@ -65,11 +62,35 @@ public class MyBookmarkDomain {
 	public void setEnd(int end) {
 		this.end = end;
 	}
-	public Date getMax_make() {
-		return max_make;
+	public int getGenre() {
+		return genre;
 	}
-	public void setMax_make(Date max_make) {
-		this.max_make = max_make;
+	public void setGenre(int genre) {
+		this.genre = genre;
+	}
+	public int getNum_episode() {
+		return num_episode;
+	}
+	public void setNum_episode(int num_episode) {
+		this.num_episode = num_episode;
+	}
+	public int getNum_novel() {
+		return num_novel;
+	}
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
+	}
+	public int getEopen() {
+		return eopen;
+	}
+	public void setEopen(int eopen) {
+		this.eopen = eopen;
+	}
+	public Date getEmake() {
+		return emake;
+	}
+	public void setEmake(Date emake) {
+		this.emake = emake;
 	}
 	
 }
