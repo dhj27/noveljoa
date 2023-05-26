@@ -41,6 +41,12 @@ function openForward(){
 function edit(){
 	$("#edit_frm").submit();
 }
+function newEp(){
+	$("#newEp_frm").submit();
+}
+function editEp(num_episode){
+	$("#editEp_frm"+num_episode).submit();
+}
 
 $(function () {
 	$("#del_novel").click(function () {
@@ -65,7 +71,10 @@ $(function () {
 				 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 							+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 							+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-							+ "<a class='flex w-full shrink' href='../episode/episodeMy/episode_edit.jsp?num_novel="+jsonObj.num_novel+"&epNum="+jsonObj.num_episode+"'>"
+							+ "<a class='flex w-full shrink' onclick='editEp("+jsonObj.num_episode+")'>"
+							+ "<form id='editEp_frm"+jsonObj.num_episode+"' action='episode_edit.do' method='post'>"
+							+ "<input type='hidden' name='num_novel' value='"+jsonObj.num_novel+"'>"
+							+ "<input type='hidden' name='num_episode' value='"+jsonObj.num_episode+"'></form>"
 							+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 							+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
 							+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.title+"</div></h3>"
@@ -146,7 +155,11 @@ $(function () {
 														<a
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
 															type="button"
-															href="/project2/episode/episodeMy/episode_write.jsp?num_novel=${param.num_novel}">연재 작품 쓰기</a>
+															onclick="newEp()">연재 작품 쓰기</a>
+															<form id="newEp_frm" action="episode_write.do" method="post">
+																<input type="hidden" name="num_novel" value="${param.num_novel}">
+																<input type="hidden" name="novelTitle" value="${wnd.title}">
+															</form>
 														<a
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
 															type="button" onclick="edit()">수정</a>

@@ -41,7 +41,7 @@ $(function () {
 	})
 })
 function selectNovel(num_novel){
-	location.href="novels.do?novelNum="+num_novel;
+	location.href="novels.do?num_novel="+num_novel;
 }
 function findNovel(){
 	frm.submit();
