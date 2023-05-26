@@ -41,7 +41,7 @@ $(function () {
 	})
 })
 function selectNovel(num_novel){
-	location.href="/project2/episode/novel.jsp?num_novel="+num_novel;
+	location.href="novels.do?novelNum="+num_novel;
 }
 function findNovel(){
 	frm.submit();

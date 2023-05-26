@@ -83,7 +83,7 @@
 									<c:forEach var="list" items="${ list }" varStatus="rank" begin="0" end="29" step="1">
 									<script type="text/javascript">
 									</script>
-									<a class="px-18 py-12 desktop:px-0 desktop:py-24" href="../episode/novel.jsp?num_novel=${list.num_novel}">
+									<a class="px-18 py-12 desktop:px-0 desktop:py-24" href="novels.do?novelNum=${list.num_novel}">
 										<div
 											class="flex items-center flex-row w-full flex-row-reverse"
 											data-testid="skeleton">
