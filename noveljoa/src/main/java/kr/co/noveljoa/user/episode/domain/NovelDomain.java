@@ -1,7 +1,5 @@
 package kr.co.noveljoa.user.episode.domain;
 
-import java.util.Date;
-
 public class NovelDomain {
 	
 	private String novelTitle;
@@ -11,7 +9,6 @@ public class NovelDomain {
 	private String photo;
 	private int open;
 	private int end;
-	private Date make;
 	private int genre;
 	private int likeCnt;
 	private int reportCnt;
@@ -59,12 +56,6 @@ public class NovelDomain {
 	public void setEnd(int end) {
 		this.end = end;
 	}
-	public Date getMake() {
-		return make;
-	}
-	public void setMake(Date make) {
-		this.make = make;
-	}
 	public int getGenre() {
 		return genre;
 	}
@@ -87,7 +78,7 @@ public class NovelDomain {
 	@Override
 	public String toString() {
 		return "NovelDomain [novelTitle=" + novelTitle + ", age=" + age + ", id=" + id + ", intro=" + intro + ", photo="
-				+ photo + ", open=" + open + ", end=" + end + ", make=" + make + ", genre=" + genre + ", likeCnt="
+				+ photo + ", open=" + open + ", end=" + end + ", genre=" + genre + ", likeCnt="
 				+ likeCnt + ", reportCnt=" + reportCnt + "]";
 	}
 	

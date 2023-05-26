@@ -63,9 +63,9 @@ public class EpController {
 	
 	
 	// 에피소드 내용 ajax
-	//@GetMapping("")
+	@GetMapping("/episode.do")
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
-		return "";
+		return "/episode/episode_read";
 	}// searchEp
 	
 	

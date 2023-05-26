@@ -37,6 +37,12 @@
 			$("#novelNum").val();
 			$("#novelFrm").submit();
 		});
+		
+		$("#epOpen").click(function(){
+			$("#novelNum").val();
+			$("#epNum").val();
+			$("#epFrm").submit();
+		});
 		 
 	});
 	
@@ -71,6 +77,17 @@
 	<form action="novels.do" name="novelFrm" id="novelFrm" method="get">
 		<input type="hidden" name="novelNum" id="novelNum" value="2"/>
 	</form>
+	<br><br>
+	
+	
+	<input type="button" id="epOpen" value="에피소드 창" />
+	<form action="episode.do" name="epFrm" id="epFrm" method="get">
+		<input type="hidden" name="novelNum" id="novelNum" value="5"/>
+		<input type="hidden" name="epNum" id="epNum" value="43"/>
+	</form>
+	<br><br>
+	
+	
 	
 	
 </body>

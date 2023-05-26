@@ -1,9 +1,4 @@
-<%@page import="EpisodeVO.User.PrevNextVO"%>
-<%@page import="EpisodeVO.User.LookEpisodeVO"%>
-<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeVO.My.LookMyEpisodeVO"%>
-<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   
 <!DOCTYPE html>
@@ -26,35 +21,6 @@
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<%
-/* if(session.getAttribute("user_num_member")==null){
-	response.sendRedirect("../login/loginpage.jsp");
-	return;
-} */
-	
-	//int userNum = (Integer)session.getAttribute("user_num_member");
-	//int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
-	//int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	
-	int userNum = 8; 
-	int novelNum = 34; 
-	int epNum = 45;		
-	
-	EpisodeDAO epDAO = new EpisodeDAO();
-	LookEpisodeVO selectVO = null;
-	PrevNextVO prevNextVO = null;
-	int prev = 0;
-	int next = 0;
-	
-	try{
-		selectVO = epDAO.selectEpisode(novelNum, epNum);
-		prev = epDAO.prevEp(novelNum, epNum);
-		next = epDAO.nextEp(novelNum, epNum);
-		
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-%>
 
 <style type="text/css">
 	.flex-container {
@@ -76,20 +42,22 @@ $(function(){
 	
 	/* 이전 화 */
 	$("#prev").click(function(){
-		if(<%= prev %> == 0){
+		<%-- if(<%= prev %> == 0){
 			alert("이전 에피소드가 없어요");
 			return;
 		}
  		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= prev %>);
+ 		 --%>
 	}); //prev
 	
 	/* 다음 화 */
 	$("#next").click(function(){
-		if(<%= next %> == 0){
+		<%-- if(<%= next %> == 0){
 			alert("다음 에피소드가 없어요");
 			return;
-		}
+		} 
 		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= next %>);
+		--%>
 	}); //next
 	
 	$("#comment").click(function(){
@@ -115,6 +83,11 @@ $(function(){
 		<div class="flex typo-g-sm2 flex-1 items-center text-grey60" style="display: flex; align-items: center;">
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
 			
+			<div class="flex w-full items-center justify-start desktop:justify-between"><div class="flex mr-16 w-auto shrink-0 desktop:w-156"><a class="flex h-20 w-20 shrink-0 desktop:h-28 desktop:w-28" href="/free"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.405.526l11.9 10.458c.442.39.695.943.695 1.525v13.44C28 27.082 27.06 28 25.9 28H2.1C.94 28 0 27.082 0 25.95V12.508c0-.582.253-1.136.695-1.525L12.595.526a2.138 2.138 0 012.81 0zM25.9 12.51L14 2.05 2.1 12.509v13.44h10.85v-7.518c0-.567.47-1.026 1.05-1.026.546 0 .994.407 1.045.927l.005.099v7.518H25.9V12.51z" fill="currentColor"></path></svg></a></div><div class="ml-0 desktop:ml-auto"><div class="flex items-center"><div class="shrink-0"><a class="mr-8 block rounded-20 border-1 py-1 px-6 text-10 desktop:py-2 desktop:px-8 border-grey60 text-grey70 hover:border-black hover:text-black" href="/free/novels?sortType=NEWEST">자유</a></div><a class="mr-8 text-14 font-medium text-mainText desktop:text-16" href="/novels/41547497"><div class="overflow-hidden"><div class="whitespace-nowrap">절필</div></div></a></div></div><div class="flex ml-auto w-auto shrink-0 justify-end desktop:w-156"><div class="flex relative"><div class="absolute top-2 right-32 desktop:top-0 desktop:right-54 invisible -translate-y-50 opacity-0" style="transition: transform 300ms ease 0s, opacity 200ms ease 0s, visibility 200ms ease 0s;"><div class="mr-8"><button class="flex text-mainText" type="button"><div class="flex h-24 w-24 desktop:h-32 desktop:w-32"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M24.25 14.6667V21.25H7.75V14.6667C7.75 9.68174 11.4382 6.25 16 6.25C20.5618 6.25 24.25 9.68174 24.25 14.6667Z" stroke="currentColor" stroke-width="1.5"></path><path d="M27.25 24.75H4.75V21.25H27.25V24.75Z" stroke="currentColor" stroke-width="1.5"></path></svg></div></button></div></div><div class="flex visible translate-y-0 opacity-100" style="transition: transform 300ms ease 0s, opacity 200ms ease 0s, visibility 200ms ease 0s;"><div class="mr-10 desktop:mr-30"><button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><mask id="mask0_2:12083" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;"><rect width="32" height="32" fill="white"></rect></mask><g mask="url(#mask0_2:12083)"><path d="M15.5863 20.0832L8.75 24.6047V6.75H23.25V24.6047L16.4137 20.0832L16 19.8095L15.5863 20.0832Z" stroke="currentColor" stroke-width="1.5"></path></g></svg></button></div><div class="mr-10 desktop:mr-30"><button class="flex items-center justify-center text-mainText" type="button"><div class="flex h-28 w-28 desktop:h-32 desktop:w-32"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><mask id="mask0_0:81" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;"><rect width="32" height="32" fill="white"></rect></mask><g mask="url(#mask0_0:81)"><mask id="path-2-inside-1_0:81" fill="white"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.335 23.3499L7.72729 16.413L20.335 9.21558"></path></mask><path d="M7.72729 16.413L6.98363 15.1103L4.65949 16.4371L7.0042 17.7272L7.72729 16.413ZM21.0581 22.0357L8.45039 15.0988L7.0042 17.7272L19.6119 24.6641L21.0581 22.0357ZM8.47096 17.7156L21.0787 10.5183L19.5913 7.9129L6.98363 15.1103L8.47096 17.7156Z" fill="black" mask="url(#path-2-inside-1_0:81)"></path><rect x="19.75" y="5.75" width="5.5" height="5.5" rx="2.75" fill="white" stroke="black" stroke-width="1.5"></rect><rect x="6.75" y="13.75" width="5.5" height="5.5" rx="2.75" fill="white" stroke="black" stroke-width="1.5"></rect><rect x="19.75" y="20.75" width="5.5" height="5.5" rx="2.75" fill="white" stroke="black" stroke-width="1.5"></rect></g></svg></div></button></div></div><div><button class="flex h-28 w-28 transition-transform duration-200 desktop:h-32 desktop:w-32 rotate-0"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><mask id="mask0_0:76" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;"><rect width="32" height="32" fill="white"></rect></mask><g mask="url(#mask0_0:76)"><rect x="14" y="5" width="4" height="4" rx="2" fill="currentColor"></rect><rect x="14" y="14" width="4" height="4" rx="2" fill="currentColor"></rect><rect x="14" y="23" width="4" height="4" rx="2" fill="currentColor"></rect></g></svg></button></div></div></div></div>
+			
+			
+			
+				<%-- 
 				<!-- 해당 소설 리스트로 이동 -->
 				<a href="http://localhost/project2/episode/novel.jsp?num_novel=<%= novelNum %>">
 					<img width="20" height="20" src="/project2/_next/static/images/list.png" style="top: 10px;" />
@@ -123,9 +96,11 @@ $(function(){
 				<!-- 소설 제목 -->
 				<div>
 					<span class="button" style=" top: -8px; left: 348px; align-items: center; ">
-						<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center;"> <%= selectVO.getNovelTitle() %> </label>
-					</span> 
+						<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center;"> 소설제목<%= selectVO.getNovelTitle() %> </label>
+					</span>
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><mask id="mask0_2:12083" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;"><rect width="32" height="32" fill="white"></rect></mask><g mask="url(#mask0_2:12083)"><path d="M15.5863 20.0832L8.75 24.6047V6.75H23.25V24.6047L16.4137 20.0832L16 19.8095L15.5863 20.0832Z" stroke="currentColor" stroke-width="1.5"></path></g></svg> 
 				</div>
+				 --%>
 				
 			</div>
 		</div>
@@ -135,16 +110,17 @@ $(function(){
 	<main class="flex-1">
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 mt-32 desktop:mt-47">
 			<div class="flex flex-col flex-1"></div>
+			
 		</div>
 
 		<div data-obj-id="pf8A1" data-obj-type="element" data-text-editable="true" class="" style="margin: auto; width: 1000px; height: 709px;">
 			<div data-text-content="true" style=" padding:30px; padding-left:40px; padding-right:40px; font-size: 16px; background-color: rgba(224, 224, 224, 0.34);" class="">
 				<div style="text-align: center;">
-					<span style="font-style:italic; ; font-size: x-large;"><%= selectVO.getEpTitle() %></span><br><br><br><br>
+					<span style="font-style:italic; ; font-size: x-large;">에피소드제목<%-- <%= selectVO.getEpTitle() %> --%></span><br><br><br><br>
 				</div>
 				
 				<div>
-					<%= selectVO.getEpDetail().replace("\n", "<br>") %>
+					<%-- <%= selectVO.getEpDetail().replace("\n", "<br>") %> --%>
 				</div>
 				<br><br><br><br>
 			</div>
@@ -187,7 +163,7 @@ $(function(){
 	</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div> 
 	</div>
 	</div>

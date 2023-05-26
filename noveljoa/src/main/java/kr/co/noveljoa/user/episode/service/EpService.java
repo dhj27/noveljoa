@@ -70,7 +70,7 @@ public class EpService {
 	
 	// 조회수 증가
 	public String viewsEp(int epNum) {
-		int views = eDAO.updateViewsEpisode(epNum);
+//		int views = eDAO.updateViewsEpisode(epNum);
 		
 		return "";
 	}// viewsEp

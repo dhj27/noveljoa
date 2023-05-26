@@ -9,7 +9,7 @@
   			resultType="kr.co.noveljoa.user.episode.domain.NovelDomain">
 		select 
 			(SELECT DISTINCT id FROM MEMBER m, NOVEL n WHERE m.NUM_MEMBER=n.NUM_MEMBER AND n.NUM_NOVEL=#{num_novel}) id, 
-			title novelTitle, age, photo, story intro, open, end, make, genre, 
+			title novelTitle, age, photo, story intro, open, end, genre, 
 			(select count(*) FROM LIKEN WHERE num_novel = #{num_novel}) likeCnt, 
 			(select count(*) FROM REPORT  WHERE num_novel = #{num_novel}) reportCnt
 		from novel
