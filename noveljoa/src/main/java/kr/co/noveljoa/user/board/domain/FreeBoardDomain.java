@@ -1,4 +1,4 @@
-package kr.co.noveljoa.admin.domain;
+package kr.co.noveljoa.user.board.domain;
 
 import java.sql.Date;
 
@@ -6,10 +6,7 @@ public class FreeBoardDomain {
 	private int board_num, num_member, views;
 	private String title, detail, id;
 	private Date make;
-	
-	
-	
-	
+   	
 
 	public String getId() {
 		return id;

@@ -135,61 +135,6 @@ select comment_num, id, title, detail, c.make as make
 delete from comments where comment_num=#{ comment_num }
 </delete>
 
-<select id="selectBoard" resultType="kr.co.noveljoa.admin.domain.FreeBoardDomain" parameterType="java.util.Map">
-		 select board_num, m.id as id, title, make, views, detail
-		 from board b
-		 inner join member m on b.num_member = m.num_member
-		 <where>
- <if test="board_num !=null and board_num != ''">
- board_num=#{ board_num }
- </if>
- <if test="id !=null and id !=''" >
- m.id = #{ id }
- </if>
- 
- </where>
-</select>
-
-
-<insert id="insertBoard" parameterType="kr.co.noveljoa.admin.vo.FreeBoardVO">
-	 insert into board (board_num, num_member, title, detail, make, views)
-			values (board_seq.nextval, #{ num_member }, #{ title }, #{ detail }, sysdate, #{ views } )
-</insert>
-
-<select id="selectBoardComment" resultType="kr.co.noveljoa.admin.domain.BoardCommentDomain" parameterType="integer">
-		 		 select 
-		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail, board_cmt_num
-		 from board_cmt bc
-		 where board_num=#{ board_num }
-</select>
-
-<insert id="insertBoardComment" parameterType="kr.co.noveljoa.admin.vo.BoardCommentVO">
-			insert into board_cmt (board_cmt_num, board_num, num_member, detail, make)
-			values (board_cmt_seq.nextval, #{ board_num }, #{ num_member }, #{ detail }, sysdate)
-</insert>
-
-
-<!-- 유저 게시판 글 삭제 -->
-<delete id="deleteBoard" parameterType="integer">
-delete from board where board_num=#{ board_num }
-</delete>
-
-<!-- 유저 게시판 글 댓글 변경-->
-<update id="updateBoardComment" parameterType="kr.co.noveljoa.admin.vo.updateBoardCommentVO">
-			update board_cmt set detail=#{ detail }
-			where num_member = #{ num_member } and board_cmt_num=#{ board_cmt_num }
-</update>
-
-<!-- 유저 게시판 글 댓글 삭제 -->
-<delete id="deleteBoardComment" parameterType="integer">
-delete from board_cmt where board_cmt_num=#{ board_cmt_num }
-</delete>
-
-<!--  유저 게시판 글 조회수 -->
-<update id="updateBoardCnt" parameterType="integer">
-update board set views=(views+1) where board_num=#{ board_num }
-</update>
-
 
 
 

@@ -12,13 +12,29 @@
     <title></title>
     
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="bootstrap.min.css" rel="stylesheet">
-
-      <!-- jQuery CDN 시작 -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="manager/bootstrap.min.css" rel="stylesheet">
+          <!-- jQuery CDN 시작 -->
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
      <!-- jQuery CDN 끝 -->
+    
+    <!-- include summernote css/js-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- <script src="../_next/static/summernote/summernote-lite.css"></script>
+<script src="../_next/static/summernote/lang/summernote-ko-KR.js"></script>
+
+<link rel="stylesheet" href="../_next/static/summernote/summernote-lite.css"> -->
+
+
       <script type="text/javascript">
+      
+      
+      
       $(function(){
+    	  
+    		
+    	  
     	  /* globals Chart:false, feather:false */
     	  (() => {
     	    'use strict'
@@ -26,15 +42,16 @@
     	    feather.replace({ 'aria-hidden': 'true' })
 
 
-    	  })()
+    	  })();
     	  
-    	  $("#bBtn").click(function(){
-    		$("#bFrm").submit();
-    	  });
+      $("#bBtn").click(function(){
+    	  $("#bFrm").submit();
+      });
+    	  
+
+    	  
       
-    	  $("#myBtn").click(function(){
-      		$("#myFrm").submit();
-      	  });
+    	
      
       });
       </script>
@@ -97,7 +114,7 @@
   }
     </style>
         <!-- Custom styles for this template -->
-      <link href="dashboard.css" rel="stylesheet">
+      <link href="manager/dashboard.css" rel="stylesheet">
       
 </head>
 <body>
@@ -128,68 +145,43 @@
     </header>
 
 <div class="container-fluid">
-  <div class="row">
-  <form action="memQNAWriteFrm.do" id="bFrm">
-  
-  </form>
+<h2>게시글 작성</h2>
+<form method="get" action="boardComplete.do" id="bFrm">
+<input type="hidden" value="2" name="num_member"/>
+<input type="text" name="title" placeholder="제목을 작성하세요."  class="form-control" style="width:200px; margin-bottom: 30px"/>
+  <textarea id="summernote" name="detail"></textarea>
+<br>
+
+<input type="button" value="뒤로 가기" onclick="history.back()" class="btn btn-dark">
+<input type="button" value="올리기" class="btn btn-dark" id="bBtn">
+</form>
+    <script>
+      $('#summernote').summernote({
+        placeholder: '내용을 작성하세요^ㅠ^',
+        tabsize: 2,
+        height: 400,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+    
 
 
-    <main class="">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">QNA 게시판</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-        <!-- 아이디값을 아이디 세션값으로 받아와야함 -->
-        <form action="memQNALookListFrm.do?board_num" id="myFrm">
-        <input type="hidden" value="bb" name="id">
-        </form>
 
-                    <!--  c if로 -->
-                        <button type="button" class="btn btn-sm btn-outline-secondary" id="myBtn" style="margin-right: 20px ">
-            <span class="align-text-bottom"></span>
-            내 글 보기
-          </button>
-    <button type="button" class="btn btn-sm btn-outline-secondary" id="bBtn">
-            <span class="align-text-bottom"></span>
-            글 작성
-          </button>
-
-        </div>
-      </div>
-
-      <div class="table-responsive">
-        <table class="table table-hover table-sm" >
-           <thead class="table-dark">
-            <tr>
-              <th scope="col" style="width: 80px">NO</th>
-              <th scope="col" style="width: 400px">제목</th>
-              <th scope="col" style="width: 80px">작성자</th>
-              <th scope="col" style="width: 80px">작성시간</th>
-              <th scope="col" style="width: 80px">조회수</th>
-            </tr>
-          </thead>
-          <tbody>
-         
-           <c:forEach var="fdata" items="${ freeBoardData  }">
-            <tr>
-              <td>${  fdata.board_num }</td>
-              <td><a href="memQNALookFrm.do?board_num=${ fdata.board_num  }">${  fdata.title }</a></td>
-              <td>${  fdata.id }</td>
-              <td>${  fdata.make }</td>
-              <td>${  fdata.views } 			
-			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" id="removeBtn"   onclick="location.href='removeBoard.do?board_num=${  fdata.board_num }'"></td>
-            </tr>
-            </c:forEach>
-           
-          </tbody>
-        </table>
-      </div>
       
-    </main>
-  </div>
+      
+    
 </div>
 
 
-<script src="bootstrap.bundle.min.js"></script>
+<script src="manager/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       
 

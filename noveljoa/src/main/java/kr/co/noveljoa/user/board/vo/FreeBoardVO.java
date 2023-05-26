@@ -1,4 +1,4 @@
-package kr.co.noveljoa.admin.vo;
+package kr.co.noveljoa.user.board.vo;
 
 import java.sql.Date;
 

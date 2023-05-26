@@ -6,17 +6,12 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.co.noveljoa.admin.domain.BoardCommentDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
-import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
-import kr.co.noveljoa.admin.vo.BoardCommentVO;
-import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
-import kr.co.noveljoa.admin.vo.updateBoardCommentVO;
 
 public class ManagerDAO1 {
 	
@@ -156,145 +151,7 @@ public class ManagerDAO1 {
 		return cnt;
 	}
 	
-	public List<FreeBoardDomain> selectFreeBoard(Map<String, Object> paramMap) throws SQLException {
-		List<FreeBoardDomain> fbList = null;  
-		//1. MyBatis Handler 얻기
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		
-		//2. 쿼리 수행 후 결과 얻기
-		fbList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoard", paramMap);
-		
-		ss.commit();
-		//3. MyBatis Handler 닫기
-				if(ss != null) {
-					ss.close();
-				}//end if
-
-		
-		return fbList;
-	}//selectFreeBoard
 	
-	public int insertFreeBoard( FreeBoardVO fbVO ) {
-		//1. MyBatis Handler 얻기
-
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. 쿼리 수행 후 결과 얻기
-		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertBoard", fbVO);
-		//3. MyBatis Handler 닫기
-		if( cnt==1 ) {
-			ss.commit();
-		}//end if
-		if(ss != null) {
-			ss.close();
-		}//end if
-		return cnt;
-	}//insertFreeBoard
-	
-	public List<BoardCommentDomain> selectBoardComment(int board_num) throws SQLException {
-		List<BoardCommentDomain> bcList = null;  
-		//1. MyBatis Handler 얻기
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		
-		//2. 쿼리 수행 후 결과 얻기
-		bcList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectBoardComment", board_num);
-		
-		ss.commit();
-		//3. MyBatis Handler 닫기
-				if(ss != null) {
-					ss.close();
-				}//end if
-
-		
-		return bcList;
-	}//selectBoardComment
-	
-	
-	public int insertBoardComment( BoardCommentVO bcVO ) {
-		//1. MyBatis Handler 얻기
-
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. 쿼리 수행 후 결과 얻기
-		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertBoardComment", bcVO);
-		//3. MyBatis Handler 닫기
-		if( cnt==1 ) {
-			ss.commit();
-		}//end if
-		if(ss != null) {
-			ss.close();
-		}//end if
-		return cnt;
-	}//insertFreeBoard
-	
-	
-	public int deleteBoard(int board_num) {
-		
-		//1. MyBatis Handler 얻기
-				SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-				//2. 쿼리 수행 후 결과 얻기
-				int cnt = ss.update("kr.co.noveljoa.admin.Mapper.deleteBoard",board_num);
-				if( cnt==1 ) {
-				ss.commit();
-				}//end if
-				//3. MyBatis Handler 닫기
-				if(ss!=null) {
-					ss.close();
-				}
-				
-				return cnt;
-	}//updateComment
-	
-	
-	public int updateBoardComment(updateBoardCommentVO ubcVO) {
-		
-		//1. MyBatis Handler 얻기
-				SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-				//2. 쿼리 수행 후 결과 얻기
-				int cnt = ss.update("kr.co.noveljoa.admin.Mapper.updateBoardComment",ubcVO);
-				if( cnt==1 ) {
-				ss.commit();
-				}//end if
-				//3. MyBatis Handler 닫기
-				if(ss!=null) {
-					ss.close();
-				}
-				
-				return cnt;
-	}//updateComment
-	
-	
-	public int deleteBoardComment(int board_cmt_num) {
-		
-		//1. MyBatis Handler 얻기
-				SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-				//2. 쿼리 수행 후 결과 얻기
-				int cnt = ss.update("kr.co.noveljoa.admin.Mapper.deleteBoardComment",board_cmt_num);
-				if( cnt==1 ) {
-				ss.commit();
-				}//end if
-				//3. MyBatis Handler 닫기
-				if(ss!=null) {
-					ss.close();
-				}
-				
-				return cnt;
-	}//updateComment
-	
-	public int updateBoardCnt(int board_num) {
-		//1. MyBatis Handler 얻기
-		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. 쿼리 수행 후 결과 얻기
-		int cnt = ss.update("kr.co.noveljoa.admin.Mapper.updateBoardCnt",board_num);
-		if( cnt==1 ) {
-		ss.commit();
-		}//end if
-		//3. MyBatis Handler 닫기
-		if(ss!=null) {
-			ss.close();
-		}
-		
-		return cnt;
-		
-	}
 	
 	
 	

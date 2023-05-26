@@ -12,7 +12,7 @@
     <title></title>
     
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="manager/bootstrap.min.css" rel="stylesheet">
 
       <!-- jQuery CDN 시작 -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -178,7 +178,7 @@
 				<tr class="table-secondary">
 				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }</th>
 				<th style="width: 600px">작성일 : ${  freeBoardcmt.make }</th>
-				<th style="width: 150px">${  freeBoardcmt.board_cmt_num }</th>
+				<th style="width: 150px"><%-- ${  freeBoardcmt.board_cmt_num } --%></th>
 				<th></th>
 				</tr>
 			<tr>
@@ -204,7 +204,7 @@
 
 
 
-<script src="bootstrap.bundle.min.js"></script>
+<script src="manager/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
 			
 </body>

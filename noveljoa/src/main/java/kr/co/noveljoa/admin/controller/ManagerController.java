@@ -14,10 +14,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.noveljoa.admin.domain.AllMDomain;
 import kr.co.noveljoa.admin.domain.AllNDomain;
-import kr.co.noveljoa.admin.domain.BoardCommentDomain;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.DashBoardDomain;
-import kr.co.noveljoa.admin.domain.FreeBoardDomain;
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
@@ -26,13 +24,10 @@ import kr.co.noveljoa.admin.domain.TodayVisitDomain;
 import kr.co.noveljoa.admin.service.DashBoardService;
 import kr.co.noveljoa.admin.service.ManagerLoginService;
 import kr.co.noveljoa.admin.service.ManagerService1;
-import kr.co.noveljoa.admin.vo.BoardCommentVO;
-import kr.co.noveljoa.admin.vo.FreeBoardVO;
 import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
-import kr.co.noveljoa.admin.vo.updateBoardCommentVO;
 @SessionAttributes({"mFlag"})
 @Controller
 public class ManagerController {
@@ -188,112 +183,7 @@ public class ManagerController {
 	
 
 	
-	@GetMapping("manager/memQNALookListFrm.do")
-	public String QNALookFrm(@RequestParam(name = "board_num", required = false) Integer board_num,
-			 @RequestParam(name = "id", required = false) String id, Model model) {
-		//기본자료형 int는 null로 선언할 수 없다.
-		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
-		if (board_num == null) {
-			board_num = 0;
-		  }
-		ManagerService1 ms = new ManagerService1();
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		
-		 paramMap.put("id",id);
-		   paramMap.put("board_num", board_num);
-		List<FreeBoardDomain> fdList =  ms.printFreeBoard(paramMap);
-		model.addAttribute("freeBoardData", fdList);
-		
-		return "manager/memQNALookListFrm";
-			
-			   
-	}
 	
-	
-	@GetMapping("manager/memQNAWriteFrm.do")
-	public String messageQNALookFrmInfo() {
-		
-		return "manager/memQNAWriteFrm";
-	}
-	
-	@GetMapping("manager/boardComplete.do")
-	public String boardComplete(FreeBoardVO fVO, Model model ) {
-		ManagerService1 ms = new ManagerService1();
-		Boolean boardFlag = ms.addFreeBoard(fVO);
-		model.addAttribute("boardFlag", boardFlag);
-		return "manager/boardComplete";
-	}
-	
-	@GetMapping("manager/memQNALookFrm.do")
-	public String memQNALookFrm(@RequestParam(name = "board_num", required = false) Integer board_num,
-			 @RequestParam(name = "id", required = false) String id, Model model) {
-		//@RequestParam(name = "board_num", required = false) Integer
-		//기본자료형 int는 null로 선언할 수 없다.
-		//자신의 로직 중 int에 null이 들어갈 수 있는 장소를 찾아내서 수정해줘야한다.
-//		if (board_num == null) {
-//			board_num = 0;
-//		  }
-		ManagerService1 ms = new ManagerService1();
-		ms.modifyBoardCnt(board_num);
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		 paramMap.put("id",id);
-		   paramMap.put("board_num", board_num);
-		List<FreeBoardDomain> fdList =  ms.printFreeBoard(paramMap);
-		model.addAttribute("freeBoardData2", fdList.get(0));
-		//System.out.println(board_num);
-	List<BoardCommentDomain> bclist = ms.printFreeBoardComment(board_num);
-	model.addAttribute("freeBoardCMTData", bclist);
-		
-		return "manager/memQNALookFrm";
-	}//messageQNALookFrm
-	
-	@GetMapping("manager/memQNALookFrm_process.do")
-	public String memQNALookFrm_process(BoardCommentVO bcVO, Model model) {
-		ManagerService1 ms = new ManagerService1();
-		Boolean boardCommentFlag =  ms.addBoardComment(bcVO);
-		model.addAttribute("boardCommentFlag", boardCommentFlag);
-		
-		return "manager/memQNALookFrm_process";
-	}//messageQNALookFrm3Process
-	
-	
-	@GetMapping("manager/removeBoard.do")
-	public String removeBoard(int board_num, Model model) {
-		ManagerService1 ms = new ManagerService1();
-		Boolean removeBoardFlag =  ms.removeBoard(board_num);
-		model.addAttribute("removeBoardFlag", removeBoardFlag);
-		
-		return "manager/removeBoard";
-	}//removeBoard
-	
-	@GetMapping("manager/modifyBoardComment.do")
-	public String modifyBoardComment() {
-		
-		return "manager/modifyBoardComment";
-	}
-	
-	
-	//클릭시 서브밋해 example 폼이 켜지고 거기에 수정을 작성해 그거에 대한 아래를 보내 바꿀거임 
-	@GetMapping("manager/modifyBoardComment_process.do")
-	public String modifyBoardComment(updateBoardCommentVO ubcVO, Model model) {
-		ManagerService1 ms = new ManagerService1();
-		Boolean modifyBoardCommentFlag =  ms.modifyBoardComment(ubcVO);
-		model.addAttribute("modifyBoardCommentFlag", modifyBoardCommentFlag);
-		
-		return "manager/modifyBoardComment_process";
-	}//modifyBoard
-	
-	@GetMapping("manager/removeBoardComment.do")
-	public String removeBoardComment(int board_cmt_num, Model model) {
-		ManagerService1 ms = new ManagerService1();
-		Boolean removeBoardCommentFlag =  ms.removeBoardComment(board_cmt_num);
-		System.out.println(board_cmt_num);
-		model.addAttribute("board_cmt_num", board_cmt_num);
-		model.addAttribute("removeBoardCommentFlag", removeBoardCommentFlag);
-		
-		
-		return "manager/removeBoardComment";
-	}//removeBoard
 	
 	
 	

@@ -1,4 +1,4 @@
-package kr.co.noveljoa.admin.domain;
+package kr.co.noveljoa.user.board.domain;
 
 import java.sql.Date;
 
