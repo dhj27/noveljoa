@@ -16,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
@@ -170,6 +171,10 @@ public class LoginDAO {
 		
 		
 	}
-	
+	public List<InfoDomain> info(String id){
+		
+		
+		
+	}
 	
 }

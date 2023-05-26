@@ -59,7 +59,7 @@ public class LoginController {
 		
 		return "login/new_member2";
 	}
-	@GetMapping("homepage.do")
+	@PostMapping("homepage.do")
 	public String login(LoginVO lVO,Model model) {
 	
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
