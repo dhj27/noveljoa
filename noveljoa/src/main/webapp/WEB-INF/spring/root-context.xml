@@ -24,6 +24,10 @@
 	<bean id="mls" class="kr.co.noveljoa.user.mylike.MyLikeService">
 		<constructor-arg ref="mlDAO"/>
 	</bean>
+	<bean id="mbDAO" class="kr.co.noveljoa.user.mybookmark.MyBookmarkDAO"/>
+	<bean id="mbs" class="kr.co.noveljoa.user.mybookmark.MyBookmarkService">
+		<constructor-arg ref="mbDAO"/>
+	</bean>
 	<bean id="nnDAO" class="kr.co.noveljoa.user.newnovel.NewNovelDAO"/>
 	<bean id="nns" class="kr.co.noveljoa.user.newnovel.NewNovelService">
 		<constructor-arg ref="nnDAO"/>

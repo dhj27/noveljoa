@@ -22,6 +22,7 @@
     <mapper resource="kr/co/noveljoa/user/search/search_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/mynovel/mynovel_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/mylike/mylike_mapper.xml"/>
+    <mapper resource="kr/co/noveljoa/user/mybookmark/mybookmark_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/newnovel/newnovel_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/writernovel/writernovel_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/noveledit/editnovel_mapper.xml"/>
