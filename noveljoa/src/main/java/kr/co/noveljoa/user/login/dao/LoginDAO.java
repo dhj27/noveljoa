@@ -173,7 +173,13 @@ public class LoginDAO {
 	}
 	public List<InfoDomain> info(String id){
 		
+		List<InfoDomain> list = new ArrayList<InfoDomain>();
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		list = ss.selectList("info", id);
+		//3. MyBatis Handler 
+		if(ss != null) {ss.close();}
 		
+		return list;
 		
 	}
 	

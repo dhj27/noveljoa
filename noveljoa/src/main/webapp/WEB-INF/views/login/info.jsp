@@ -86,17 +86,7 @@ function cancel(){
 		});
 	});
 </script>
-<%
-String id=(String)session.getAttribute("user_id");
 
-LoginDAO lDAO = new LoginDAO();
-InfoVO iVO = lDAO.selectInfo(id);
-String phone = iVO.getPhone();
-
-String[] email_part = iVO.getEmail().split("@");
-String email1 = email_part[0];
-String email2 = email_part[1];
-%>
 </head>
 <body  style="height: 900px">
 	<div id="__next" data-reactroot="">
@@ -106,7 +96,7 @@ String email2 = email_part[1];
 			<div class="flex flex-col h-full">
 <!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_login_search.jsp"/> 
+		<jsp:include page="../../../_next/header_user_login_search.jsp"/> 
 	</div>
 
 
@@ -119,20 +109,20 @@ String email2 = email_part[1];
             <div id="text_change" style="font-size: 50px; font-weight: bold;">개인정보 변경</div>
             <table height="300px" border="1px solid" border-collapse : collapse;>
                 <tr style="background-color: #E0E0E0;">
-                    <td width="150px"align="center" class="td1">이름</td><td width="600px"><input type="text" placeholder="이름"readonly value="<%=iVO.getName()%>" id="id" readonly></td>
+                    <td width="150px"align="center" class="td1">이름</td><td width="600px"><input type="text" placeholder="이름"readonly value=$(name_info) id="name" readonly></td>
                 </tr>
                 <tr style="background-color: #E0E0E0;">
-                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" value="<%=iVO.getId()%>" id="id" name="id" readonly></td>
+                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" value=$(id_info) id="id" name="id" readonly></td>
                 </tr>
                 <tr style="background-color: #E0E0E0;">
-                    <td align="center"class="td1">생년월일</td><td><input type="date" value="<%=iVO.getBirth()%>" readonly></td>
+                    <td align="center"class="td1">생년월일</td><td><input type="date" value=$(birth_info) readonly></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=phone%>" id="phone" name="phone" placeholder="전화번호"><input type="hidden" value="<%=phone%>" id="ogPhone"></td>
+                    <td align="center"class="td1">전화번호</td><td><input type="text" value=$(phone_info) id="phone" name="phone" placeholder="전화번호"><input type="hidden" value=$(name_info) id="ogPhone"></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value="<%=email1%>" placeholder="이메일"> @ 
-                        <input type="text" id="email2" name="email2" value="<%=email2%>">
+                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value=$(email_info) placeholder="이메일"> @ 
+                        <input type="text" id="email2" name="email2" value="">
                         <select id="email_select">
                         <option value="self">직접입력</option>
                         <option value="naver.com">naver</option>
@@ -155,7 +145,7 @@ String email2 = email_part[1];
 </div>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 			</div>
 		</div>

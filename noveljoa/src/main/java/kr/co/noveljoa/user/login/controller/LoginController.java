@@ -1,5 +1,6 @@
 package kr.co.noveljoa.user.login.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.service.LoginService;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
@@ -197,13 +199,39 @@ public class LoginController {
 		return mav;
 	}
 	
-	  @GetMapping("info.do") public String info(Model model) {
+	  @GetMapping("info.do") public String infoView(Model model) {
 	  
-		  String id=(String)model.getAttribute("Id");
+		  String idInfo=(String)model.getAttribute("Id");
+		  List<InfoDomain> list = new ArrayList<InfoDomain>();
 		  
+		  list = ls.info(idInfo);
 		  
+		  if(list.isEmpty()) {
+			  return "alert_session";
+		  }else {
+			String name=null;
+			String id=null;
+			String phone=null;
+			String email=null;
+			Date birth=null;
+			
+			for(InfoDomain info : list) {
+				name = info.getName();
+				id = info.getId();
+				phone = info.getPhone();
+				email = info.getEmail();
+				birth = info.getBirth();
+			}
+			
+			model.addAttribute("name_info", name);
+			model.addAttribute("id_info", id);
+			model.addAttribute("phone_info", phone);
+			model.addAttribute("email_info", email);
+			model.addAttribute("birth_info", birth);
+			
+			  return "info";
+		  }
 		  
-		  return "";
 	  }
 	 
 		

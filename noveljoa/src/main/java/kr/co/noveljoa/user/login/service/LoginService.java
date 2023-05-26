@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.noveljoa.user.login.dao.LoginDAO;
+import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
@@ -80,6 +81,15 @@ public class LoginService {
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
 		
 		list = lDAO.login(lVO);
+		
+		return list;
+	}
+	
+	public List<InfoDomain> info(String id){
+		
+		List<InfoDomain> list = new ArrayList<InfoDomain>();
+		
+		list = lDAO.info(id);
 		
 		return list;
 	}
