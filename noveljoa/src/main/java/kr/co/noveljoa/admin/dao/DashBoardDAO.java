@@ -3,6 +3,7 @@ package kr.co.noveljoa.admin.dao;
 import java.sql.SQLException;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import kr.co.noveljoa.admin.domain.AllMDomain;
 import kr.co.noveljoa.admin.domain.AllNDomain;
@@ -12,6 +13,7 @@ import kr.co.noveljoa.admin.domain.TodayJoinDomain;
 import kr.co.noveljoa.admin.domain.TodayVisitDomain;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
+@Component
 public class DashBoardDAO {
 	//��ú��� ǥ ����
 	//�α���

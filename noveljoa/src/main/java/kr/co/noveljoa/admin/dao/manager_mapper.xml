@@ -32,6 +32,7 @@ SELECT m.id as id, m.num_member as num_member,
   (SELECT COUNT(*) FROM novel where num_member=m.num_member) AS novelcnt,
   NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visitDate,
   m.join as joinDate, m.stop AS susPeriod FROM member m CROSS JOIN dual
+  order by m.num_member
 </select>
 
 <select id="selectOneMember" resultType="kr.co.noveljoa.admin.domain.MemberManageDomain" parameterType="String">
@@ -124,6 +125,8 @@ select comment_num, id, title, detail, c.make as make
 		 from member m
 		 inner join comments c on m.num_member = c.num_member
 		 inner join episode e on c.num_episode = e.num_episode
+		   order by comment_num
+		 
  <where>
  <if test="id != null and id!= ''" >
  id=#{ id }

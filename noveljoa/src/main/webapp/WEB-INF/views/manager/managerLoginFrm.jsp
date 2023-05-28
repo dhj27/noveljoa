@@ -74,6 +74,8 @@
       			$("#mFrm").submit();//포스트 방식으로 값 제출
       			
       		}//chkLeng
+      		
+      	
       			  
       });//ready
       </script>
@@ -158,9 +160,9 @@
     </div>
 
     <div class="checkbox mb-3">
-      <label>
+    <!--   <label>
         <input type="checkbox" value="remember-me"> 아이디 저장
-      </label>
+      </label> -->
     </div>
     <input type="button" class="w-100 btn btn-lg btn-dark"  id="mbtn" value="로그인">
   </form>

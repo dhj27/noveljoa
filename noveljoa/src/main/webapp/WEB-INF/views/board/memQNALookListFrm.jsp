@@ -113,7 +113,7 @@
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
   <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">홈</a></li>
   <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">랭킹</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">자유게시판</a></li>
+  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">QNA 게시판</a></li>
 </ul>
 
       <div class="col-md-3 text-end">

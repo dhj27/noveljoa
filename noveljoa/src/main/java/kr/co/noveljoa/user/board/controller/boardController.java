@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ import kr.co.noveljoa.user.board.vo.updateBoardCommentVO;
 @Controller
 public class boardController {
 	
+	@Autowired(required = false)
+	private BoardService ms;
 	
 
 	@GetMapping("memQNALookListFrm.do")
@@ -32,7 +35,6 @@ public class boardController {
 		if (board_num == null) {
 			board_num = 0;
 		  }
-		BoardService ms = new BoardService();
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		 paramMap.put("id",id);
@@ -54,7 +56,6 @@ public class boardController {
 	
 	@GetMapping("boardComplete.do")
 	public String boardComplete(FreeBoardVO fVO, Model model ) {
-		BoardService ms = new BoardService();
 		Boolean boardFlag = ms.addFreeBoard(fVO);
 		model.addAttribute("boardFlag", boardFlag);
 		return "board/boardComplete";
@@ -69,7 +70,6 @@ public class boardController {
 //		if (board_num == null) {
 //			board_num = 0;
 //		  }
-		BoardService ms = new BoardService();
 		ms.modifyBoardCnt(board_num);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		 paramMap.put("id",id);
@@ -85,7 +85,6 @@ public class boardController {
 	
 	@GetMapping("memQNALookFrm_process.do")
 	public String memQNALookFrm_process(BoardCommentVO bcVO, Model model) {
-		BoardService ms = new BoardService();
 		Boolean boardCommentFlag =  ms.addBoardComment(bcVO);
 		model.addAttribute("boardCommentFlag", boardCommentFlag);
 		
@@ -95,7 +94,6 @@ public class boardController {
 	
 	@GetMapping("removeBoard.do")
 	public String removeBoard(int board_num, Model model) {
-		BoardService ms = new BoardService();
 		Boolean removeBoardFlag =  ms.removeBoard(board_num);
 		model.addAttribute("removeBoardFlag", removeBoardFlag);
 		
@@ -112,7 +110,6 @@ public class boardController {
 	//클릭시 서브밋해 example 폼이 켜지고 거기에 수정을 작성해 그거에 대한 아래를 보내 바꿀거임 
 	@GetMapping("modifyBoardComment_process.do")
 	public String modifyBoardComment(updateBoardCommentVO ubcVO, Model model) {
-		BoardService ms = new BoardService();
 		Boolean modifyBoardCommentFlag =  ms.modifyBoardComment(ubcVO);
 		model.addAttribute("modifyBoardCommentFlag", modifyBoardCommentFlag);
 		
@@ -121,7 +118,6 @@ public class boardController {
 	
 	@GetMapping("removeBoardComment.do")
 	public String removeBoardComment(int board_cmt_num, Model model) {
-		BoardService ms = new BoardService();
 		Boolean removeBoardCommentFlag =  ms.removeBoardComment(board_cmt_num);
 		System.out.println(board_cmt_num);
 		model.addAttribute("board_cmt_num", board_cmt_num);

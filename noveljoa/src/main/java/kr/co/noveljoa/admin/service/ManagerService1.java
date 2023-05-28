@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import kr.co.noveljoa.admin.dao.ManagerDAO1;
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
@@ -11,11 +14,14 @@ import kr.co.noveljoa.admin.domain.MemberManageInfoDomain;
 import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
+@Component
 public class ManagerService1 {
+	
+	@Autowired(required = false)
+	private ManagerDAO1 mDAO;
 	
 	public List<MemberManageDomain> memberManage(String id) {
 		List<MemberManageDomain> mmList = null;
-		ManagerDAO1 mDAO = new ManagerDAO1();
 		try {
 			mmList = mDAO.selectMemberManage(id);
 		} catch (SQLException e) {
@@ -27,7 +33,6 @@ public class ManagerService1 {
 	
 	public MemberManageInfoDomain memberInfoAll(String id) {
 		MemberManageInfoDomain mmiDomain =  null;
-		ManagerDAO1 mDAO = new ManagerDAO1();
 		
 		mmiDomain = mDAO.selectmemberInfoAll(id);
 		
@@ -35,21 +40,18 @@ public class ManagerService1 {
 	}//memberInfoAll
 	
 	public boolean stopId(String id) {
-		ManagerDAO1 mDAO = new ManagerDAO1();
 		int cnt = mDAO.updateStop(id);
 		
 		return cnt==1;
 	}//stopId
 	
 public boolean unStopId(String id) {
-	ManagerDAO1 mDAO = new ManagerDAO1();
 	int cnt = mDAO.updateUnStop(id);
 	
 	return cnt==1;
 	}//stopId
 
 public boolean modifyMemInfo(UpdateMemVO uVO) {
-	ManagerDAO1 mDAO = new ManagerDAO1();
 	int cnt = mDAO.updateMemInfo(uVO);
 	
 	return cnt==1;
@@ -58,7 +60,6 @@ public boolean modifyMemInfo(UpdateMemVO uVO) {
 
 public List<CommentDomain> commentManage(String id) {
 	List<CommentDomain> cdList = null;
-	ManagerDAO1 mDAO = new ManagerDAO1();
 	try {
 		cdList = mDAO.selectCommentManage(id);
 	} catch (SQLException e) {
@@ -69,7 +70,6 @@ public List<CommentDomain> commentManage(String id) {
 }//memberManage
 
 public boolean removeComment(int comment_num) {
-	ManagerDAO1 mDAO = new ManagerDAO1();
 	int cnt = mDAO.deleteComment(comment_num);
 	
 	return cnt==1;

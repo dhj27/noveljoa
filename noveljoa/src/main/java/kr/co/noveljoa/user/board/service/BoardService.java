@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import kr.co.noveljoa.user.board.dao.boardDAO;
 import kr.co.noveljoa.user.board.domain.BoardCommentDomain;
 import kr.co.noveljoa.user.board.domain.FreeBoardDomain;
@@ -12,14 +15,15 @@ import kr.co.noveljoa.user.board.vo.FreeBoardVO;
 import kr.co.noveljoa.user.board.vo.updateBoardCommentVO;
 
 
-
+@Component
 public class BoardService {
 	
+	@Autowired(required = false)
+	private boardDAO mDAO;
 	
 
 public List<FreeBoardDomain> printFreeBoard(Map<String, Object> paramMap) {
 	List<FreeBoardDomain> fbList = null;
-	boardDAO mDAO = new boardDAO();
 	try {
 		fbList = mDAO.selectFreeBoard(paramMap);
 	} catch (SQLException e) {
@@ -30,7 +34,6 @@ public List<FreeBoardDomain> printFreeBoard(Map<String, Object> paramMap) {
 }//memberManage
 
 public boolean addFreeBoard(FreeBoardVO fbVO) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.insertFreeBoard(fbVO);
 	
 	return cnt==1;
@@ -38,7 +41,6 @@ public boolean addFreeBoard(FreeBoardVO fbVO) {
 
 public List<BoardCommentDomain> printFreeBoardComment(int board_num) {
 	List<BoardCommentDomain> bclist = null;
-	boardDAO mDAO = new boardDAO();
 	try {
 		bclist = mDAO.selectBoardComment(board_num);
 	} catch (SQLException e) {
@@ -50,7 +52,6 @@ public List<BoardCommentDomain> printFreeBoardComment(int board_num) {
 
 
 public boolean addBoardComment(BoardCommentVO bcVO) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.insertBoardComment(bcVO);
 	
 	return cnt==1;
@@ -58,7 +59,6 @@ public boolean addBoardComment(BoardCommentVO bcVO) {
 
 
 public boolean removeBoard(int board_num) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.deleteBoard(board_num);
 	
 	return cnt==1;
@@ -66,14 +66,12 @@ public boolean removeBoard(int board_num) {
 
 
 public boolean modifyBoardComment(updateBoardCommentVO ubcVO) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.updateBoardComment(ubcVO);
 	
 	return cnt==1;
 }//modifyBoardComment
 
 public boolean removeBoardComment(int board_cmt_num) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.deleteBoardComment(board_cmt_num);
 	
 	return cnt==1;
@@ -81,7 +79,6 @@ public boolean removeBoardComment(int board_cmt_num) {
 
 
 public void modifyBoardCnt(int board_num) {
-	boardDAO mDAO = new boardDAO();
 	int cnt = mDAO.updateBoardCnt(board_num);
 	
 }//modifyBoardCnt

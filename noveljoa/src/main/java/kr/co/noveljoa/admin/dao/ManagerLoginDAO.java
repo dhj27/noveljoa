@@ -3,40 +3,42 @@ package kr.co.noveljoa.admin.dao;
 import java.sql.SQLException;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import kr.co.noveljoa.admin.domain.MLoginDomain;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 
+@Component
 public class ManagerLoginDAO {
-	//¸Å´ÏÀú ¾ÆÀÌµð »ý¼º
+	//ï¿½Å´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int insertManager( InsertMVO IMVO ) {
-		//MyBatis Handler ¾ò±â
+		//MyBatis Handler ï¿½ï¿½ï¿½
 		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//Handler »ç¿ë
+		//Handler ï¿½ï¿½ï¿½
 		int cnt = ss.insert("kr.co.noveljoa.admin.Mapper.insertManager", IMVO);
-		//transaction ¿Ï·á
+		//transaction ï¿½Ï·ï¿½
 		if( cnt==1 ) {
 			ss.commit();
 		}
-		//¿¬°á ²÷±â
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if(ss != null) {
 			ss.close();
 		}//end if
 		return cnt;
 	}//insertManager
 	
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	public MLoginDomain selectLogin(MLoginVO mVO) throws SQLException {
 		MLoginDomain mlDomain = null;  
-		//MyBatis ¾ò±â
+		//MyBatis ï¿½ï¿½ï¿½
 		SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		//transaction¿Ï·á
+		//transactionï¿½Ï·ï¿½
 		mlDomain=ss.selectOne("kr.co.noveljoa.admin.Mapper.selectLogin", mVO);
 		
 		ss.commit();
-		//¿¬°á ²÷±â
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if(ss != null) {
 					ss.close();
 				}//end if
@@ -45,7 +47,7 @@ public class ManagerLoginDAO {
 		return mlDomain;
 	}//selectLogin
 	
-//	//Å×½ºÆ® ¿ë
+//	//ï¿½×½ï¿½Æ® ï¿½ï¿½
 //	  public static void main(String[] args) {
 //	  
 //	  ManagerLoginDAO mDAO = new ManagerLoginDAO(); 

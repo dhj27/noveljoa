@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
@@ -13,6 +14,7 @@ import kr.co.noveljoa.admin.vo.InsertCommentVO;
 import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 
+@Component
 public class ManagerDAO1 {
 	
 	public List<MemberManageDomain> selectMemberManage(String id) throws SQLException {

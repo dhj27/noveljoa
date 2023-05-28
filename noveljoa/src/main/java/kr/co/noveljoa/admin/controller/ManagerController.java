@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +30,21 @@ import kr.co.noveljoa.admin.vo.InsertMVO;
 import kr.co.noveljoa.admin.vo.MLoginVO;
 import kr.co.noveljoa.admin.vo.UpdateMemVO;
 @SessionAttributes({"mFlag"})
+
 @Controller
 public class ManagerController {
+	
+	@Autowired(required = false)
+	private ManagerLoginService mlService;
+	
+	@Autowired(required = false)
+	private DashBoardService dbService;
+	
+	@Autowired(required = false)
+	private ManagerService1 ms;
+	
 	@PostMapping("/manager/insert_frm_process.do")
 	public String managerInsertFrm(InsertMVO IMVO, Model model){
-		ManagerLoginService mlService = new ManagerLoginService();
 		boolean loginFlag =  mlService.MakeManager(IMVO);
 		System.out.println(loginFlag);
 		model.addAttribute("loginFlag", loginFlag);
@@ -61,7 +72,6 @@ public class ManagerController {
 	public String managerLoginProcess(MLoginVO mlVO  ,Model model) {
 		
 		
-		ManagerLoginService mlService = new ManagerLoginService();
 		MLoginDomain mlDomain = mlService.ManagerLogin(mlVO);
 		//System.out.println(mlDomain);
 		model.addAttribute("data", mlDomain);
@@ -81,7 +91,6 @@ public class ManagerController {
 		}else {
 			url = "manager/dashBoardFrm";
 		}
-		DashBoardService dbService = new DashBoardService();
 		DashBoardDomain dbDomain = dbService.printDash();
 		AllMDomain amDomain = dbService.graphAllMember();
 		AllNDomain anDomain = dbService.graphAllNovel();
@@ -99,7 +108,6 @@ public class ManagerController {
 
 	@GetMapping("/manager/memberManagerFrm.do")
 	public String memberManagerFrm(String id, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		List<MemberManageDomain> mmList =  ms.memberManage(id);
 		model.addAttribute("memberData", mmList);
 		model.addAttribute("memId", id);
@@ -116,7 +124,6 @@ public class ManagerController {
 	
 	@GetMapping("/manager/commentManagerFrm.do")
 	public String commentFrm(String id, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		List<CommentDomain> cdList =  ms.commentManage(id);
 		model.addAttribute("commentData", cdList);
 		model.addAttribute("comId", id);
@@ -127,7 +134,6 @@ public class ManagerController {
 	@GetMapping("/manager/managerMemInfo.do")
 	public String memberInfo(String id, Model model) {
 		MemberManageInfoDomain mmiDomain = null;
-		ManagerService1 ms = new ManagerService1();
 		mmiDomain=  ms.memberInfoAll(id);
 		model.addAttribute("memInfo", mmiDomain);
 		
@@ -137,7 +143,6 @@ public class ManagerController {
 	
 	@PostMapping("manager/stopId.do")
 	public String StopId(String id, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		 Boolean stopFlag =  ms.stopId(id);
 		 model.addAttribute("stopFlag", stopFlag);
 		 
@@ -146,7 +151,6 @@ public class ManagerController {
 	
 	@PostMapping("manager/unStopId.do")
 	public String UnStopId(String id, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		Boolean stopFlag =  ms.unStopId(id);
 		model.addAttribute("stopFlag", stopFlag);
 		
@@ -156,7 +160,6 @@ public class ManagerController {
 	@PostMapping("manager/modifyMemInfoFrm.do")
 	public String modifyMemInfoFrm(String id, Model model) {
 		MemberManageInfoDomain mmiDomain = null;
-		ManagerService1 ms = new ManagerService1();
 		mmiDomain=  ms.memberInfoAll(id);
 		model.addAttribute("memInfo", mmiDomain);
 		
@@ -165,7 +168,6 @@ public class ManagerController {
 	
 	@PostMapping("manager/modifyMemInfoProcess.do")
 	public String modifyMemInfo(UpdateMemVO uVO, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		Boolean modifyFlag = ms.modifyMemInfo(uVO);
 		model.addAttribute("modifyFlag", modifyFlag);
 		
@@ -174,7 +176,6 @@ public class ManagerController {
 	
 	@GetMapping("manager/removeComment.do")
 	public String removeComment(int comment_num, Model model) {
-		ManagerService1 ms = new ManagerService1();
 		 Boolean removeFlag =  ms.removeComment(comment_num);
 		 model.addAttribute("removeFlag", removeFlag);
 		 

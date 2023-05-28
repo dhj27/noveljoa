@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import kr.co.noveljoa.user.board.domain.BoardCommentDomain;
 import kr.co.noveljoa.user.board.domain.FreeBoardDomain;
@@ -14,7 +15,7 @@ import kr.co.noveljoa.user.board.vo.FreeBoardVO;
 import kr.co.noveljoa.user.board.vo.updateBoardCommentVO;
 
 
-
+@Component
 public class boardDAO {
 	
 
