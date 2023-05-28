@@ -18,29 +18,29 @@
 	$(function(){
 		
 		$("#epWriteOpen").click(function(){
-			$("#novelNum").val();
+			$("#num_novel").val();
 			$("#createEpFrm").submit();
 		});
 		
 		$("#epEditOpen").click(function(){
-			$("#novelNum").val();
-			$("#epNum").val();
+			$("#num_novel").val();
+			$("#num_episode").val();
 			$("#updateEpFrm").submit();
 		});
 		
 		$("#cmtOpen").click(function(){
-			$("#novelNum").val();
+			$("#num_novel").val();
 			$("#cmtFrm").submit();
 		});
 		
 		$("#novelOpen").click(function(){
-			$("#novelNum").val();
+			$("#num_novel").val();
 			$("#novelFrm").submit();
 		});
 		
 		$("#epOpen").click(function(){
-			$("#novelNum").val();
-			$("#epNum").val();
+			$("#num_novel").val();
+			$("#num_episode").val();
 			$("#epFrm").submit();
 		});
 		 
@@ -51,40 +51,38 @@
 </head>
 <body>
 
-	<a href="index.do">a</a>
+	<a href="writer_novel.do">novel</a>
 	<br><br>
+	
 	
 	<input type="button" id="epWriteOpen" value="에피소드 등록창" />
 	<form action="episode_write.do" name="createEpFrm" id="createEpFrm" method="post">
-		<input type="hidden" name="userNum" id="userNum"/>
-		<input type="hidden" name="novelNum" id="novelNum"/>
+		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
+		<input type="hidden" name="novelTitle" id="novelTitle" value="5"/>		
 	</form>
 	
 	<input type="button" id="epEditOpen" value="에피소드 수정창" />
 	<form action="episode_edit.do" name="updateEpFrm" id="updateEpFrm" method="post">
-		<input type="hidden" name="userNum" id="userNum"/>
-		<input type="hidden" name="novelNum" id="novelNum"/>
-		<input type="hidden" name="epNum" id="epNum"/>
+		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
+		<input type="hidden" name="num_episode" id="num_episode" value="29"/>
 	</form>
 	
 	<input type="button" id="cmtOpen" value="댓글창" />
 	<form action="episode/comment.do" name="cmtFrm" id="cmtFrm" method="post">
-		<input type="hidden" name="userNum" id="userNum"/>
-		<input type="hidden" name="novelNum" id="novelNum"/>
+		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
 	</form>
 	 
 	<input type="button" id="novelOpen" value="소설 창" />
 	<form action="novels.do" name="novelFrm" id="novelFrm" method="get">
-		<input type="hidden" name="novelNum" id="novelNum" value="2"/>
+		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
 	</form>
 	<br><br>
 	
 	
 	<input type="button" id="epOpen" value="에피소드 창" />
 	<form action="read.do" name="epFrm" id="epFrm" method="get">
-		<input type="hidden" name="novelNum" id="novelNum" value="5"/>
-		<input type="hidden" name="epNum" id="epNum" value="41"/>
-		<input type="hidden" name="userNum" id="userNum" value="91"/>
+		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
+		<input type="hidden" name="num_episode" id="num_episode" value="25"/>
 		
 	</form>
 	<br><br>

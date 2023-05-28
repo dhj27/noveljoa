@@ -1,11 +1,6 @@
-<%@page import="EpisodeDAO.EpisodeDAO"%>
-<%@page import="EpisodeVO.My.EditEpisodeVO"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 
-<jsp:useBean id="lVO" class="EpisodeVO.User.LikeVO" scope="page"/>
 <jsp:setProperty property="*" name="lVO"/>
 
 <%
@@ -44,6 +39,7 @@
 		e.printStackTrace();
 	}
 %>
+
 <script type="text/javascript">
 	if("<%=request.getMethod()%>" == "GET") {
 		alert("정상적인 방식으로 요청하지 않았어요");

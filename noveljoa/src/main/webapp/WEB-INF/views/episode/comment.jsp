@@ -198,7 +198,7 @@
 
 	<!-- footer -->
 	<div>
-		<jsp:include page="../../../../_next/footer.jsp"/>
+		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
 </body>
 </html>

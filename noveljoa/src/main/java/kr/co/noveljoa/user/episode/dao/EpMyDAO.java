@@ -16,7 +16,7 @@ import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 @Component
 public class EpMyDAO {
 	
-	public String map = "kr.co.noveljoa.user.episode.epiosdeMyMapper.";
+	String map = "kr.co.noveljoa.user.episode.epiosdeMyMapper.";
 	
 	public int insertEpisode(EpCreateVO epCreateVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);

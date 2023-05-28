@@ -65,6 +65,7 @@ public class EpController {
 	// 에피소드 내용 ajax
 	@GetMapping("/read.do")
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
+//		int userNum = (Integer)model.getAttribute("num_member");
 		epCheckVO.setNum_member(1);
 		epCheckVO.setNum_novel(5);
 		epCheckVO.setNum_episode(41);

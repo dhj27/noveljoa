@@ -17,7 +17,7 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 @Component
 public class EpDAO {
 	
-	public String map = "kr.co.noveljoa.user.episode.episodeMapper.";
+	String map = "kr.co.noveljoa.user.episode.episodeMapper.";
 	
 	public static void main(String[] args) {
 		new EpDAO().selectNovel(2);

@@ -2,8 +2,9 @@ package kr.co.noveljoa.user.episode.vo;
 
 public class EpCreateVO {
 	
-	private int num_novel;
 	private int num_member;
+	private int num_novel;
+	
 	private String title;
 	private String story;
 	private String cmt;

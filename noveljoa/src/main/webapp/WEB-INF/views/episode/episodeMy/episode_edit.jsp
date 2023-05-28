@@ -1,5 +1,3 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -136,8 +134,8 @@ $(function(){
 				<div class="h-0 flex-[1_1_auto] overflow-auto">
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
+						<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
 						<input type="hidden" id="num_novel" name="num_novel" value="${ chkVO.num_novel}" />
-						<input type="hidden" id="num_member" name="num_member" value="${ chkVO.num_member }" />
 						<input type="hidden" id="num_episode" name="num_episode" value="${ chkVO.num_episode }" />
 						<input type="hidden" id="open" name="open" value="1"/>
 						<!-- 에피소드 제목 -->

@@ -5,6 +5,7 @@ public class EpUpdateVO {
 	private int num_novel;
 	private int num_member;
 	private int num_episode;
+	
 	private String title;
 	private String story;
 	private String cmt;

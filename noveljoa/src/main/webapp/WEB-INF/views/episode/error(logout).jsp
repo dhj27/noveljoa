@@ -24,7 +24,7 @@
 			
 	<!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_logout_key.jsp"/>
+		<jsp:include page="../../../../_next/header_user_logout_key.jsp"/>
 	</div>
 	
 	<main class="flex-1">
@@ -37,7 +37,7 @@
      
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../../../_next/footer.jsp"/>
 	</div> 
 	
 	</div>

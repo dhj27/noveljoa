@@ -5,13 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.noveljoa.user.episode.service.EpMyService;
 import kr.co.noveljoa.user.episode.vo.EpCheckMyVO;
 import kr.co.noveljoa.user.episode.vo.EpCreateVO;
+import kr.co.noveljoa.user.episode.vo.EpNovelVO;
 import kr.co.noveljoa.user.episode.vo.EpUpdateVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 
+@SessionAttributes
 @Controller
 public class EpMyController {
 	
@@ -25,21 +28,23 @@ public class EpMyController {
 	
 	// 에피소드 작성창
 	@PostMapping("/episode_write.do")
-	public String showEpFrm(Model model) {
-		// 세션에 들어있는 값은 그냥 가져오면 됨
-		// 근데 소설번호하고 소설제목이 애매함
-		// 소설 작성은 파라미터를 hidden으로 해서 받고 값 넣기
-//		int userNum = (Integer)model.getAttribute("num_member");
+	public String showEpFrm(EpNovelVO epNovelVO, Model model) {
 		
-		model.addAttribute("userNum", 1);
-		model.addAttribute("novelNum", 1);
-		model.addAttribute("novelTitle", 5);
+		// 유저번호는 세션에서 가지고 오면됨
+		//int num_member = (Integer)model.getAttribute("num_member");
+		
+		//예시
+		model.addAttribute("num_member", 1);
+		
+		// 파라미터로 num_novel, novelTitle
+		model.addAttribute("epNovelVO", epNovelVO);
+		System.out.println("write: " + epNovelVO);
 		
 		return "episode/episodeMy/episode_write";
 	}// writeEpFrm
 		
 	
-	// 에피소드 등록 프로세스 ajax
+	// 에피소드 등록 프로세스
 	@PostMapping("/episode_write_process.do")
 	public String addEpProcess(EpCreateVO epCreateVO, Model model) {
 		
@@ -59,12 +64,11 @@ public class EpMyController {
 	@PostMapping("/episode_edit.do")
 	public String editEpFrm(EpCheckMyVO epCheckMyVO, Model model) { 
 		
-		// 이전 모델이 설정한 값으로 값이 들어온다
-//		int userNum = (Integer)model.getAttribute("num_member");
+		// 유저번호는 세션에서 가지고 오면됨
+		//int num_member = (Integer)model.getAttribute("num_member");
 		
-		epCheckMyVO.setNum_member(1);
-		epCheckMyVO.setNum_novel(5);
-		epCheckMyVO.setNum_episode(42);
+		//예시
+		model.addAttribute("num_member", 1);
 		
 		model.addAttribute("chkVO", epCheckMyVO);
 		

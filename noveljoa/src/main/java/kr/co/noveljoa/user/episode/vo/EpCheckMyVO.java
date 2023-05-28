@@ -6,7 +6,6 @@ public class EpCheckMyVO {
 	private int num_novel;
 	private int num_episode;
 	
-	
 	public int getNum_member() {
 		return num_member;
 	}
@@ -32,4 +31,5 @@ public class EpCheckMyVO {
 	}
 	
 	
+
 }

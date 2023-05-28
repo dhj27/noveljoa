@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -86,12 +85,16 @@
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
+				<!-- 작성하고 잇는 소설의 리스트로 넘어가기 post로 넘어가려면 form 
+					근데 form 넣으면 디자인 달라짐 걍 이전 히스토리로 넘어가게 해야겠음
+					novel/writer_novel.jsp -->
 					<a href="http://localhost/noveljoa/novel/novel_list.jsp">
 						<img width="20" height="20" src="http://localhost/noveljoa/_next/static/images/list.png" />
 					</a>
+					
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
-					<div class="truncate after:inline-block after:w-0"> ${novelTitle}</div> <%-- <c:out value="${novelTitle}"/> --%>
+					<div class="truncate after:inline-block after:w-0"> ${epNovelVO.novelTitle}</div>
 				</div>
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
@@ -104,8 +107,8 @@
 			<div class="h-0 flex-[1_1_auto] overflow-auto">
 				<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 					
-					<input type="hidden" id="num_novel" name="num_novel" value="${ novelNum }" />
-					<input type="hidden" id="num_member" name="num_member" value="${ userNum }" />
+					<input type="hidden" id="num_novel" name="num_novel" value="${ epNovelVO.num_novel }" />
+					<input type="hidden" id="num_member" name="num_member" value="${ num_member }" />
 					
 					<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"
 						id="title" name="title" maxlength="50" placeholder="제목을 입력하세요 " autofocus="autofocus">
