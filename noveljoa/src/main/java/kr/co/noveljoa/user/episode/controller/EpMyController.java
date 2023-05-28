@@ -69,6 +69,7 @@ public class EpMyController {
 		
 		//예시
 		model.addAttribute("num_member", 1);
+		epCheckMyVO.setNum_member(1);
 		
 		model.addAttribute("chkVO", epCheckMyVO);
 		

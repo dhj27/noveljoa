@@ -6,6 +6,7 @@ public class EpCheckMyVO {
 	private int num_novel;
 	private int num_episode;
 	
+	
 	public int getNum_member() {
 		return num_member;
 	}
@@ -29,7 +30,5 @@ public class EpCheckMyVO {
 		return "EpCheckMyVO [num_member=" + num_member + ", num_novel=" + num_novel + ", num_episode=" + num_episode
 				+ "]";
 	}
-	
-	
 
 }

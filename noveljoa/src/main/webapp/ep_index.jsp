@@ -64,7 +64,7 @@
 	<input type="button" id="epEditOpen" value="에피소드 수정창" />
 	<form action="episode_edit.do" name="updateEpFrm" id="updateEpFrm" method="post">
 		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
-		<input type="hidden" name="num_episode" id="num_episode" value="29"/>
+		<input type="hidden" name="num_episode" id="num_episode" value="26"/>
 	</form>
 	
 	<input type="button" id="cmtOpen" value="댓글창" />
@@ -72,12 +72,6 @@
 		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
 	</form>
 	 
-	<input type="button" id="novelOpen" value="소설 창" />
-	<form action="novels.do" name="novelFrm" id="novelFrm" method="get">
-		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
-	</form>
-	<br><br>
-	
 	
 	<input type="button" id="epOpen" value="에피소드 창" />
 	<form action="read.do" name="epFrm" id="epFrm" method="get">
