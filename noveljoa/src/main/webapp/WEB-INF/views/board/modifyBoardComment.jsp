@@ -27,7 +27,7 @@
 <form action="modifyBoardComment_process.do" id="modFrm">
 <input type="hidden" value="${ param.board_num  }" name="board_num">
 <input type="hidden" value="${ param.board_cmt_num  }" name="board_cmt_num">
-<input type="hidden" value="${ param.num_member  }" name="num_member">
+<input type="hidden" value="${ sessionScope.num_member  }" name="num_member">
  <textarea class="form-control is-invalid" placeholder="${ param.detail  }" name="detail" style="height: 500px"></textarea><br>
 			<div class="d-grid gap-2">
 			<input  type="button" value="수정"  class="btn btn-danger btn-sm" id="modBtn" style="height: 100px">

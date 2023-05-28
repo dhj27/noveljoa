@@ -100,30 +100,7 @@
 
 
 <body>
- <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-<a
-			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/noveljoa/home/main.jsp"><img class="object-contain"
-			width="157" height="60" src="/noveljoa/_next/static/images/logo.png"
-			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
-			alt="소설조아 logo" /></a>
-
-		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">홈</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">랭킹</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">QNA 게시판</a></li>
-</ul>
-
-      <div class="col-md-3 text-end">
-      <a class=""
-				href="/noveljoa/manager/manager_login.jsp"><img
-				src="/noveljoa/_next/static/images/key_black.png" width="24"
-				height="24" style="margin-right: 30px;"></a>
-				<!--  c if로 -->
-        <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->
-        <button type="button" class="btn btn-dark me-2" >로그아웃</button>
-      </div>
-      </header>
+ <jsp:include page="../../../_next/header_user_board_login_key.jsp"/>
 
 
 			 	<div class="container-fluid">
@@ -161,7 +138,7 @@
   <div class="col-md-6">
   <!-- 임시 벨류값에 세션에 저장된 아이디 값 넣어야함 -->
   <input type="hidden" name="board_num" value="${  param.board_num }">
-  <input type="hidden" name="num_member" value="3">
+  <input type="hidden" name="num_member" value="${sessionScope.num_member}">
     <textarea class="form-control" placeholder="댓글을 작성해주세요." name="detail" maxlength="500"></textarea>
   </div>
   <div class="col-md-6">
@@ -176,7 +153,7 @@
 <table  class="table table-hover table-sm">
 <c:forEach var="freeBoardcmt" items="${  freeBoardCMTData }" >
 				<tr class="table-secondary">
-				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }</th>
+				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }  </th>
 				<th style="width: 600px">작성일 : ${  freeBoardcmt.make }</th>
 				<th style="width: 150px"><%-- ${  freeBoardcmt.board_cmt_num } --%></th>
 				<th></th>
@@ -186,12 +163,14 @@
  			<td>
  			<!-- <input type="button" value="답변"  class="btn btn-secondary btn-sm"> --><!-- }&num_member=에서 세션값 받아와야함 --><!-- board_num=${  param.board_num }& -->
  			<!-- num_member=3에서 세션에서 받기 -->
+ 			<c:if test="${sessionScope.id==freeBoardcmt.id}">
  			<input type="button" value="수정"  class="btn btn-secondary btn-sm" onclick="location.href='modifyBoardComment.do?board_cmt_num=${  freeBoardcmt.board_cmt_num }&detail=${ freeBoardcmt.detail  }&num_member=3&board_num=${  param.board_num }'" >
 			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" onclick="location.href='removeBoardComment.do?board_cmt_num=${ freeBoardcmt.board_cmt_num  }&board_num=${  param.board_num }' ">
+			</c:if>
 			</td>
 			</tr>
 			<tr>
-			<!-- <th>매니저 답장 : ayo ayo ayo ayo ayo ayo ayo ayo ayo <th> -->
+			<th class="table-success" colspan="4">답변 : 쓰바라시 <th>
 			</tr>
 			</c:forEach>				
 			

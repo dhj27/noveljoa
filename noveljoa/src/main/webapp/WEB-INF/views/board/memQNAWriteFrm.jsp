@@ -119,35 +119,12 @@
 </head>
 <body>
 
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-<a
-			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/noveljoa/home/main.jsp"><img class="object-contain"
-			width="157" height="60" src="/noveljoa/_next/static/images/logo.png"
-			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
-			alt="소설조아 logo" /></a>
-
-		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">홈</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">랭킹</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">자유게시판</a></li>
-</ul>
-
-      <div class="col-md-3 text-end">
-      <a class=""
-				href="/noveljoa/manager/manager_login.jsp"><img
-				src="/noveljoa/_next/static/images/key_black.png" width="24"
-				height="24" style="margin-right: 30px;"></a>
-				<!--  c if로 -->
-        <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->
-        <button type="button" class="btn btn-dark me-2" >로그아웃</button>
-      </div>
-    </header>
+<jsp:include page="../../../_next/header_user_board_login_key.jsp"/>
 
 <div class="container-fluid">
 <h2>게시글 작성</h2>
 <form method="get" action="boardComplete.do" id="bFrm">
-<input type="hidden" value="2" name="num_member"/>
+<input type="hidden" value="${sessionScope.num_member}" name="num_member"/>
 <input type="text" name="title" placeholder="제목을 작성하세요."  class="form-control" style="width:200px; margin-bottom: 30px"/>
   <textarea id="summernote" name="detail"></textarea>
 <br>

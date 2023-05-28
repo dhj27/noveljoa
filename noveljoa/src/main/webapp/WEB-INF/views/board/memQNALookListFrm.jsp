@@ -101,31 +101,9 @@
       
 </head>
 <body>
+<jsp:include page="../../../_next/header_user_board_login_key.jsp"/>
+		
 
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-<a
-			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/noveljoa/home/main.jsp"><img class="object-contain"
-			width="157" height="60" src="/noveljoa/_next/static/images/logo.png"
-			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
-			alt="소설조아 logo" /></a>
-
-		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">홈</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">랭킹</a></li>
-  <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">QNA 게시판</a></li>
-</ul>
-
-      <div class="col-md-3 text-end">
-      <a class=""
-				href="/noveljoa/manager/manager_login.jsp"><img
-				src="/noveljoa/_next/static/images/key_black.png" width="24"
-				height="24" style="margin-right: 30px;"></a>
-				<!--  c if로 -->
-        <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->
-        <button type="button" class="btn btn-dark me-2" >로그아웃</button>
-      </div>
-    </header>
 
 <div class="container-fluid">
   <div class="row">
@@ -140,7 +118,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
         <!-- 아이디값을 아이디 세션값으로 받아와야함 -->
         <form action="memQNALookListFrm.do?board_num" id="myFrm">
-        <input type="hidden" value="bb" name="id">
+        <input type="hidden" value="${sessionScope.id}"  name="id">
         </form>
 
                     <!--  c if로 -->
@@ -175,8 +153,11 @@
               <td><a href="memQNALookFrm.do?board_num=${ fdata.board_num  }">${  fdata.title }</a></td>
               <td>${  fdata.id }</td>
               <td>${  fdata.make }</td>
-              <td>${  fdata.views } 			
-			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" id="removeBtn"   onclick="location.href='removeBoard.do?board_num=${  fdata.board_num }'"></td>
+              <td>${  fdata.views }
+              <c:if test="${sessionScope.id==fdata.id}">			
+			<input type="button" value="삭제"  class="btn btn-secondary btn-sm" id="removeBtn"   onclick="location.href='removeBoard.do?board_num=${  fdata.board_num }'">
+			     </c:if>
+			</td>
             </tr>
             </c:forEach>
            
