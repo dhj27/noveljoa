@@ -1,11 +1,11 @@
 package kr.co.noveljoa.admin.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MBoardDomain {
 
-	private int boardNum, views;
-	private String id, boardTitle, boardDetail; 
+	private int boardNum, views, reply;
+	private String id, boardTitle; 
 	private Date createDate;
 	
 	public int getBoardNum() {
@@ -20,6 +20,12 @@ public class MBoardDomain {
 	public void setViews(int views) {
 		this.views = views;
 	}
+	public int getReply() {
+		return reply;
+	}
+	public void setReply(int reply) {
+		this.reply = reply;
+	}
 	public String getId() {
 		return id;
 	}
@@ -32,12 +38,6 @@ public class MBoardDomain {
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-	public String getBoardDetail() {
-		return boardDetail;
-	}
-	public void setBoardDetail(String boardDetail) {
-		this.boardDetail = boardDetail;
-	}
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -46,8 +46,10 @@ public class MBoardDomain {
 	}
 	@Override
 	public String toString() {
-		return "MBoardVO [boardNum=" + boardNum + ", views=" + views + ", id=" + id + ", boardTitle=" + boardTitle
-				+ ", boardDetail=" + boardDetail + ", createDate=" + createDate + "]";
+		return "MBoardDomain [boardNum=" + boardNum + ", views=" + views + ", reply=" + reply + ", id=" + id
+				+ ", boardTitle=" + boardTitle + ", createDate=" + createDate + "]";
 	}
+	
+	
 	
 }

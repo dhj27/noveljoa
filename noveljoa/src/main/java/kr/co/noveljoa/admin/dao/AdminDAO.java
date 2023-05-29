@@ -28,12 +28,14 @@ public class AdminDAO {
 	
 	public MNovelLookDomain reportManage(int novelNum) throws PersistenceException{
 		MNovelLookDomain report=null;
+		
 		//1. MyBatis Handler 얻기
 		SqlSession ss=ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		//2. 쿼리 수행 후 결과 얻기
 		report=ss.selectOne("kr.co.noveljoa.admin.Mapper.selectReport", novelNum);
 		//3. MyBatis Handler 닫기 
 		if(ss != null) {ss.close();}//end if
+		
 		return report;
 	}//reportManage
 	

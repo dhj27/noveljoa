@@ -1,8 +1,8 @@
-package kr.co.noveljoa.admin.vo;
+package kr.co.noveljoa.admin.domain;
 
 import java.util.Date;
 
-public class MBoardVO {
+public class MBoardDetailDomain {
 
 	private int boardNum, views;
 	private String id, boardTitle, boardDetail; 
@@ -46,8 +46,10 @@ public class MBoardVO {
 	}
 	@Override
 	public String toString() {
-		return "MBoardVO [boardNum=" + boardNum + ", views=" + views + ", id=" + id + ", boardTitle=" + boardTitle
-				+ ", boardDetail=" + boardDetail + ", createDate=" + createDate + "]";
+		return "MBoardDetailDomain [boardNum=" + boardNum + ", views=" + views + ", id=" + id + ", boardTitle="
+				+ boardTitle + ", boardDetail=" + boardDetail + ", createDate=" + createDate + "]";
 	}
+	
+
 	
 }

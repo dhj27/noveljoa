@@ -149,16 +149,14 @@ delete from comments where comment_num=#{ comment_num }
 
 
 
-
-
-<!-- /////////////////////////eh//////////////////////////// -->
+<!-- ///////////////////////////////////////manager novel, report/////////////////////////////////////// -->
 <select id="selectAllNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain"> 
 SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
     (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
     (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
 FROM novel n
 LEFT JOIN member m ON n.num_member = m.num_member
-ORDER BY novelNum asc
+ORDER BY novelNum desc
 </select>
 
 <select id="searchNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain" parameterType="String"> 
@@ -167,7 +165,7 @@ SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
     (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
 FROM novel n
 LEFT JOIN member m ON n.num_member = m.num_member
-ORDER BY novelNum asc
+ORDER BY novelNum desc
 where id = #{id}
 </select> 
 
@@ -179,7 +177,6 @@ select n.title as novelTitle, n.photo as thumbnail, n.story as intro, n.age as a
 from novel n join member m on n.num_member = m.num_member left join report r on n.num_novel = r.num_novel
 where n.num_novel = #{num_novel} group by n.title, n.photo, n.story, n.age, m.id, n.num_novel
 </select>
-
 
 <delete id="deleteNovel" parameterType="Integer">
 delete from novel where num_novel = #{novelNum}
@@ -197,13 +194,73 @@ SET open = 0
 WHERE num_novel = #{novelNum}
 </update>
 
-
-<!-- /////////////////////////////board/////////////////////////////////////// -->
-<select id="" resultType="kr.co.noveljoa.admin.domain.MBoardDomain"> 
-
+<!-- ///////////////////////////////////////board/////////////////////////////////////// -->
+<select id="selectAllBoard" resultType="kr.co.noveljoa.admin.domain.MBoardDomain"> 
+SELECT B.BOARD_NUM AS boardNum,
+       M.ID AS id,
+       B.TITLE AS boardTitle,
+       B.MAKE AS createDate,
+       B.VIEWS AS views,
+       (SELECT COUNT(*) FROM BOARD_CMT BC WHERE BC.BOARD_NUM = B.BOARD_NUM AND BC.MANAGER_CMT IS NOT NULL) AS reply
+FROM BOARD B
+JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
+ORDER BY B.BOARD_NUM DESC
 </select>
 
+<select id="searchBoard" resultType="kr.co.noveljoa.admin.domain.MBoardDomain" parameterType="String"> 
+SELECT B.BOARD_NUM AS boardNum,
+       M.ID AS id,
+       B.TITLE AS boardTitle,
+       B.DETAIL AS boardDetail,
+       B.MAKE AS createDate,
+       B.VIEWS AS views,
+       (SELECT COUNT(*) FROM BOARD_CMT BC WHERE BC.BOARD_NUM = B.BOARD_NUM AND BC.MANAGER_CMT IS NOT NULL) AS reply
+FROM BOARD B
+JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
+WHERE M.ID = #{id}
+</select> 
 
-  
+<select id="selectQNA" resultType="kr.co.noveljoa.admin.domain.MBoardDetailDomain" parameterType="Integer"> 
+SELECT B.BOARD_NUM AS boardNum,
+       M.ID AS id,
+       B.TITLE AS boardTitle,
+       B.DETAIL AS boardDetail,
+       B.MAKE AS createDate,
+       B.VIEWS AS views
+FROM BOARD B
+JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
+where board_num = #{boardNum}
+</select>
+
+<delete id="deleteBoard" parameterType="Integer">
+delete from board where board_num = #{boardNum}
+</delete>
+
+<select id="selectCmt" resultType="kr.co.noveljoa.admin.domain.MCommentDomain" parameterType="Integer"> 
+SELECT BC.BOARD_CMT_NUM as cmtNum, M.ID as id, BC.DETAIL as cmtDetail, BC.MAKE as createDate, BC.MANAGER_CMT as managerCmt
+FROM BOARD_CMT BC
+JOIN MEMBER M ON BC.NUM_MEMBER = M.NUM_MEMBER
+WHERE BOARD_NUM = #{boardNum}
+</select>
+ 
+<update id="insertCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
+update BOARD_CMT
+set MANAGER_CMT = #{managerCmt,jdbcType=VARCHAR}
+where BOARD_CMT_NUM = #{cmtNum}
+</update> 
+
+<update id="modifyCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
+update BOARD_CMT
+set MANAGER_CMT = #{managerCmt}
+where BOARD_CMT_NUM = #{cmtNum}
+</update>
+
+<update id="deleteCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
+update BOARD_CMT
+set MANAGER_CMT = NULL
+where BOARD_CMT_NUM = #{cmtNum}
+</update>
+
+
   
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +95,7 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="아이디 조회" aria-label="Search">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="width: 100px; text-align: center;" >검색</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -161,22 +162,27 @@
               <th scope="col">아이디</th>
               <th scope="col">작성일</th>
               <th scope="col">조회수</th>
-              <th scope="col">답변여부</th>
+              <th scope="col">답변 여부</th>
             </tr>
           </thead>
-          <c:if test="${empty qnaList }">
+          <c:if test="${empty boardList }">
 			<tr>
-			<td colspan="6"><c:out value="${param.id }"/>소설이 존재하지 않습니다.</td>
+			<td colspan="7"><c:out value="${param.id }"/>글이 존재하지 않습니다.</td>
          	</tr>
           </c:if>
-         <c:forEach var="qna" items="${qnaList}">
+         <c:forEach var="qnaList" items="${boardList}">
 			<tr>
-			<td><input type="button" class="btn btn-dark btn-sm" value="${qna.novelNum }" onclick="location.href='messageQNALookFrm.do?boardNum=${qna.board}'"></td>
-			<td><c:out value="${qna.novelTitle }"/></td>
-			<td><c:out value="${qna.id }"/></td>
-			<td><c:out value="${qna.likeCnt }"/></td>
-			<td><c:out value="${qna.reportCnt }"/></td>
-			<td><c:out value="${qna.createDate }"/></td>
+			<td><input type="button" class="btn btn-dark btn-sm" value="${qnaList.boardNum }" onclick="location.href='messageQNALookFrm.do?boardNum=${qnaList.boardNum}'"></td>
+			<td><c:out value="${qnaList.boardTitle }"/></td>
+			<td><c:out value="${qnaList.id }"/></td>
+			<td><fmt:formatDate value="${qnaList.createDate}" pattern="yyyy.MM.dd HH:mm" /></td>
+			<td><c:out value="${qnaList.views }"/></td>
+			<td>
+			<c:choose>
+			    <c:when test="${qnaList.reply == 0}">미등록</c:when>
+			    <c:when test="${qnaList.reply >= 1}">등록</c:when>
+			</c:choose>
+			</td>
 			</tr>
 		</c:forEach>
           
