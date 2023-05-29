@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.service.LoginService;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
 import kr.co.noveljoa.user.login.vo.InfoChangeVO;
+import kr.co.noveljoa.user.login.vo.LoginHistoryVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
@@ -70,7 +72,25 @@ public class LoginController {
 		return "login/new_member2";
 	}
 	@PostMapping("homepage.do")
-	public String login(LoginVO lVO,Model model) {
+	public String login(LoginVO lVO,Model model,HttpServletRequest request) {
+		
+		String ip = request.getRemoteAddr();
+		String userAgent = request.getHeader("User-Agent");
+		String os = null;
+
+		if (userAgent != null) {
+		    if (userAgent.contains("Windows")) {
+		        os = "Windows";
+		    } else if (userAgent.contains("Mac")) {
+		        os = "Mac OS X";
+		    } else if (userAgent.contains("Linux")) {
+		        os = "Linux";
+		    } else if (userAgent.contains("Android")) {
+		        os = "Android";
+		    } else if (userAgent.contains("iPhone")) {
+		        os = "iOS";
+		    }
+		}
 	
 		List<LoginDomain> list = new ArrayList<LoginDomain>();
 		
@@ -79,16 +99,26 @@ public class LoginController {
 		if(list.isEmpty()) {
 			return "login/alert_noneid";
 		}else {	
+			
+			
+			
 			 String id = null;
 		     String name = null;
 		     String photo = null;
 		     int numMember = 0;
+		     
+		     
 			for(LoginDomain LD : list) {
 				id = LD.getId();
 				name = LD.getName();
 				photo = LD.getPhoto();
 				numMember = LD.getNum_member();
 			}
+			LoginHistoryVO lhVO = new LoginHistoryVO();
+			lhVO.setNum_member(numMember);
+			lhVO.setIp(ip);
+			lhVO.setOs(os);
+			ls.history(lhVO);
 			
 			//정지회원처리
 		List<MemberManageDomain> mmList =  ms.memberManage(id);

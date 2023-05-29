@@ -11,6 +11,7 @@ import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
 import kr.co.noveljoa.user.login.vo.InfoChangeVO;
+import kr.co.noveljoa.user.login.vo.LoginHistoryVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
@@ -85,6 +86,14 @@ public class LoginService {
 		list = lDAO.login(lVO);
 		
 		return list;
+	}
+	
+	public int history(LoginHistoryVO lhVO) {
+		int success = 0;
+		
+		success = lDAO.history(lhVO);
+		
+		return success;
 	}
 	
 	public List<InfoDomain> info(String id){

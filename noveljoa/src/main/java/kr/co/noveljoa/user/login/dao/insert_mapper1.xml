@@ -9,4 +9,9 @@ insert into member(num_member,id,name,pw,birth,phone,email)
 values (NUM_MEMBER.NEXTVAL,#{id},#{name},#{pw},#{birth},#{phone},#{email})
 </insert>
 
+<insert id="historyInsert" parameterType="kr.co.noveljoa.user.login.vo.LoginHistoryVO">
+insert into history(num_member,ip,visit,os)
+values (#{num_member},#{ip},sysdate,#{os})
+</insert>
+
 </mapper>

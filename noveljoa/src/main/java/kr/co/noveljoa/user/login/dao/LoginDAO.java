@@ -20,6 +20,7 @@ import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
 import kr.co.noveljoa.user.login.vo.InfoChangeVO;
+import kr.co.noveljoa.user.login.vo.LoginHistoryVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
@@ -173,6 +174,24 @@ public class LoginDAO {
 		
 		
 	}
+	
+	public int history(LoginHistoryVO lhVO) {
+		
+		int success = 0;
+		//Handler
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		success = ss.insert("historyInsert", lhVO);
+		
+		if(success == 1) {
+			ss.commit();
+		}
+		//3. MyBatis Handler
+		if(ss != null) {ss.close();}
+		
+		return success;
+		
+	}
+	
 	public List<InfoDomain> info(String id){
 		
 		List<InfoDomain> list = new ArrayList<InfoDomain>();
@@ -190,7 +209,7 @@ public class LoginDAO {
 		int phoneChange = 0;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
-		phoneChange = ss.selectOne("infoChange", icVO);
+		phoneChange = ss.update("infoChange", icVO);
 		//3. MyBatis Handler 
 		if(ss != null) {ss.close();}
 		
@@ -202,7 +221,7 @@ public class LoginDAO {
 		int pwChange = 0;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
-		pwChange = ss.selectOne("pwChange", pcVO);
+		pwChange = ss.update("pwChange", pcVO);
 		//3. MyBatis Handler 
 		if(ss != null) {ss.close();}
 		
