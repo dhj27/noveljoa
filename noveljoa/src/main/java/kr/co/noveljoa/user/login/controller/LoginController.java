@@ -1,6 +1,7 @@
 package kr.co.noveljoa.user.login.controller;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.noveljoa.admin.domain.MemberManageDomain;
+import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.service.LoginService;
@@ -35,6 +38,9 @@ public class LoginController {
 
 	@Autowired(required = false)
 	private LoginService ls;
+	
+	@Autowired(required = false)
+	private ManagerService1 ms;
 	
 	
 
@@ -84,10 +90,19 @@ public class LoginController {
 				numMember = LD.getNum_member();
 			}
 			
+			//정지회원처리
+		List<MemberManageDomain> mmList =  ms.memberManage(id);
+		mmList.get(0).getSusPeriod();
+	//	java.util.Date date = new java.util.Date(mmList.get(0).getSusPeriod().getTime() );
+//		LocalDate currentDate = LocalDate.now();
+//		java.util.Date curDate = java.util.Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant());//현재 날짜
+		//System.out.println(mmList.get(0).getSusPeriod());	
+		if( mmList.get(0).getSusPeriod()==null ) {
 			model.addAttribute("id", id);
 			model.addAttribute("name", name);
 			model.addAttribute("photo", photo);
 			model.addAttribute("num_member", numMember);
+		}
 		
 		return "forward:main.do";
 		}

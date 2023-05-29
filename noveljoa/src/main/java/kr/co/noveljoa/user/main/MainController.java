@@ -34,16 +34,16 @@ import kr.co.noveljoa.user.newnovel.NewNovelVO;
 @Controller
 public class MainController {
 
-	@GetMapping("/test1.do")
-	public String test(Model model) {
-		
-		model.addAttribute("num_member",1);
-		model.addAttribute("id","aa");
-		model.addAttribute("name","김기린");
-		model.addAttribute("photo","a.png");
-		
-		return "redirect:/main.do";
-	}
+//	@GetMapping("/test1.do")
+//	public String test(Model model) {
+//		
+//		model.addAttribute("num_member",1);
+//		model.addAttribute("id","aa");
+//		model.addAttribute("name","김기린");
+//		model.addAttribute("photo","a.png");
+//		
+//		return "redirect:/main.do";
+//	}
 
 	@PostMapping("/main.do")
 	public String test(@RequestParam(defaultValue = "0") int genre,Model model) {
