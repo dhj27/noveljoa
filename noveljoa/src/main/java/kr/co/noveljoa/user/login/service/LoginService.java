@@ -10,7 +10,9 @@ import kr.co.noveljoa.user.login.dao.LoginDAO;
 import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.InfoChangeVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
+import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -92,6 +94,23 @@ public class LoginService {
 		list = lDAO.info(id);
 		
 		return list;
+	}
+	
+	public int infoChange(InfoChangeVO icVO) {
+		
+		int change = 0;
+		
+		change = lDAO.infoChange(icVO);
+		
+		return change;
+	}
+	public int passChange(PasswordChangeVO pcVO) {
+		
+		int change = 0;
+		
+		change = lDAO.passwordChange(pcVO);
+		
+		return change;
 	}
 	
 	

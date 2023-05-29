@@ -66,7 +66,7 @@
 
 <body>
 		<div style="display: none; background-color: canvas; color-scheme: light"></div>
-				<form action="sub_dao.jsp" method="post" id="frm" name="frm">
+				<form action="sub_dao.do" method="post" id="frm" name="frm">
     <div id="wrap">
         <div id="container">
             <div id="loginId">

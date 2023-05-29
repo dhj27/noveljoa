@@ -56,7 +56,7 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
         $("#loginBtn").click();
     }
 });
-});
+}); 
 </script>
 
 </head>

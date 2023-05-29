@@ -1,5 +1,3 @@
-<%@page import="LoginVO.InfoVO"%>
-<%@page import="LoginDAO.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -50,23 +48,13 @@ input{width: 150px;height: 20px;border-radius: 3px; background-color: #e8f0fe;bo
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
 function popup(){
-	window.open("sub.jsp","비밀번호변경","width=540, height=390, left=100, top=50");
+	window.open("sub.do","비밀번호변경","width=540, height=390, left=100, top=50");
 }
 function cancel(){
 	location.href="my_page.jsp";
 }
 
 	$(function() {
-		$("#email_select").change(function() {
-			if ($(this).val() == "self") { //직접 입력시
-				$("#email2").removeAttr("readonly").focus(); // input text 활성화
-				$("#email2").val();
-
-			} else {
-				$("#email2").attr("readonly", true).val($(this).val());
-			}
-		});
-		
 		$("#phone").on("keyup", function() { // 전화번호에 숫자가 아닌 글자가 써졌을 때
 			   if (!$.isNumeric($(this).val())) {
 			alert("숫자만 써주세요.");
@@ -76,9 +64,8 @@ function cancel(){
 		
 		$("#change").click(function(){
 			let phone = $("#phone").val();
-			let email1 = $("#email1").val();
-			let email2 = $("#email2").val();
-			if(phone == null || email1 == "" || email2 == "" ){
+			let email1 = $("#email").val();
+			if(phone == null || email1 == ""){
 				alert("정보를 모두 채워넣어 주세요.");
 			}else{
 				$("#frm").submit();
@@ -100,7 +87,7 @@ function cancel(){
 	</div>
 
 
-       <form action="info_dao.jsp" method="post" id="frm">
+       <form action="info_change.do" method="post" id="frm">
     <div id="wrap">
 
 
@@ -109,26 +96,19 @@ function cancel(){
             <div id="text_change" style="font-size: 50px; font-weight: bold;">개인정보 변경</div>
             <table height="300px" border="1px solid" border-collapse : collapse;>
                 <tr style="background-color: #E0E0E0;">
-                    <td width="150px"align="center" class="td1">이름</td><td width="600px"><input type="text" placeholder="이름"readonly value=$(name_info) id="name" readonly></td>
+                    <td width="150px"align="center" class="td1">이름</td><td width="600px"><input type="text" placeholder="이름"readonly value=${name_info} id="name" readonly></td>
                 </tr>
                 <tr style="background-color: #E0E0E0;">
-                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" value=$(id_info) id="id" name="id" readonly></td>
+                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" value=${id_info} id="id" name="id" readonly></td>
                 </tr>
                 <tr style="background-color: #E0E0E0;">
-                    <td align="center"class="td1">생년월일</td><td><input type="date" value=$(birth_info) readonly></td>
+                    <td align="center"class="td1">생년월일</td><td><input type="date" value=${birth_info} readonly></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">전화번호</td><td><input type="text" value=$(phone_info) id="phone" name="phone" placeholder="전화번호"><input type="hidden" value=$(name_info) id="ogPhone"></td>
+                    <td align="center"class="td1">전화번호</td><td><input type="text" value=${phone_info} id="phone" name="phone" placeholder="전화번호"><input type="hidden" value=${name_info} id="ogPhone"></td>
                 </tr>
-                <tr>
-                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value=$(email_info) placeholder="이메일"> @ 
-                        <input type="text" id="email2" name="email2" value="">
-                        <select id="email_select">
-                        <option value="self">직접입력</option>
-                        <option value="naver.com">naver</option>
-                        <option value="daum.net">daum</option>
-                        <option value="gmail.com">gmail</option>
-                    </select></td>
+                <tr style="background-color: #E0E0E0;">
+                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email" name="email" value=${email_info} placeholder="이메일" style="width: 200px" readonly></td>
                 </tr>
             </table>
             <div id="buttonId">

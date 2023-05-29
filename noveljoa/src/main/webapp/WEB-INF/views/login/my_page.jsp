@@ -78,13 +78,20 @@ $(function(){
 		      }
 		    });
 	});	
+	
 	$("#profile").click(function(){
 		window.location.href="info.do";
 	});
+	
 	$("#myNovel").click(function(){
 	$("#frm_myNovel").submit(); 
 	});
+	
 	$("#like").click(function(){
+		$("#frm_like").submit();
+	});
+	
+	$("#myQA").click(function(){
 		$("#frm_like").submit();
 	});
 	
@@ -138,6 +145,9 @@ $(function(){
 <form id="frm_myNovel" action="my_novel.do" method="post">
 <input type="hidden"name="order_novel"value="0">
 </form>
+<form id="frm_myQA" action="my_QA.do" method="post">
+<input type="hidden"name="QA"value="0">
+</form>
 <form id="frm_like" action="my_like.do" method="post">
 <input type="hidden"name="search">
 <input type="hidden"name="order_novel"value="0">
@@ -156,6 +166,7 @@ $(function(){
             
             <div id="input_name"><input type="text" readonly value="<c:out value="${ name }"/>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설" style='cursor:pointer'></div>
+            <div id="input_button1"><input type="button"class="button" id="myQA" value=" Q&A" style='cursor:pointer'></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요" style='cursor:pointer'></div>
             
 			

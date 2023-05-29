@@ -19,7 +19,9 @@ import org.springframework.stereotype.Repository;
 import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.InfoChangeVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
+import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -164,7 +166,7 @@ public class LoginDAO {
 		//Handler
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		list = ss.selectList("login", lVO);
-		//3. MyBatis Handler 
+		//3. MyBatis Handler
 		if(ss != null) {ss.close();}
 		
 		return list;
@@ -180,6 +182,31 @@ public class LoginDAO {
 		if(ss != null) {ss.close();}
 		
 		return list;
+		
+	}
+	
+	public int infoChange(InfoChangeVO icVO) {
+		
+		int phoneChange = 0;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		phoneChange = ss.selectOne("infoChange", icVO);
+		//3. MyBatis Handler 
+		if(ss != null) {ss.close();}
+		
+		return phoneChange;
+		
+	}
+	public int passwordChange(PasswordChangeVO pcVO) {
+		
+		int pwChange = 0;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		pwChange = ss.selectOne("pwChange", pcVO);
+		//3. MyBatis Handler 
+		if(ss != null) {ss.close();}
+		
+		return pwChange;
 		
 	}
 	

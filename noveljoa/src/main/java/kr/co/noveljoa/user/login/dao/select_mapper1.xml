@@ -25,7 +25,7 @@ from 	member
 where 	id = #{id} and pw = #{pw}
 </select>
 <select id="info" resultType="kr.co.noveljoa.user.login.domain.InfoDomain" parameterType="java.lang.String">
-select	id, name, photo, birth, email
+select	id, name, phone, birth, email
 from 	member
 where 	id = #{id}
 </select>

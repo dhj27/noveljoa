@@ -21,7 +21,9 @@ import kr.co.noveljoa.user.login.domain.InfoDomain;
 import kr.co.noveljoa.user.login.domain.LoginDomain;
 import kr.co.noveljoa.user.login.service.LoginService;
 import kr.co.noveljoa.user.login.vo.IdSearchVO;
+import kr.co.noveljoa.user.login.vo.InfoChangeVO;
 import kr.co.noveljoa.user.login.vo.LoginVO;
+import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
@@ -201,7 +203,7 @@ public class LoginController {
 	
 	  @GetMapping("info.do") public String infoView(Model model) {
 	  
-		  String idInfo=(String)model.getAttribute("Id");
+		  String idInfo=(String)model.getAttribute("id");
 		  List<InfoDomain> list = new ArrayList<InfoDomain>();
 		  
 		  list = ls.info(idInfo);
@@ -229,15 +231,45 @@ public class LoginController {
 			model.addAttribute("email_info", email);
 			model.addAttribute("birth_info", birth);
 			
-			  return "info";
+			  return "login/info";
 		  }
 		  
 	  }
 	 
-		
-	
+	  @PostMapping("info_change.do")
+	  public ModelAndView infoChange(ModelAndView mav, InfoChangeVO icVO) {
+		  
+		  
+		  if( ls.infoChange(icVO)==0) {
+			  mav.setViewName("login/alert_changeInfo_err");
+			  return mav;
+		  }else {
+			  mav.setViewName("login/my_page");
+			  return mav;
+		  }
+	  }
+	  
+	  
+	  @PostMapping("sub.do")
+	  public String pwChangeView(Model model) {
+		  
+		  return "login/sub";
+	  }
+	  
+	  
+	  
+		public ModelAndView passwordChange(ModelAndView mav, PasswordChangeVO pcVO) {
+			
+		  if( ls.passChange(pcVO)==0) {
+			  mav.setViewName("login/popup_close");
+			  return mav;
+		  }else {
+			  mav.setViewName("login/my_page");
+			  return mav;
+		  }
+		  
 	}
-	
+}
 
 
 

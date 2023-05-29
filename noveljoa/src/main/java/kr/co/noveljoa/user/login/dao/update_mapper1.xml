@@ -10,4 +10,14 @@ update	member
 set 	pw = #{pw}
 where 	id = #{id}
 </update>
+<update id="infoChange" parameterType="kr.co.noveljoa.user.login.vo.InfoChangeVO">
+update	member
+set 	phone = #{phone}
+where 	id = #{id}
+</update>
+<update id="pwChange" parameterType="kr.co.noveljoa.user.login.vo.PasswordChangeVO">
+update	member
+set 	pw = #{pw}
+where 	id = #{id}
+</update>
 </mapper>
