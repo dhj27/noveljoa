@@ -26,13 +26,13 @@ $(function(){
 				<a href="ranking.do" class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16" >
 					<div class="relative">랭킹</div>
 				</a>
-				<a href="memQNALookListFrm.do?board_num=0" class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16" >
+				<a href="#void" class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16"  onclick="alert('로그인 후 사용 가능합니다.')">
 					<div class="relative">게시판</div>
 				</a>
 			</div>
 		</div>
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-			<a href="manager_login.do" class="mr-16 flex items-center text-grey70">
+			<a href="manager/managerLoginFrm.do" class="mr-16 flex items-center text-grey70">
 				<img src="/noveljoa/_next/static/images/key_black.png" width="24"	height="24"></a>
 			<button class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"
 				onclick="window.location.href='loginpage.do'">로그인</button>

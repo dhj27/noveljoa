@@ -188,7 +188,11 @@
               <td>${ mdata.novelCnt }</td>
               <td>${ mdata.visitDate }</td>
               <td>${ mdata.joinDate }</td>
-              <td>${ mdata.susPeriod }</td>
+              <td>
+              <c:if test="${ mdata.susPeriod!=null }">
+              ${ mdata.susPeriod }까지
+              </c:if>
+              </td>
             </tr>
           </c:forEach>
             

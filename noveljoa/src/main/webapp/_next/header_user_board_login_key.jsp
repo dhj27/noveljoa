@@ -27,7 +27,7 @@ $(function(){
 
       <div class="col-md-3 text-end">
       <a class=""
-				href="/noveljoa/manager/manager_login.jsp"><img
+				href="manager/managerLoginFrm.do"><img
 				src="/noveljoa/_next/static/images/key_black.png" width="24"
 				height="24" style="margin-right: 30px;"></a>
 					<a href="my_page.do" class="mr-16 flex items-center text-grey70">
@@ -35,7 +35,7 @@ $(function(){
 			</a>&nbsp; &nbsp; &nbsp; 
 				<!--  c if로 -->
         <!-- <button type="button" class="btn btn-dark me-2">로그안</button> -->
-        <button type="button" class="btn btn-dark me-2" 
-        onclick="window.location.href='/noveljoa/login/loginpage.jsp'">로그아웃</button>
+        <!-- <button type="button" class="btn btn-dark me-2" 
+        onclick="window.location.href='/noveljoa/login/loginpage.jsp'">로그아웃</button> -->
       </div>
     </header>
