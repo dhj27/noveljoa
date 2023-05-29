@@ -19,18 +19,18 @@ public class EpDAO {
 	
 	String map = "kr.co.noveljoa.user.episode.episodeMapper.";
 	
-	public static void main(String[] args) {
-		new EpDAO().selectNovel(2);
+//	public static void main(String[] args) {
+//		new EpDAO().selectNovel(2);
 //		new EpDAO().selectFirstEpisode(2);
-		
-	}
+//		
+//	}
 	
 	// 소설 내용 보여주기
 	public NovelDomain selectNovel(int novelNum) {
 		NovelDomain nd = null;
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		nd = ss.selectOne("kr.co.noveljoa.user.episode.episodeMapper.selectNovel", novelNum);
+		nd = ss.selectOne(map+"selectNovel", novelNum);
 		System.out.println("dao: "+novelNum);
 		return nd;
 	}// searchNovel

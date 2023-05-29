@@ -23,7 +23,7 @@
 $(function(){
 	 $.ajax({
 		url : "episode_jsonarr_data.jsp",
-		data : "num_novel=",
+		data : "num_novel=<%=request.getParameter("num_novel")%>",
 		dataType : "JSON",
 		error : function(xhr){
 			/* alert("서버에서 문제가 발생했습니다. 다시 시도해주세요."); */
@@ -77,17 +77,11 @@ $(function(){
 	// 신고하기
 	$("#reportImg").click(function(){
 		
-		<%-- window.open("report_popup.jsp?num_novel=<%=novelNum%>&id=<%= selectNovelVO.getId() %>","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100)); --%>
-		//window.close();
 	});
 	
 	// 첫화 보기
 	$("#firstEp").click(function(){
-		<%-- if(<%=epDAO.selectFirstEp(novelNum)%> == 0){
-			alert("작성한 에피소드가 없습니다.");
-			return;
-		}
-		location.href='episode_read.jsp?num_novel=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>'; --%>
+		
 	});
 	
 	
@@ -145,13 +139,11 @@ $(function(){
 									
 								<!-- 좋아요 -->
 								<label>${searchNovel.likeCnt}</label>
- 								<img id="goodImg" src= " == 1 ? 'http://localhost/nobdl/_next/static/images/good_on.png':'http://localhost/project2/_next/static/images/good_off.png'" alt="좋아요"/>
+ 								<img id="goodImg" src= " ${like}== 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'" alt="좋아요"/>
 
-								<form action="like_process.jsp" id="likeFrm" method="post">
-									<input type="hidden" id="num_member" name="num_member" value=""/>
-									<input type="hidden" id="num_novel" name="num_novel" value="" />
-									<input type="hidden" id="id" name="id" value=""/>
-									<input type="hidden" id="good" name="good" value=""/>
+								<form action="like.do" id="likeFrm" method="post">
+									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
+									<input type="hidden" id="num_novel" name="num_novel"/>
 								</form>	
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -162,7 +154,6 @@ $(function(){
 								<label>${searchNovel.reportCnt}</label>
 								
 								<form action="report_popup.jsp" id="reportFrm" method="post">
-									<input type="hidden" id="num_member" name="num_member" value=""/>
 									<input type="hidden" id="num_novel" name="num_novel" value="" />
 									<input type="hidden" id="id" name=id value=""/>
 								</form>

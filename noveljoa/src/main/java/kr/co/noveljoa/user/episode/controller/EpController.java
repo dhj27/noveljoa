@@ -32,15 +32,12 @@ public class EpController {
 	
 	
 	// 소설내용 보여주기
-	@GetMapping("/novels.do")
-	public String novelDetail(int novelNum, Model model) {
-		// 세션받아오기
-//		int userNum = (Integer)model.getAttribute("num_member");
-//		novelNum = (Integer)model.getAttribute("num_novel");
-//		model.addAttribute("novelNum", 1);
-		model.addAttribute("searchNovel", epService.searchNovel(novelNum));
-		System.out.println(epService.searchNovel(novelNum));
-		return "/episode/novel";
+	@GetMapping("/novel.do") 
+	public String novelDetail(int num_novel, Model model) {
+		
+		model.addAttribute("searchNovel", epService.searchNovel(num_novel));
+		System.out.println(epService.searchNovel(num_novel));
+		return "episode/novel";
 	}// novelDetail
 	
 	
@@ -50,8 +47,6 @@ public class EpController {
 		
 		return "";
 	}//novelLikeReport
-	
-	
 	
 	
 	// 에피소드 리스트 ajax
@@ -67,11 +62,9 @@ public class EpController {
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
 //		int userNum = (Integer)model.getAttribute("num_member");
 		epCheckVO.setNum_member(1);
-		epCheckVO.setNum_novel(5);
-		epCheckVO.setNum_episode(41);
 		
-//		model.addAttribute("ep", epCheckVO);
-		System.out.println("ep story: "+epCheckVO);
+		model.addAttribute("ep", epCheckVO);
+		System.out.println("ep story: " + epCheckVO);
 		
 		model.addAttribute("ep", epService.searchEp(epCheckVO));
 		
@@ -101,15 +94,27 @@ public class EpController {
 	
 	
 	// 좋아요 추가
-	//@GetMapping("")
+	@PostMapping("/like.do")
 	public String addLike(NovelCheckVO nCheckVO, Model model) {
-		return "";
+		
+		nCheckVO.setNum_member(1);
+		nCheckVO.getNum_novel();
+		model.addAttribute("num_member", 1);
+		
+		int like = epService.addLike(nCheckVO);
+		System.out.println(nCheckVO);
+		System.out.println(epService.addLike(nCheckVO));
+		
+		model.addAttribute("like", epService.addLike(nCheckVO));
+		
+		return "episode/novel";
 	}// addLike
 	
 	
 	// 좋아요 삭제
 	//@GetMapping("")
 	public String cancelLike(NovelCheckVO nCheckVO, Model model) {
+		
 		return "";
 	}// cancelLike
 	
