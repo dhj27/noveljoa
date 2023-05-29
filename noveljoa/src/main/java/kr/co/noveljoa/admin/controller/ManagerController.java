@@ -108,11 +108,17 @@ public class ManagerController {
 
 	@GetMapping("/manager/memberManagerFrm.do")
 	public String memberManagerFrm(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/memberManagerFrm";
+		}
 		List<MemberManageDomain> mmList =  ms.memberManage(id);
 		model.addAttribute("memberData", mmList);
 		model.addAttribute("memId", id);
 		
-		return "manager/memberManagerFrm";
+		return url;
 	}
 	
 	
@@ -124,62 +130,104 @@ public class ManagerController {
 	
 	@GetMapping("/manager/commentManagerFrm.do")
 	public String commentFrm(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/commentManagerFrm";
+		}
 		List<CommentDomain> cdList =  ms.commentManage(id);
 		model.addAttribute("commentData", cdList);
 		model.addAttribute("comId", id);
 		
-		return "manager/commentManagerFrm";
+		return url;
 	}
 	
 	@GetMapping("/manager/managerMemInfo.do")
 	public String memberInfo(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/managerMemInfo";
+		}
 		MemberManageInfoDomain mmiDomain = null;
 		mmiDomain=  ms.memberInfoAll(id);
 		model.addAttribute("memInfo", mmiDomain);
 		
 		
-		return "manager/managerMemInfo";
+		return url;
 	}
 	
 	@PostMapping("manager/stopId.do")
 	public String StopId(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/stopComplete";
+		}
 		 Boolean stopFlag =  ms.stopId(id);
 		 model.addAttribute("stopFlag", stopFlag);
 		 
-		return "manager/stopComplete";
+		return url;
 	}
 	
 	@PostMapping("manager/unStopId.do")
 	public String UnStopId(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/stopComplete";
+		}
 		Boolean stopFlag =  ms.unStopId(id);
 		model.addAttribute("stopFlag", stopFlag);
 		
-		return "manager/stopComplete";
+		return url;
 	}
 	
 	@PostMapping("manager/modifyMemInfoFrm.do")
 	public String modifyMemInfoFrm(String id, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/modifyMemInfoFrm";
+		}
 		MemberManageInfoDomain mmiDomain = null;
 		mmiDomain=  ms.memberInfoAll(id);
 		model.addAttribute("memInfo", mmiDomain);
 		
-		return "manager/modifyMemInfoFrm";
+		return url;
 	}
 	
 	@PostMapping("manager/modifyMemInfoProcess.do")
 	public String modifyMemInfo(UpdateMemVO uVO, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/modifyComplete";
+		}
 		Boolean modifyFlag = ms.modifyMemInfo(uVO);
 		model.addAttribute("modifyFlag", modifyFlag);
 		
-		return "manager/modifyComplete";
+		return url;
 	}
 	
 	@GetMapping("manager/removeComment.do")
 	public String removeComment(int comment_num, Model model) {
+		String url = "";
+		if( model.getAttribute("mFlag")==null ) {
+			url = "redirect:managerLoginFrm.do";
+		}else {
+			url = "manager/removeComment";
+		}
 		 Boolean removeFlag =  ms.removeComment(comment_num);
 		 model.addAttribute("removeFlag", removeFlag);
 		 
-		return "manager/removeComment";
+		return url;
 	}
 	
 

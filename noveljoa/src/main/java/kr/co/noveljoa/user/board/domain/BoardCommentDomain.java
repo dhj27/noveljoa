@@ -3,12 +3,18 @@ package kr.co.noveljoa.user.board.domain;
 import java.sql.Date;
 
 public class BoardCommentDomain {
-	 private String id, detail;
+	 private String id, detail, manager_cmt;
 	 private  int board_cmt_num;
 	private Date make;
 	
 	
 	
+	public String getManager_cmt() {
+		return manager_cmt;
+	}
+	public void setManager_cmt(String manager_cmt) {
+		this.manager_cmt = manager_cmt;
+	}
 	public int getBoard_cmt_num() {
 		return board_cmt_num;
 	}
@@ -35,9 +41,10 @@ public class BoardCommentDomain {
 	}
 	@Override
 	public String toString() {
-		return "BoardCommentDomain [id=" + id + ", detail=" + detail + ", board_cmt_num=" + board_cmt_num + ", make="
-				+ make + "]";
+		return "BoardCommentDomain [id=" + id + ", detail=" + detail + ", manager_cmt=" + manager_cmt
+				+ ", board_cmt_num=" + board_cmt_num + ", make=" + make + "]";
 	}
+	
 
 	
 	

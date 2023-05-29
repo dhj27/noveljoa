@@ -125,13 +125,12 @@ select comment_num, id, title, detail, c.make as make
 		 from member m
 		 inner join comments c on m.num_member = c.num_member
 		 inner join episode e on c.num_episode = e.num_episode
-		   order by comment_num
-		 
  <where>
  <if test="id != null and id!= ''" >
  id=#{ id }
  </if>
  </where>
+ order by comment_num
 </select>
 
 <delete id="deleteComment" parameterType="integer">

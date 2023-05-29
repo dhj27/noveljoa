@@ -170,7 +170,9 @@
 			</td>
 			</tr>
 			<tr>
-			<th class="table-success" colspan="4">답변 : 쓰바라시 <th>
+			<c:if test="${ not empty freeBoardcmt.manager_cmt  }">
+			<th class="table-success" colspan="4">답변 : ${  freeBoardcmt.manager_cmt }<th>
+			</c:if>
 			</tr>
 			</c:forEach>				
 			

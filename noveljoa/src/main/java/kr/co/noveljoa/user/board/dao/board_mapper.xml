@@ -26,7 +26,7 @@
 
 <select id="selectBoardComment" resultType="kr.co.noveljoa.user.board.domain.BoardCommentDomain" parameterType="integer">
 		 		 select 
-		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail, board_cmt_num
+		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail, board_cmt_num, manager_cmt
 		 from board_cmt bc
 		 where board_num=#{ board_num }
 </select>

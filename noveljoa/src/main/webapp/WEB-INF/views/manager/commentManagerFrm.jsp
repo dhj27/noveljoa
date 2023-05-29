@@ -134,15 +134,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="novelManagerFrm.do">
+            <a class="nav-link" href="managerNovelFrm.do">
               <span data-feather="book-open" class="align-text-bottom"></span>
               Novel
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="messageBoardFrm.do">
+            <a class="nav-link" href="messageQNABoardFrm.do">
               <span data-feather="clipboard" class="align-text-bottom"></span>
-              Message Board
+             Q&A Board
             </a>
           </li>
           <li class="nav-item">
