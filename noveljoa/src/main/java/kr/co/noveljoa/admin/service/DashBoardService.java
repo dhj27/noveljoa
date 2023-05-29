@@ -65,7 +65,7 @@ public class DashBoardService {
 	public TodayVisitDomain graphVisit() {
 		TodayVisitDomain tvDomain = null;
 		try {
-			dbDAO.selectTodayVisitCnt();
+			tvDomain = dbDAO.selectTodayVisitCnt();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
