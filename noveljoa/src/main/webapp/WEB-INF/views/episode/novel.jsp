@@ -143,7 +143,7 @@ $(function(){
 
 								<form action="like.do" id="likeFrm" method="post">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
-									<input type="hidden" id="num_novel" name="num_novel"/>
+									<input type="hidden" id="num_novel" name="num_novel" value/>
 								</form>	
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
