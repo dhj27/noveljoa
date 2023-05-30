@@ -21,12 +21,14 @@
 <script type="text/javascript">
 
 $(function(){
+	
 	 $.ajax({
-		url : "episode_jsonarr_data.jsp",
+		url : "/epList.do",
 		data : "num_novel=<%=request.getParameter("num_novel")%>",
-		dataType : "JSON",
+		type: "get",
+		dataType : "json",
 		error : function(xhr){
-			/* alert("서버에서 문제가 발생했습니다. 다시 시도해주세요."); */
+			alert("문제 발생.");
 			console.log(xhr.status);
 		},
 		success : function(jsonArr){
@@ -39,7 +41,7 @@ $(function(){
 			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-						+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+/* jsonObj.novelNum */+"&epNum="+jsonObj.epNum+"'>"
+						+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+jsonObj.num_novel+"&epNum="+jsonObj.num_episode+"'>"
 						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 						+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
 						+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
@@ -57,7 +59,12 @@ $(function(){
 			
 			$("#empTab").append(article);
 		}
-	});//ajax
+	});//전체 리스트 출력
+	
+	
+	
+	
+	
 	
 	// 조아요 공개
 	$("#goodImg").click(function(){
@@ -126,11 +133,22 @@ $(function(){
 						<div class="flex typo-md3 items-center">
 							<span>${searchNovel.id}</span><br><br>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
-							<div class="text-grey60">${searchNovel.genre}</div>
+							<div class="text-grey60">
+								<c:choose>
+									<c:when test="${searchNovel.genre eq 1}">
+										판타지
+									</c:when>
+									<c:when test="${searchNovel.genre eq 8}">
+										로맨스
+									</c:when>
+									<c:otherwise>
+										자유
+									</c:otherwise>
+								</c:choose> 
+							</div>
 						</div>
 						<div>${searchNovel.intro}</div>
 						<div class="flex mt-30 flex-1 items-end">
-						
 						
 							<div class="flex items-center">
 								<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
@@ -138,8 +156,8 @@ $(function(){
 									&nbsp;&nbsp;&nbsp;
 									
 								<!-- 좋아요 -->
-								<label>${searchNovel.likeCnt}</label>
- 								<img id="goodImg" src= " ${like}== 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'" alt="좋아요"/>
+								<label>${searchNovel.likeCnt}&nbsp;&nbsp;&nbsp;</label>
+ 								<img id="goodImg" src= " ${nlike}== 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'" alt="좋아요"/>
 
 								<form action="like.do" id="likeFrm" method="post">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
@@ -151,7 +169,7 @@ $(function(){
 								
 								<!-- 신고 버튼 -->
 								<img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
-								<label>${searchNovel.reportCnt}</label>
+								<label>&nbsp;&nbsp;&nbsp;${searchNovel.reportCnt}</label>
 								
 								<form action="report_popup.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="num_novel" name="num_novel" value="" />
@@ -194,7 +212,7 @@ $(function(){
 				
 			<!-- 회차 목록들 -->
 			<div id="empTab">
-			
+				
 			</div>
 			
 		</div>

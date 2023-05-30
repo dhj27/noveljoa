@@ -19,11 +19,6 @@ public class EpDAO {
 	
 	String map = "kr.co.noveljoa.user.episode.episodeMapper.";
 	
-//	public static void main(String[] args) {
-//		new EpDAO().selectNovel(2);
-//		new EpDAO().selectFirstEpisode(2);
-//		
-//	}
 	
 	// 소설 내용 보여주기
 	public NovelDomain selectNovel(int novelNum) {
@@ -31,9 +26,30 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		nd = ss.selectOne(map+"selectNovel", novelNum);
-		System.out.println("dao: "+novelNum);
+		System.out.println("dao selectNovel: "+novelNum);
 		return nd;
 	}// searchNovel
+	
+	
+	// 좋아요 했는지 화면에 표시
+	public int selectLike(NovelCheckVO nCheckVO) {
+		int cnt = 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		cnt = ss.selectOne(map+"selectLike", nCheckVO);
+		System.out.println("dao selectLike: "+nCheckVO);
+		return cnt;
+	}
+	
+	// 신고 했는지 화면에 표시
+	public int selectReport(NovelCheckVO nCheckVO) {
+		int cnt = 0;
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		cnt = ss.selectOne(map+"selectReport", nCheckVO);
+		System.out.println("dao selectReport: "+nCheckVO);
+		return cnt;
+	}
 	
 	
 	// 에피소드 리스트
@@ -63,12 +79,12 @@ public class EpDAO {
 	
 	
 	// 첫 화
-	public EpLookDomain selectFirstEpisode(int novelNum) {
+	public EpLookDomain selectFirstEpisode(int num_novel) {
 		EpLookDomain ed = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		ed = ss.selectOne(map+"selectEpFirst", novelNum);
+		ed = ss.selectOne(map+"selectEpFirst", num_novel);
 		
 		return ed;
 	}// firstEp

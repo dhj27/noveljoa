@@ -1,5 +1,7 @@
 package kr.co.noveljoa.user.episode.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.service.EpService;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.EpListVO;
@@ -24,12 +27,6 @@ public class EpController {
 		return "episode/comment";
 	}
 	
-	// test
-	@GetMapping("/episode/a.do")
-	public String ab() {
-		return "episode/a";
-	}// novelEpList
-	
 	
 	// 소설내용 보여주기
 	@GetMapping("/novel.do") 
@@ -41,20 +38,34 @@ public class EpController {
 	}// novelDetail
 	
 	
+	// 좋아요 보여주기 ajax
 	@ResponseBody
-	@GetMapping("/novelLikeReport.do")
-	public String novelLikeReport(NovelCheckVO nCheckVO, Model model) {
+	@GetMapping("/novelLike.do")
+	public int novelLike(NovelCheckVO nCheckVO, Model model) {
+		nCheckVO.setNum_member(1);  //세션에서 값가져오기
+		nCheckVO.getNum_novel();
 		
-		return "";
-	}//novelLikeReport
+//		model.addAttribute("nlike", epService.searchNovelLike(nCheckVO));
+		return epService.searchNovelLike(nCheckVO);
+	}//novelLike
+	
+	@ResponseBody
+	@GetMapping("/novelReport.do")
+	public int novelReport(NovelCheckVO nCheckVO, Model model) {
+		nCheckVO.setNum_member(1);
+		
+		
+		return 0;
+	}//novelReport
 	
 	
 	// 에피소드 리스트 ajax
-	//@ResponseBody
-	//@GetMapping("")
-	public String searchEpList(EpListVO epListVO) {
-		return "";
-	}// searchEpList
+//	@GetMapping("/novel.do")
+//	public String searchEpList(EpListVO epListVO, Model model) {
+//		model.addAttribute("epList", epService.searchEpList(epListVO));
+//		
+//		return "episode/novel";
+//	}// searchEpList
 	
 	
 	// 에피소드 내용 ajax
@@ -73,8 +84,10 @@ public class EpController {
 	
 	
 	// 첫 화
-	//@GetMapping("")
-	public String firstEp(int novelNum, Model model) {
+	@GetMapping("/readFirst.do")
+	public String firstEp(EpCheckVO epCheckVO, Model model) {
+		
+		
 		return "";
 	}// firstEp
 	

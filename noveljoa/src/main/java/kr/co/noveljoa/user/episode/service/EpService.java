@@ -29,17 +29,19 @@ public class EpService {
 	}// searchNovel
 	
 	// 소설 좋아요 선택
-	public int searchNovelLike(int userNum) {
+	public int searchNovelLike(NovelCheckVO nCheckVO) {
+		int cnt = eDAO.selectLike(nCheckVO);
+		System.out.println(eDAO.selectLike(nCheckVO));
 		
-		
-		return 0;
+		return cnt;
 	}//searchNovelLike
 	
 	// 소설 신고 선택
-	public int searchNovelReport(int userNum) {
+	public int searchNovelReport(NovelCheckVO nCheckVO) {
+		int cnt = eDAO.selectReport(nCheckVO);
+		System.out.println(eDAO.selectReport(nCheckVO));
 		
-		
-		return 0;
+		return cnt;
 	}//searchNovelLike
 	
 	// 에피소드 리스트 ajax
@@ -59,8 +61,8 @@ public class EpService {
 	
 	
 	// 첫 화
-	public EpLookDomain firstEp(int novelNum) {
-		EpLookDomain eld = eDAO.selectFirstEpisode(novelNum);
+	public EpLookDomain firstEp(int num_novel) {
+		EpLookDomain eld = eDAO.selectFirstEpisode(num_novel);
 		System.out.println("firstEp: " + eld);
 		return eld;
 	}// firstEp
