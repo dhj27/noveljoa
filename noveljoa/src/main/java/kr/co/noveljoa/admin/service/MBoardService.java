@@ -27,6 +27,14 @@ public class MBoardService {
 		return boardList;
 	}//selectList
 	
+	public List<MBoardDomain> searchMessageBoard(String id) {
+		List<MBoardDomain> boardList=null;
+		MBoardDAO mbDAO=new MBoardDAO();
+		boardList=mbDAO.selectBoardList(id);
+		
+		return boardList;
+	}//searchMessageBoard
+	
 	public MBoardDetailDomain selectDetail(int boardNum) {
 		//MBoardDAO mbDAO=new MBoardDAO();
 		MBoardDetailDomain qna=mbDAO.selectBoardDetail(boardNum);

@@ -19,8 +19,6 @@
 </script>
 </head>
 <body>
-<c:if test="${modifyCommentFlag}">
-<c:redirect url="messageQNALookFrm.do?boardNum=${param.boardNum}"/>
-</c:if> 
+<c:redirect url="messageQNABoardFrm.do?id=${param.id}"/>
 </body>
 </html>

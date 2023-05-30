@@ -141,13 +141,6 @@ delete from comments where comment_num=#{ comment_num }
 
 
 
-
-
-
-
-
-
-
 <!-- ///////////////////////////////////////manager novel, report/////////////////////////////////////// -->
 <select id="selectAllNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain"> 
 SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
@@ -160,12 +153,12 @@ ORDER BY novelNum desc
 
 <select id="searchNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain" parameterType="String"> 
 SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
-    (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
-    (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
+	(SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
+	(SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
 FROM novel n
 LEFT JOIN member m ON n.num_member = m.num_member
-ORDER BY novelNum desc
-where id = #{id}
+WHERE m.id = #{id}
+ORDER BY novelNum DESC
 </select> 
 
 <select id="selectReport" resultType="kr.co.noveljoa.admin.domain.MNovelLookDomain" parameterType="Integer"> 
@@ -216,7 +209,7 @@ SELECT B.BOARD_NUM AS boardNum,
        (SELECT COUNT(*) FROM BOARD_CMT BC WHERE BC.BOARD_NUM = B.BOARD_NUM AND BC.MANAGER_CMT IS NOT NULL) AS reply
 FROM BOARD B
 JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
-WHERE M.ID = #{id}
+WHERE M.ID = #{id,jdbcType=VARCHAR}
 </select> 
 
 <select id="selectQNA" resultType="kr.co.noveljoa.admin.domain.MBoardDetailDomain" parameterType="Integer"> 
@@ -236,30 +229,27 @@ delete from board where board_num = #{boardNum}
 </delete>
 
 <select id="selectCmt" resultType="kr.co.noveljoa.admin.domain.MCommentDomain" parameterType="Integer"> 
-SELECT BC.BOARD_CMT_NUM as cmtNum, M.ID as id, BC.DETAIL as cmtDetail, BC.MAKE as createDate, BC.MANAGER_CMT as managerCmt
+SELECT BC.BOARD_CMT_NUM AS cmtNum, M.ID AS id, BC.DETAIL AS cmtDetail, BC.MAKE AS createDate, BC.MANAGER_CMT AS managerCmt
 FROM BOARD_CMT BC
-JOIN MEMBER M ON BC.NUM_MEMBER = M.NUM_MEMBER
+LEFT JOIN MEMBER M ON BC.NUM_MEMBER = M.NUM_MEMBER
 WHERE BOARD_NUM = #{boardNum}
+ORDER BY BC.MAKE DESC
 </select>
  
-<update id="insertCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
-update BOARD_CMT
-set MANAGER_CMT = #{managerCmt,jdbcType=VARCHAR}
-where BOARD_CMT_NUM = #{cmtNum}
-</update> 
+<insert id="insertCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
+INSERT INTO board_cmt (board_cmt_num, board_num, make, manager_cmt)
+VALUES (board_cmt_seq.nextval, #{boardNum}, sysdate, #{managerCmt, jdbcType=VARCHAR})
+</insert>
 
 <update id="modifyCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
 update BOARD_CMT
-set MANAGER_CMT = #{managerCmt}
+set MANAGER_CMT = #{managerCmt, jdbcType=VARCHAR}
 where BOARD_CMT_NUM = #{cmtNum}
 </update>
 
-<update id="deleteCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
-update BOARD_CMT
-set MANAGER_CMT = NULL
-where BOARD_CMT_NUM = #{cmtNum}
-</update>
-
+<delete id="deleteCmt" parameterType="kr.co.noveljoa.admin.vo.MBoardCmtVO">
+DELETE FROM BOARD_CMT WHERE BOARD_CMT_NUM = #{cmtNum}
+</delete>  
 
   
 </mapper>

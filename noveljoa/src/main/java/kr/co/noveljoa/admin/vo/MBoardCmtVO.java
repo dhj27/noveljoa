@@ -1,9 +1,15 @@
 package kr.co.noveljoa.admin.vo;
 
 public class MBoardCmtVO {
-	private int cmtNum;
+	private int boardNum, cmtNum;
 	private String managerCmt;
 	
+	public int getBoardNum() {
+		return boardNum;
+	}
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
 	public int getCmtNum() {
 		return cmtNum;
 	}
@@ -18,7 +24,9 @@ public class MBoardCmtVO {
 	}
 	@Override
 	public String toString() {
-		return "MBoardCmtVO [cmtNum=" + cmtNum + ", managerCmt=" + managerCmt + "]";
+		return "MBoardCmtVO [boardNum=" + boardNum + ", cmtNum=" + cmtNum + ", managerCmt=" + managerCmt + "]";
 	}
+	
+
 	
 }

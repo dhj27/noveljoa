@@ -22,47 +22,20 @@ public class MBoardController {
 	//qna board
 	@GetMapping("/manager/messageQNABoardFrm.do")
 	public String boardMFrm(String id, Model model) {
-//		List<MNovelDomain> novelList=as.novelManage();
 		model.addAttribute("boardList",mbs.selectList(id));
 		
 		return "manager/messageQNABoardFrm";
 	}//boardMFrm
 	
-	//qna board detail, qna comment detail
-//    @GetMapping("/manager/messageQNALookFrm.do")
-//    public String selectDetail( @RequestParam(required = false) Integer boardNum, Model model) {
-//        MBoardDetailDomain qna = null;
-//        MCommentDomain cmt = null;
-//        
-//        if (boardNum != null) {
-//            qna = mbs.selectDetail(boardNum);
-//            model.addAttribute("qna", qna);
-//        }
-//        
-//        if (boardNum != null) {
-//            cmt = mbs.selectBoardMent(boardNum);
-//            model.addAttribute("cmt", cmt);
-//        }
-//
-//        return "manager/messageQNALookFrm";
-//    }//selectDetail
+	//qna board search
+	@GetMapping("/manager/searchQNABoardFrm.do")
+	public String searchMBoard(String id, Model model) {
+		model.addAttribute("searchList",mbs.searchMessageBoard(id));
+		
+		return "manager/searchQNABoardFrm";
+	}//searchMBoard
 	
-//	@GetMapping("/manager/messageQNALookFrm.do")ddddd
-//	public String selectDetail(@RequestParam(required = false) Integer boardNum, Model model) {
-//	    MBoardDetailDomain qna = null;
-//	    List<MCommentDomain> cmtList = null;
-//	    
-//	    if (boardNum != null) {
-//	        qna = mbs.selectDetail(boardNum);
-//	        model.addAttribute("qna", qna);
-//	        
-//	        cmtList = mbs.selectBoardMent(boardNum);
-//	        model.addAttribute("cmtList", cmtList);
-//	    }
-//
-//	    return "manager/messageQNALookFrm";
-//	}
-    
+	//qna board detail, qna comment detail
 	@GetMapping("/manager/messageQNALookFrm.do")
 	public String selectDetail(@RequestParam(required = false) Integer boardNum, @RequestParam(required = false) Integer cmtNum, Model model) {
 	    if (boardNum != null) {
@@ -80,20 +53,6 @@ public class MBoardController {
 	    return "manager/messageQNALookFrm";
 	}//selectDetail
 	
-	//qna board detail
-//	@GetMapping("/manager/messageQNALookFrm.do")
-//	public String selectMDetail(int boardNum, Model model) {
-//		model.addAttribute("qna",mbs.selectDetail(boardNum));
-//		
-//		return "manager/messageQNALookFrm";
-//	}//selectMDetail
-//	@GetMapping("/manager/messageQNALookFrm.do")
-//	public String selectMMent(int cmtNum, Model model) {
-//		model.addAttribute("cmt",mbs.selectDetail(cmtNum));
-//		
-//		return "manager/messageQNALookFrm";
-//	}//selectMMent
-	
 	//board delete
 	@PostMapping("/manager/deleteBoard.do")
 	public String removeMBoard(
@@ -105,22 +64,27 @@ public class MBoardController {
 		return "manager/deleteBoard";
 	}//removeMBoard
 
+	//comment insert
 	@PostMapping("/manager/insertComment.do")
 	public String insertBoardMent(MBoardCmtVO mbcVO, Model model) {
 		Boolean insertCommentFlag=mbs.enrollMent(mbcVO);
 		model.addAttribute("insertCommentFlag", insertCommentFlag);
 		
 		return "manager/insertComment";
-	}//
+	}//insertBoardMent
 	
 	//comment modify
-	@PostMapping("/manager/modifyComment.do")
+	@GetMapping("/manager/modifyQNALookFrm.do")
+	public String modifyQNALookFrm() {
+		return "manager/modifyQNALookFrm";
+	}
+	
+	@GetMapping("/manager/modifyComment.do")
 	public String updateBoardMent(MBoardCmtVO mbcVO, Model model) {
-		Boolean modifyCommentFlag=mbs.editMent(mbcVO);
-		model.addAttribute("modifyCommentFlag", modifyCommentFlag);
-		
-		return "manager/modifyComment";
-	}//updateBoardMent
+	    boolean modifyCommentFlag = mbs.editMent(mbcVO);
+	    model.addAttribute("modifyCommentFlag", modifyCommentFlag);
+	    return "manager/modifyComment";
+	}
 
 	//comment delete
 	@PostMapping("/manager/deleteComment.do")
