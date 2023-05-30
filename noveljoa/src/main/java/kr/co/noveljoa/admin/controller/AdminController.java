@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.noveljoa.admin.domain.MBoardDomain;
 import kr.co.noveljoa.admin.domain.MNovelDomain;
 import kr.co.noveljoa.admin.domain.MNovelLookDomain;
 import kr.co.noveljoa.admin.service.AdminService;
@@ -19,16 +21,21 @@ public class AdminController {
 	@Autowired(required = false)
 	private AdminService as;
 	
-	//select novel
+	//select, search novel
 	@GetMapping("/manager/managerNovelFrm.do")
 	public String managerNovelFrm(String id, Model model) {
-		AdminService as=new AdminService();
-//		List<MNovelDomain> novelList=as.novelManage(id);
-		model.addAttribute("novelList",as.novelManage(id));
-		
-		return "manager/managerNovelFrm";
+	    List<MNovelDomain> novelList;
+
+	    if (id != null) {
+	        novelList = as.searchNovel(id);
+	    } else {
+	        novelList = as.novelManage();
+	    }//end else
+	    model.addAttribute("novelList", novelList);
+	    
+	    return "manager/managerNovelFrm";
 	}//managerNovelFrm
-	
+
 	//report
 	@GetMapping("/manager/managerReportFrm.do")
 	public String managerReportFrm(int novelNum, Model model) {
@@ -37,15 +44,6 @@ public class AdminController {
 		return "manager/managerReportFrm";
 	}//managerReportFrm
 
-	
-//	//report delete
-//	@PostMapping("/manager/managerReportProcess.do")
-//	public String deleteReportNovel(int novelNum, Model model) {
-//		model.addAttribute("removeFlag",as.removeReportNovel(novelNum));
-//		
-//		return "manager/managerReportProcess";
-//	}//deleteReportNovel
-	
 	//report delete
 	@PostMapping("/manager/deleteNovel.do")
 	public String deleteReportNovel(
@@ -56,13 +54,6 @@ public class AdminController {
 		
 		return "manager/deleteNovel";
 	}//deleteReportNovel
-
-	//	@PostMapping("/manager/publicNovel.do")
-//	public String publicReportNovel(int novelNum, Model model) {
-//		model.addAttribute("publicFlag",as.publicNovel(novelNum));
-//		
-//		return "manager/publicNovel";
-//	}//publicReportNovel
 
 	//report public
 	@PostMapping("/manager/publicNovel.do")
@@ -75,7 +66,6 @@ public class AdminController {
 		return "manager/publicNovel";
 	}//publicReportNovel
 	
-	
 	//report private
 	@PostMapping("/manager/privateNovel.do")
 	public String privateReportNovel(
@@ -86,5 +76,6 @@ public class AdminController {
 		
 		return "manager/privateNovel";
 	}//privateReportNovel
+	
 	
 }//class

@@ -15,7 +15,15 @@ public class AdminService {
 	@Autowired(required = false)
 	private AdminDAO aDAO;
 	
-	public List<MNovelDomain> novelManage(String id) {
+	public List<MNovelDomain> novelManage() {
+		List<MNovelDomain> novelList=null;
+		AdminDAO aDAO=new AdminDAO();
+		novelList=aDAO.novelManage(null);
+		
+		return novelList;
+	}//novelManage
+	
+	public List<MNovelDomain> searchNovel(String id) {
 		List<MNovelDomain> novelList=null;
 		AdminDAO aDAO=new AdminDAO();
 		novelList=aDAO.novelManage(id);
@@ -29,7 +37,6 @@ public class AdminService {
 		
 		return report;
 	}//reportManage
-	
 	
 	public boolean removeReportNovel(int novelNum) {
 		int cnt=aDAO.deleteReportNovel(novelNum);
@@ -48,5 +55,6 @@ public class AdminService {
 		
 		return cnt == 1;
 	}//privateNovel
+	
 	
 }

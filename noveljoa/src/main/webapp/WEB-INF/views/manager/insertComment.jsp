@@ -21,6 +21,6 @@
 <body>
 <%-- <c:if test="${insertCommentFlag}"> 
 <c:redirect url="messageQNALookFrm.do?boardNum=${param.boardNum}"/>
-</c:if>  --%>
+</c:if> --%>
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.noveljoa.admin.domain.MBoardDetailDomain;
+import kr.co.noveljoa.admin.domain.MBoardDomain;
 import kr.co.noveljoa.admin.domain.MCommentDomain;
 import kr.co.noveljoa.admin.service.MBoardService;
 import kr.co.noveljoa.admin.vo.MBoardCmtVO;
@@ -19,21 +20,20 @@ public class MBoardController {
 	@Autowired(required = false)
 	private MBoardService mbs;
 	
-	//qna board
+	//qna board list, search
 	@GetMapping("/manager/messageQNABoardFrm.do")
 	public String boardMFrm(String id, Model model) {
-		model.addAttribute("boardList",mbs.selectList(id));
-		
-		return "manager/messageQNABoardFrm";
+	    List<MBoardDomain> boardList;
+	    
+	    if (id != null) {
+	        boardList = mbs.searchMessageBoard(id);
+	    } else {
+	        boardList = mbs.selectAllBoard();
+	    }//end else
+	    model.addAttribute("boardList", boardList);
+
+	    return "manager/messageQNABoardFrm";
 	}//boardMFrm
-	
-	//qna board search
-	@GetMapping("/manager/searchQNABoardFrm.do")
-	public String searchMBoard(String id, Model model) {
-		model.addAttribute("searchList",mbs.searchMessageBoard(id));
-		
-		return "manager/searchQNABoardFrm";
-	}//searchMBoard
 	
 	//qna board detail, qna comment detail
 	@GetMapping("/manager/messageQNALookFrm.do")
@@ -50,6 +50,7 @@ public class MBoardController {
 	        }//end if
 	        model.addAttribute("cmtList", cmtList);
 	    }//end if
+	    
 	    return "manager/messageQNALookFrm";
 	}//selectDetail
 	
@@ -67,7 +68,7 @@ public class MBoardController {
 	//comment insert
 	@PostMapping("/manager/insertComment.do")
 	public String insertBoardMent(MBoardCmtVO mbcVO, Model model) {
-		Boolean insertCommentFlag=mbs.enrollMent(mbcVO);
+		boolean insertCommentFlag=mbs.enrollMent(mbcVO);
 		model.addAttribute("insertCommentFlag", insertCommentFlag);
 		
 		return "manager/insertComment";
@@ -77,23 +78,24 @@ public class MBoardController {
 	@GetMapping("/manager/modifyQNALookFrm.do")
 	public String modifyQNALookFrm() {
 		return "manager/modifyQNALookFrm";
-	}
+	}// modifyQNALookFrm
 	
 	@GetMapping("/manager/modifyComment.do")
 	public String updateBoardMent(MBoardCmtVO mbcVO, Model model) {
 	    boolean modifyCommentFlag = mbs.editMent(mbcVO);
 	    model.addAttribute("modifyCommentFlag", modifyCommentFlag);
+	    
 	    return "manager/modifyComment";
-	}
+	}//updateBoardMent
 
 	//comment delete
 	@PostMapping("/manager/deleteComment.do")
 	public String removeMMent(MBoardCmtVO mbcVO, Model model) {
-		Boolean deleteCommentFlag=mbs.removeMent(mbcVO);
+		boolean deleteCommentFlag=mbs.removeMent(mbcVO);
 		model.addAttribute("deleteCommentFlag", deleteCommentFlag);
 		
 		return "manager/deleteComment";
 	}//removeMMent
 	
 
-}//class
+}

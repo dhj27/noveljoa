@@ -19,24 +19,23 @@ public class MBoardService {
 	@Autowired(required = false)
 	private MBoardDAO mbDAO;
 	
-	public List<MBoardDomain> selectList(String id) {
-		List<MBoardDomain> boardList=null;
-		MBoardDAO mbDAO=new MBoardDAO();
-		boardList=mbDAO.selectBoardList(id);
-		
-		return boardList;
-	}//selectList
-	
+	public List<MBoardDomain> selectAllBoard() {
+	    List<MBoardDomain> boardList = null;
+	    MBoardDAO mbDAO = new MBoardDAO();
+	    boardList = mbDAO.selectBoardList(null);
+	    
+	    return boardList;
+	}//selectAllBoard
+
 	public List<MBoardDomain> searchMessageBoard(String id) {
-		List<MBoardDomain> boardList=null;
-		MBoardDAO mbDAO=new MBoardDAO();
-		boardList=mbDAO.selectBoardList(id);
-		
-		return boardList;
+	    List<MBoardDomain> boardList = null;
+	    MBoardDAO mbDAO = new MBoardDAO();
+	    boardList = mbDAO.selectBoardList(id);
+	    
+	    return boardList;
 	}//searchMessageBoard
 	
 	public MBoardDetailDomain selectDetail(int boardNum) {
-		//MBoardDAO mbDAO=new MBoardDAO();
 		MBoardDetailDomain qna=mbDAO.selectBoardDetail(boardNum);
 		
 		return qna;
@@ -50,7 +49,6 @@ public class MBoardService {
 	
 	public List<MCommentDomain> selectBoardMent(int boardNum) {
 	    List<MCommentDomain> cmtList = null;
-
 	    try {
 	        cmtList = mbDAO.selectMent(boardNum);
 	    } catch (PersistenceException e) {
@@ -75,5 +73,6 @@ public class MBoardService {
 		
 		return cnt == 1;
 	}//removeMent
+	
 	
 }

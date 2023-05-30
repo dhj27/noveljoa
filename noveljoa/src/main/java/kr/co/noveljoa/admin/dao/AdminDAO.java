@@ -1,6 +1,8 @@
 package kr.co.noveljoa.admin.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
@@ -18,14 +20,17 @@ public class AdminDAO {
 		//1. MyBatis Handler 얻기
 		SqlSession ss=ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 		//2. 쿼리 수행 후 결과 얻기
-		novelList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectAllNovel");
-		//novelList=ss.selectList("kr.co.noveljoa.admin.Mapper.searchNovel", id);
+		if (id != null) {
+			novelList=ss.selectList("kr.co.noveljoa.admin.Mapper.searchNovel", id);
+		} else {
+			novelList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectAllNovel");
+		}//end else	
 		//3. MyBatis Handler 닫기 
 		if(ss != null) {ss.close();}//end if
 		
 		return novelList;
 	}//novelManage
-	
+
 	public MNovelLookDomain reportManage(int novelNum) throws PersistenceException{
 		MNovelLookDomain report=null;
 		
@@ -38,7 +43,6 @@ public class AdminDAO {
 		
 		return report;
 	}//reportManage
-	
 	
 	public int deleteReportNovel(int novelNum) throws PersistenceException{
 		int cnt=0;
@@ -84,14 +88,6 @@ public class AdminDAO {
 		
 		return cnt;
 	}//updatePrivateNovel
-
-	
-	
-	public static void main(String[] args) {
-		//System.out.println(new AdminDAO().reportManage(2));
-		new AdminDAO().deleteReportNovel(38);
-	}
-
 	
 	
 }//class

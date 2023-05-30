@@ -7,86 +7,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
-    <title></title>
-    
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="bootstrap.min.css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.104.2">
+<title></title>
 
-      <!-- jQuery CDN 시작 -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-     <!-- jQuery CDN 끝 -->
-      <script type="text/javascript">
-      $(function(){
-    	  /* globals Chart:false, feather:false */
-    	  (() => {
-    	    'use strict'
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+<link href="bootstrap.min.css" rel="stylesheet">
 
-    	    feather.replace({ 'aria-hidden': 'true' })
+  <!-- jQuery CDN 시작 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- jQuery CDN 끝 -->
+<script type="text/javascript">
+ $(function(){
+  /* globals Chart:false, feather:false */
+  (() => {
+    'use strict'
+    feather.replace({ 'aria-hidden': 'true' })
+  })()
+ });
+ 
+ $(document).ready(function() {
+	    $('#searchInput').keypress(function(event) {
+	        if (event.which === 13) { 
+	            event.preventDefault();
+	            searchNovel();
+	        }
+	    });
 
+	    $('#searchButton').click(function() {
+	        searchNovel();
+	    });
 
-    	  })()
-     
-      });
-      </script>
-      
-      <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+	    function searchNovel() {
+	        var id = $('#searchInput').val();
+	        var form = $('<form action="managerNovelFrm.do" method="get"></form>');
+	        form.append('<input type="text" name="id" value="' + id + '">');
+	        form.appendTo('body').submit().remove();
+	    }
+	});
+</script>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+<style>
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
 
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-        <!-- Custom styles for this template -->
-      <link href="dashboard.css" rel="stylesheet">
-      
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+</style>
+    <!-- Custom styles for this template -->
+<link href="dashboard.css" rel="stylesheet">
 </head>
 <body>
 
@@ -95,8 +110,11 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="아이디 조회" aria-label="Search">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="width: 100px; text-align: center;" >검색</a>
+<div class="input-group">
+    <input id="searchInput" class="form-control form-control-dark rounded-0 border-0" type="text" placeholder="아이디 조회" aria-label="Search">
+    <button id="searchButton" class="btn btn-dark rounded-0" type="button">검색</button>
+</div>
+  
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

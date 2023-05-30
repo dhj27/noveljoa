@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,31 +20,22 @@ import kr.co.noveljoa.admin.vo.MBoardCmtVO;
 @Component
 public class MBoardDAO {
 
-	public List<MBoardDomain> selectBoardList(String id) throws PersistenceException{
-		List<MBoardDomain> boardList=null;
-		
-		//1. MyBatis Handler 얻기
-		SqlSession ss=ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. 쿼리 수행 후 결과 얻기
-		boardList=ss.selectList("kr.co.noveljoa.admin.Mapper.selectAllBoard");
-		//3. MyBatis Handler 닫기 
-		if(ss != null) {ss.close();}//end if
-		
-		return boardList;
+	public List<MBoardDomain> selectBoardList(String id) {
+	    List<MBoardDomain> boardList = null;
+	    
+	    //1. MyBatis Handler 얻기
+	    SqlSession ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
+	    //2. 쿼리 수행 후 결과 얻기
+	    if (id != null) {
+	        boardList = ss.selectList("kr.co.noveljoa.admin.Mapper.searchBoard", id);
+	    } else {
+	        boardList = ss.selectList("kr.co.noveljoa.admin.Mapper.selectAllBoard");
+	    }//end else
+	    //3. MyBatis Handler 닫기
+	    if (ss != null) {ss.close();}//end if
+	    
+	    return boardList;
 	}//selectBoardList
-	
-	public List<MBoardDomain> searchBoard(String id) throws PersistenceException{
-		List<MBoardDomain> boardList=null;
-		
-		//1. MyBatis Handler 얻기
-		SqlSession ss=ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
-		//2. 쿼리 수행 후 결과 얻기
-		boardList=ss.selectList("kr.co.noveljoa.admin.Mapper.searchBoard");
-		//3. MyBatis Handler 닫기 
-		if(ss != null) {ss.close();}//end if
-		
-		return boardList;
-	}//searchBoard
 	
 	public MBoardDetailDomain selectBoardDetail(int boardNum) throws PersistenceException{
 		MBoardDetailDomain qna=null;
@@ -76,13 +68,12 @@ public class MBoardDAO {
 	public List<MCommentDomain> selectMent(int boardNum) throws PersistenceException {
 	    List<MCommentDomain> cmtList = null;
 	    SqlSession ss = null;
-
 	    try {
 	        ss = ManagerMyBatisHandler.getInstance().getMyBatisHandler(false);
 	        cmtList = ss.selectList("kr.co.noveljoa.admin.Mapper.selectCmt", boardNum);
 	    } catch (Exception e) {
 	    } finally {
-	        if (ss != null) {ss.close();}
+	        if (ss != null) {ss.close();}//end if
 	    }//end finally
 	    
 	    return cmtList;
@@ -132,8 +123,6 @@ public class MBoardDAO {
 		
 		return cnt;
 	}//deleteMent
+
 	
-	public static void main(String[] args) {
-		System.out.println(new MBoardDAO().selectMent(41));
-	}
 }

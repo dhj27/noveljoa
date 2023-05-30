@@ -40,27 +40,35 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 function insertFrm() {
-	  var cmtNum = $('#cmtNum').val(); 
-	  var managerCmt = $('textarea[name="managerCmt"]').val();
-	  var boardNum = '${param.boardNum}'; 
-	  
-	  $.ajax({
-	    url: 'insertComment.do',
-	    type: 'POST',
-	    data: {
-	      cmtNum: cmtNum,
-	      managerCmt: managerCmt,
-	      boardNum: boardNum
-	    },
-	    success: function(response) {
-	      alert("답변이 작성되었습니다.");
-	      window.location.href = 'messageQNALookFrm.do?boardNum=' + boardNum;
-	    },
-	    error: function(xhr, status, error) {
-	      alert("답변 작성을 실패했습니다.");
-	    }
-	  });
-	}//insertFrm
+    var cmtNum = $('#cmtNum').val(); 
+    var managerCmt = $('textarea[name="managerCmt"]').val();
+    var boardNum = '${param.boardNum}'; 
+    var insertButton = $('button[type="submit"]');
+    
+    // 버튼 비활성화
+    insertButton.attr('disabled', true);
+    
+    $.ajax({
+        url: 'insertComment.do',
+        type: 'POST',
+        data: {
+            cmtNum: cmtNum,
+            managerCmt: managerCmt,
+            boardNum: boardNum
+        },
+        success: function(response) {
+            alert("답변이 작성되었습니다.");
+            window.location.href = 'messageQNALookFrm.do?boardNum=' + boardNum;
+        },
+        error: function(xhr, status, error) {
+            alert("답변 작성을 실패했습니다.");
+        },
+        complete: function() {
+            // 작성 완료 후 버튼 활성화
+            insertButton.attr('disabled', false);
+        }
+    });
+}//insertFrm
 
 function deleteFrm() {
 	  var cmtNum = $('input[name="cmtNum"]').val();

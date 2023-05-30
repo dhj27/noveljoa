@@ -142,24 +142,26 @@ delete from comments where comment_num=#{ comment_num }
 
 
 <!-- ///////////////////////////////////////manager novel, report/////////////////////////////////////// -->
-<select id="selectAllNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain"> 
+<select id="selectAllNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain">
 SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
     (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
     (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
 FROM novel n
 LEFT JOIN member m ON n.num_member = m.num_member
-ORDER BY novelNum desc
+ORDER BY novelNum DESC
 </select>
 
-<select id="searchNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain" parameterType="String"> 
+<select id="searchNovel" resultType="kr.co.noveljoa.admin.domain.MNovelDomain" parameterType="String">
 SELECT DISTINCT n.num_novel AS novelNum, n.title AS novelTitle,
-	(SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
-	(SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
+    (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likeCnt, n.make AS createDate, m.id AS id,
+    (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportCnt
 FROM novel n
 LEFT JOIN member m ON n.num_member = m.num_member
-WHERE m.id = #{id}
+<if test="id != null">
+WHERE M.ID = #{id, jdbcType=VARCHAR}
+</if>
 ORDER BY novelNum DESC
-</select> 
+</select>
 
 <select id="selectReport" resultType="kr.co.noveljoa.admin.domain.MNovelLookDomain" parameterType="Integer"> 
 select n.title as novelTitle, n.photo as thumbnail, n.story as intro, n.age as ageAble, m.id as id,
@@ -199,7 +201,7 @@ JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
 ORDER BY B.BOARD_NUM DESC
 </select>
 
-<select id="searchBoard" resultType="kr.co.noveljoa.admin.domain.MBoardDomain" parameterType="String"> 
+<select id="searchBoard" resultType="kr.co.noveljoa.admin.domain.MBoardDomain" parameterType="String">
 SELECT B.BOARD_NUM AS boardNum,
        M.ID AS id,
        B.TITLE AS boardTitle,
@@ -209,8 +211,11 @@ SELECT B.BOARD_NUM AS boardNum,
        (SELECT COUNT(*) FROM BOARD_CMT BC WHERE BC.BOARD_NUM = B.BOARD_NUM AND BC.MANAGER_CMT IS NOT NULL) AS reply
 FROM BOARD B
 JOIN MEMBER M ON B.NUM_MEMBER = M.NUM_MEMBER
-WHERE M.ID = #{id,jdbcType=VARCHAR}
-</select> 
+<if test="id != null">
+    WHERE M.ID = #{id, jdbcType=VARCHAR}
+</if>
+ORDER BY B.BOARD_NUM DESC
+</select>
 
 <select id="selectQNA" resultType="kr.co.noveljoa.admin.domain.MBoardDetailDomain" parameterType="Integer"> 
 SELECT B.BOARD_NUM AS boardNum,
@@ -251,5 +256,4 @@ where BOARD_CMT_NUM = #{cmtNum}
 DELETE FROM BOARD_CMT WHERE BOARD_CMT_NUM = #{cmtNum}
 </delete>  
 
-  
 </mapper>
