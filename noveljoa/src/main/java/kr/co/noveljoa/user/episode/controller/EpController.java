@@ -1,18 +1,13 @@
 package kr.co.noveljoa.user.episode.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.service.EpService;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
-import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 
@@ -30,42 +25,37 @@ public class EpController {
 	
 	// 소설내용 보여주기
 	@GetMapping("/novel.do") 
-	public String novelDetail(int num_novel, Model model) {
+	public String novelDetail(/*NovelCheckVO nCheckVO*/ int num_novel, Model model) {
 		
+//		nCheckVO.setNum_member(1); //세션에서 값가져오기 nCheckVO.getNum_novel();
+		 	
 		model.addAttribute("searchNovel", epService.searchNovel(num_novel));
-		System.out.println(epService.searchNovel(num_novel));
+		model.addAttribute("epList", epService.searchEpList(num_novel));
+		
+//		model.addAttribute("nlike", epService.searchNovelLike(nCheckVO));
+		
+		System.out.println(epService.searchEpList(num_novel));
+		System.out.println("--------------------"+epService.searchNovel(num_novel));
 		return "episode/novel";
 	}// novelDetail
 	
 	
 	// 좋아요 보여주기 ajax
-	@ResponseBody
-	@GetMapping("/novelLike.do")
-	public int novelLike(NovelCheckVO nCheckVO, Model model) {
-		nCheckVO.setNum_member(1);  //세션에서 값가져오기
-		nCheckVO.getNum_novel();
-		
-//		model.addAttribute("nlike", epService.searchNovelLike(nCheckVO));
-		return epService.searchNovelLike(nCheckVO);
-	}//novelLike
+//	@ResponseBody
+//	@GetMapping("/novelLike.do")
+//	public int novelLike(NovelCheckVO nCheckVO, Model model) {
+//		nCheckVO.setNum_member(1);  //세션에서 값가져오기
+//		nCheckVO.getNum_novel();
+//		
+////		model.addAttribute("nlike", epService.searchNovelLike(nCheckVO));
+//		return epService.searchNovelLike(nCheckVO);
+//	}//novelLike
 	
-	@ResponseBody
 	@GetMapping("/novelReport.do")
 	public int novelReport(NovelCheckVO nCheckVO, Model model) {
 		nCheckVO.setNum_member(1);
-		
-		
 		return 0;
 	}//novelReport
-	
-	
-	// 에피소드 리스트 ajax
-//	@GetMapping("/novel.do")
-//	public String searchEpList(EpListVO epListVO, Model model) {
-//		model.addAttribute("epList", epService.searchEpList(epListVO));
-//		
-//		return "episode/novel";
-//	}// searchEpList
 	
 	
 	// 에피소드 내용 ajax
@@ -114,7 +104,7 @@ public class EpController {
 		nCheckVO.getNum_novel();
 		model.addAttribute("num_member", 1);
 		
-		int like = epService.addLike(nCheckVO);
+//		int like = epService.addLike(nCheckVO);
 		System.out.println(nCheckVO);
 		System.out.println(epService.addLike(nCheckVO));
 		

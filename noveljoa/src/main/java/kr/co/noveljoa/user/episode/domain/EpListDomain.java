@@ -2,25 +2,17 @@ package kr.co.noveljoa.user.episode.domain;
 
 import java.util.Date;
 
+// 에피소드 리스트 출력
 public class EpListDomain {
 	
-	private int num_member;
 	private int num_novel;
 	private int num_episode;
 	
-	private int epCnt;
-	private String epTitle;
-	private int views;
-	private Date date;
-	private int bookmark;
+	private String title;
+	private int visit;
+	private Date make;
 	
 	
-	public int getNum_member() {
-		return num_member;
-	}
-	public void setNum_member(int num_member) {
-		this.num_member = num_member;
-	}
 	public int getNum_novel() {
 		return num_novel;
 	}
@@ -33,42 +25,29 @@ public class EpListDomain {
 	public void setNum_episode(int num_episode) {
 		this.num_episode = num_episode;
 	}
-	public int getEpCnt() {
-		return epCnt;
+	public String getTitle() {
+		return title;
 	}
-	public void setEpCnt(int epCnt) {
-		this.epCnt = epCnt;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getEpTitle() {
-		return epTitle;
+	public int getVisit() {
+		return visit;
 	}
-	public void setEpTitle(String epTitle) {
-		this.epTitle = epTitle;
+	public void setVisit(int visit) {
+		this.visit = visit;
 	}
-	public int getViews() {
-		return views;
+	public Date getMake() {
+		return make;
 	}
-	public void setViews(int views) {
-		this.views = views;
+	public void setMake(Date make) {
+		this.make = make;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public int getBookmark() {
-		return bookmark;
-	}
-	public void setBookmark(int bookmark) {
-		this.bookmark = bookmark;
-	}
-	
 	@Override
 	public String toString() {
-		return "EpListDomain [num_member=" + num_member + ", num_novel=" + num_novel + ", num_episode=" + num_episode
-				+ ", epCnt=" + epCnt + ", epTitle=" + epTitle + ", views=" + views + ", date=" + date + ", bookmark="
-				+ bookmark + "]";
+		return "EpListDomain [num_novel=" + num_novel + ", num_episode=" + num_episode + ", title="
+				+ title + ", visit=" + visit + ", make=" + make + "]";
 	}
+	
 	
 }

@@ -10,7 +10,6 @@ import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelDomain;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
-import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 
@@ -44,12 +43,19 @@ public class EpService {
 		return cnt;
 	}//searchNovelLike
 	
+	
 	// 에피소드 리스트 ajax
-	public List<EpListDomain> searchEpList(EpListVO epListVO) {
-		List<EpListDomain> list = eDAO.selectEpisodeList(epListVO);
-		System.out.println("searchEpList");
+	public List<EpListDomain> searchEpList(int num_novel) {
+		List<EpListDomain> list = eDAO.selectEpisodeList(num_novel);
+		System.out.println("searchEpList: "+list);
 		return list;
 	}// searchEpList
+	
+//	public List<EpListDomain> searchEpList(EpListVO epListVO) {
+//		List<EpListDomain> list = eDAO.selectEpisodeList(epListVO);
+//		System.out.println("searchEpList");
+//		return list;
+//	}// searchEpList
 	
 	
 	// 에피소드 내용 

@@ -15,29 +15,28 @@
 		from novel
 		where NUM_NOVEL=#{num_novel}
 	</select>
-	
-	
-	<!-- 에피소드 개수 -->
-	<select id="selectEpCnt" parameterType="Integer" resultType="Integer">
-		select count(*) 
-		from episode 
-		where num_novel=#{num_novel} 
-		  and open=1
-	</select>
-	
+		
   
 	<!-- 에피소드 리스트 보여주기 -->
-	<!-- <select id="selectEpList" parameterType="Integer" resultType="kr.co.noveljoa.user.episode.domain.EpListDomain">
-	  	select num_novel, num_episode ,title, visit, make
+	<!-- kr.co.noveljoa.user.episode.vo.EpListVO -->
+	<select id="selectEpList" parameterType="Integer" 
+		resultType="kr.co.noveljoa.user.episode.domain.EpListDomain">
+		select num_novel, num_episode, title, visit, make
 		from episode
 		where num_novel=#{num_novel} 
 		  and open=1
-		order by num_episode DESC
-	</select> -->
+		  order by num_episode DESC
+		
+	  	<!-- select title, visit, make
+		from episode
+		where num_novel=#{num_novel}
+		  and open=1
+		order by num_episode DESC -->
+	</select>
 		
 	<!-- 에피소드 내용 보여주기 -->
 	<select id="selectEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
-		select n.title novelTitle, e.title epTitle, e.story epDetail, 
+		select n.title novelTitle, e.title epTitle, e.story epDetail,
 			(select count(*) from BOOKMARK b 
 			 where num_member=#{num_member} and num_episode=#{num_episode}) bookmark 
 		from episode e, novel n

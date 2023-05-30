@@ -1,7 +1,9 @@
 <%@page import="java.sql.SQLException"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,8 +24,9 @@
 
 $(function(){
 	
-	 $.ajax({
-		url : "/epList.do",
+	//좋아요
+	 <%-- $.ajax({
+		url : "/novelLike.do",
 		data : "num_novel=<%=request.getParameter("num_novel")%>",
 		type: "get",
 		dataType : "json",
@@ -31,37 +34,18 @@ $(function(){
 			alert("문제 발생.");
 			console.log(xhr.status);
 		},
-		success : function(jsonArr){
+		success : function(jsonObj){
 			var len = jsonArr.length;
 			var article="";
 			let cnt=0;
 			
-			$.each(jsonArr,function(idx, jsonObj){
-				cnt++;
-			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
-						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
-						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-						+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+jsonObj.num_novel+"&epNum="+jsonObj.num_episode+"'>"
-						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
-						+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
-						+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
-						+ "<div class='flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0'>"
-						+ "<div class='flex flex-wrap items-center text-grey60'>"
-						+ "<span>"+ jsonObj.viewCnt+"</span>"
-						+ "<span class='mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8'>|</span>"
-						+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.createDate + "</span>"
-						+ "</div></div></div></a></div></article><br>"; 
-			});//each
-			
 			if(cnt == 0){
-				article="<label>작성한 에피소드가 없습니다.</label>";
+				article="종아요 설정";
 			}//end if
 			
 			$("#empTab").append(article);
 		}
-	});//전체 리스트 출력
-	
-	
+	});//전체 리스트 출력 --%>
 	
 	
 	
@@ -133,6 +117,17 @@ $(function(){
 						<div class="flex typo-md3 items-center">
 							<span>${searchNovel.id}</span><br><br>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
+							<div class="text-grey80">
+								<c:choose>
+									<c:when test="${searchNovel.age eq 1}">
+										전체이용가
+									</c:when>
+									<c:otherwise>
+										15세 이용가
+									</c:otherwise>
+								</c:choose> 
+							</div>
+							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
 							<div class="text-grey60">
 								<c:choose>
 									<c:when test="${searchNovel.genre eq 1}">
@@ -145,6 +140,7 @@ $(function(){
 										자유
 									</c:otherwise>
 								</c:choose> 
+								
 							</div>
 						</div>
 						<div>${searchNovel.intro}</div>
@@ -199,7 +195,7 @@ $(function(){
 			<div>
 				<div class="flex items-center">
 					<div class="typo-dp3 mr-6">회차</div>
-					<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(회차 수)</span>
+					<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(${fn:length(epList)})</span>
 				</div>
 				<div class="flex w-full items-center justify-between border-b-1 py-16">
 					<div class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0 ml-8">
@@ -212,7 +208,28 @@ $(function(){
 				
 			<!-- 회차 목록들 -->
 			<div id="empTab">
+				<c:if test="${empty epList }">
+					<article class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
+						작성된 에피소드가 없습니다.
+					</article><br>
+				</c:if>
 				
+				<c:forEach var="ep" items="${epList}" varStatus="status">
+					<article class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
+						<div class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2">${fn:length(epList)-status.index}</div>
+						
+						<div class="flex flex-1 flex-col desktop:flex-row">
+						<a class="flex w-full shrink" href="read.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}">
+						<div class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
+						<h3 class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
+						<div class="truncate after:inline-block after:w-0 shrink">${ep.title }</div></h3>
+						<div class="flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0">
+						<div class="flex flex-wrap items-center text-grey60">
+						<span>${ep.visit }</span>
+						<span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
+						<span class="typo-g-sm2 -mb-[0.2em]"><fmt:formatDate value="${ep.make }" pattern="yyyy.MM.dd"/></span>
+					</div></div></div></a></div></article><br> 
+				</c:forEach>
 			</div>
 			
 		</div>

@@ -75,26 +75,12 @@
 	</form>
 	<br>
 	
-	<!-- <input type="button" id="novelOpen" value="소설창" />
-	<form action="novel.do" name="novelFrm" id="novelFrm" method="get">
-		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
-	</form>
-	<br> -->
-	
 	<a href="novel.do?num_novel=5">novel</a>
 	 <br><br>
 	 
 	 
 	<a href="read.do?num_novel=5&num_episode=26">episode</a>
 	 <br><br>
-	
-	<!-- <input type="button" id="epOpen" value="에피소드 창" />
-	<form action="read.do" name="epFrm" id="epFrm" method="get">
-		<input type="hidden" name="num_novel" id="num_novel" value="5"/>
-		<input type="hidden" name="num_episode" id="num_episode" value="25"/>
-	</form>
-	<br><br> -->
-	
 	
 	
 	

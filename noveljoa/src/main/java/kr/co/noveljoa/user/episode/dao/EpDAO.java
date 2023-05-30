@@ -10,7 +10,6 @@ import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelDomain;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
-import kr.co.noveljoa.user.episode.vo.EpListVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 
@@ -53,17 +52,29 @@ public class EpDAO {
 	
 	
 	// 에피소드 리스트
-	public List<EpListDomain> selectEpisodeList(EpListVO epListVO) {
+	public List<EpListDomain> selectEpisodeList(int num_novel) {
 		
 		List<EpListDomain> list = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		list = ss.selectList(map+"selectEpList", epListVO);
+		list = ss.selectList(map+"selectEpList", num_novel);
 		
 		if( ss != null) { ss.close(); }
 		return list;
 	}// searchEpList
+	
+//	public List<EpListDomain> selectEpisodeList(EpListVO epListVO) {
+//		
+//		List<EpListDomain> list = null;
+//		
+//		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+//		
+//		list = ss.selectList(map+"selectEpList", epListVO);
+//		
+//		if( ss != null) { ss.close(); }
+//		return list;
+//	}// searchEpList
 	
 	
 	// 에피소드 내용 
