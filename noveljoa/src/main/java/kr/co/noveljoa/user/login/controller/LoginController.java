@@ -1,11 +1,19 @@
 package kr.co.noveljoa.user.login.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
@@ -19,6 +27,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kr.co.noveljoa.admin.domain.MemberManageDomain;
 import kr.co.noveljoa.admin.service.ManagerService1;
 import kr.co.noveljoa.user.login.domain.InfoDomain;
@@ -31,6 +42,7 @@ import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
+import kr.co.noveljoa.user.login.vo.ProfileImgVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
 
 
@@ -295,25 +307,79 @@ public class LoginController {
 	  }
 	  
 	  
-	  @PostMapping("sub.do")
+	  @GetMapping("sub.do")
 	  public String pwChangeView(Model model) {
 		  
 		  return "login/sub";
 	  }
 	  
 	  
-	  
-		public ModelAndView passwordChange(ModelAndView mav, PasswordChangeVO pcVO) {
-			
-		  if( ls.passChange(pcVO)==0) {
-			  mav.setViewName("login/popup_close");
-			  return mav;
+	  @PostMapping("sub_dao.do")
+		public String passwordChange(Model model, PasswordChangeVO pcVO) {
+		  String id=(String)model.getAttribute("id");
+		  pcVO.setId(id);
+		  if( ls.passChange(pcVO)==1) {
+			  return "login/popup_close";
+			  
 		  }else {
-			  mav.setViewName("login/my_page");
-			  return mav;
+			  return "login/alert_changeInfo_err";
+			  
 		  }
 		  
 	}
+	  @PostMapping("my_page_profile.do")
+	  public String profile(Model model,HttpServletRequest request,ProfileImgVO ifVO) throws IOException {
+			
+		  	int num_member = (Integer)model.getAttribute("num_member");
+			 //1. 저장디렉토리를 설정
+			  String resourceDir = request.getSession().getServletContext().getRealPath("/_next/static/images/profile_images");
+			  System.out.println(resourceDir);
+			    File saveDirectory=new File(resourceDir);
+			    int fileSize=1024*1024*2;
+			    //2. FileUpload Component 생성(multipartRequest) => 생성함과 동시에 파일이 업로드된다
+			    MultipartRequest mr =new MultipartRequest(request,saveDirectory.getAbsolutePath(),fileSize,"UTF-8",new DefaultFileRenamePolicy());
+			    //3.<input type = "file">의 값을 받는다
+			    //String fileName = mr.getFilesystemName("file");
+			    
+			 // 업로드한 파일의 이름 가져오기
+			    String originalFileName = mr.getOriginalFileName("file");
+			 
+			 //확장자만 남기기
+			 String extension = "";
+			 
+			 int lastIndex = originalFileName.lastIndexOf(".");
+			 
+			 if(lastIndex>= 0){
+				 extension = originalFileName.substring(lastIndex).toLowerCase();
+			 }
+
+			    // 저장할 파일 이름 설정
+			    /* String savedFileName = user_num_member+extension; */
+				String savedFileName = UUID.randomUUID().toString()+extension;
+			    // 저장할 파일 객체 생성
+			    File savedFile = new File(saveDirectory, savedFileName);
+
+			    // 업로드한 파일을 읽어서 저장할 파일에 쓰기
+			    try (
+			        InputStream inStream = new FileInputStream(new File(saveDirectory, originalFileName));
+			        OutputStream outStream = new FileOutputStream(savedFile)
+			    ) {
+			        byte[] buffer = new byte[1024];
+			        int length;
+			        while ((length = inStream.read(buffer)) > 0) {
+			            outStream.write(buffer, 0, length);
+			        }
+			        String beforePhotoName = (String)model.getAttribute("photo");
+			        File beforePhotoFile = new File(resourceDir+"/"+beforePhotoName);
+			        beforePhotoFile.delete();
+			        ifVO.setPhoto(savedFileName);
+			        ifVO.setNum_member(num_member);
+			        ls.updateProfile(ifVO);
+			        model.addAttribute("photo", savedFileName);
+			    }
+			
+			return "login/my_page";
+		}
 }
 
 

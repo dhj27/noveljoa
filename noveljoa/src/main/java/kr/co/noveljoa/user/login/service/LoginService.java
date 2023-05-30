@@ -16,6 +16,7 @@ import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
+import kr.co.noveljoa.user.login.vo.ProfileImgVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
 
 @Service
@@ -120,6 +121,14 @@ public class LoginService {
 		change = lDAO.passwordChange(pcVO);
 		
 		return change;
+	}
+	
+	public int updateProfile(ProfileImgVO ifVO) {
+		int img = 0;
+		
+		img = lDAO.updateProfile(ifVO);
+		
+		return img;
 	}
 	
 	

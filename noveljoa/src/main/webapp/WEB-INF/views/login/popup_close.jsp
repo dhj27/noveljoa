@@ -17,11 +17,14 @@
 $(function(){
 
 });
-window.opener.location.reload();  // 팝업을 열었던 부모 창 새로고침
-window.close();
+
+
 </script>
 </head>
 <body>
-
+<script>
+alert("비밀번호가 변경되었습니다.");
+window.close();
+</script>
 </body>
 </html>

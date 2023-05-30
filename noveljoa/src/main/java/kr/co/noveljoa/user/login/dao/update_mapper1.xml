@@ -20,4 +20,9 @@ update	member
 set 	pw = #{pw}
 where 	id = #{id}
 </update>
+<update id="imgChange" parameterType="kr.co.noveljoa.user.login.vo.ProfileImgVO">
+update	member
+set 	photo = #{photo}
+where 	num_member = #{num_member}
+</update>
 </mapper>

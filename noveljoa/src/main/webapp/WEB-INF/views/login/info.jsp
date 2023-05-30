@@ -51,7 +51,7 @@ function popup(){
 	window.open("sub.do","비밀번호변경","width=540, height=390, left=100, top=50");
 }
 function cancel(){
-	location.href="my_page.jsp";
+	location.href="my_page.do";
 }
 
 	$(function() {

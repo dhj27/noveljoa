@@ -51,7 +51,10 @@
 .name{width: 200px; height: 30px;text-align: center; font-size: 20px;font-weight: bold;}
 #input_button1{position: absolute; top:420px;left: 100px;}
 #input_button2{position: absolute; top:420px;right: 100px;}
-.button{width: 400px; height: 170px;text-align: left; font-size: 20px; font-weight: bold;background-color: #FFFFFF; border-radius: 30px;}
+#input_button3{position: absolute; top:540px;left: 100px;}
+#input_button4{position: absolute; top:540px;right: 100px;}
+.button1{width: 430px; height: 100px;text-align: center; font-size: 20px; font-weight: bold;background-color: #FFFFFF; border-radius: 30px;}
+.button2{width: 430px; height: 100px;text-align: center; font-size: 20px; font-weight: bold;background-color: #FFFFFF; border-radius: 30px;}
 
 
 </style>
@@ -91,8 +94,12 @@ $(function(){
 		$("#frm_like").submit();
 	});
 	
-	$("#myQA").click(function(){
-		$("#frm_like").submit();
+	$("#QA").click(function(){
+		$("#frm_myQA").submit();
+	});
+	
+	$("#bookmark").click(function(){
+		$("#frm_mybookmark").submit();
 	});
 	
  	$("#imgpf").click(function(){
@@ -148,11 +155,14 @@ $(function(){
 <form id="frm_myQA" action="my_QA.do" method="post">
 <input type="hidden"name="QA"value="0">
 </form>
+<form id="frm_mybookmark" action="my_bookmark.do" method="post">
+<input type="hidden"name="QA"value="0">
+</form>
 <form id="frm_like" action="my_like.do" method="post">
 <input type="hidden"name="search">
 <input type="hidden"name="order_novel"value="0">
 </form>
-           <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
+           <form action = "my_page_profile.do" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
 
@@ -165,9 +175,10 @@ $(function(){
             <input type="file" id="file" name="file" style="display:none" /></div>
             
             <div id="input_name"><input type="text" readonly value="<c:out value="${ name }"/>님" class="name"></div>
-            <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설" style='cursor:pointer'></div>
-            <div id="input_button1"><input type="button"class="button" id="myQA" value=" Q&A" style='cursor:pointer'></div>
-            <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요" style='cursor:pointer'></div>
+            <div id="input_button1"><input type="button"class="button1" id="myNovel" value=" 내 소설" style='cursor:pointer'></div>
+            <div id="input_button2"><input type="button"class="button1" id="like" value=" 좋아요" style='cursor:pointer'></div>
+            <div id="input_button3"><input type="button"class="button2" id="QA" value=" Q&A" style='cursor:pointer'></div>
+            <div id="input_button4"><input type="button"class="button2" id="bookmark" value=" 북마크" style='cursor:pointer'></div>
             
 			
            </div>

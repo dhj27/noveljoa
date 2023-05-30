@@ -25,6 +25,7 @@ import kr.co.noveljoa.user.login.vo.LoginVO;
 import kr.co.noveljoa.user.login.vo.PasswordChangeVO;
 import kr.co.noveljoa.user.login.vo.PasswordIssuedVO;
 import kr.co.noveljoa.user.login.vo.PasswordTempVO;
+import kr.co.noveljoa.user.login.vo.ProfileImgVO;
 import kr.co.noveljoa.user.login.vo.SignupVO;
 
 @Repository
@@ -210,7 +211,10 @@ public class LoginDAO {
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		phoneChange = ss.update("infoChange", icVO);
-		//3. MyBatis Handler 
+		//3. MyBatis Handler
+		if(phoneChange == 1) {
+			ss.commit();
+		}
 		if(ss != null) {ss.close();}
 		
 		return phoneChange;
@@ -223,10 +227,29 @@ public class LoginDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		pwChange = ss.update("pwChange", pcVO);
 		//3. MyBatis Handler 
+		if(pwChange == 1) {
+			ss.commit();
+		}
 		if(ss != null) {ss.close();}
 		
 		return pwChange;
 		
 	}
+	
+	public int updateProfile(ProfileImgVO ifVO) {
+		int img = 0;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		img = ss.update("imgChange", ifVO);
+		//3. MyBatis Handler 
+		if(img == 1) {
+			ss.commit();
+		}
+		if(ss != null) {ss.close();}
+		
+		return img;
+	}
+	
+	
 	
 }
