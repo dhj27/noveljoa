@@ -152,6 +152,7 @@
 <h5>댓글 리스트</h5>
 <table  class="table table-hover table-sm">
 <c:forEach var="freeBoardcmt" items="${  freeBoardCMTData }" >
+<c:if test="${ not empty freeBoardcmt.id }">
 				<tr class="table-secondary">
 				<th style="width: 600px">아이디 :  ${  freeBoardcmt.id }  </th>
 				<th style="width: 600px">작성일 : ${  freeBoardcmt.make }</th>
@@ -169,9 +170,10 @@
 			</c:if>
 			</td>
 			</tr>
+				</c:if>
 			<tr>
 			<c:if test="${ not empty freeBoardcmt.manager_cmt  }">
-			<th class="table-success" colspan="4">답변 : ${  freeBoardcmt.manager_cmt }<th>
+			<th class="table-success" colspan="4">관리자 답변 : ${  freeBoardcmt.manager_cmt }<th>
 			</c:if>
 			</tr>
 			</c:forEach>				

@@ -14,8 +14,8 @@
  <if test="id !=null and id !=''" >
  m.id = #{ id } 
  </if>
- 
  </where>
+order by board_num
 </select>
 
 
@@ -29,6 +29,7 @@
 		 ( select id from member where NUM_MEMBER=bc.NUM_MEMBER) id, make, detail, board_cmt_num, manager_cmt
 		 from board_cmt bc
 		 where board_num=#{ board_num }
+		 order by board_cmt_num
 </select>
 
 <insert id="insertBoardComment" parameterType="kr.co.noveljoa.user.board.vo.BoardCommentVO">
