@@ -85,20 +85,20 @@
 	
 	<!-- 좋아요 추가 -->
 	<insert id="insertLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" >
-		insert into liken(num_like,id,num_novel,num_member) 
-			select num_like.nextval,#{id},#{num_novel},#{num_member} 
+		insert into liken(num_like,num_novel,num_member) 
+			select num_like.nextval,#{num_novel},#{num_member} 
 		FROM DUAL	
 		where NOT EXISTS (SELECT 0 FROM liken where num_member=#{num_member} and num_novel=#{num_novel} )
 	</insert>
 	
 	
 	<!-- 좋아요 삭제 -->
-	<!-- <delete id="deleteLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO">
+	<delete id="deleteLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO">
 		delete 
 		from liken 
 		where num_member=#{num_member} 
 		  and num_novel=#{num_novel}
-	</delete> -->
+	</delete>
 	
 	
 	<!-- 좋아요되어 있으면 화면에 표시 -->

@@ -2,6 +2,7 @@ package kr.co.noveljoa.user.episode.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,9 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		nd = ss.selectOne(map+"selectNovel", novelNum);
+		
+		if( ss != null) { ss.close(); }
+		
 		return nd;
 	}// searchNovel
 
@@ -40,6 +44,7 @@ public class EpDAO {
 		list = ss.selectList(map+"selectEpList", num_novel);
 		
 		if( ss != null) { ss.close(); }
+		
 		return list;
 	}// searchEpList
 	
@@ -49,13 +54,16 @@ public class EpDAO {
 		EpLookDomain ed = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		System.out.println("조회 전dao selectEpisode: " + ed);
 		
 		ed = ss.selectOne(map+"selectEp", epCheckVO);
 		
 //		ed.setNum_novel( epCheckVO.getNum_novel());
 //		ed.setNum_member(epCheckVO.getNum_member());
 //		ed.setNum_episode(epCheckVO.getNum_episode());
-		System.out.println("dao selectEpisode: " + ed);
+		System.out.println("조회 후 dao selectEpisode: " + ed);
+		
+		if( ss != null) { ss.close(); }
 		
 		return ed;
 	}// searchEp
@@ -68,6 +76,9 @@ public class EpDAO {
 		
 		cnt = ss.selectOne(map+"selectLike", nCheckVO);
 		System.out.println("dao selectLike: "+nCheckVO);
+		
+		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}
 	
@@ -78,6 +89,9 @@ public class EpDAO {
 		
 		cnt = ss.selectOne(map+"selectReport", reportVO);
 		System.out.println("dao selectReport: "+reportVO);
+		
+		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}
 	
@@ -89,6 +103,9 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectEpFirst", num_novel);
+		System.out.println(cnt);
+		
+		if( ss != null) { ss.close(); }
 		
 		return cnt;
 	}// selectFirstEpisode
@@ -100,6 +117,8 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectEpPrev", epCheckVO);
+
+		if( ss != null) { ss.close(); }
 		
 		return cnt;
 	}// selectPrevEpisode
@@ -111,6 +130,8 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectEpNext", epCheckVO);
+
+		if( ss != null) { ss.close(); }
 		
 		return cnt;
 	}// selectNextEpisode
@@ -129,13 +150,15 @@ public class EpDAO {
 			System.out.println("episode view rollback");
 			ss.rollback();
 		}
+
+		if( ss != null) { ss.close(); }
 		
 		return cnt;
 	}// viewsEp
 	
 	
 	// 좋아요 추가
-	public int insertLike(NovelCheckVO nCheckVO) {
+	public int insertLike(NovelCheckVO nCheckVO) throws PersistenceException{
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		int cnt = ss.insert(map+"insertLike", nCheckVO);
@@ -149,12 +172,13 @@ public class EpDAO {
 		}
 		
 		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}// addLike
 	
 	
 	// 좋아요 취소
-	public int deleteLike(NovelCheckVO nCheckVO) {
+	public int deleteLike(NovelCheckVO nCheckVO) throws PersistenceException {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		int cnt = ss.delete(map+"deleteLike", nCheckVO);
@@ -166,8 +190,9 @@ public class EpDAO {
 			System.out.println("episode like cancel rollback");
 			ss.rollback();
 		}
-		
+
 		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}// cancelLike
 	
@@ -185,8 +210,9 @@ public class EpDAO {
 			System.out.println("episode report rollback");
 			ss.rollback();
 		}
-		
+
 		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}// addReport
 	
@@ -204,8 +230,9 @@ public class EpDAO {
 			System.out.println("episode bookmark rollback");
 			ss.rollback();
 		}
-		
+
 		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}// addBookmark
 	
@@ -223,8 +250,9 @@ public class EpDAO {
 			System.out.println("episode bookmark rollback");
 			ss.rollback();
 		}
-		
+
 		if( ss != null) { ss.close(); }
+		
 		return cnt;
 	}// cancelBookmark
 	

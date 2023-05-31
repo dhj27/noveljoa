@@ -2,6 +2,8 @@ package kr.co.noveljoa.user.episode.service;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -94,18 +96,36 @@ public class EpService {
 	
 	
 	// 좋아요 추가
-	public int addLike(NovelCheckVO nCheckVO) {
-		int likes = eDAO.insertLike(nCheckVO);
+	public String  addLike(NovelCheckVO nCheckVO) {
+		
+		int likes = 0;
+		JSONObject json=new JSONObject();
+		try {
+			likes=eDAO.insertLike(nCheckVO);
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
 		System.out.println("addLike: " + eDAO.insertLike(nCheckVO));
-		return likes;
+		}
+		json.put("jobType", "add");
+		json.put("likeFlag", likes);
+		return json.toJSONString();
 	}// addLike
 	
 	
 	// 좋아요 취소
-	public int cancelLike(NovelCheckVO nCheckVO) {
-		int likes = eDAO.deleteLike(nCheckVO);
-		System.out.println("cancelLike: " + eDAO.deleteLike(nCheckVO));
-		return likes;
+	public String cancelLike(NovelCheckVO nCheckVO) {
+		int likes = 0;
+		JSONObject json=new JSONObject();
+		try {
+			likes=eDAO.deleteLike(nCheckVO);
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		System.out.println("CancelLike: " + eDAO.deleteLike(nCheckVO));
+		}
+		
+		json.put("jobType", "cancel");
+		json.put("likeFlag", likes==1?0:1);
+		return json.toJSONString();
 	}// cancelLike
 	
 	

@@ -28,6 +28,7 @@
     <mapper resource="kr/co/noveljoa/user/noveledit/editnovel_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/episode/domain/episode_mapper.xml"/>
     <mapper resource="kr/co/noveljoa/user/episode/domain/episodeMy_mapper.xml"/>
+    <mapper resource="kr/co/noveljoa/user/episode/domain/comment_mapper.xml"/>
   </mappers>
   
 </configuration>

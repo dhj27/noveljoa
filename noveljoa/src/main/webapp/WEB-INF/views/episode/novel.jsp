@@ -23,19 +23,17 @@
 <script type="text/javascript">
 
 $(function(){
-	
+		
 	//좋아요
-	 <%-- $.ajax({
-		url : "/novelLike.do",
-		data : "num_novel=<%=request.getParameter("num_novel")%>",
+	/* $.ajax({
+		url : "/like.do",
+		data : "num_novel=${num_novel}",
 		type: "get",
 		dataType : "json",
 		error : function(xhr){
 			alert("문제 발생.");
-			console.log(xhr.status);
 		},
 		success : function(jsonObj){
-			var len = jsonArr.length;
 			var article="";
 			let cnt=0;
 			
@@ -45,25 +43,62 @@ $(function(){
 			
 			$("#empTab").append(article);
 		}
-	});//전체 리스트 출력 --%>
-	
-	
+	}); */
 	
 	
 	// 조아요 공개
 	$("#goodImg").click(function(){
-		var good = "http://localhost/noveljoa/_next/static/images/good_on.png";
-		var cancelGood = "http://localhost/noveljoa/_next/static/images/good_off.png";
+		var likeFlag=$("#goodImg").prop("alt")=="좋아요";
 		
-		if($(this).attr("src") == cancelGood){	
+		var likeImg="";
+		var alt="";
+		var ajaxUrl="";
+		if(!likeFlag){
+			likeImg="http://localhost/noveljoa/_next/static/images/good_on.png";
+			alt="좋아요";
+			ajaxUrl="http://localhost/noveljoa/like.do";
+			
+		}else{
+			 likeImg="http://localhost/noveljoa/_next/static/images/good_off.png";
+			alt="싫어요";
+			ajaxUrl="http://localhost/noveljoa/cancel.do";
+		}
+		$("#goodImg").prop("src",likeImg);
+		$("#goodImg").prop("alt",alt);
+		
+		
+		 $.ajax({
+			url : ajaxUrl,
+			data : "num_novel=${num_novel}",
+			type: "get",
+			dataType : "json",
+			error : function(xhr){
+				alert("문제 발생."+xhr.status);
+			},
+			success : function(jsonObj){
+				var article="";
+				//let cnt=0;
+					alert( jsonObj.jobType )			
+				
+				//$("#empTab").append(article);
+			}
+		}); 
+		
+		/* alert($(this).attr("src"));
+		
+		var good = "http://localhost/noveljoa/_next/static/images/good_on.png";
+		var ngood = "http://localhost/noveljoa/_next/static/images/good_off.png";
+		
+		if($(this).attr("src") == ngood){	
 			alert("좋아요");
 			$("#good").val(1); // 좋아요?
 		}else if($(this).attr("src") == good){	
 			alert("좋아요 취소");
 			$("#good").val(0);  // 좋아요 취소
 		} 
-		$("#likeFrm").submit();
-	}); //private
+		$("#likeFrm").submit();  */ 
+		
+	}); //like
 	
 	// 신고하기
 	$("#reportImg").click(function(){
@@ -73,7 +108,12 @@ $(function(){
 	
 	// 첫화 보기
 	$("#firstEp").click(function(){
-		
+		if(${first} == 0){
+			alert("에피소드가 없어요");
+			return;
+		}
+ 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${num_novel}&num_episode=${first}");
+	
 	});
 	
 	
@@ -141,26 +181,25 @@ $(function(){
 									
 								<!-- 좋아요 -->
 								<label>${searchNovel.likeCnt}&nbsp;&nbsp;&nbsp;</label>
- 								<img id="goodImg" src= " ${like eq 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'}" alt="좋아요"/>
+ 								<img id="goodImg" src= "${like eq 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
+ 								
 
-								<form action="like.do" id="likeFrm" method="post">
+								<form action="like.do" id="likeFrm" method="get">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
-									<input type="hidden" id="num_novel" name="num_novel" value="${ep.num_novel}"/>
+									<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}"/>
 								</form>	
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
 								
 								<!-- 신고 버튼 -->
-								
 								<label>${searchNovel.reportCnt}&nbsp;&nbsp;&nbsp;</label>
 								<c:choose>
 									<c:when test="${report eq 1}"><label>신고완료</label></c:when>
 									<c:otherwise><img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
 								</c:choose>
 								<form action="report_popup.do" id="reportFrm" method="POST">
-									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
-									<input type="hidden" id="num_novel" name="num_novel" value="${ep.num_novel}" />
+									<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />
 									<input type="hidden" id="id" name=id value="${id}"/>
 								</form>
 								
