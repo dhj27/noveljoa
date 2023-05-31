@@ -11,6 +11,7 @@ import kr.co.noveljoa.user.episode.dao.EpDAO;
 import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelDomain;
+import kr.co.noveljoa.user.episode.vo.EpBmVO;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
@@ -25,7 +26,6 @@ public class EpService {
 	// 소설 내용 보여주기
 	public NovelDomain searchNovel(int num_novel) {
 		NovelDomain nd = eDAO.selectNovel(num_novel);		
-		System.out.println("searchNovel "+ eDAO.selectNovel(num_novel));
 		
 		return nd;
 	}// searchNovel
@@ -41,8 +41,6 @@ public class EpService {
 	// 에피소드 상세 내용
 	public EpLookDomain searchEp(EpCheckVO epCheckVO) {
 		EpLookDomain eld = eDAO.selectEpisode(epCheckVO);
-		//에러
-		System.out.println("searchEp: " + eld);
 		return eld;
 	}// searchEp
 	
@@ -50,16 +48,13 @@ public class EpService {
 	// 소설 좋아요 선택
 	public int searchLike(NovelCheckVO nCheckVO) {
 		int cnt = eDAO.selectLike(nCheckVO);
-		System.out.println("searchNovelLike "+ eDAO.selectLike(nCheckVO));
-		
 		return cnt;
 	}//searchNovelLike
 	
 	// 소설 신고 선택
 	public int searchReport(ReportVO reportVO) {
 		int cnt = eDAO.selectReport(reportVO);
-		System.out.println("searchNovelReport "+ eDAO.selectReport(reportVO));
-		
+		System.out.println("+++++report"+reportVO);
 		return cnt;
 	}//searchNovelLike
 	
@@ -67,7 +62,6 @@ public class EpService {
 	// 첫 화
 	public int firstEp(int num_novel) {
 		int cnt = eDAO.selectFirstEpisode(num_novel);
-		System.out.println("num_novel: " + num_novel+", firstEp: "+cnt);
 		return cnt;
 	}// firstEp
 	
@@ -75,14 +69,12 @@ public class EpService {
 	// 이전화
 	public int prevEp(EpCheckVO epCheckVO) {
 		int cnt = eDAO.selectPrevEpisode(epCheckVO);
-		System.out.println("num_novel: " + epCheckVO.getNum_novel()+", prevEp: "+cnt);
 		return cnt;
 	}// prevNextEp
 	
 	// 다음화
 	public int nextEp(EpCheckVO epCheckVO) {
 		int cnt = eDAO.selectNextEpisode(epCheckVO);
-		System.out.println("num_novel: " + epCheckVO.getNum_novel()+", nextEp: "+cnt);
 		return cnt;
 	}// prevNextEp
 	
@@ -96,7 +88,7 @@ public class EpService {
 	
 	
 	// 좋아요 추가
-	public String  addLike(NovelCheckVO nCheckVO) {
+	public String addLike(NovelCheckVO nCheckVO) {
 		
 		int likes = 0;
 		JSONObject json=new JSONObject();
@@ -104,7 +96,6 @@ public class EpService {
 			likes=eDAO.insertLike(nCheckVO);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
-		System.out.println("addLike: " + eDAO.insertLike(nCheckVO));
 		}
 		json.put("jobType", "add");
 		json.put("likeFlag", likes);
@@ -116,11 +107,11 @@ public class EpService {
 	public String cancelLike(NovelCheckVO nCheckVO) {
 		int likes = 0;
 		JSONObject json=new JSONObject();
+		
 		try {
 			likes=eDAO.deleteLike(nCheckVO);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
-		System.out.println("CancelLike: " + eDAO.deleteLike(nCheckVO));
 		}
 		
 		json.put("jobType", "cancel");
@@ -135,6 +126,7 @@ public class EpService {
 		System.out.println("addReport: " + eDAO.insertReport(nReportVO));
 		return reports;
 	}// addReport
+
 	
 	
 	// 북마크 추가

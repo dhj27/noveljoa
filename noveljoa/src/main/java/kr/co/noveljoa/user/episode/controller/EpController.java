@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.noveljoa.user.episode.service.EpService;
+import kr.co.noveljoa.user.episode.vo.EpBmVO;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
@@ -22,10 +23,15 @@ public class EpController {
 	@Autowired(required = false)
 	private EpService epService;
 	
-
+	
 	// 소설 창
 	@GetMapping("/novel.do") 
 	public String novelDetail(int num_novel, NovelCheckVO nCheckVO, ReportVO reportVO, Model model) {
+		
+		if(model.getAttribute("num_member") == null) {
+			return "redirect:loginpage.do";
+		}
+			
 		int num_member = (Integer)model.getAttribute("num_member");
 		String id = (String)model.getAttribute("id");
 		
@@ -53,6 +59,9 @@ public class EpController {
 		int num_member = (Integer)model.getAttribute("num_member");
 		
 		epCheckVO.setNum_member(num_member);
+		
+		// 조회수 증가
+		epService.viewsEp(epCheckVO.getNum_episode());
 		
 		model.addAttribute("ep", epService.searchEp(epCheckVO));
 		
@@ -105,8 +114,21 @@ public class EpController {
 	// 신고 추가
 	@PostMapping("report_process.do")
 	public String addReport(NovelReportVO nReportVO , Model model) {
+		String id = (String)model.getAttribute("id");
+//		nReportVO.setId(id);
+		System.out.println("-------report : "+nReportVO);
 		
-		return "";
+		int result = epService.addReport(nReportVO);
+		String msg = "";
+				
+		if(result == 1) {
+			msg = "신고 되었습니다";
+		}else {
+			msg = "신고 실패";
+		}
+		model.addAttribute("msg", msg);
+		
+		return "episode/report_alert";
 	}// addReport
 	
 	

@@ -76,11 +76,11 @@
 	
 	
 	<!-- 에피소드 조회수 증가 -->
-	<!-- <update id="updateViews" parameterType="Integer">
+	<update id="updateViews" parameterType="Integer">
 		update episode 
 		set visit =(visit+1) 
 		where num_episode=#{num_episode}
-	</update> -->
+	</update>
 	
 	
 	<!-- 좋아요 추가 -->
@@ -113,41 +113,40 @@
 	<!-- 신고되어 있으면 화면에 표시 -->
 	<select id="selectReport" parameterType="kr.co.noveljoa.user.episode.vo.ReportVO" 
 		resultType="Integer">
+		
 		 select count(*)
 		 from report r, member m 
 		 where r.id=m.id
-		   and m.num_member=#{num_member} 
+		   and m.id=#{id} 
 		   and r.num_novel=#{num_novel}
 		   
-		<!--  select count(*)
-		 from report r, member m 
-		 where r.id=m.id
-		   and m.id=#{id}
-		   and num_novel=#{num_novel} -->
 	</select>
-	
 	
 	<!-- 신고추가 -->
 	<insert id="insertReport" parameterType="kr.co.noveljoa.user.episode.vo.NovelReportVO">
-		insert into report(num_report, num_novel, id, reason_code, report_date)
-		values (num_report.nextval ,#{num_novel}, #{id}, #{reason_code}, sysdate)
+		
+		insert into report (num_report, num_novel, id, reason_code, report_date )
+			select num_report.nextval, #{num_novel}, #{id} , #{reason_code}, sysdate
+		from dual	
+		where not exists (select 0 from report where id=#{id} and num_novel=#{num_novel})   
+
 	</insert>
 	
  	
  	<!-- 북마크 추가 -->
- 	<!-- <insert id="insertBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO">
+ 	<insert id="insertBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpBmVO">
  		insert into bookmark(bookmark_num, num_member, num_episode)
  		values (bookmark_num.nextval, #{num_member}, #{num_episode})
- 	</insert> -->
+ 	</insert>
 	
  	
  	<!-- 북마크 삭제 -->
-	<!-- <delete id="deleteBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO">>
+	<delete id="deleteBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpBmVO">>
  		delete 
  		from bookmark
  		where num_member=#{num_member} 
-		  and num_novel=#{num_novel}
- 	</delete>  -->
+		  and num_episode=#{num_episode}
+ 	</delete>
 	
   
   

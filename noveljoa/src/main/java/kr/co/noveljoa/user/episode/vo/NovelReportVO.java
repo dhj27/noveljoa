@@ -1,14 +1,10 @@
 package kr.co.noveljoa.user.episode.vo;
 
-import java.util.Date;
-
 public class NovelReportVO {
 	
 	private int num_novel;
 	private String id;
 	private int reason_code;
-	private Date report_date;
-	
 	
 	public int getNum_novel() {
 		return num_novel;
@@ -28,16 +24,10 @@ public class NovelReportVO {
 	public void setReason_code(int reason_code) {
 		this.reason_code = reason_code;
 	}
-	public Date getReport_date() {
-		return report_date;
-	}
-	public void setReport_date(Date report_date) {
-		this.report_date = report_date;
-	}
 	@Override
 	public String toString() {
-		return "NovelReportVO [num_novel=" + num_novel + ", id=" + id + ", reason_code=" + reason_code
-				+ ", report_date=" + report_date + "]";
+		return "NovelReportVO [num_novel=" + num_novel + ", id=" + id + ", reason_code=" + reason_code + "]";
 	}
+	
 	
 }

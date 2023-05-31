@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/login.css" />
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@ $(function(){
 			alert("이전 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${prev}");
+ 		$(location).attr("href", "/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${prev}");
 	}); //prev
 	
 	/* 다음 화 */
@@ -56,12 +56,12 @@ $(function(){
 			alert("다음 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${next}");
+ 		$(location).attr("href", "/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${next}");
 	}); //next
 	
 	$("#comment").click(function(){
 		alert("S");
-		location.href="http://localhost/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
+		location.href="/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
 		//comment.do
 	});
 	
@@ -123,24 +123,22 @@ $(function(){
 			 
 			 
 			 <!-- 고치세요 -->
-			 <c:if test="${ep.bookmark == 1}">
-			 	<!-- 북마크 O -->
-				<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-						<mask id="mask0_15:393" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;">
-							<rect width="32" height="32" fill="white"></rect>
-							
-						</mask>
-					<g mask="url(#mask0_15:393)">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H24V26L16 20.7087L8 26V6Z" fill="currentColor"></path>
-					</g>
-					</svg>
-				</button>
-			 </c:if>
-				
-				<!-- 북마크 X -->
-			<c:if test="${ep.bookmark == 0}">
-				<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
+			 <c:choose>
+			 	<c:when test="${ep.bookmark == 1}">
+				 	<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
+						<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+							<mask id="mask0_15:393" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;">
+								<rect width="32" height="32" fill="white"></rect>
+								
+							</mask>
+						<g mask="url(#mask0_15:393)">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H24V26L16 20.7087L8 26V6Z" fill="currentColor"></path>
+						</g>
+						</svg>
+					</button>
+			 	</c:when>
+			 	<c:otherwise>
+			 		<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
 						<mask id="mask0_2:12083" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;">
 							<rect width="32" height="32" fill="white"></rect>
@@ -150,7 +148,9 @@ $(function(){
 						</g>
 					</svg>
 				</button>
-			</c:if>
+			 	</c:otherwise>
+			 </c:choose>
+			 
 			
 			</div>
 			</div>

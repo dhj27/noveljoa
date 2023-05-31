@@ -51,7 +51,7 @@
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
 			
 				<!-- 해당 소설 리스트로 이동 -->
-				<a href="http://localhost/noveljoa/episode/novel.jsp?num_novel=">
+				<a href="/noveljoa/episode/novel.jsp?num_novel=">
 					<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				

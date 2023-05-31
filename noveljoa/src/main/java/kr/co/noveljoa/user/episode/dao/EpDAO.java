@@ -10,6 +10,7 @@ import kr.co.noveljoa.user.dao.MyBatisHandler;
 import kr.co.noveljoa.user.episode.domain.EpListDomain;
 import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.domain.NovelDomain;
+import kr.co.noveljoa.user.episode.vo.EpBmVO;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelReportVO;
@@ -61,7 +62,6 @@ public class EpDAO {
 //		ed.setNum_novel( epCheckVO.getNum_novel());
 //		ed.setNum_member(epCheckVO.getNum_member());
 //		ed.setNum_episode(epCheckVO.getNum_episode());
-		System.out.println("조회 후 dao selectEpisode: " + ed);
 		
 		if( ss != null) { ss.close(); }
 		
@@ -75,7 +75,6 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectLike", nCheckVO);
-		System.out.println("dao selectLike: "+nCheckVO);
 		
 		if( ss != null) { ss.close(); }
 		
@@ -88,7 +87,6 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectReport", reportVO);
-		System.out.println("dao selectReport: "+reportVO);
 		
 		if( ss != null) { ss.close(); }
 		
@@ -103,7 +101,6 @@ public class EpDAO {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		cnt = ss.selectOne(map+"selectEpFirst", num_novel);
-		System.out.println(cnt);
 		
 		if( ss != null) { ss.close(); }
 		
@@ -144,7 +141,7 @@ public class EpDAO {
 		int cnt = ss.update(map+"updateViews", epNum);
 		
 		if(cnt == 1) {
-			System.out.println("episode view +");
+			System.out.println("episode view");
 			ss.commit();
 		}else {
 			System.out.println("episode view rollback");
@@ -164,7 +161,7 @@ public class EpDAO {
 		int cnt = ss.insert(map+"insertLike", nCheckVO);
 		
 		if(cnt == 1) {
-			System.out.println("episode like commit");
+			System.out.println("episode like");
 			ss.commit();
 		}else {
 			System.out.println("episode like rollback");
@@ -184,7 +181,7 @@ public class EpDAO {
 		int cnt = ss.delete(map+"deleteLike", nCheckVO);
 		
 		if(cnt == 1) {
-			System.out.println("episode like cancel commit");
+			System.out.println("episode like cancel");
 			ss.commit();
 		}else {
 			System.out.println("episode like cancel rollback");
@@ -204,7 +201,7 @@ public class EpDAO {
 		int cnt = ss.insert(map+"insertReport", nReportVO);
 		
 		if(cnt == 1) {
-			System.out.println("episode report commit");
+			System.out.println("episode report");
 			ss.commit();
 		}else {
 			System.out.println("episode report rollback");
@@ -224,7 +221,7 @@ public class EpDAO {
 		int cnt = ss.insert(map+"insertBookmark", epCheckVO);
 		
 		if(cnt == 1) {
-			System.out.println("episode bookmark commit");
+			System.out.println("episode bookmark");
 			ss.commit();
 		}else {
 			System.out.println("episode bookmark rollback");
@@ -244,7 +241,7 @@ public class EpDAO {
 		int cnt = ss.delete(map+"deleteBookmark", epCheckVO);
 		
 		if(cnt == 1) {
-			System.out.println("episode bookmark commit");
+			System.out.println("episode bookmark");
 			ss.commit();
 		}else {
 			System.out.println("episode bookmark rollback");

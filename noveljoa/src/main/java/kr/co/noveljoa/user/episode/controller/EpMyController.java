@@ -92,7 +92,7 @@ public class EpMyController {
 		
 		if(result == 1) {
 			msg = "에피소드 수정 성공";
-			url= "index.do";
+			url= "writer_novel.do";
 		}else {
 			msg = "에피소드 수정 실패";
 			url= "episode_edit.do";
@@ -117,7 +117,7 @@ public class EpMyController {
 		
 		if(result == 1) {
 			msg = "에피소드 삭제 성공";
-			url= "index.do";
+			url= "writer_novel.do";
 		}else {
 			msg = "에피소드 삭제 실패";
 			url= "episode_edit.do";
@@ -129,20 +129,5 @@ public class EpMyController {
 		return "episode/episode_process";
 	}// removeEp
 	
-	
-	// 에피소드 리스트창
-	@PostMapping("/episode_novel.do")
-	public String epList(Model model) { // int userNum;
 		
-		return "";
-	}// epList
-	
-	
-	// 에피소드 리스트 내용 보여주기 ajax
-	//@GetMapping("")
-	public String searchEpList(NovelCheckMyVO nCheckMyVO, Model model) {
-		
-		return "";
-	}// searchEpList
-	
 }//class

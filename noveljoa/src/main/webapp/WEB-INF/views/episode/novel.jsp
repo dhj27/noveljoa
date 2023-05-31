@@ -21,31 +21,8 @@
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap"></style>
 
 <script type="text/javascript">
-
 $(function(){
-		
-	//좋아요
-	/* $.ajax({
-		url : "/like.do",
-		data : "num_novel=${num_novel}",
-		type: "get",
-		dataType : "json",
-		error : function(xhr){
-			alert("문제 발생.");
-		},
-		success : function(jsonObj){
-			var article="";
-			let cnt=0;
 			
-			if(cnt == 0){
-				article="종아요 설정";
-			}//end if
-			
-			$("#empTab").append(article);
-		}
-	}); */
-	
-	
 	// 조아요 공개
 	$("#goodImg").click(function(){
 		var likeFlag=$("#goodImg").prop("alt")=="좋아요";
@@ -54,14 +31,14 @@ $(function(){
 		var alt="";
 		var ajaxUrl="";
 		if(!likeFlag){
-			likeImg="http://localhost/noveljoa/_next/static/images/good_on.png";
+			likeImg="/noveljoa/_next/static/images/good_on.png";
 			alt="좋아요";
-			ajaxUrl="http://localhost/noveljoa/like.do";
+			ajaxUrl="/noveljoa/like.do";
 			
 		}else{
-			 likeImg="http://localhost/noveljoa/_next/static/images/good_off.png";
+			 likeImg="/noveljoa/_next/static/images/good_off.png";
 			alt="싫어요";
-			ajaxUrl="http://localhost/noveljoa/cancel.do";
+			ajaxUrl="/noveljoa/cancel.do";
 		}
 		$("#goodImg").prop("src",likeImg);
 		$("#goodImg").prop("alt",alt);
@@ -76,34 +53,20 @@ $(function(){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
-				var article="";
-				//let cnt=0;
-					alert( jsonObj.jobType )			
-				
-				//$("#empTab").append(article);
+				$("#likecnt").text("${searchNovel.likeCnt}");
+				/* alert( jsonObj.jobType ) */			
 			}
 		}); 
-		
-		/* alert($(this).attr("src"));
-		
-		var good = "http://localhost/noveljoa/_next/static/images/good_on.png";
-		var ngood = "http://localhost/noveljoa/_next/static/images/good_off.png";
-		
-		if($(this).attr("src") == ngood){	
-			alert("좋아요");
-			$("#good").val(1); // 좋아요?
-		}else if($(this).attr("src") == good){	
-			alert("좋아요 취소");
-			$("#good").val(0);  // 좋아요 취소
-		} 
-		$("#likeFrm").submit();  */ 
 		
 	}); //like
 	
 	// 신고하기
 	$("#reportImg").click(function(){
-		alert("a");
 		window.open("report_popup.do?num_novel=${num_novel}","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
+	});
+	
+	$("#reportfin").click(function(){
+		alert("신고 완료된 소설입니다.");
 	});
 	
 	// 첫화 보기
@@ -112,7 +75,7 @@ $(function(){
 			alert("에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${num_novel}&num_episode=${first}");
+ 		$(location).attr("href", "/noveljoa/read.do?num_novel=${num_novel}&num_episode=${first}");
 	
 	});
 	
@@ -148,7 +111,7 @@ $(function(){
 					<div class="flex flex-[0_0_auto]">
 						<div class="flex relative shrink-0 items-start overflow-hidden h-181 w-116" style="height: 181px;">
 							<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-							<img src="http://localhost/noveljoa/_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
+							<img src="/noveljoa/_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
 								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
 							</span>
 						</div>
@@ -165,7 +128,7 @@ $(function(){
 							<div class="text-grey60">
 								<c:choose>
 									<c:when test="${searchNovel.genre eq 1}">판타지</c:when>
-									<c:when test="${searchNovel.genre eq 8}">로맨스</c:when>
+									<c:when test="${searchNovel.genre eq 2}">로맨스</c:when>
 									<c:otherwise>자유	</c:otherwise>
 								</c:choose> 
 								
@@ -180,8 +143,8 @@ $(function(){
 									&nbsp;&nbsp;&nbsp;
 									
 								<!-- 좋아요 -->
-								<label>${searchNovel.likeCnt}&nbsp;&nbsp;&nbsp;</label>
- 								<img id="goodImg" src= "${like eq 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
+								<label id="likecnt">${searchNovel.likeCnt}</label> &nbsp;&nbsp;&nbsp;
+ 								<img id="goodImg" src= "${like eq 1 ? '/noveljoa/_next/static/images/good_on.png':'/noveljoa/_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
  								
 
 								<form action="like.do" id="likeFrm" method="get">
@@ -195,8 +158,8 @@ $(function(){
 								<!-- 신고 버튼 -->
 								<label>${searchNovel.reportCnt}&nbsp;&nbsp;&nbsp;</label>
 								<c:choose>
-									<c:when test="${report eq 1}"><label>신고완료</label></c:when>
-									<c:otherwise><img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
+									<c:when test="${report eq 1}"><img id="reportfin" src="/noveljoa/_next/static/images/reportfin.png" style="width: 40px; height: 40px;" alt="신고완료"/></c:when>
+									<c:otherwise><img id="reportImg" src="/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
 								</c:choose>
 								<form action="report_popup.do" id="reportFrm" method="get">
 									<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />
