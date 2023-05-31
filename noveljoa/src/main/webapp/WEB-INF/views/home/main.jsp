@@ -70,6 +70,11 @@ function main9(){
 							</div>
 						</div>
 				<main class="flex-1">
+				 <c:if test="${ not empty stop  }">
+                     <script type="text/javascript">
+                     alert('${ stop }');
+                     </script>                           
+					 </c:if>
                         <div>
                             <div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
                                 <div class="grid grid-cols-12 grid-rows-[auto] gap-x-12  w-full mt-56 mb-62 gap-y-64 gap-x-0">

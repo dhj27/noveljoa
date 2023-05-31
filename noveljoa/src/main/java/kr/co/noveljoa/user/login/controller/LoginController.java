@@ -144,6 +144,8 @@ public class LoginController {
 			model.addAttribute("name", name);
 			model.addAttribute("photo", photo);
 			model.addAttribute("num_member", numMember);
+		}else {
+			model.addAttribute("stop", "정지된 회원입니다.");
 		}
 		
 		return "forward:main.do";
