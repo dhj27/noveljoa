@@ -67,7 +67,8 @@ $(function(){
 	
 	// 신고하기
 	$("#reportImg").click(function(){
-		
+		alert("a");
+		window.open("report_popup.do","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
 	});
 	
 	// 첫화 보기
@@ -107,7 +108,7 @@ $(function(){
 					<div class="flex flex-[0_0_auto]">
 						<div class="flex relative shrink-0 items-start overflow-hidden h-181 w-116" style="height: 181px;">
 							<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-							<img src="http://localhost/novljoa/_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
+							<img src="http://localhost/noveljoa/_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
 								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
 							</span>
 						</div>
@@ -118,27 +119,14 @@ $(function(){
 							<span>${searchNovel.id}</span><br><br>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
 							<div class="text-grey80">
-								<c:choose>
-									<c:when test="${searchNovel.age eq 1}">
-										전체이용가
-									</c:when>
-									<c:otherwise>
-										15세 이용가
-									</c:otherwise>
-								</c:choose> 
+								${searchNovel.age eq 1 ? '전체이용가':'15세 이용가'}
 							</div>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
 							<div class="text-grey60">
 								<c:choose>
-									<c:when test="${searchNovel.genre eq 1}">
-										판타지
-									</c:when>
-									<c:when test="${searchNovel.genre eq 8}">
-										로맨스
-									</c:when>
-									<c:otherwise>
-										자유
-									</c:otherwise>
+									<c:when test="${searchNovel.genre eq 1}">판타지</c:when>
+									<c:when test="${searchNovel.genre eq 8}">로맨스</c:when>
+									<c:otherwise>자유	</c:otherwise>
 								</c:choose> 
 								
 							</div>
@@ -153,23 +141,27 @@ $(function(){
 									
 								<!-- 좋아요 -->
 								<label>${searchNovel.likeCnt}&nbsp;&nbsp;&nbsp;</label>
- 								<img id="goodImg" src= " ${nlike}== 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'" alt="좋아요"/>
+ 								<img id="goodImg" src= " ${like eq 1 ? 'http://localhost/noveljoa/_next/static/images/good_on.png':'http://localhost/noveljoa/_next/static/images/good_off.png'}" alt="좋아요"/>
 
 								<form action="like.do" id="likeFrm" method="post">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
-									<input type="hidden" id="num_novel" name="num_novel" value/>
+									<input type="hidden" id="num_novel" name="num_novel" value="${ep.num_novel}"/>
 								</form>	
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
 								
 								<!-- 신고 버튼 -->
-								<img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
-								<label>&nbsp;&nbsp;&nbsp;${searchNovel.reportCnt}</label>
 								
-								<form action="report_popup.jsp" id="reportFrm" method="post">
-									<input type="hidden" id="num_novel" name="num_novel" value="" />
-									<input type="hidden" id="id" name=id value=""/>
+								<label>${searchNovel.reportCnt}&nbsp;&nbsp;&nbsp;</label>
+								<c:choose>
+									<c:when test="${report eq 1}"><label>신고완료</label></c:when>
+									<c:otherwise><img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
+								</c:choose>
+								<form action="report_popup.do" id="reportFrm" method="POST">
+									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
+									<input type="hidden" id="num_novel" name="num_novel" value="${ep.num_novel}" />
+									<input type="hidden" id="id" name=id value="${id}"/>
 								</form>
 								
 							</div>

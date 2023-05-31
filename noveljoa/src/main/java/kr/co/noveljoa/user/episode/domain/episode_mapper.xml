@@ -26,17 +26,12 @@
 		where num_novel=#{num_novel} 
 		  and open=1
 		  order by num_episode DESC
-		
-	  	<!-- select title, visit, make
-		from episode
-		where num_novel=#{num_novel}
-		  and open=1
-		order by num_episode DESC -->
 	</select>
 		
 	<!-- 에피소드 내용 보여주기 -->
-	<select id="selectEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
-		select n.title novelTitle, e.title epTitle, e.story epDetail,
+	<select id="selectEp" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" 
+		resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
+		select e.num_member, e.num_novel, e.num_episode, n.title novelTitle, e.title epTitle, e.story epDetail,
 			(select count(*) from BOOKMARK b 
 			 where num_member=#{num_member} and num_episode=#{num_episode}) bookmark 
 		from episode e, novel n
@@ -49,34 +44,35 @@
 	
     <!-- 첫화 보여주기 -->
     <select id="selectEpFirst" parameterType="Integer" resultType="Integer">
-    	SELECT DISTINCT FIRST_VALUE(NUM_EPISODE) OVER(ORDER BY NUM_EPISODE) FIRST
+    	select distinct first_value(num_episode) over(order by num_episode) first
 		from episode 
 		where num_novel=#{num_novel}
     </select>
 
 
 	<!-- 이전화 보여주기 -->
-	<!-- <select id="selectEpPrev" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
-	  	SELECT * 
-		FROM 
-			(SELECT lag(NUM_EPISODE, 1, 0) over(ORDER BY NUM_EPISODE) prev, NUM_EPISODE 
-			FROM EPISODE 
-			WHERE num_novel=#{num_novel} 
-			  and OPEN=1)
-		WHERE NUM_EPISODE=#{NUM_EPISODE}
-	</select> -->
+	<select id="selectEpPrev" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" 
+		resultType="Integer">
+	  	select prev
+		from 
+			(select lag(num_episode, 1, 0) over(order by num_episode) prev, num_episode 
+			from episode 
+			where num_novel=#{num_novel} 
+			  and open=1)
+		where num_episode=#{num_episode}
+	</select>
 
  
 	<!-- 다음화 보여주기 -->
-	<!-- <select id="selectEpNext" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" resultType="kr.co.noveljoa.user.episode.domain.EpLookDomain">
-		SELECT * 
-		FROM 
-			(SELECT lead(NUM_EPISODE, 1, 0) over(ORDER BY NUM_EPISODE) next, NUM_EPISODE
-			FROM EPISODE 
-			WHERE num_novel=#{num_novel} 
-			  and OPEN=1) 
-		WHERE num_episode=#{num_episode}
-	</select> -->
+	<select id="selectEpNext" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO" 
+		resultType="Integer">
+		select next
+		from 
+			(select lead(num_episode, 1, 0) over(order by num_episode) next, num_episode
+			from episode 
+			where num_novel=#{num_novel} and open=1) 
+		where num_episode=#{num_episode}
+	</select>
 	
 	
 	<!-- 에피소드 조회수 증가 -->
@@ -106,7 +102,8 @@
 	
 	
 	<!-- 좋아요되어 있으면 화면에 표시 -->
-	<select id="selectLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" resultType="Integer">
+	<select id="selectLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" 
+		resultType="Integer">
 		 select count(*) 
 		 from liken 
 		 where num_member=#{num_member} 
@@ -114,12 +111,19 @@
 	</select>
 	
 	<!-- 신고되어 있으면 화면에 표시 -->
-	<select id="selectReport" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" resultType="Integer">
+	<select id="selectReport" parameterType="kr.co.noveljoa.user.episode.vo.ReportVO" 
+		resultType="Integer">
 		 select count(*)
 		 from report r, member m 
 		 where r.id=m.id
-		   and m.num_member=#{num_member};
-		   and num_novel=#{num_novel} 
+		   and m.num_member=#{num_member} 
+		   and r.num_novel=#{num_novel}
+		   
+		<!--  select count(*)
+		 from report r, member m 
+		 where r.id=m.id
+		   and m.id=#{id}
+		   and num_novel=#{num_novel} -->
 	</select>
 	
 	

@@ -1,9 +1,11 @@
 package kr.co.noveljoa.user.episode.vo;
 
-public class EpCheckVO {
+public class ReportVO {
+	
 	private int num_member;
 	private int num_novel;
-	private int num_episode;
+	private String id;
+	
 	
 	public int getNum_member() {
 		return num_member;
@@ -17,16 +19,18 @@ public class EpCheckVO {
 	public void setNum_novel(int num_novel) {
 		this.num_novel = num_novel;
 	}
-	public int getNum_episode() {
-		return num_episode;
+	public String getId() {
+		return id;
 	}
-	public void setNum_episode(int num_episode) {
-		this.num_episode = num_episode;
+	public void setId(String id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {
-		return "EpCheckMyVO [num_member=" + num_member + ", num_novel=" + num_novel + ", num_episode=" + num_episode
-				+ "]";
+		return "ReportVO [num_member=" + num_member + ", num_novel=" + num_novel + ", id=" + id + "]";
 	}
+	
+	
+	
 
 }

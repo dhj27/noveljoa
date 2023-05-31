@@ -51,8 +51,8 @@
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
 			
 				<!-- 해당 소설 리스트로 이동 -->
-				<a href="http://localhost/project2/episode/novel.jsp?num_novel=">
-					<img width="20" height="20" src="/project2/_next/static/images/list.png" style="top: 10px;" />
+				<a href="http://localhost/noveljoa/episode/novel.jsp?num_novel=">
+					<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				
 				<!-- 소설 제목 -->
@@ -77,7 +77,7 @@
 		<div class="border-commentFormLine border-t-1 bg-commentTextForm p-16 desktop:rounded-3  desktop:border-1 bg-commentTextForm">
 		<div style="height: 30px">
 			<button class="flex items-center cursor-pointer typo-md3-b text-subText"
-					type="button">매니저</button>
+					type="button">아이디 들어감</button>
 		</div>
 			<form class="flex flex-col w-full" method="post">
 				<textarea placeholder="답변을 입력하세요." name="body" maxlength="500"
@@ -101,7 +101,7 @@
 		<div class="border-b-1 pb-8">
 		<div class="flex items-end justify-between text-14">
 		<div class="flex items-center">
-			<h2 class="typo-lg3-b mr-6 desktop:typo-lg1">답변</h2>
+			<h2 class="typo-lg3-b mr-6 desktop:typo-lg1">댓글</h2>
 			<span class="typo-g-sm2 -mb-[0.2em] !desktop:typo-g-lg1 !typo-g-lg3 desktop:text-grey60"></span>
 		</div>
 		</div>
@@ -113,14 +113,14 @@
 			<div class="flex flex-col relative text-mainText">
 			<div class="flex flex-wrap mb-8 items-center">
 				<div class="flex mb-2 items-center desktop:mb-0">
-					<span class="typo-sm1-b">매니저</span>
+					<span class="typo-sm1-b">아이디</span> <!-- 댓글등록 아이디 -->
 				</div>
 				<div class="flex typo-sm2 items-center text-grey60 ml-16">
 					<span>작성일</span><span class="order-2 mx-4 desktop:order-none"></span>
 				</div>
 			</div>
 			<div class="typo-md2 desktop:typo-md1">
-				<div class="whitespace-pre-wrap">어쩔 내 맴 </div>
+				<div class="whitespace-pre-wrap">댓글내용 </div>
 			</div>
 			<div class="flex justify-end">
 				<button type="submit" style="align-items: right;"

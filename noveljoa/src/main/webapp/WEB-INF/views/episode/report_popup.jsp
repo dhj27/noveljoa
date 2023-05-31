@@ -9,7 +9,7 @@
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
-<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/login.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
@@ -21,16 +21,12 @@
 
 <noscript data-n-css=""></noscript>
 
-<%  
+<%-- <%  
 	if(session.getAttribute("user_num_member")==null){
 		response.sendRedirect("../login/loginpage.jsp");
 		return;
 	}	
-
-	int userNum = (Integer)session.getAttribute("user_num_member");
-	int num_novel = Integer.parseInt(request.getParameter("num_novel")); 
-	String id = request.getParameter("id");
-%>
+%> --%>
 
 <script type="text/javascript">
 
@@ -42,7 +38,7 @@
 	            $("#reportCode").val(value);
 	            $("#reportFrm").submit();
 	            alert( "신고되었습니다.");
-	            opener.parent.location.href="http://localhost/project2/episode/novel.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
+	            opener.parent.location.href="http://localhost/noveljoa/episode/novel.do?num_novel=" + <%=request.getParameter("num_novel")%>;
 	        }
 	        else {
 	            alert('선택된 신고항목이 없습니다.');
@@ -71,9 +67,9 @@
 			
 			
 		<form id="reportFrm" action="report_process.jsp" method="post">
-			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
-			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
-			<input type="hidden" id="id" name="id" value="<%= id %>" />
+			<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />
+			<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
+			<input type="hidden" id="id" name="id" value="${id}" />
 			<input type="hidden" id="reportCode" name="reportCode" value="" />
 			
 			<div>

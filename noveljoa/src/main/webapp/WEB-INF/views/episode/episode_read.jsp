@@ -43,27 +43,26 @@ $(function(){
 	
 	/* 이전 화 */
 	$("#prev").click(function(){
-		<%-- if(<%= prev %> == 0){
+		if(${prev} == 0){
 			alert("이전 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= prev %>);
- 		 --%>
+ 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${prev}");
 	}); //prev
 	
 	/* 다음 화 */
 	$("#next").click(function(){
-		<%-- if(<%= next %> == 0){
+		if(${next} == 0){
 			alert("다음 에피소드가 없어요");
 			return;
-		} 
-		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= next %>);
-		--%>
+		}
+ 		$(location).attr("href", "http://localhost/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${next}");
 	}); //next
 	
 	$("#comment").click(function(){
 		alert("S");
-		location.href="comment.jsp";
+		location.href="http://localhost/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
+		//comment.do
 	});
 	
 	
@@ -83,7 +82,7 @@ $(function(){
 			<div class="flex w-full items-center justify-start desktop:justify-between">
 			
 			<div class="flex mr-16 w-auto shrink-0 desktop:w-156">
-				<a class="flex h-20 w-20 shrink-0 desktop:h-28 desktop:w-28" href="/free">
+				<a class="flex h-20 w-20 shrink-0 desktop:h-28 desktop:w-28" href="novel.do?num_novel=${ep.num_novel}">
 					<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M15.405.526l11.9 10.458c.442.39.695.943.695 1.525v13.44C28 27.082 27.06 28 25.9 28H2.1C.94 28 0 27.082 0 25.95V12.508c0-.582.253-1.136.695-1.525L12.595.526a2.138 2.138 0 012.81 0zM25.9 12.51L14 2.05 2.1 12.509v13.44h10.85v-7.518c0-.567.47-1.026 1.05-1.026.546 0 .994.407 1.045.927l.005.099v7.518H25.9V12.51z" fill="black"></path>
 					</svg>
@@ -94,7 +93,7 @@ $(function(){
 			<div class="flex items-center">
 			<div class="shrink-0">
 			</div>
-				<a class="mr-8 text-14 font-medium text-mainText desktop:text-16" href="/novels/41547497">
+				<a class="mr-8 text-14 font-medium text-mainText desktop:text-16">
 					<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center; padding-top: 15px"> 
 						${ep.novelTitle}
 					</label>
@@ -121,6 +120,9 @@ $(function(){
 			<!-- 북마크 -->
 			<div class="flex visible translate-y-0 opacity-100" style="transition: transform 300ms ease 0s, opacity 200ms ease 0s, visibility 200ms ease 0s;">
 			<div class="mr-10 desktop:mr-30">
+			 
+			 
+			 <!-- 고치세요 -->
 			 <c:if test="${ep.bookmark == 1}">
 			 	<!-- 북마크 O -->
 				<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
@@ -190,8 +192,9 @@ $(function(){
 					</button>
 				</div>
 				
+				<!-- 댓글 -->
 				<div class="flex flex-1 items-center justify-center text-link">
-					<button class="flex items-center justify-center text-mainText" type="button" id="comment">
+					<button class="flex items-center justify-center text-mainText" type="button" id="comment"> 댓글
 						<div class="flex h-30 w-30">
 							<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1302 1C15.9243 1 19 4.07571 19 7.86979C19 10.192 17.8478 12.2451 16.0838 13.4886L10.6923 18V14.7396H7.86979C4.07571 14.7396 1 11.6639 1 7.86979C1 4.07571 4.07571 1 7.86979 1H12.1302Z"></path>
