@@ -1,6 +1,12 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<%
+      pageContext.setAttribute("crcn", "\r\n"); //Space, Enter
+      pageContext.setAttribute("br", "<br/>"); //br 태그
+%> 
   
 <!DOCTYPE html>
 <html lang="ko">
@@ -194,9 +200,22 @@ $(function(){
 				</div>
 				
 				<div>
-					${ep.epDetail}
+				 	${fn:replace(ep.epDetail, crcn, br)}
+					<%-- ${ep.epDetail} --%>
 				</div>
-				<br><br><br><br>
+				<br><br><br><br><br>
+				<div style="font-style: italic;">
+					<c:choose>
+						<c:when test="${ep.cmt eq 'null'}">
+							
+						</c:when>
+						<c:otherwise>
+							작가의 말:&nbsp;${ep.cmt}
+						</c:otherwise>
+					</c:choose>
+				</div>
+				
+				<br>
 			</div>
 				
 			<!-- 버튼들 -->
@@ -211,7 +230,7 @@ $(function(){
 				
 				<!-- 댓글 -->
 				<div class="flex flex-1 items-center justify-center text-link">
-					<button class="flex items-center justify-center text-mainText" type="button" id="comment"> 댓글
+					<button class="flex items-center justify-center text-mainText" type="button" id="comment">
 						<div class="flex h-30 w-30">
 							<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1302 1C15.9243 1 19 4.07571 19 7.86979C19 10.192 17.8478 12.2451 16.0838 13.4886L10.6923 18V14.7396H7.86979C4.07571 14.7396 1 11.6639 1 7.86979C1 4.07571 4.07571 1 7.86979 1H12.1302Z"></path>
@@ -236,10 +255,7 @@ $(function(){
 		</div>
 		<br><br><br><br><br><br>
 	</main>
-	<!-- footer -->
-	<div>
-		<jsp:include page="../../../_next/footer.jsp"/>
-	</div> 
+	
 	</div>
 	</div>
 	</div>

@@ -5,6 +5,7 @@ import java.sql.Date;
 public class CommentDomain {
 	
 	private int num_member;
+	private int id;
 	private int num_episode;
 	private String detail;
 	private Date make;
@@ -15,6 +16,13 @@ public class CommentDomain {
 	}
 	public void setNum_member(int num_member) {
 		this.num_member = num_member;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getNum_episode() {
 		return num_episode;
@@ -36,9 +44,11 @@ public class CommentDomain {
 	}
 	@Override
 	public String toString() {
-		return "CommentDomain [num_member=" + num_member + ", num_episode=" + num_episode + ", detail=" + detail
-				+ ", make=" + make + "]";
+		return "CommentDomain [num_member=" + num_member + ", id=" + id + ", num_episode=" + num_episode + ", detail="
+				+ detail + ", make=" + make + "]";
 	}
+
+
 	
 	
 }

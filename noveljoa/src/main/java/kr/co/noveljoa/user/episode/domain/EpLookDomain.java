@@ -9,6 +9,8 @@ public class EpLookDomain {
 	private String novelTitle;
 	private String epTitle;
 	private String epDetail;
+	private String cmt;
+	
 	private int bookmark;
 	
 	public int getNum_member() {
@@ -54,11 +56,20 @@ public class EpLookDomain {
 		this.bookmark = bookmark;
 	}
 	
+	
+	public String getCmt() {
+		return cmt;
+	}
+	public void setCmt(String cmt) {
+		this.cmt = cmt;
+	}
 	@Override
 	public String toString() {
 		return "EpLookDomain [num_member=" + num_member + ", num_novel=" + num_novel + ", num_episode=" + num_episode
-				+ ", novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", epDetail=" + epDetail + ", bookmark="
-				+ bookmark + "]";
+				+ ", novelTitle=" + novelTitle + ", epTitle=" + epTitle + ", epDetail=" + epDetail + ", cmt=" + cmt
+				+ ", bookmark=" + bookmark + "]";
 	}
+
+	
 
 }

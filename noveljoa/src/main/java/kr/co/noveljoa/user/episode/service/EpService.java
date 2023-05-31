@@ -72,6 +72,7 @@ public class EpService {
 		return cnt;
 	}// prevNextEp
 	
+	
 	// 다음화
 	public int nextEp(EpCheckVO epCheckVO) {
 		int cnt = eDAO.selectNextEpisode(epCheckVO);
@@ -82,7 +83,6 @@ public class EpService {
 	// 조회수 증가
 	public int viewsEp(int epNum) {
 		int views = eDAO.updateViewsEpisode(epNum);
-		System.out.println("viewsEp: " + views);
 		return views;
 	}// viewsEp
 	

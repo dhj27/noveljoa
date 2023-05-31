@@ -1,8 +1,11 @@
 package kr.co.noveljoa.user.episode.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
+import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.user.dao.MyBatisHandler;
 import kr.co.noveljoa.user.episode.vo.CommentCheckMyVO;
 import kr.co.noveljoa.user.episode.vo.CommentInsertVO;
@@ -24,7 +27,7 @@ public class CommentDAO {
 		
 		if( ss != null) { ss.close(); }
 		return cnt;
-	}
+	}//insertComment
 	
 	public int updateComment(CommentCheckMyVO cmtCheckMyVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
@@ -41,7 +44,8 @@ public class CommentDAO {
 		
 		if( ss != null) { ss.close(); }
 		return cnt;
-	}
+	}//updateComment
+	
 	
 	public int deleteComment(CommentCheckMyVO cmtCheckMyVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
@@ -58,7 +62,44 @@ public class CommentDAO {
 		
 		if( ss != null) { ss.close(); }
 		return cnt;
-	}// removeEp
+	}// deleteComment
+	
+	
+	public String selectEpTitle(int num_episode) {
+		String title = "";
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		title = ss.selectOne(map+"selectEptitle", num_episode);
+		
+		if(ss != null) {ss.close();}
+		
+		return title;
+	}
+
+	
+	public CommentDomain selectComment(CommentCheckMyVO ccMyVO) {
+		CommentDomain cd = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		cd = ss.selectOne(map+"selectCmt", ccMyVO);
+		
+		if(ss != null) {ss.close();}
+		
+		return cd;
+	}//selectComment
+	
+	
+	public List<CommentDomain> selectAllComment(int num_episode){
+		List<CommentDomain> list = null;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		list = ss.selectList(map+"selectCmt", num_episode);
+		
+		if( ss != null) { ss.close(); }
+		return list;
+	}//selectAllComment
 	
 
 }

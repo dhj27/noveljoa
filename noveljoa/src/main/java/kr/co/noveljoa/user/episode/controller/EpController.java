@@ -72,14 +72,6 @@ public class EpController {
 	}// searchEp
 	
 	
-	
-	// 조회수 증가	
-	//@GetMapping("")
-	public String viewsEp(int epNum) {
-		return "";
-	}// viewsEp
-	
-	
 	// 좋아요 추가 1성공 0 실패
 	@GetMapping("/like.do")
 	@ResponseBody
@@ -102,6 +94,7 @@ public class EpController {
 		
 		return epService.cancelLike(nCheckVO);
 	}// cancelLike
+	
 	
 	// 신고 팝업
 	@GetMapping("/report_popup.do")
@@ -152,13 +145,6 @@ public class EpController {
 		
 		return epService.cancelBookmark(epBmVO);
 	}// cancelBookmark
-	
-	// 댓글 
-	@GetMapping("/comment.do")
-	public String showComment(EpCheckVO epCheckVO, Model model) {
-		
-		return "episode/comment";
-	}
 	
 
 }//class

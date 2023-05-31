@@ -43,22 +43,20 @@
 	<div class="lightMode h-full">
 	<div class="flex flex-col h-full">
 
-<%-- <input type="hidden" name="novelNum" value="<%= novelNum %>"> --%>
-
 	<header class="relative bg-white border-b-1 border-grey20">
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
 		<div class="flex typo-g-sm2 flex-1 items-center text-grey60" style="display: flex; align-items: center;">
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
 			
 				<!-- 해당 소설 리스트로 이동 -->
-				<a href="/noveljoa/episode/novel.jsp?num_novel=">
+				<a href="novel.do?num_novel=${ep.num_novel}">
 					<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				
 				<!-- 소설 제목 -->
 				<div>
 					<span class="button" style=" top: -8px; left: 348px; align-items: center; ">
-						<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center;"> 0</label>
+						<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center;">${title} </label>
 					</span> 
 				</div>
 				
@@ -77,10 +75,11 @@
 		<div class="border-commentFormLine border-t-1 bg-commentTextForm p-16 desktop:rounded-3  desktop:border-1 bg-commentTextForm">
 		<div style="height: 30px">
 			<button class="flex items-center cursor-pointer typo-md3-b text-subText"
-					type="button">아이디 들어감</button>
+					type="button">${id }</button>
 		</div>
-			<form class="flex flex-col w-full" method="post">
-				<textarea placeholder="답변을 입력하세요." name="body" maxlength="500"
+			
+			<form action="comment.do" class="flex flex-col w-full" method="post">
+				<textarea placeholder="답변을 입력하세요."  name="body" maxlength="500"
 					class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 min-h-[66px] border-none !bg-transparent !p-0 text-commentText"></textarea>
 				<div class="flex mt-8 w-full items-center justify-between">
 					<label class="flex typo-md3 items-start"></label>
@@ -89,11 +88,13 @@
 						<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
 							<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">/ 500</span>
 						</span>
-						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full"
-							type="submit">등록</button>
+						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
+							등록
+						</button>
 					</div>
 				</div>
 			</form>
+			
 		</div>
 		</div>
 		

@@ -55,7 +55,6 @@ public class EpDAO {
 		EpLookDomain ed = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
-		System.out.println("조회 전dao selectEpisode: " + ed);
 		
 		ed = ss.selectOne(map+"selectEp", epCheckVO);
 		
