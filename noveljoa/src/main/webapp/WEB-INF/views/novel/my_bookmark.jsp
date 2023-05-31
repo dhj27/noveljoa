@@ -43,6 +43,9 @@ $(function () {
 function selectEp(num_novel,num_episode){
 	location.href="read.do?num_novel="+num_novel+"&num_episode="+num_episode;
 }
+function selectNovel(num_novel){
+	location.href="novel.do?num_novel="+num_novel;
+}
 function findNovel(){
 	frm.submit();
 }
