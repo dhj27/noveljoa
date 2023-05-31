@@ -85,6 +85,11 @@ public class MyNovelController {
 			e.printStackTrace();
 		}//end catch
 		
+		return "novel/my_novel_complete";
+	}
+	@PostMapping("/my_novel_complete.do")
+	public String newNovel_complete() {
+		
 		return "forward:my_novel.do";
 	}
 

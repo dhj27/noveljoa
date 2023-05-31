@@ -15,7 +15,7 @@ public class EditNovelDAO {
 		if(enVO.getPhoto()==null) {
 			enVO.setPhoto("photo_default.png");
 		}
-		int cnt=ss.insert("editnovelMapper.updateEditNovel",enVO);
+		int cnt=ss.update("editnovelMapper.updateEditNovel",enVO);
 		//3. transaction 완료
 		if(cnt == 1) {
 			ss.commit();
