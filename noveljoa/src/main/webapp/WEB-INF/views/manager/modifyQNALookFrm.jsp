@@ -50,11 +50,11 @@ function updateFrm() {
             managerCmt: managerCmt
         },
         success: function(response) {
-            alert("성공");
+            alert("댓글이 수정되었습니다.");
             window.location.href = 'messageQNALookFrm.do?boardNum=' + boardNum;
         },
         error: function(xhr, status, error) {
-            alert("실패");
+            alert("댓글 수정에 실패하였습니다.");
         }
     });
 }//updateFrm
