@@ -40,8 +40,8 @@ $(function () {
 		$("#frm").submit();
 	})
 })
-function selectNovel(num_novel){
-	location.href="novels.do?num_novel="+num_novel;
+function selectEp(num_novel,num_episode){
+	location.href="read.do?num_novel="+num_novel+"&num_episode="+num_episode;
 }
 function findNovel(){
 	frm.submit();
@@ -109,10 +109,10 @@ function deleteNovel(){
 												<form action="delete_like.do" id="del_frm" name="del_frm">
 													<input type="hidden" name="type" value="${type}">
 													<input type="hidden" name="search" value="${search}">
-													<input type="hidden" name="num_novel" value="${select.num_episode}">
+													<input type="hidden" name="num_episode" value="${select.num_episode}">
 												</form>
 											</div>
-											<div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')">
+											<div class="flex flex-col w-full flex-1" onclick="selectEp('${select.num_novel}','${select.num_episode}')">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
                                                                             <span class="truncate" style="font-size: 18px">${select.title}</span>
                                                                         </div>
@@ -123,7 +123,7 @@ function deleteNovel(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                최신화 : ${select.num_episode}화
+                                                                                북마크 : ${select.etitle}
                                                                             </span>
                                                                         </div>
 											</div>

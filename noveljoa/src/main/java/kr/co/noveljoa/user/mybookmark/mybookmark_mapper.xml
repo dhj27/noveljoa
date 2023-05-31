@@ -9,7 +9,7 @@
 		FROM bookmark b
 		JOIN episode e ON b.num_episode = e.num_episode
 		JOIN novel n ON e.num_novel = n.num_novel
-		WHERE b.num_member = #{num_member}
+		WHERE b.num_member = #{num_member} and n.open = 1 and e.open = 1
 		<if test="search != null and search != ''">
 			AND n.title LIKE '%'||#{search}||'%'
 		</if>

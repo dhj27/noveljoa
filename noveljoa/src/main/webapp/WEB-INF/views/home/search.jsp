@@ -22,7 +22,7 @@ function findNovel(){
      $("#frm").submit();
 }
 function selectNovel(num_novel){
-   location.href="novels.do?num_novel="+num_novel;
+   location.href="novel.do?num_novel="+num_novel;
 }
 </script>
 </head>
