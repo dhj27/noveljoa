@@ -15,7 +15,7 @@ $(function(){
 	<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
 		<h1 class="sr-only">카카오페이지 스테이지</h1>
 		<a id="main_logo" class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"> 
-			<img class="object-contain" width="157" height="27"	src="/noveljoa/_next/static/images/logo.png" alt="소설조아 logo" />
+			<img class="object-contain" width="157" height="27"	src="_next/static/images/logo.png" alt="소설조아 logo" />
 		</a>
 		
 		<div class="flex order-1 basis-full desktop:order-none desktop:basis-auto">
@@ -34,10 +34,10 @@ $(function(){
 		
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
 			<a href="search.do" class="mr-16 flex items-center text-grey70"	>
-				<img src="/noveljoa/_next/static/images/search.png" width="24" height="24">
+				<img src="_next/static/images/search.png" width="24" height="24">
 			</a> &nbsp; &nbsp; &nbsp; 
 			<a href="my_page.do" class="mr-16 flex items-center text-grey70">
-				<img src="/noveljoa/_next/static/images/profile_images/<%=session.getAttribute("photo") %>" width="48" height="48">
+				<img src="_next/static/images/profile_images/<%=session.getAttribute("photo") %>" width="48" height="48">
 			</a>
 		</div>
 	</div>

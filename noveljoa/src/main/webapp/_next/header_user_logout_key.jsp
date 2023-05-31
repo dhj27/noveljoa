@@ -33,7 +33,7 @@ $(function(){
 		</div>
 		<div class="flex items-center ml-auto mr-15 desktop:mr-0">
 			<a href="manager/managerLoginFrm.do" class="mr-16 flex items-center text-grey70">
-				<img src="/noveljoa/_next/static/images/key_black.png" width="24"	height="24"></a>
+				<img src="_next/static/images/key_black.png" width="24"	height="24"></a>
 			<button class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"
 				onclick="window.location.href='loginpage.do'">로그인</button>
 		</div>
