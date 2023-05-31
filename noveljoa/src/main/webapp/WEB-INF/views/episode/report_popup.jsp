@@ -56,7 +56,7 @@
 		data-body-scroll-lock="ignore" style="width: 502px; height: 800px; border: 1px solid #000000;">
 	<div class="flex flex-col h-full overflow-hidden px-18 py-24 desktop:p-30">
 		<div style="position: relative; top: 15px" class="flex-1 overflow-y-scroll scrollbar-hide desktop:px-10 desktop:pt-10">
-		<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
+		<img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
 		<div class="typo-md1 text-center desktop:typo-lg3 py-8">
 			<div class="whitespace-pre-line" style="font-weight: bold; font-size: 20px">신고</div><br>
 			<div>서비스 이용목적에 부합하지 않는 콘텐츠를 신고해주세요. <br>
@@ -66,9 +66,8 @@
 			<br><br><br>
 			
 			
-		<form id="reportFrm" action="report_process.jsp" method="post">
+		<form id="reportFrm" action="report_process.do" method="post">
 			<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />
-			<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
 			<input type="hidden" id="id" name="id" value="${id}" />
 			<input type="hidden" id="reportCode" name="reportCode" value="" />
 			

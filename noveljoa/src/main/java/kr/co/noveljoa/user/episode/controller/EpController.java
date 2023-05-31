@@ -5,9 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import kr.co.noveljoa.user.episode.domain.EpLookDomain;
 import kr.co.noveljoa.user.episode.service.EpService;
 import kr.co.noveljoa.user.episode.vo.EpCheckVO;
 import kr.co.noveljoa.user.episode.vo.NovelCheckVO;
@@ -15,6 +16,7 @@ import kr.co.noveljoa.user.episode.vo.NovelReportVO;
 import kr.co.noveljoa.user.episode.vo.ReportVO;
 
 @Controller
+@SessionAttributes({"id","name","photo","num_member"}) //세션에 값 여러개 설정할 때
 public class EpController {
 	
 	@Autowired(required = false)
@@ -24,10 +26,14 @@ public class EpController {
 	// 소설 창
 	@GetMapping("/novel.do") 
 	public String novelDetail(int num_novel, NovelCheckVO nCheckVO, ReportVO reportVO, Model model) {
-//		int num_member = (Integer)model.getAttribute("num_member");
+		int num_member = (Integer)model.getAttribute("num_member");
+		String id = (String)model.getAttribute("id");
 		
-		nCheckVO.setNum_member(1); //세션에서 값가져오기 nCheckVO.getNum_novel();
-		reportVO.setNum_member(1);
+		nCheckVO.setNum_member(num_member); //세션에서 값가져오기 nCheckVO.getNum_novel();
+		reportVO.setNum_member(num_member);
+		reportVO.setId(id);
+		
+		System.out.println("**************************"+num_member);
 		
 		model.addAttribute("num_novel", num_novel);
 		model.addAttribute("searchNovel", epService.searchNovel(num_novel));
@@ -37,10 +43,6 @@ public class EpController {
 		model.addAttribute("report", epService.searchReport(reportVO));  //좋아요 여부
 		model.addAttribute("first", epService.firstEp(num_novel));	// 첫화
 		
-		System.out.println("+++++"+epService.firstEp(num_novel));
-		System.out.println(epService.searchLike(nCheckVO));
-		System.out.println(epService.searchEpList(num_novel));
-		System.out.println("--------------------"+epService.searchNovel(num_novel));
 		return "episode/novel";
 	}// novelDetail
 	
@@ -48,16 +50,11 @@ public class EpController {
 	// 에피소드 내용
 	@GetMapping("/read.do")
 	public String searchEp(EpCheckVO epCheckVO, Model model) {
-//		int num_member = (Integer)model.getAttribute("num_member");
-		epCheckVO.setNum_member(1);
+		int num_member = (Integer)model.getAttribute("num_member");
 		
-		model.addAttribute("ep", epCheckVO);
-//		System.out.println("조회 전 ep story: " + epCheckVO);
+		epCheckVO.setNum_member(num_member);
 		
-		EpLookDomain eld =epService.searchEp(epCheckVO);
-		model.addAttribute("ep", eld);
-		
-		System.out.println("조회 후  ep story: " + eld);
+		model.addAttribute("ep", epService.searchEp(epCheckVO));
 		
 		model.addAttribute("prev", epService.prevEp(epCheckVO));	// 이전화
 		model.addAttribute("next", epService.nextEp(epCheckVO));	// 다음화
@@ -77,9 +74,10 @@ public class EpController {
 	// 좋아요 추가 1성공 0 실패
 	@GetMapping("/like.do")
 	@ResponseBody
-	public String addLike(NovelCheckVO nCheckVO) {
+	public String addLike(NovelCheckVO nCheckVO, Model model) {
+		int num_member = (Integer)model.getAttribute("num_member");
 		
-		nCheckVO.setNum_member(1);
+		nCheckVO.setNum_member(num_member);
 		
 		return epService.addLike(nCheckVO);
 	}// addLike
@@ -88,20 +86,26 @@ public class EpController {
 	// 좋아요 삭제
 	@GetMapping("/cancel.do")
 	@ResponseBody
-	public String cancelLike(NovelCheckVO nCheckVO, Model model) {
-		nCheckVO.setNum_member(1);
+	public String cancelLike(NovelCheckVO nCheckVO , Model model) {
+		int num_member = (Integer)model.getAttribute("num_member");
+
+		nCheckVO.setNum_member(num_member);
+		
 		return epService.cancelLike(nCheckVO);
 	}// cancelLike
 	
 	// 신고 팝업
-	@PostMapping("/report_popup.do")
-	public String showReport() {
+	@GetMapping("/report_popup.do")
+	public String showReport(@RequestParam int num_novel, Model model) {
+		
+		model.addAttribute("num_novel", num_novel);
 		return "episode/report_popup";
 	}
 	
 	// 신고 추가
-//	@GetMapping("")
+	@PostMapping("report_process.do")
 	public String addReport(NovelReportVO nReportVO , Model model) {
+		
 		return "";
 	}// addReport
 	

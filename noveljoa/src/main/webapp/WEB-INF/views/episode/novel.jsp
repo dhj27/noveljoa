@@ -103,7 +103,7 @@ $(function(){
 	// 신고하기
 	$("#reportImg").click(function(){
 		alert("a");
-		window.open("report_popup.do","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
+		window.open("report_popup.do?num_novel=${num_novel}","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
 	});
 	
 	// 첫화 보기
@@ -159,7 +159,7 @@ $(function(){
 							<span>${searchNovel.id}</span><br><br>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
 							<div class="text-grey80">
-								${searchNovel.age eq 1 ? '전체이용가':'15세 이용가'}
+								${searchNovel.age eq 0 ? '전체이용가':'15세 이용가'}
 							</div>
 							<span class="mx-4 text-10 mx-8 text-grey20">|</span>
 							<div class="text-grey60">
@@ -198,7 +198,7 @@ $(function(){
 									<c:when test="${report eq 1}"><label>신고완료</label></c:when>
 									<c:otherwise><img id="reportImg" src="http://localhost/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
 								</c:choose>
-								<form action="report_popup.do" id="reportFrm" method="POST">
+								<form action="report_popup.do" id="reportFrm" method="get">
 									<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />
 									<input type="hidden" id="id" name=id value="${id}"/>
 								</form>

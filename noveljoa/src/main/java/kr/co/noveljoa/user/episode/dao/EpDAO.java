@@ -198,7 +198,7 @@ public class EpDAO {
 	
 	
 	// 신고 추가
-	public int insertReport(NovelReportVO nReportVO ) {
+	public int insertReport(NovelReportVO nReportVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
 		int cnt = ss.insert(map+"insertReport", nReportVO);

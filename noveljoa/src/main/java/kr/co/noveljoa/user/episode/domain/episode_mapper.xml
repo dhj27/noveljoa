@@ -85,10 +85,10 @@
 	
 	<!-- 좋아요 추가 -->
 	<insert id="insertLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" >
-		insert into liken(num_like,num_novel,num_member) 
-			select num_like.nextval,#{num_novel},#{num_member} 
-		FROM DUAL	
-		where NOT EXISTS (SELECT 0 FROM liken where num_member=#{num_member} and num_novel=#{num_novel} )
+		insert into liken(num_like, num_novel, num_member) 
+			select num_like.nextval, #{num_novel}, #{num_member} 
+		from dual	
+		where not exists (select 0 from liken where num_member=#{num_member} and num_novel=#{num_novel})
 	</insert>
 	
 	
@@ -128,11 +128,11 @@
 	
 	
 	<!-- 신고추가 -->
-	<!-- <insert id="insertReport" parameterType="kr.co.noveljoa.user.episode.vo.NovelReportVO">
-		insert into report(num_report, num_member, num_novel, id, reason_code, report_date)
-		values (num_like.nextval,#{num_member},#{num_novel},#{id},#{reason_code},sysdate)
-	</insert> -->
- 	
+	<insert id="insertReport" parameterType="kr.co.noveljoa.user.episode.vo.NovelReportVO">
+		insert into report(num_report, num_novel, id, reason_code, report_date)
+		values (num_report.nextval ,#{num_novel}, #{id}, #{reason_code}, sysdate)
+	</insert>
+	
  	
  	<!-- 북마크 추가 -->
  	<!-- <insert id="insertBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpCheckVO">
