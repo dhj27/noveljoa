@@ -152,8 +152,8 @@ $(function(){
 <form id="frm_myNovel" action="my_novel.do" method="post">
 <input type="hidden"name="order_novel"value="0">
 </form>
-<form id="frm_myQA" action="my_QA.do" method="post">
-<input type="hidden"name="QA"value="0">
+<form id="frm_myQA" action="memQNALookListFrm.do" method="get">
+<input type="hidden" value="${sessionScope.id}"  name="id">
 </form>
 <form id="frm_mybookmark" action="my_bookmark.do" method="post">
 <input type="hidden"name="QA"value="0">
