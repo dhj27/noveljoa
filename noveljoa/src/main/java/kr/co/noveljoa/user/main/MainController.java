@@ -6,28 +6,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import kr.co.noveljoa.user.newnovel.NewNovelService;
-import kr.co.noveljoa.user.newnovel.NewNovelVO;
 
 @SessionAttributes({"num_member","id","name","photo"})
 
@@ -45,7 +27,7 @@ public class MainController {
 //		return "redirect:/main.do";
 //	}
 
-	@PostMapping("/main.do")
+	@RequestMapping(value = "/main.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String test(@RequestParam(defaultValue = "0") int genre,Model model) {
 			
 			ApplicationContext ac=new FileSystemXmlApplicationContext("C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/WEB-INF/spring/root-context.xml");
