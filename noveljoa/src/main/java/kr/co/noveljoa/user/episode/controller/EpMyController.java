@@ -86,16 +86,16 @@ public class EpMyController {
 		int result = ems.editEp(epUpdateVO);
 		
 		String msg = "";
-		String url = "";
+		String url = "javascript:history.go(-2)";
 				
 		System.out.println(epUpdateVO);
 		
 		if(result == 1) {
 			msg = "에피소드 수정 성공";
-			url= "writer_novel.do";
+//			url= "javascript:history.go(-2)";
 		}else {
 			msg = "에피소드 수정 실패";
-			url= "episode_edit.do";
+//			url= "javascript:history.go(-2)";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

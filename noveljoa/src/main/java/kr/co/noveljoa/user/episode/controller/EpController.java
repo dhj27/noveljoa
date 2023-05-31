@@ -133,16 +133,24 @@ public class EpController {
 	
 	
 	// 북마크 추가
-	//@GetMapping("")
-	public String addBookmark(EpCheckVO epCheckVO, Model model) {
-		return "";
+	@GetMapping("/add_bookmark.do")
+	@ResponseBody
+	public String addBookmark(EpBmVO epBmVO, Model model) {
+		int num_member = (Integer)model.getAttribute("num_member");
+		epBmVO.setNum_member(num_member);
+		
+		return epService.addBookmark(epBmVO);
 	}// addBookmark
 	
 	
 	// 북마크 삭제
-	//@GetMapping("")
-	public String cancelBookmark(EpCheckVO epCheckVO, Model model) {
-		return "";
+	@GetMapping("/cancel_bookmark.do")
+	@ResponseBody
+	public String cancelBookmark(EpBmVO epBmVO, Model model) {
+		int num_member = (Integer)model.getAttribute("num_member");
+		epBmVO.setNum_member(num_member);
+		
+		return epService.cancelBookmark(epBmVO);
 	}// cancelBookmark
 	
 	// 댓글 

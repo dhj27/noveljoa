@@ -21,7 +21,7 @@
 	$(function(){
 		
 		$("#ret").click(function(){
-			location.replace("writer_novel.do");
+			location.replace("javascript:history.go(-2);");
 		});
 		
 	});//ready

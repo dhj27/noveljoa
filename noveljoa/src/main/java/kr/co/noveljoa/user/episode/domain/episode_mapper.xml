@@ -135,13 +135,17 @@
  	
  	<!-- 북마크 추가 -->
  	<insert id="insertBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpBmVO">
+ 		
  		insert into bookmark(bookmark_num, num_member, num_episode)
- 		values (bookmark_num.nextval, #{num_member}, #{num_episode})
+			select bookmark_num.nextval, #{num_member}, #{num_episode}
+		FROM DUAL 
+		WHERE NOT EXISTS (SELECT 0 FROM bookmark where num_member=#{num_member} and num_episode=#{num_episode})
+		
  	</insert>
 	
  	
  	<!-- 북마크 삭제 -->
-	<delete id="deleteBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpBmVO">>
+	<delete id="deleteBookmark" parameterType="kr.co.noveljoa.user.episode.vo.EpBmVO">
  		delete 
  		from bookmark
  		where num_member=#{num_member} 

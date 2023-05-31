@@ -85,11 +85,9 @@
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-				<!-- 작성하고 잇는 소설의 리스트로 넘어가기 post로 넘어가려면 form 
-					근데 form 넣으면 디자인 달라짐 걍 이전 히스토리로 넘어가게 해야겠음
-					novel/writer_novel.jsp -->
-					<a href="http://localhost/noveljoa/novel/novel_list.jsp">
-						<img width="20" height="20" src="http://localhost/noveljoa/_next/static/images/list.png" />
+				
+					<a href="javascript:history.back();">
+						<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" />
 					</a>
 					
 				</div>

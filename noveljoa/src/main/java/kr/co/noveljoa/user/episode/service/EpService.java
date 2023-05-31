@@ -130,18 +130,34 @@ public class EpService {
 	
 	
 	// 북마크 추가
-	public int addBookmark(EpCheckVO epCheckVO) {
-		int bookmark = eDAO.insertBookmark(epCheckVO);
-		System.out.println("addBookmark: " + eDAO.insertBookmark(epCheckVO));
-		return bookmark;
+	public String addBookmark(EpBmVO epBmVO) {
+		int bookmark = 0;
+		JSONObject json = new JSONObject();
+		
+		try {
+			bookmark = eDAO.insertBookmark(epBmVO);
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		json.put("jobType", "add");
+		json.put("bookmarkFlag", bookmark);
+		return json.toJSONString();
 	}// addBookmark
 	
 	
 	// 북마크 취소
-	public int cancelBookmark(EpCheckVO epCheckVO) {
-		int bookmark = eDAO.deleteBookmark(epCheckVO);
-		System.out.println("cancelBookmark: " + eDAO.deleteBookmark(epCheckVO));
-		return bookmark;
+	public String cancelBookmark(EpBmVO epBmVO) {
+		int bookmark = 0;
+		JSONObject json = new JSONObject();
+		
+		try {
+			bookmark = eDAO.deleteBookmark(epBmVO);
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		json.put("jobType", "cancel");
+		json.put("likeFlag", bookmark==1?0:1);
+		return json.toJSONString();
 	}// cancelBookmark
 
 }

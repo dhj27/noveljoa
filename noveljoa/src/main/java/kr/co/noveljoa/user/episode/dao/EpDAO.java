@@ -215,10 +215,10 @@ public class EpDAO {
 	
 	
 	// 북마크 추가
-	public int insertBookmark(EpCheckVO epCheckVO) {
+	public int insertBookmark(EpBmVO epBmVO) throws PersistenceException {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		int cnt = ss.insert(map+"insertBookmark", epCheckVO);
+		int cnt = ss.insert(map+"insertBookmark", epBmVO);
 		
 		if(cnt == 1) {
 			System.out.println("episode bookmark");
@@ -235,10 +235,10 @@ public class EpDAO {
 	
 	
 	// 북마크 취소
-	public int deleteBookmark(EpCheckVO epCheckVO) {
+	public int deleteBookmark(EpBmVO epBmVO) throws PersistenceException {
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		int cnt = ss.delete(map+"deleteBookmark", epCheckVO);
+		int cnt = ss.delete(map+"deleteBookmark", epBmVO);
 		
 		if(cnt == 1) {
 			System.out.println("episode bookmark");

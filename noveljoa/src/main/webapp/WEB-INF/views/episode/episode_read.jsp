@@ -59,6 +59,44 @@ $(function(){
  		$(location).attr("href", "/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${next}");
 	}); //next
 	
+	
+	// 북마크
+	$("#bookmark").click(function(){
+		var bookmarkFlag=$("#bookmark").prop("alt")=="북마크";
+		
+		var bookmarkImg="";
+		var alt="";
+		var ajaxUrl="";
+		
+		if(!bookmarkFlag){
+			bookmarkImg="/noveljoa/_next/static/images/bookmarkOn.png";
+			alt="북마크";
+			ajaxUrl="/noveljoa/add_bookmark.do";	
+		}else{
+			bookmarkImg="/noveljoa/_next/static/images/bookmarkOff.png";
+			alt="노북마크";
+			ajaxUrl="/noveljoa/cancel_bookmark.do";	
+		}
+		
+		$("#bookmark").prop("src", bookmarkImg);
+		$("#bookmark").prop("alt", alt);
+		
+		$.ajax({
+			url : ajaxUrl,
+			data : "num_episode=${ep.num_episode}",
+			type: "get",
+			dataType : "json",
+			error : function(xhr){
+				alert("문제 발생."+xhr.status);
+			},
+			success : function(jsonObj){
+				alert( jsonObj.jobType )			
+			}
+		}); 
+		
+	});
+	
+	
 	$("#comment").click(function(){
 		alert("S");
 		location.href="/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
@@ -121,37 +159,16 @@ $(function(){
 			<div class="flex visible translate-y-0 opacity-100" style="transition: transform 300ms ease 0s, opacity 200ms ease 0s, visibility 200ms ease 0s;">
 			<div class="mr-10 desktop:mr-30">
 			 
-			 
-			 <!-- 고치세요 -->
-			 <c:choose>
-			 	<c:when test="${ep.bookmark == 1}">
-				 	<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
-						<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-							<mask id="mask0_15:393" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;">
-								<rect width="32" height="32" fill="white"></rect>
-								
-							</mask>
-						<g mask="url(#mask0_15:393)">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M8 6H24V26L16 20.7087L8 26V6Z" fill="currentColor"></path>
-						</g>
-						</svg>
-					</button>
-			 	</c:when>
-			 	<c:otherwise>
-			 		<button class="flex h-28 w-28 shrink-0 items-center justify-center desktop:h-32 desktop:w-32" type="button">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-						<mask id="mask0_2:12083" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32" style="mask-type: alpha;">
-							<rect width="32" height="32" fill="white"></rect>
-						</mask>
-						<g mask="url(#mask0_2:12083)">
-							<path d="M15.5863 20.0832L8.75 24.6047V6.75H23.25V24.6047L16.4137 20.0832L16 19.8095L15.5863 20.0832Z" stroke="currentColor" stroke-width="1.5"></path>
-						</g>
-					</svg>
-				</button>
-			 	</c:otherwise>
-			 </c:choose>
-			 
+			 <!-- 좋아요 -->
+			<img id="bookmark" src= "${ep.bookmark eq 1 ? '/noveljoa/_next/static/images/bookmarkOn.png':'/noveljoa/_next/static/images/bookmarkOff.png'}" 
+				alt="${ep.bookmark eq 1?'북마크':'노북마크'}" style="width: 30px; height: 30px;"/>
+				
+			<form action="add_bookmark.do" id="bookmarkFrm" method="get">
+				<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
+				<input type="hidden" id="num_episode" name="num_episode" value="${ep.num_episode}"/>
+			</form>	
 			
+						
 			</div>
 			</div>
 			</div>
