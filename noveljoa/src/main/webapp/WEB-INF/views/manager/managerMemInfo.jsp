@@ -152,7 +152,7 @@
        <li><h5 class="card-text">Email : <c:out value="${ memInfo.email  }"/></h5></li>
        <li><h5 class="card-text">전화번호 : <c:out value="${ memInfo.phone  }"/></h5></li>
        <li><h5 class="card-text">소설 수  : <c:out value="${ memInfo.novelCnt  }"/>
-       <button type="button" class="btn btn-outline-light btn-sm" >
+       <button type="button" class="btn btn-outline-light btn-sm" onclick="location.href='managerNovelFrm.do?id=${ memInfo.id }' ">
             <span data-feather="arrow-left" class="align-text-bottom"></span>
             Look
           </button>
