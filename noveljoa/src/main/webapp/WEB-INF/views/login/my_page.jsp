@@ -8,22 +8,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 <title>마이페이지 | 소설조아</title>
-<link rel="preconnect" href="https://fonts.gstatic.com"crossorigin="anonymous" />
-<link rel="stylesheet"
-	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
-<link rel="preload"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	as="style" />
-<link rel="stylesheet"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	data-n-g="" />
-<link rel="preload"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"
-	as="style" />
-<link rel="stylesheet"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"
-	data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
+<link rel="stylesheet"	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
+<link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"	as="style" />
+<link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
+<link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
+<link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
+
 </head>
 <body>
 	<div id="__next" data-reactroot="">
@@ -192,7 +184,7 @@ $(function(){
 	<div>
 		<jsp:include page="../../../_next/footer.jsp"/>
 	</div>
-			</div>
 		<div id="modal-normal"></div>
+			</div>
 </body>
 </html>

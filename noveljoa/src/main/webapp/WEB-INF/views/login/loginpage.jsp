@@ -6,9 +6,13 @@
 <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 <title>좋아요 작품 | 카카오페이지 스테이지</title>
-<link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
-<link rel="stylesheet"href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
+<link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
+<link rel="stylesheet"	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
+<link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"	as="style" />
+<link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
+<link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
 <style type="text/css">
 #wrap{ width: 1000px;height: 650px;margin: 0px auto;}
 #header{height: 150px;position: relative;}
@@ -60,7 +64,6 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
 </script>
 
 </head>
-
 <body>
 
 
