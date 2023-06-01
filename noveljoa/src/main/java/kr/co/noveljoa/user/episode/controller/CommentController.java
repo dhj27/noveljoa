@@ -41,6 +41,7 @@ public class CommentController {
 	}
 	
 	@PostMapping("/comment_add.do") //ajax
+	@ResponseBody
 	public String addComment(CommentInsertVO ciVO, Model model) {
 			
 //		int result = commentService.addCmt(ciVO);
