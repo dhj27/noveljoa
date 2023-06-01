@@ -104,7 +104,6 @@ $(function(){
 	
 	
 	$("#comment").click(function(){
-		alert("S");
 		location.href="/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
 		//comment.do
 	});
