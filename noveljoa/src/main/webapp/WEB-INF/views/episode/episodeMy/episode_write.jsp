@@ -10,11 +10,11 @@
 <title>글쓰기 | 소설조아</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap">
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/0bde5e3867c0e9b2.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/fd0af5d18a01c194.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/44b5ac89a790a9aa.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/6e5d8ba319c77348.css" data-n-g="">
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/0bde5e3867c0e9b2.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/fd0af5d18a01c194.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/44b5ac89a790a9aa.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/6e5d8ba319c77348.css" data-n-g="">
+<link rel="stylesheet" type="text/css" href="_next/static/css/font.css" />
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -89,7 +89,7 @@
 				<div>
 				
 					<a href="javascript:history.back();">
-						<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" />
+						<img width="20" height="20" src="_next/static/images/list.png" />
 					</a>
 					
 				</div>

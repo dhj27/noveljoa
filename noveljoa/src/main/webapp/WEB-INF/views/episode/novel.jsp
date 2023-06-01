@@ -14,7 +14,7 @@
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -33,14 +33,14 @@ $(function(){
 		var cnt=${cntLike};
 		
 		if(!likeFlag){
-			likeImg="/noveljoa/_next/static/images/good_on.png";
+			likeImg="_next/static/images/good_on.png";
 			alt="좋아요";
-			ajaxUrl="/noveljoa/like.do";
+			ajaxUrl="like.do";
 			
 		}else{
-			 likeImg="/noveljoa/_next/static/images/good_off.png";
+			 likeImg="_next/static/images/good_off.png";
 			alt="싫어요";
-			ajaxUrl="/noveljoa/cancel.do";
+			ajaxUrl="cancel.do";
 		}
 		$("#goodImg").prop("src",likeImg);
 		$("#goodImg").prop("alt",alt);
@@ -82,7 +82,7 @@ $(function(){
 			alert("에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "/noveljoa/read.do?num_novel=${num_novel}&num_episode=${first}");
+ 		$(location).attr("href", "read.do?num_novel=${num_novel}&num_episode=${first}");
 	
 	});
 	
@@ -118,7 +118,7 @@ $(function(){
 					<div class="flex flex-[0_0_auto]">
 						<div class="flex relative shrink-0 items-start overflow-hidden h-181 w-116" style="height: 181px;">
 							<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-							<img src="/noveljoa/_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
+							<img src="_next/static/images/novel_thumb/${ searchNovel.photo }" decoding="async"
 								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
 							</span>
 						</div>
@@ -151,7 +151,7 @@ $(function(){
 									
 								<!-- 좋아요 -->
 								<label id="likecnt">${cntLike}</label> &nbsp;&nbsp;&nbsp;
- 								<img id="goodImg" src= "${like eq 1 ? '/noveljoa/_next/static/images/good_on.png':'/noveljoa/_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
+ 								<img id="goodImg" src= "${like eq 1 ? '_next/static/images/good_on.png':'_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
 
 								<form action="like.do" id="likeFrm" method="get">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />
@@ -163,8 +163,8 @@ $(function(){
 								
 								<!-- 신고 버튼 -->
 								<c:choose>
-									<c:when test="${report eq 1}"><img id="reportfin" src="/noveljoa/_next/static/images/reportfin.png" style="width: 40px; height: 40px;" alt="신고완료"/></c:when>
-									<c:otherwise><img id="reportImg" src="/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
+									<c:when test="${report eq 1}"><img id="reportfin" src="_next/static/images/reportfin.png" style="width: 40px; height: 40px;" alt="신고완료"/></c:when>
+									<c:otherwise><img id="reportImg" src="_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
 								</c:choose>
 								<form action="report_popup.do" id="reportFrm" method="get">
 									<input type="hidden" id="num_novel" name="num_novel" value="${num_novel}" />

@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -53,7 +53,7 @@ $(function(){
 			alert("이전 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${prev}");
+ 		$(location).attr("href", "read.do?num_novel=${ep.num_novel}&num_episode=${prev}");
 	}); //prev
 	
 	/* 다음 화 */
@@ -62,7 +62,7 @@ $(function(){
 			alert("다음 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "/noveljoa/read.do?num_novel=${ep.num_novel}&num_episode=${next}");
+ 		$(location).attr("href", "read.do?num_novel=${ep.num_novel}&num_episode=${next}");
 	}); //next
 	
 	
@@ -75,13 +75,13 @@ $(function(){
 		var ajaxUrl="";
 		
 		if(!bookmarkFlag){
-			bookmarkImg="/noveljoa/_next/static/images/bookmarkOn.png";
+			bookmarkImg="_next/static/images/bookmarkOn.png";
 			alt="북마크";
-			ajaxUrl="/noveljoa/add_bookmark.do";	
+			ajaxUrl="add_bookmark.do";	
 		}else{
-			bookmarkImg="/noveljoa/_next/static/images/bookmarkOff.png";
+			bookmarkImg="_next/static/images/bookmarkOff.png";
 			alt="노북마크";
-			ajaxUrl="/noveljoa/cancel_bookmark.do";	
+			ajaxUrl="cancel_bookmark.do";	
 		}
 		
 		$("#bookmark").prop("src", bookmarkImg);
@@ -104,7 +104,7 @@ $(function(){
 	
 	
 	$("#comment").click(function(){
-		location.href="/noveljoa/comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
+		location.href="comment.do?num_novel=${ep.num_novel}&num_episode=${ep.num_episode}";
 		//comment.do
 	});
 	
@@ -165,7 +165,7 @@ $(function(){
 			<div class="mr-10 desktop:mr-30">
 			 
 			 <!-- 좋아요 -->
-			<img id="bookmark" src= "${ep.bookmark eq 1 ? '/noveljoa/_next/static/images/bookmarkOn.png':'/noveljoa/_next/static/images/bookmarkOff.png'}" 
+			<img id="bookmark" src= "${ep.bookmark eq 1 ? '_next/static/images/bookmarkOn.png':'_next/static/images/bookmarkOff.png'}" 
 				alt="${ep.bookmark eq 1?'북마크':'노북마크'}" style="width: 30px; height: 30px;"/>
 				
 			<form action="add_bookmark.do" id="bookmarkFrm" method="get">

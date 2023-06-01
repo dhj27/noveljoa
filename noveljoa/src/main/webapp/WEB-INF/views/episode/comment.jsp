@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/login.css" />
 
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -119,7 +119,7 @@
 			
 				<!-- 해당 소설 리스트로 이동 -->
 				<a href="javascript:history.back()"> <!-- javascript:history.back() -->
-					<img width="20" height="20" src="/noveljoa/_next/static/images/list.png" style="top: 10px;" />
+					<img width="20" height="20" src="_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				
 				<!-- 에피소드 제목 -->

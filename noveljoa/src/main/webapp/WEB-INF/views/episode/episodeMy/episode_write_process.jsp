@@ -12,7 +12,7 @@
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

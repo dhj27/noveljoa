@@ -10,11 +10,11 @@
 <title>글 수정 | 소설조아</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap">
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/0bde5e3867c0e9b2.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/fd0af5d18a01c194.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/44b5ac89a790a9aa.css" />
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/6e5d8ba319c77348.css" data-n-g="">
-<link rel="stylesheet" type="text/css" href="/noveljoa/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/0bde5e3867c0e9b2.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/fd0af5d18a01c194.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/44b5ac89a790a9aa.css" />
+<link rel="stylesheet" type="text/css" href="_next/static/css/6e5d8ba319c77348.css" data-n-g="">
+<link rel="stylesheet" type="text/css" href="_next/static/css/font.css" />
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -112,7 +112,7 @@ $(function(){
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
 					<a href="javascript:history.back();">
-						<img width="20" height="20" src="../noveljoa/_next/static/images/list.png" />
+						<img width="20" height="20" src=".._next/static/images/list.png" />
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
