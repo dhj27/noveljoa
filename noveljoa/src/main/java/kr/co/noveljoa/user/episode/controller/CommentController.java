@@ -30,7 +30,6 @@ public class CommentController {
 		String id = (String)model.getAttribute("id");
 		
 		ccMyVO.setNum_member(num_member);
-		System.out.println(ccMyVO);
 		
 		model.addAttribute("id", id);
 		model.addAttribute("cvo", ccMyVO);
@@ -44,8 +43,9 @@ public class CommentController {
 	@PostMapping("/comment_add.do") //ajax
 	@ResponseBody
 	public String addComment(CommentInsertVO ciVO, Model model) {
-			
-			
+		int num_member = (Integer)model.getAttribute("num_member");
+		
+		ciVO.setNum_member(num_member); 
 		return commentService.addCmt(ciVO);
 	}
 	
@@ -58,7 +58,4 @@ public class CommentController {
 	}
 	
 	
-	
-	
-
 }

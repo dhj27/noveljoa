@@ -46,7 +46,7 @@
 		from comments c, member m   
 		where num_episode=#{num_episode}
 		and m.num_member=c.num_member
-		
+		order by c.make desc
  	</select>
  	
  	<!-- 내가 쓴 댓글 보여주기 -->

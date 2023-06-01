@@ -30,7 +30,6 @@ $(function(){
 		var likeImg="";
 		var alt="";
 		var ajaxUrl="";
-		var cnt=${cntLike};
 		
 		if(!likeFlag){
 			likeImg="_next/static/images/good_on.png";
@@ -56,12 +55,7 @@ $(function(){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
-				if(!likeFlag){
-					cnt = ${cntLike+1};
-				}else{
-					cnt = ${cntLike};
-				}
-				$("#likecnt").text(cnt);
+				location.reload();	
 			}
 		}); 
 		

@@ -49,7 +49,6 @@
 						+ '<div class=\"typo-md2 desktop:typo-md1\">'
 						+ '<div class=\"whitespace-pre-wrap\">'+jsonObj.detail+'</div></div>'
 						+ '<div class=\"flex justify-end\">'
-						+ '<button type=\"button\" style=\"align-items: right;\" class=\"flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full\">삭제</button>'
 						+ '</div>';
 			
 			});//each 
@@ -69,22 +68,22 @@
 		}
 	});//ajax
 	
-	/* $("#cmtI").click(function(){
+	$("#cmtI").click(function(){
 		
 		$.ajax({
 			url : "comment_add.do",
-			data : "num_episode=${cvo.num_episode}",
-			type: "get",
+			data : "num_episode=${cvo.num_episode}&detail="+$("#detail").val(),
+			type: "post",
 			dataType : "json",
 			error : function(xhr){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
-				$("#empTab").append(cnt);
+				location.reload();	
 			}
 		}); 
 		
-	}) */
+	});
 	
 	
 	
@@ -146,7 +145,7 @@
 			<button class="flex items-center cursor-pointer typo-md3-b text-subText"
 					type="button">${id}</button>
 		</div>
-			<form action="comment_add.do" class="flex flex-col w-full" method="post">
+			<form  class="flex flex-col w-full" method="post">
 				<input type="hidden" id="num_member" name="num_member" value="${cvo.num_member}" >
 				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}" >
 				
@@ -156,12 +155,8 @@
 					<label class="flex typo-md3 items-start"></label>
 					<div class="flex items-center">
 						<span class="typo-x-sm"> 
-						<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
-							<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">/ 500</span>
 						</span>
-						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
-							등록
-						</button>
+						<input type="button" value="등록" id="cmtI" class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
 					</div>
 				</div>
 			</form>
