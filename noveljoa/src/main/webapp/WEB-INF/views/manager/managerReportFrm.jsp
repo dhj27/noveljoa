@@ -228,7 +228,7 @@
 							
 								<c:if test="${report.reportCnt != 0}">
 								    <article>
-								        <a href="/noveljoa/episode/novel.jsp?num_novel=<c:out value='${report.novelNum}'/>"
+								        <a href="/noveljoa/writer_novel.do?num_novel=<c:out value='${report.novelNum}'/>"
 								           style="text-decoration: none;" class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30" >
 								            <div class="border-b-1 border-black/10 desktop:border-0 flex flex-1 py-16 desktop:py-22">
 								                <div class="flex flex-col flex-1 justify-between desktop:mr-16 desktop:flex-row desktop:items-center">
