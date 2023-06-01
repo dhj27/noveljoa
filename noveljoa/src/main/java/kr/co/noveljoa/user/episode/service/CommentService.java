@@ -3,6 +3,7 @@ package kr.co.noveljoa.user.episode.service;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,19 @@ public class CommentService {
 	@Autowired(required = false)
 	private CommentDAO cDAO;
 	
-	public int addCmt(CommentInsertVO cmtInsertVO) {
-		int cnt = cDAO.insertComment(cmtInsertVO);
-		return cnt;
+	public String addCmt(CommentInsertVO cmtInsertVO) {
+		
+		int cmt = 0;
+		JSONObject json=new JSONObject();
+		try {
+			cmt=cDAO.insertComment(cmtInsertVO);
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		json.put("jobType", "add");
+		json.put("cmtFlag", cmt);
+		
+		return json.toJSONString();
 	}
 	
 	public int editCmt(CommentCheckMyVO ccMyVO) {

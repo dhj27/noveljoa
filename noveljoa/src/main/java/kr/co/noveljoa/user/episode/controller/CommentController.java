@@ -43,17 +43,11 @@ public class CommentController {
 	@PostMapping("/comment_add.do") //ajax
 	@ResponseBody
 	public String addComment(CommentInsertVO ciVO, Model model) {
-		
-		int result = commentService.addCmt(ciVO);
-		
-		if(result==1) {
-			model.addAttribute("result", "완료");
-		}else {
-			model.addAttribute("result", "실패");
-		}
-		return null;
-		
+			
+			
+		return commentService.addCmt(ciVO);
 	}
+	
 	
 	@GetMapping("/comment_list.do")
 	@ResponseBody
