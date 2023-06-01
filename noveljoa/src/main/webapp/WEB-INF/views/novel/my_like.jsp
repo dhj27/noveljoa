@@ -70,7 +70,7 @@ function deleteNovel(){
 						<div style="border-bottom: 1px solid #eee;">
 							<div
 								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 relative py-20">
-								<form id="frm" name="frm" action="my_like.do"
+								<form id="frm" name="frm" action="my_like.do" method="post"
 									class="flex mt-16 w-full items-center border-none border-black/10 max-w-full-view first:mt-0">
 									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">좋아요 소설</div>
 									
