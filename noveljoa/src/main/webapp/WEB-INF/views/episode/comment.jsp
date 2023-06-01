@@ -25,6 +25,7 @@
 
 <script type="text/javascript">
  $(function(){
+	 
 	 $.ajax({
 		url : "comment_list.do",
 		data : "num_episode=${cvo.num_episode}",
@@ -48,7 +49,6 @@
 						+ '<div class=\"typo-md2 desktop:typo-md1\">'
 						+ '<div class=\"whitespace-pre-wrap\">'+jsonObj.detail+'</div></div>'
 						+ '<div class=\"flex justify-end\">'
-						+ '<button type=\"button\" style=\"align-items: right;\" class=\"flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full\">수정</button>'
 						+ '<button type=\"button\" style=\"align-items: right;\" class=\"flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full\">삭제</button>'
 						+ '</div>';
 			
@@ -68,6 +68,27 @@
 			$("#empTab").append(article1);
 		}
 	});//ajax
+	
+	/* $("#cmtI").click(function(){
+		
+		$.ajax({
+			url : "comment_add.do",
+			data : "num_episode=${cvo.num_episode}",
+			type: "get",
+			dataType : "json",
+			error : function(xhr){
+				alert("문제 발생."+xhr.status);
+			},
+			success : function(jsonObj){
+				$("#empTab").append(cnt);
+			}
+		}); 
+		
+	}) */
+	
+	
+	
+	
  });
 </script>
 
@@ -139,7 +160,7 @@
 						<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
 							<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">/ 500</span>
 						</span>
-						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
+						<button id="cmtI" class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
 							등록
 						</button>
 					</div>
