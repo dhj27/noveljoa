@@ -146,12 +146,11 @@
 			<button class="flex items-center cursor-pointer typo-md3-b text-subText"
 					type="button">${id}</button>
 		</div>
-			
 			<form action="comment_add.do" class="flex flex-col w-full" method="post">
 				<input type="hidden" id="num_member" name="num_member" value="${cvo.num_member}" >
-				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}">
+				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}" >
 				
-				<textarea placeholder="답변을 입력하세요." maxlength="500"
+				<textarea id="detail" name="detail" placeholder="답변을 입력하세요." maxlength="500"
 					class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 min-h-[66px] border-none !bg-transparent !p-0 text-commentText"></textarea>
 				<div class="flex mt-8 w-full items-center justify-between">
 					<label class="flex typo-md3 items-start"></label>
@@ -166,6 +165,25 @@
 					</div>
 				</div>
 			</form>
+			<%-- <form action="comment_add.do" class="flex flex-col w-full" method="post">
+				<input type="hidden" id="num_member" name="num_member" value="${cvo.num_member}" >
+				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}">
+				
+				<textarea id="" placeholder="답변을 입력하세요." maxlength="500"
+					class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 min-h-[66px] border-none !bg-transparent !p-0 text-commentText"></textarea>
+				<div class="flex mt-8 w-full items-center justify-between">
+					<label class="flex typo-md3 items-start"></label>
+					<div class="flex items-center">
+						<span class="typo-x-sm"> 
+						<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
+							<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">/ 500</span>
+						</span>
+						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
+							등록
+						</button>
+					</div>
+				</div>
+			</form> --%>
 			
 		</div>
 		</div>
