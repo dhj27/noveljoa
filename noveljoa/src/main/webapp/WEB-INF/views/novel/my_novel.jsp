@@ -104,7 +104,7 @@ if(session.getAttribute("id")!=null){
 											<div
 												class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0">
 												<form id="frm2" name="frm2" method="get" action="my_novel.do" >
-												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70">
+												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70" style="cursor: pointer">
 													<option value="0" ${order_novel==0?"selected":""}>신작 순</option>
 													<option value="1" ${order_novel==1?"selected":""}>오래된 순</option>
 												</select>
@@ -121,7 +121,7 @@ if(session.getAttribute("id")!=null){
 									<div
 										class="border-black/10 desktop:border-b-1 desktop:pt-24 desktop:pb-24">
 										<div class="flex items-center py-8 desktop:py-0">
-											<a class="relative flex flex-1 items-center" onclick="novel(${select.num_novel })">
+											<a class="relative flex flex-1 items-center" onclick="novel(${select.num_novel })" style="cursor: pointer">
 												<form action="writer_novel.do" id="${select.num_novel }" method="post">
 													<input type="hidden" name="num_novel" value="${select.num_novel }">
 												</form>

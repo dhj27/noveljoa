@@ -46,14 +46,14 @@ function selectNovel(num_novel){
                            <form id="frm" action="search.do">
                               <div
                                  class="flex items-center rounded-4 border-1 border-grey30 py-4 px-16">
-                                 <div id="searchimg" class="flex h-16 w-16 items-center text-grey60" onclick="findNovel()">
+                                 <div id="searchimg" class="flex h-16 w-16 items-center text-grey60" onclick="findNovel()" style="cursor: pointer">
                                     <img width="20" height="20" viewBox="0 0 20 20" src="_next/static/images/search.png"/>
                                  </div>&nbsp&nbsp&nbsp
-                                 <select name="type" class="typo-sm1 desktop:text-grey70" style="width: 40px">
+                                 <select name="type" class="typo-sm1 desktop:text-grey70" style="width: 40px; cursor: pointer">
 								 	<option value="0" ${type==0?"selected":""}>제목</option>
 								 	<option value="1" ${type==1?"selected":""}>작가</option>
 								 </select>&nbsp
-                                 <select name="genre" class="typo-sm1 desktop:text-grey70" style="width: 50px">
+                                 <select name="genre" class="typo-sm1 desktop:text-grey70" style="width: 50px; cursor: pointer">
 								 	<option value="0" ${genre==0?"selected":""}>전체</option>
 								 	<option value="1" ${genre==1?"selected":""}>판타지</option>
 								 	<option value="2" ${genre==2?"selected":""}>로맨스</option>
@@ -74,13 +74,13 @@ function selectNovel(num_novel){
                   <div class="col-span-full grid gap-x-64 desktop:grid-cols-2" style="margin: 0 auto">
                         
                         <c:forEach var="select" items="${list}" >
-                           <div class="px-18 py-12 desktop:px-0 desktop:py-24" style="border: 1px solid #333">
+                           <div class="px-18 py-12 desktop:px-0 desktop:py-24"> <!-- style="border: 1px solid #333"> -->
                               <div
                                  class="flex items-center flex-row w-full flex-row-reverse"
                                  data-testid="skeleton">
                                  <div
                                     class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" style="background-color: #fff"></div>
-                                 <div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')">
+                                 <div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')" style="cursor: pointer">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
                                                                             <span class="truncate" style="font-size: 18px">&nbsp;${select.title}</span>
                                                                         </div>
@@ -97,7 +97,7 @@ function selectNovel(num_novel){
                                                                             </span>
                                                                         </div>
                                  </div>
-                                 <div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')">
+                                 <div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')" style="cursor: pointer">
                                     <img
                                           alt="ㄴㄹㅇㄹ"
                                           srcset="_next/static/images/novel_thumb/${select.photo}"

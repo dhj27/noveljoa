@@ -112,7 +112,7 @@ function deleteNovel(){
 													<input type="hidden" name="num_novel" value="${select.num_novel}">
 												</form>
 											</div>
-											<div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')">
+											<div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')" style="cursor: pointer">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
                                                                             <span class="truncate" style="font-size: 18px">${select.title}</span>
                                                                         </div>
@@ -127,7 +127,7 @@ function deleteNovel(){
                                                                             </span>
                                                                         </div>
 											</div>
-											<div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')">
+											<div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')" style="cursor: pointer">
 												<img
 														alt="ㄴㄹㅇㄹ"
 														srcset="_next/static/images/novel_thumb/${select.photo}"

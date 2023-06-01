@@ -115,11 +115,11 @@ function deleteNovel(){
 													<input type="hidden" name="num_episode" value="${select.num_episode}">
 												</form>
 											</div>
-											<div class="flex flex-col w-full flex-1" onclick="selectEp('${select.num_novel}','${select.num_episode}')">
+											<div class="flex flex-col w-full flex-1" onclick="selectEp('${select.num_novel}','${select.num_episode}')" style="cursor: pointer">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
                                                                             <span class="truncate" style="font-size: 18px">${select.title}</span>
                                                                         </div>
-                                                                        <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">${select.etitle}</p><br/>
+                                                                        <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">에피소드 : ${select.etitle}</p><br/>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 <span class="typo-g-sm2 -mb-[0.2em] ml-4"><fmt:formatDate value="${select.emake}" pattern="yyyy-MM-dd HH:mm"/></span>
@@ -135,7 +135,7 @@ function deleteNovel(){
                                                                             </span>
                                                                         </div>
 											</div>
-											<div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')">
+											<div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" onclick="selectNovel('${select.num_novel}')" style="cursor: pointer">
 												<img
 														alt="ㄴㄹㅇㄹ"
 														srcset="_next/static/images/novel_thumb/${select.photo}"
