@@ -35,12 +35,12 @@ $(function(){
 			likeImg="/noveljoa/_next/static/images/good_on.png";
 			alt="좋아요";
 			ajaxUrl="/noveljoa/like.do";
-			cnt = ${searchNovel.likeCnt}+1			
+			cnt = ${searchNovel.likeCnt}+1		
 		}else{
 			 likeImg="/noveljoa/_next/static/images/good_off.png";
 			alt="싫어요";
 			ajaxUrl="/noveljoa/cancel.do";
-			cnt = ${searchNovel.likeCnt}-1
+			cnt = ${searchNovel.likeCnt}
 		}
 		$("#goodImg").prop("src",likeImg);
 		$("#goodImg").prop("alt",alt);
@@ -55,7 +55,7 @@ $(function(){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
-				$("#likecnt").text(cnt+"/");
+				$("#likecnt").text(cnt);
 			}
 		}); 
 		
@@ -157,7 +157,6 @@ $(function(){
 								
 								
 								<!-- 신고 버튼 -->
-								<label>${searchNovel.reportCnt}&nbsp;&nbsp;&nbsp;</label>
 								<c:choose>
 									<c:when test="${report eq 1}"><img id="reportfin" src="/noveljoa/_next/static/images/reportfin.png" style="width: 40px; height: 40px;" alt="신고완료"/></c:when>
 									<c:otherwise><img id="reportImg" src="/noveljoa/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/></c:otherwise>
