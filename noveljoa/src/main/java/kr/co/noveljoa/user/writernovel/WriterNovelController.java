@@ -75,7 +75,7 @@ public class WriterNovelController {
 			MultipartRequest mr=new MultipartRequest(request, saveDir.getAbsolutePath(), fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
 			int age=Integer.parseInt(mr.getParameter("age"));
-			int open=Integer.parseInt(mr.getParameter("age"));
+			int open=Integer.parseInt(mr.getParameter("open"));
 			int genre=Integer.parseInt(mr.getParameter("genre"));
 			int end=Integer.parseInt(mr.getParameter("end"));
 			num_novel=Integer.parseInt(mr.getParameter("num_novel"));

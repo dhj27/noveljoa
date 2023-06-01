@@ -62,7 +62,7 @@ public class MyNovelController {
 			
 			int num_member=Integer.parseInt(model.getAttribute("num_member").toString());
 			int age=Integer.parseInt(mr.getParameter("age"));
-			int open=Integer.parseInt(mr.getParameter("age"));
+			int open=Integer.parseInt(mr.getParameter("open"));
 			int genre=Integer.parseInt(mr.getParameter("genre"));
 			String title=mr.getParameter("title");
 			String fileName=mr.getFilesystemName("filephoto");
