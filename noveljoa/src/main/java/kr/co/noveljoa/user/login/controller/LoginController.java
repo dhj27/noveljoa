@@ -222,7 +222,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("id_chk.do")
-	public @ResponseBody String idChk(String id,ModelAndView mav) {
+	public @ResponseBody String idChk(String id,Model model) {
 		JSONObject jsonObject = new JSONObject();
 		
 		jsonObject.put("idCheck", ls.idCheck(id));
@@ -260,7 +260,8 @@ public class LoginController {
 		return mav;
 	}
 	
-	  @GetMapping("info.do") public String infoView(Model model) {
+	  @GetMapping("info.do") 
+	  public String infoView(Model model) {
 	  
 		  String idInfo=(String)model.getAttribute("id");
 		  List<InfoDomain> list = new ArrayList<InfoDomain>();

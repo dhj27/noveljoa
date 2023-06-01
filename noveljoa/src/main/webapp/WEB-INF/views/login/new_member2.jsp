@@ -154,9 +154,9 @@ $(function(){
 			<div class="flex flex-col h-full">
 			
 <!-- header -->
-	<%-- <div>
-		<jsp:include page="../_next/header_user_logout_key.jsp"/> 
-	</div> --%>
+	 <div>
+		<jsp:include page="../../../_next/header_user_logout_key.jsp"/> 
+	</div> 
 	
     <div id="wrap">
    
@@ -199,7 +199,7 @@ $(function(){
                     </td>
                 </tr>
                 <tr>
-                <td>이메일 인증</td><td> <input type="text" placeholder="코드 입력" name="emailChk" id="emailChk"/>
+                <td align="center"class="td1">이메일 인증</td><td> <input type="text" placeholder="코드 입력" name="emailChk" id="emailChk"/>
                  <input type="button" class="button1" id = "Check" value="인증 확인" style='cursor:pointer'>
                 <input type="hidden" value="emailunCheck" id="emailcode"/><input type="hidden" value="0" id="emailcomplete"/>
                 </td>
@@ -219,9 +219,9 @@ $(function(){
     </div>
 </div>
 	<!-- footer -->
-	<%-- <div>
-		<jsp:include page="../_next/footer.jsp"/>
-	</div> --%>
+	 <div>
+		<jsp:include page="../../../_next/footer.jsp"/>
+	</div>
 			</div>
 		</div>
 		<div id="modal-normal"></div>
