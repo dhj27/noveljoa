@@ -100,6 +100,13 @@
 		  and num_novel=#{num_novel}
 	</delete>
 	
+	<select id="selectLikeCnt" parameterType="Integer" 
+		resultType="Integer">
+		 select count(*) 
+		 from liken 
+		 where num_novel=#{num_novel}
+	</select>
+	
 	
 	<!-- 좋아요되어 있으면 화면에 표시 -->
 	<select id="selectLike" parameterType="kr.co.noveljoa.user.episode.vo.NovelCheckVO" 

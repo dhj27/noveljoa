@@ -45,6 +45,11 @@ public class EpService {
 	}// searchEp
 	
 	
+	public int cntLike(int num_novel) {
+		int cnt = eDAO.selectLikeCnt(num_novel);
+		return cnt;
+	}
+	
 	// 소설 좋아요 선택
 	public int searchLike(NovelCheckVO nCheckVO) {
 		int cnt = eDAO.selectLike(nCheckVO);

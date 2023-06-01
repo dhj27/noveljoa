@@ -30,21 +30,22 @@ $(function(){
 		var likeImg="";
 		var alt="";
 		var ajaxUrl="";
-		var cnt="";
+		var cnt=${cntLike};
+		
 		if(!likeFlag){
 			likeImg="/noveljoa/_next/static/images/good_on.png";
 			alt="좋아요";
 			ajaxUrl="/noveljoa/like.do";
-			cnt = ${searchNovel.likeCnt}+1		
+			
 		}else{
 			 likeImg="/noveljoa/_next/static/images/good_off.png";
 			alt="싫어요";
 			ajaxUrl="/noveljoa/cancel.do";
-			cnt = ${searchNovel.likeCnt}
 		}
 		$("#goodImg").prop("src",likeImg);
 		$("#goodImg").prop("alt",alt);
 		
+		if(likeImg)
 		
 		 $.ajax({
 			url : ajaxUrl,
@@ -55,6 +56,11 @@ $(function(){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
+				if(!likeFlag){
+					cnt = ${cntLike+1};
+				}else{
+					cnt = ${cntLike};
+				}
 				$("#likecnt").text(cnt);
 			}
 		}); 
@@ -144,9 +150,8 @@ $(function(){
 									&nbsp;&nbsp;&nbsp;
 									
 								<!-- 좋아요 -->
-								<label id="likecnt">${searchNovel.likeCnt}</label> &nbsp;&nbsp;&nbsp;
+								<label id="likecnt">${cntLike}</label> &nbsp;&nbsp;&nbsp;
  								<img id="goodImg" src= "${like eq 1 ? '/noveljoa/_next/static/images/good_on.png':'/noveljoa/_next/static/images/good_off.png'}" alt="${like eq 1?'좋아요':'싫어요'}"/>
- 								
 
 								<form action="like.do" id="likeFrm" method="get">
 									<input type="hidden" id="num_member" name="num_member" value="${num_member}" />

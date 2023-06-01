@@ -45,6 +45,7 @@ public class EpController {
 		model.addAttribute("searchNovel", epService.searchNovel(num_novel));
 		model.addAttribute("epList", epService.searchEpList(num_novel));
 		
+		model.addAttribute("cntLike", epService.cntLike(num_novel));
 		model.addAttribute("like", epService.searchLike(nCheckVO));  //좋아요 여부
 		model.addAttribute("report", epService.searchReport(reportVO));  //좋아요 여부
 		model.addAttribute("first", epService.firstEp(num_novel));	// 첫화
@@ -70,6 +71,8 @@ public class EpController {
 		
 		return "/episode/episode_read";
 	}// searchEp
+	
+	
 	
 	
 	// 좋아요 추가 1성공 0 실패
