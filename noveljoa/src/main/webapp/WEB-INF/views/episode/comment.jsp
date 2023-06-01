@@ -49,6 +49,7 @@
 						+ '<div class=\"typo-md2 desktop:typo-md1\">'
 						+ '<div class=\"whitespace-pre-wrap\">'+jsonObj.detail+'</div></div>'
 						+ '<div class=\"flex justify-end\">'
+						+ '<button type=\"button\" style=\"align-items: right;\" class=\"flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full\">삭제</button>'
 						+ '</div>';
 			
 			});//each 
