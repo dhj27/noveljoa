@@ -106,7 +106,7 @@ function deleteNovel(){
 											<div
 												class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" style="background-color: #fff"><button
 												class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 bg-black text-white" onclick="deleteNovel()">삭제</button>
-												<form action="delete_like.do" id="del_frm" name="del_frm">
+												<form action="delete_like.do" id="del_frm" name="del_frm" method="post">
 													<input type="hidden" name="type" value="${type}">
 													<input type="hidden" name="search" value="${search}">
 													<input type="hidden" name="num_novel" value="${select.num_novel}">

@@ -75,7 +75,7 @@ function deleteNovel(){
 								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 relative py-20">
 								<form id="frm" name="frm" action="my_like.do"
 									class="flex mt-16 w-full items-center border-none border-black/10 max-w-full-view first:mt-0">
-									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">좋아요 소설</div>
+									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">북마크</div>
 									
 												<select id="order_novel" name="type" class="w-full typo-sm1 desktop:text-grey70" style="width: 50px; margin-left: 500px">
 													<option value="0" ${type==0?"selected":""}>최신 순</option>
@@ -109,7 +109,7 @@ function deleteNovel(){
 											<div
 												class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" style="background-color: #fff"><button
 												class="typo-sm1 mr-8 rounded-20 py-[3.5px] px-10 bg-black text-white" onclick="deleteNovel()">삭제</button>
-												<form action="delete_like.do" id="del_frm" name="del_frm">
+												<form action="delete_bookmark.do" id="del_frm" name="del_frm" method="post">
 													<input type="hidden" name="type" value="${type}">
 													<input type="hidden" name="search" value="${search}">
 													<input type="hidden" name="num_episode" value="${select.num_episode}">
@@ -126,7 +126,12 @@ function deleteNovel(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                북마크 : ${select.etitle}
+                                                                                장르 : 
+																				<c:choose>
+																					<c:when test="${select.genre eq 1}">판타지</c:when>
+																					<c:when test="${select.genre eq 2}">로맨스</c:when>
+																					<c:otherwise>자유	</c:otherwise>
+																				</c:choose> 
                                                                             </span>
                                                                         </div>
 											</div>
