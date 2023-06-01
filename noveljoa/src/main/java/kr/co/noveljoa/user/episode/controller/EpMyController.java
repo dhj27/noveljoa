@@ -29,7 +29,6 @@ public class EpMyController {
 		
 //		 유저번호는 세션에서 가지고 오면됨
 		int num_member = (Integer)model.getAttribute("num_member");
-		System.out.println("--------------------------"+num_member);
 		
 		//예시
 		model.addAttribute("num_member", num_member);
@@ -71,15 +70,14 @@ public class EpMyController {
 		
 		// 유저번호는 세션에서 가지고 오면됨
 		int num_member = (Integer)model.getAttribute("num_member");
-		System.out.println("--------------------------"+num_member);
 		
 		epCheckMyVO.setNum_member(num_member);
 		
 		//예시
 		model.addAttribute("num_member", num_member);
-		System.out.println("edit " + epCheckMyVO);
-		
+		model.addAttribute("chkVO", epCheckMyVO);
 		model.addAttribute("showEpDetail", ems.searchEp(epCheckMyVO));
+		
 		return "episode/episodeMy/episode_edit";
 	}// editEpFrm
 	
@@ -92,14 +90,10 @@ public class EpMyController {
 		String msg = "";
 		String url = "javascript:history.go(-2)";
 				
-		System.out.println(epUpdateVO);
-		
 		if(result == 1) {
 			msg = "에피소드 수정 성공";
-//			url= "javascript:history.go(-2)";
 		}else {
 			msg = "에피소드 수정 실패";
-//			url= "javascript:history.go(-2)";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -115,16 +109,12 @@ public class EpMyController {
 		int result = ems.removeEp(epCheckMyVO);
 		
 		String msg = "";
-		String url = "";
-		
-		System.out.println(epCheckMyVO);
+		String url = "javascript:history.go(-2)";
 		
 		if(result == 1) {
 			msg = "에피소드 삭제 성공";
-			url= "writer_novel.do";
 		}else {
 			msg = "에피소드 삭제 실패";
-			url= "episode_edit.do";
 		}
 		
 		model.addAttribute("msg", msg);

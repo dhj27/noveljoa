@@ -31,6 +31,7 @@ public class EpMyService {
 	// 에피소드 수정 프로세스 ajax
 	public int editEp(EpUpdateVO epUpdateVO) {
 		int cnt = epMyDAO.updateEpisode(epUpdateVO);
+		System.out.println(epUpdateVO);
 		
 		return cnt;
 	}// editEp

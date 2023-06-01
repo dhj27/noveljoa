@@ -32,12 +32,18 @@ public class CommentController {
 		return "episode/comment";
 	}
 	
-	@GetMapping("/comment_process.do") //ajax
-	public String addComment(@RequestParam int num_episode) {
+	@GetMapping("/comment_add.do") //ajax
+	public String addComment(@RequestParam int num_episode, Model model) {
+		if(model.getAttribute("num_member") == null) {
+			return "redirect:loginpage.do";
+		}
+			
+		String id = (String)model.getAttribute("id");
+		
+		model.addAttribute("id", id);
 		
 		return "";
 	}
-	
 	
 	
 	
