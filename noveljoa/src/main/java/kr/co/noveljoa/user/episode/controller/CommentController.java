@@ -44,7 +44,6 @@ public class CommentController {
 	@ResponseBody
 	public String addComment(CommentInsertVO ciVO, Model model) {
 			
-//		int result = commentService.addCmt(ciVO);
 			
 		return commentService.addCmt(ciVO);
 	}
