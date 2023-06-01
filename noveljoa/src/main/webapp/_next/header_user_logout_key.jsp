@@ -15,8 +15,7 @@ $(function(){
 	<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
 		<h1 class="sr-only">카카오페이지 스테이지</h1>
 		<a id="main_logo" class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0">
-			<img class="object-contain" width="157" height="27" src="/noveljoa/_next/static/images/logo.png" 
-				srcSet="/noveljoa//static/images/logo@2x.png 2x, /noveljoa//static/images/logo@3x.png 3x" alt="소설조아 logo" />
+			<img class="object-contain" width="157" height="27" src="_next/static/images/logo.png" alt="소설조아 logo" />
 		</a>
 		<div class="flex order-1 basis-full desktop:order-none desktop:basis-auto">
 			<div class="grid desktop:flex grid-flow-col flex-wrap max-w-full-view overflow-x-scroll overflow-y-hidden scrolling-touch desktop:overflow-x-visible desktop:overflow-y-visible before:grow-0 after:grow-0 before:content-[&quot;&quot;] after:content-[&quot;&quot;] before:flex-[0_1_0%] after:flex-[0_1_0%] desktop:after:hidden desktop:before:hidden auto-cols-max HorizontalScroll_horizontalScrollbar__5q9CM py-3">
