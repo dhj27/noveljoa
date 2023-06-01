@@ -157,6 +157,8 @@
 					<label class="flex typo-md3 items-start"></label>
 					<div class="flex items-center">
 						<span class="typo-x-sm"> 
+						<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-mainText">0</span>
+							<span class="typo-g-sm2 -mb-[0.2em] !typo-x-sm text-grey60">/ 500</span>
 						</span>
 						<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 typo-sm1-b py-1 px-16 desktop:!font-medium ml-8 rounded-full">
 							등록

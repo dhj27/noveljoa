@@ -40,15 +40,14 @@ public class CommentController {
 		return "episode/comment";
 	}
 	
-	/*
-	 * @PostMapping("/comment_add.do") //ajax
-	 * 
-	 * @ResponseBody public String addComment(CommentInsertVO ciVO, Model model) {
-	 * 
-	 * 
-	 * return commentService.addCmt(ciVO); }
-	 */
-	
+
+	@PostMapping("/comment_add.do") //ajax
+	@ResponseBody
+	public String addComment(CommentInsertVO ciVO, Model model) {
+			
+			
+		return commentService.addCmt(ciVO);
+	}
 	
 	@GetMapping("/comment_list.do")
 	@ResponseBody
