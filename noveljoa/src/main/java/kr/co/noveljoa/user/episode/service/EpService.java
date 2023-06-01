@@ -54,7 +54,6 @@ public class EpService {
 	// 소설 신고 선택
 	public int searchReport(ReportVO reportVO) {
 		int cnt = eDAO.selectReport(reportVO);
-		System.out.println("+++++report"+reportVO);
 		return cnt;
 	}//searchNovelLike
 	
@@ -123,7 +122,6 @@ public class EpService {
 	// 신고 추가
 	public int addReport(NovelReportVO nReportVO ) {
 		int reports = eDAO.insertReport(nReportVO);
-		System.out.println("addReport: " + eDAO.insertReport(nReportVO));
 		return reports;
 	}// addReport
 

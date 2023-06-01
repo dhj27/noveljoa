@@ -1,12 +1,15 @@
 package kr.co.noveljoa.user.episode.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.user.episode.dao.CommentDAO;
+import kr.co.noveljoa.user.episode.domain.CommentUserDomain;
 import kr.co.noveljoa.user.episode.vo.CommentCheckMyVO;
 import kr.co.noveljoa.user.episode.vo.CommentInsertVO;
 
@@ -36,14 +39,31 @@ public class CommentService {
 		return title;
 	}
 	
-	public CommentDomain searchCmt(CommentCheckMyVO ccMyVO) {
-		CommentDomain cd = cDAO.selectComment(ccMyVO);
+	public CommentUserDomain searchCmt(CommentCheckMyVO ccMyVO) {
+		CommentUserDomain cd = cDAO.selectComment(ccMyVO);
 		return cd;
 	}
 	
-	public List<CommentDomain> searchAllCmt(int num_episode){
-		List<CommentDomain> list = cDAO.selectAllComment(num_episode);
-		return list;
+	public String searchAllCmt(int num_episode){
+		List<CommentUserDomain> list = cDAO.selectAllComment(num_episode);
+
+		JSONArray jsonArr = new JSONArray();
+		JSONObject json = null;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		for(CommentUserDomain cud : list) {
+			json = new JSONObject();
+			
+			json.put("comment_num", cud.getComment_num());
+			json.put("id", cud.getId());
+			json.put("num_episode", cud.getNum_episode());
+			json.put("detail", cud.getDetail());
+			json.put("make", sdf.format(cud.getMake()));
+			
+			jsonArr.add(json);
+		}
+		System.out.println("+++++++service"+jsonArr.toJSONString());
+		return jsonArr.toJSONString();
 	}
 	
 }

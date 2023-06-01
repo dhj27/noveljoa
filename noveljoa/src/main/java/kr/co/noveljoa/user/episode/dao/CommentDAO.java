@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import kr.co.noveljoa.admin.domain.CommentDomain;
 import kr.co.noveljoa.user.dao.MyBatisHandler;
+import kr.co.noveljoa.user.episode.domain.CommentUserDomain;
 import kr.co.noveljoa.user.episode.vo.CommentCheckMyVO;
 import kr.co.noveljoa.user.episode.vo.CommentInsertVO;
 
@@ -77,8 +77,8 @@ public class CommentDAO {
 	}
 
 	
-	public CommentDomain selectComment(CommentCheckMyVO ccMyVO) {
-		CommentDomain cd = null;
+	public CommentUserDomain selectComment(CommentCheckMyVO ccMyVO) {
+		CommentUserDomain cd = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
@@ -90,12 +90,12 @@ public class CommentDAO {
 	}//selectComment
 	
 	
-	public List<CommentDomain> selectAllComment(int num_episode){
-		List<CommentDomain> list = null;
+	public List<CommentUserDomain> selectAllComment(int num_episode){
+		List<CommentUserDomain> list = null;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
 		
-		list = ss.selectList(map+"selectCmt", num_episode);
+		list = ss.selectList(map+"selectAllCmt", num_episode);
 		
 		if( ss != null) { ss.close(); }
 		return list;

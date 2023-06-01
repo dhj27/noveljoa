@@ -109,7 +109,6 @@ public class EpController {
 	public String addReport(NovelReportVO nReportVO , Model model) {
 		String id = (String)model.getAttribute("id");
 //		nReportVO.setId(id);
-		System.out.println("-------report : "+nReportVO);
 		
 		int result = epService.addReport(nReportVO);
 		String msg = "";

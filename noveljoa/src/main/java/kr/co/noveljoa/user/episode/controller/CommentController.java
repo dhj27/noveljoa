@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.noveljoa.user.episode.service.CommentService;
+import kr.co.noveljoa.user.episode.vo.CommentCheckMyVO;
+import kr.co.noveljoa.user.episode.vo.CommentInsertVO;
 
 @Controller
 @SessionAttributes({"id","name","photo","num_member"}) //세션에 값 여러개 설정할 때
@@ -18,33 +21,47 @@ public class CommentController {
 	
 	// 댓글 창
 	@GetMapping("/comment.do")
-	public String showComment(@RequestParam int num_episode, Model model) {
+	public String showComment(CommentCheckMyVO ccMyVO, Model model) {
 		if(model.getAttribute("num_member") == null) {
 			return "redirect:loginpage.do";
 		}
-			
+		
+		int num_member = (Integer)model.getAttribute("num_member");
 		String id = (String)model.getAttribute("id");
 		
+		ccMyVO.setNum_member(num_member);
+		System.out.println(ccMyVO);
+		
 		model.addAttribute("id", id);
-		model.addAttribute("title", commentService.epTitle(num_episode));
-		model.addAttribute("selectAllCmt", commentService.searchAllCmt(num_episode));
+		model.addAttribute("cvo", ccMyVO);
+		model.addAttribute("title", commentService.epTitle(ccMyVO.getNum_episode()));
+		model.addAttribute("selectAllCmt", commentService.searchAllCmt(ccMyVO.getNum_episode()));
 		
 		return "episode/comment";
 	}
 	
-	@GetMapping("/comment_add.do") //ajax
-	public String addComment(@RequestParam int num_episode, Model model) {
-		if(model.getAttribute("num_member") == null) {
-			return "redirect:loginpage.do";
+	@PostMapping("/comment_add.do") //ajax
+	@ResponseBody
+	public String addComment(CommentInsertVO ciVO, Model model) {
+		
+		int result = commentService.addCmt(ciVO);
+		
+		if(result==1) {
+			model.addAttribute("result", "완료");
+		}else {
+			model.addAttribute("result", "실패");
 		}
-			
-		String id = (String)model.getAttribute("id");
+		return null;
 		
-		model.addAttribute("id", id);
-		
-		return "";
 	}
 	
+	@GetMapping("/comment_list.do")
+	@ResponseBody
+	public String listComment(int num_episode, Model model) {
+		int num_member = (Integer)model.getAttribute("num_member");
+		
+		return commentService.searchAllCmt(num_episode);		
+	}
 	
 	
 	

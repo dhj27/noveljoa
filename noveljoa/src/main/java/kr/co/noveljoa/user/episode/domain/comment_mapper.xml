@@ -26,6 +26,7 @@
 		set detail=#{detail}
 		where num_member=#{num_member}
 		and num_episode=#{num_episode}
+		and comment_num=#{comment_num}
  	</update>
  	
  	<!-- 댓글 삭제 -->
@@ -39,21 +40,24 @@
  	
  	<!-- 댓글 리스트 보여주기 -->
  	<select id="selectAllCmt" parameterType="Integer" 
- 		resultType="kr.co.noveljoa.user.episode.domain.CommentDomain">
+ 		resultType="kr.co.noveljoa.user.episode.domain.CommentUserDomain">
  		
- 		select comment_num, num_member, id, num_episode, detail, make 
-		from comments 
+ 		select c.comment_num, m.id id, c.num_episode, c.detail, c.make    
+		from comments c, member m   
 		where num_episode=#{num_episode}
+		and m.num_member=c.num_member
 		
  	</select>
  	
  	<!-- 내가 쓴 댓글 보여주기 -->
  	<select id="selectCmt" parameterType="kr.co.noveljoa.user.episode.vo.CommentCheckMyVO" 
- 		resultType="kr.co.noveljoa.user.episode.domain.CommentDomain">
- 		select c.comment_num, m.id, c.num_episode, c.detail, c.make 
-		from comments c, member m
+ 		resultType="kr.co.noveljoa.user.episode.domain.CommentUserDomain">
+ 		
+ 		select c.comment_num, m.id, c.num_episode, c.detail, c.make    
+		from comments c, member m   
 		where num_episode=#{num_episode}
 		and m.num_member =c.num_member
+		and c.num_member=#{num_member}
  	</select>
  	
 

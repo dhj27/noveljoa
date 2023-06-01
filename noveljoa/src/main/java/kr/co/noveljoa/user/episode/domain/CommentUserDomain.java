@@ -2,26 +2,28 @@ package kr.co.noveljoa.user.episode.domain;
 
 import java.sql.Date;
 
-public class CommentDomain {
+public class CommentUserDomain {
 	
-	private int num_member;
-	private int id;
+	private int comment_num;
+	private String id;
 	private int num_episode;
 	private String detail;
 	private Date make;
 	
 	
-	public int getNum_member() {
-		return num_member;
+	
+	
+	public int getComment_num() {
+		return comment_num;
 	}
-	public void setNum_member(int num_member) {
-		this.num_member = num_member;
+	public void setComment_num(int comment_num) {
+		this.comment_num = comment_num;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public int getNum_episode() {
@@ -44,11 +46,8 @@ public class CommentDomain {
 	}
 	@Override
 	public String toString() {
-		return "CommentDomain [num_member=" + num_member + ", id=" + id + ", num_episode=" + num_episode + ", detail="
-				+ detail + ", make=" + make + "]";
+		return "CommentUserDomain [comment_num=" + comment_num + ", id=" + id + ", num_episode=" + num_episode
+				+ ", detail=" + detail + ", make=" + make + "]";
 	}
-
-
-	
 	
 }

@@ -30,15 +30,17 @@ $(function(){
 		var likeImg="";
 		var alt="";
 		var ajaxUrl="";
+		var cnt="";
 		if(!likeFlag){
 			likeImg="/noveljoa/_next/static/images/good_on.png";
 			alt="좋아요";
 			ajaxUrl="/noveljoa/like.do";
-			
+			cnt = ${searchNovel.likeCnt}+1			
 		}else{
 			 likeImg="/noveljoa/_next/static/images/good_off.png";
 			alt="싫어요";
 			ajaxUrl="/noveljoa/cancel.do";
+			cnt = ${searchNovel.likeCnt}-1
 		}
 		$("#goodImg").prop("src",likeImg);
 		$("#goodImg").prop("alt",alt);
@@ -53,8 +55,7 @@ $(function(){
 				alert("문제 발생."+xhr.status);
 			},
 			success : function(jsonObj){
-				$("#likecnt").text("${searchNovel.likeCnt}");
-				/* alert( jsonObj.jobType ) */			
+				$("#likecnt").text(cnt+"/");
 			}
 		}); 
 		
