@@ -57,7 +57,7 @@ public class boardController {
 	
 	
 	@GetMapping("memQNAWriteFrm.do")
-	public String messageQNALookFrmInfo(Model model) {
+	public String memQNAWriteFrm(Model model) {
 		String url = "";
 		if( model.getAttribute("id")==null ) {
 			url = "redirect:main.jsp";

@@ -122,12 +122,6 @@ public class ManagerController {
 	}
 	
 	
-	@GetMapping("/manager/messageBoardFrm.do")
-	public String messageBoardFrm() {
-		
-		return "manager/messageBoardFrm";
-	}
-	
 	@GetMapping("/manager/commentManagerFrm.do")
 	public String commentFrm(String id, Model model) {
 		String url = "";

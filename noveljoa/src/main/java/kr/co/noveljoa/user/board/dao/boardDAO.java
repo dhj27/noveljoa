@@ -162,17 +162,17 @@ public class boardDAO {
 	
 	
 	
-	//테스트
-	 public static void main(String[] args) throws SQLException {
-		  
-			  boardDAO d=new boardDAO();
-			  Map<String, Object> paramMap = new HashMap<String, Object>();
-				
-				 paramMap.put("id","dddd");
-				   paramMap.put("board_num", 1);
-			  d.selectFreeBoard(paramMap);
-		  
-		  }//main
+//	//테스트
+//	 public static void main(String[] args) throws SQLException {
+//		  
+//			  boardDAO d=new boardDAO();
+//			  Map<String, Object> paramMap = new HashMap<String, Object>();
+//				
+//				 paramMap.put("id","dddd");
+//				   paramMap.put("board_num", 1);
+//			  d.selectFreeBoard(paramMap);
+//		  
+//		  }//main
 	
 
 }
