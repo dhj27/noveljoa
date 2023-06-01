@@ -334,7 +334,9 @@ public class LoginController {
 			
 		  	int num_member = (Integer)model.getAttribute("num_member");
 			 //1. 저장디렉토리를 설정
-			  String resourceDir = request.getSession().getServletContext().getRealPath("/_next/static/images/profile_images");
+//			  String resourceDir = request.getSession().getServletContext().getRealPath("/_next/static/images/profile_images");
+			  String resourceDir = "C:/Users/user/git/noveljoa/noveljoa/src/main/webapp/_next/static/images/profile_images";
+			  //String resourceDir = "/home/ubuntu/noveljoa/_next/static/images/profile_images";
 			  System.out.println(resourceDir);
 			    File saveDirectory=new File(resourceDir);
 			    int fileSize=1024*1024*2;
@@ -371,16 +373,22 @@ public class LoginController {
 			        while ((length = inStream.read(buffer)) > 0) {
 			            outStream.write(buffer, 0, length);
 			        }
+			        }
+			        File originalFile = new File(saveDirectory, originalFileName);
+			        originalFile.delete();
+			        
 			        String beforePhotoName = (String)model.getAttribute("photo");
 			        File beforePhotoFile = new File(resourceDir+"/"+beforePhotoName);
+			        
 			        beforePhotoFile.delete();
+			        
 			        ifVO.setPhoto(savedFileName);
 			        ifVO.setNum_member(num_member);
 			        ls.updateProfile(ifVO);
 			        model.addAttribute("photo", savedFileName);
-			    }
+			    
 			
-			return "login/my_page";
+			return "login/alert_profileImg";
 		}
 }
 

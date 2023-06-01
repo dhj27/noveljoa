@@ -145,7 +145,7 @@
     <div class="col-md-8">
 
       <div class="card-body">
-        <h1 class="card-title"><c:out value="${ memInfo.id  }"/>님의 회원 정보 </h1><br>
+        <h1 class="card-title"><c:out value="${ memInfo.id  }"/>님의 회원 정보  ${ memInfo.thumbnail  }</h1><br>
         <ul>
        <li><h5 class="card-text">이름 : <c:out value="${ memInfo.name  }"/> </h5></li>
        <li><h5 class="card-text">생년월일 : <fmt:formatDate value="${ memInfo.birthDate}" pattern="yyyy년 MM월 dd일"/> </h5></li>
