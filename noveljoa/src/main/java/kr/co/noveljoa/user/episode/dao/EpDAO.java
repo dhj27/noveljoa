@@ -68,6 +68,18 @@ public class EpDAO {
 	}// searchEp
 	
 	
+	public int selectLikeCnt(int num_novel) {
+		int cnt = 0;
+		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		cnt = ss.selectOne(map+"selectLikeCnt", num_novel);
+		
+		if( ss != null) { ss.close(); }
+		
+		return cnt;
+	}
+	
 	// 좋아요 했는지 화면에 표시
 	public int selectLike(NovelCheckVO nCheckVO) {
 		int cnt = 0;
