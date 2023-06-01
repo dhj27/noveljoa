@@ -120,7 +120,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4">${list.story}</p>
@@ -168,7 +168,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">${list.story}</p>
@@ -229,7 +229,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                         </div>
@@ -284,7 +284,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4">${list.story}</p>
@@ -332,7 +332,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">${list.story}</p>
@@ -393,7 +393,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                         </div>
@@ -448,7 +448,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4">${list.story}</p>
@@ -496,7 +496,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">${list.story}</p>
@@ -557,7 +557,7 @@ function main9(){
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                         </div>
                                                         </div>

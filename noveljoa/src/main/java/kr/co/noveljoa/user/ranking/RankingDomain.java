@@ -2,17 +2,19 @@ package kr.co.noveljoa.user.ranking;
 
 public class RankingDomain {
 	private String photo,title,id,story;
-	private int num_novel, age,like,visit,rank, episode,end;
+	private int num_novel, age,liken_count,visit,rank, episode,end;
 	public RankingDomain() {
 	}
-	public RankingDomain(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank, int episode, int end) {
-		this.num_novel=num_novel;
+	public RankingDomain(String photo, String title, String id, String story, int num_novel, int age, int liken_count,
+			int visit, int rank, int episode, int end) {
+		super();
 		this.photo = photo;
 		this.title = title;
 		this.id = id;
 		this.story = story;
+		this.num_novel = num_novel;
 		this.age = age;
-		this.like = like;
+		this.liken_count = liken_count;
 		this.visit = visit;
 		this.rank = rank;
 		this.episode = episode;
@@ -54,11 +56,11 @@ public class RankingDomain {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getLike() {
-		return like;
+	public int getLiken_count() {
+		return liken_count;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setLiken_count(int liken_count) {
+		this.liken_count = liken_count;
 	}
 	public int getVisit() {
 		return visit;
