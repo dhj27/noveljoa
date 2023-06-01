@@ -147,11 +147,11 @@
 					type="button">${id}</button>
 		</div>
 			
-			<form class="flex flex-col w-full" >
-				<%-- <input type="hidden" id="num_member" name="num_member" value="${cvo.num_member}" >
-				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}" > --%>
+			<form action="comment_add.do" class="flex flex-col w-full" method="post">
+				<input type="hidden" id="num_member" name="num_member" value="${cvo.num_member}" >
+				<input type="hidden" id="num_episode" name="num_episode" value="${cvo.num_episode}">
 				
-				<textarea placeholder="답변을 입력하세요.[현재 댓글 등록 기능 구현을 못했습니다.. ]" maxlength="500"
+				<textarea placeholder="답변을 입력하세요." maxlength="500"
 					class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 min-h-[66px] border-none !bg-transparent !p-0 text-commentText"></textarea>
 				<div class="flex mt-8 w-full items-center justify-between">
 					<label class="flex typo-md3 items-start"></label>
