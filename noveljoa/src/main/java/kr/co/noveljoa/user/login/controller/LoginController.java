@@ -303,6 +303,9 @@ public class LoginController {
 		  if( ls.infoChange(icVO)==0) {
 			  mav.setViewName("login/alert_changeInfo_err");
 			  return mav;
+		  }else if(ls.infoChange(icVO)==-1) {
+			  mav.setViewName("login/alert_phone_dub");
+			  return mav;
 		  }else {
 			  mav.setViewName("login/my_page");
 			  return mav;

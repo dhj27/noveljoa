@@ -210,11 +210,15 @@ public class LoginDAO {
 		int phoneChange = 0;
 		
 		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
-		phoneChange = ss.update("infoChange", icVO);
-		//3. MyBatis Handler
-		if(phoneChange == 1) {
-			ss.commit();
+		if(ss.selectOne("info_phone",icVO.getPhone())==null) {
+			phoneChange = ss.update("infoChange", icVO);
+			if(phoneChange == 1) {
+				ss.commit();
+			}
+		}else {
+			phoneChange = -1;
 		}
+		//3. MyBatis Handler
 		if(ss != null) {ss.close();}
 		
 		return phoneChange;
