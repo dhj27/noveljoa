@@ -132,7 +132,7 @@
         <input type="hidden" value="${ memInfo.num_member  }" name="num_member">
         <ul>
        <li><h5 class="card-text">이름 : <input type="text"  value="<c:out value="${ memInfo.name  }"/>" name="name">  </h5></li>
-       <li><h5 class="card-text">아이디 : <input type="text"  value="<c:out value="${ memInfo.id  }"/>"  name="id">  </h5></li>
+       <li><h5 class="card-text">아이디 : <input type="text"  value="<c:out value="${ memInfo.id  }"/>"  name="id" readonly="readonly">  </h5></li>
        <li><h5 class="card-text">Email : <input type="text"  value="<c:out value="${ memInfo.email  }"/>"  name="email"></h5></li>
        <li><h5 class="card-text">전화번호 : <input type="text"  value="<c:out value="${ memInfo.phone  }"/>"  name="phone"></h5></li>
         </ul>
