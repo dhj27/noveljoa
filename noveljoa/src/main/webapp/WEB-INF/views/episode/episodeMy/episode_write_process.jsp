@@ -1,5 +1,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,7 +51,7 @@
 		<main class="flex-1">
 		    <div class="flex flex-col min-h-[100vh]">
 		        <br><br><br>
-		        <label style="text-align: center; font-size: 25px;">소설 등록 ${ result }</label>
+		        <label style="text-align: center; font-size: 25px;">소설 등록 ${ result } 되었습니다</label>
 		        <br>
 		        <div style="display: flex; justify-content: center;">
 					<input type="button" id="ret" value="소설로 돌아가기" 

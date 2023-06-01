@@ -32,16 +32,16 @@
  	<delete id="deleteCmt" parameterType="kr.co.noveljoa.user.episode.vo.CommentCheckMyVO">
  		delete 
 		from comments
-		where comment_num=5
-		and num_episode=27
-		and num_member=1
+		where comment_num=#{comment_num}
+		and num_episode=#{num_episode}
+		and num_member=#{num_member}
  	</delete>
  	
  	<!-- 댓글 리스트 보여주기 -->
  	<select id="selectAllCmt" parameterType="Integer" 
  		resultType="kr.co.noveljoa.user.episode.domain.CommentDomain">
  		
- 		select num_member, id, num_episode, detail, make 
+ 		select comment_num, num_member, id, num_episode, detail, make 
 		from comments 
 		where num_episode=#{num_episode}
 		

@@ -3,7 +3,6 @@ package kr.co.noveljoa.user.episode.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -12,33 +11,32 @@ import kr.co.noveljoa.user.episode.vo.EpCheckMyVO;
 import kr.co.noveljoa.user.episode.vo.EpCreateVO;
 import kr.co.noveljoa.user.episode.vo.EpNovelVO;
 import kr.co.noveljoa.user.episode.vo.EpUpdateVO;
-import kr.co.noveljoa.user.episode.vo.NovelCheckMyVO;
 
-@SessionAttributes
+@SessionAttributes({"id","name","photo","num_member","writeFlag"}) 
 @Controller
 public class EpMyController {
 	
 	@Autowired(required = false)
 	private EpMyService ems;
 	
-	@GetMapping("/index.do")
-	public String index() {
-		return "episode/index";
-	}
-	
 	// 에피소드 작성창
 	@PostMapping("/episode_write.do")
 	public String showEpFrm(EpNovelVO epNovelVO, Model model) {
 		
-		// 유저번호는 세션에서 가지고 오면됨
-		//int num_member = (Integer)model.getAttribute("num_member");
+		if(model.getAttribute("num_member") == null) {
+			return "redirect:loginpage.do";
+		}
+		
+//		 유저번호는 세션에서 가지고 오면됨
+		int num_member = (Integer)model.getAttribute("num_member");
+		System.out.println("--------------------------"+num_member);
 		
 		//예시
-		model.addAttribute("num_member", 1);
+		model.addAttribute("num_member", num_member);
+		model.addAttribute("writeFlag", false);
 		
 		// 파라미터로 num_novel, novelTitle
 		model.addAttribute("epNovelVO", epNovelVO);
-		System.out.println("write: " + epNovelVO);
 		
 		return "episode/episodeMy/episode_write";
 	}// writeEpFrm
@@ -48,12 +46,19 @@ public class EpMyController {
 	@PostMapping("/episode_write_process.do")
 	public String addEpProcess(EpCreateVO epCreateVO, Model model) {
 		
-		int result = ems.writeEp(epCreateVO);
+		if(model.getAttribute("num_member") == null) {
+			return "redirect:loginpage.do";
+		}
 		
-		if(result == 1) {
-			model.addAttribute("result", "완료!");
-		}else {
-			model.addAttribute("result", "실패");
+		if(model.getAttribute("writeFlag") == null ||  !((boolean)model.getAttribute("writeFlag"))) {
+			int result = ems.writeEp(epCreateVO);
+			
+			if(result == 1) {
+				model.addAttribute("result", "완료!");
+				model.addAttribute("writeFlag", true);
+			}else {
+				model.addAttribute("result", "실패");
+			}
 		}
 		
 		return "episode/episodeMy/episode_write_process";
@@ -65,14 +70,13 @@ public class EpMyController {
 	public String editEpFrm(EpCheckMyVO epCheckMyVO, Model model) { 
 		
 		// 유저번호는 세션에서 가지고 오면됨
-		//int num_member = (Integer)model.getAttribute("num_member");
+		int num_member = (Integer)model.getAttribute("num_member");
+		System.out.println("--------------------------"+num_member);
+		
+		epCheckMyVO.setNum_member(num_member);
 		
 		//예시
-		model.addAttribute("num_member", 1);
-		epCheckMyVO.setNum_member(1);
-		
-		model.addAttribute("chkVO", epCheckMyVO);
-		
+		model.addAttribute("num_member", num_member);
 		System.out.println("edit " + epCheckMyVO);
 		
 		model.addAttribute("showEpDetail", ems.searchEp(epCheckMyVO));
