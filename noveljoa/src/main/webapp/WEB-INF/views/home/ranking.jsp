@@ -107,7 +107,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.like}</span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.liken_count}</span>
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
