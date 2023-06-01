@@ -4,12 +4,12 @@ import java.sql.Date;
 
 public class SearchDomain {
 	private String photo,title,id;
-	private int num_novel, age, num_episodes,end;
+	private int num_novel, age, num_episodes,end,genre;
 	private Date max_make;
 	public SearchDomain() {
 	}
 	public SearchDomain(String photo, String title, String id, int num_novel, int age, int num_episodes, int end,
-			Date max_make) {
+			int genre, Date max_make) {
 		super();
 		this.photo = photo;
 		this.title = title;
@@ -18,6 +18,7 @@ public class SearchDomain {
 		this.age = age;
 		this.num_episodes = num_episodes;
 		this.end = end;
+		this.genre = genre;
 		this.max_make = max_make;
 	}
 	public String getPhoto() {
@@ -67,5 +68,11 @@ public class SearchDomain {
 	}
 	public void setMax_make(Date max_make) {
 		this.max_make = max_make;
+	}
+	public int getGenre() {
+		return genre;
+	}
+	public void setGenre(int genre) {
+		this.genre = genre;
 	}
 }

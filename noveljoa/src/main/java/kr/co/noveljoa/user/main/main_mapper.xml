@@ -5,9 +5,9 @@
 <mapper namespace="mainMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
 
 	<select id="selectMain" parameterType="kr.co.noveljoa.user.main.MainVO" resultType="kr.co.noveljoa.user.main.MainDomain">
-	SELECT NUM_NOVEL, PHOTO, AGE, END, TITLE, ID, LIKEN_COUNT, VISIT, STORY, EPISODE_COUNT, MAX_MAKE, VIST_RANK
+	SELECT NUM_NOVEL, PHOTO, AGE, END, TITLE, ID, LIKEN_COUNT, VISIT, STORY, EPISODE_COUNT, MAX_MAKE, VIST_RANK, genre
 	FROM (
-	    SELECT n.NUM_NOVEL, n.PHOTO, n.AGE, n.END, n.TITLE, m.ID, COUNT(l.NUM_LIKE) AS LIKEN_COUNT,
+	    SELECT n.NUM_NOVEL, n.PHOTO, n.AGE, n.END, n.TITLE, m.ID, COUNT(l.NUM_LIKE) AS LIKEN_COUNT, n.genre,
 	    e.VISIT, n.STORY, COUNT(ep.NUM_EPISODE) AS EPISODE_COUNT, MAX(ep.MAKE) AS MAX_MAKE,
 	    RANK() OVER (ORDER BY e.VISIT DESC) AS VIST_RANK    
 	    FROM NOVEL n    
@@ -24,7 +24,7 @@
 	    AND e.VISIT IS NOT NULL
 	    AND n.OPEN = 1
 	    <if test="genre!=0">and n.genre like '%'||#{genre}||'%'</if>
-	    GROUP BY n.NUM_NOVEL, n.PHOTO, n.AGE, n.END, n.TITLE, m.ID, e.VISIT, n.STORY, n.END
+	    GROUP BY n.NUM_NOVEL, n.PHOTO, n.AGE, n.END, n.TITLE, m.ID, e.VISIT, n.STORY, n.END, n.genre
 	    ORDER BY e.VISIT DESC
 	)
 	WHERE VIST_RANK &lt; 11

@@ -2,21 +2,24 @@ package kr.co.noveljoa.user.main;
 
 public class MainDomain {
 	private String photo,title,id,story;
-	private int num_novel, age,like,visit,rank, episode,end;
+	private int num_novel, age,like,visit,rank, episode,end,genre;
 	public MainDomain() {
 	}
-	public MainDomain(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank, int episode, int end) {
-		this.num_novel=num_novel;
+	public MainDomain(String photo, String title, String id, String story, int num_novel, int age, int like, int visit,
+			int rank, int episode, int end, int genre) {
+		super();
 		this.photo = photo;
 		this.title = title;
 		this.id = id;
 		this.story = story;
+		this.num_novel = num_novel;
 		this.age = age;
 		this.like = like;
 		this.visit = visit;
 		this.rank = rank;
 		this.episode = episode;
 		this.end = end;
+		this.genre = genre;
 	}
 	public int getNum_novel() {
 		return num_novel;
@@ -83,6 +86,12 @@ public class MainDomain {
 	}
 	public void setEnd(int end) {
 		this.end = end;
+	}
+	public int getGenre() {
+		return genre;
+	}
+	public void setGenre(int genre) {
+		this.genre = genre;
 	}
 	
 }

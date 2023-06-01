@@ -88,6 +88,8 @@ function selectNovel(num_novel){
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 &nbsp;최신화 : ${select.num_episodes} 화
+                                                                                <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
+                                                                                <c:choose><c:when test="${select.genre eq 1}">판타지</c:when><c:when test="${select.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose>
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">

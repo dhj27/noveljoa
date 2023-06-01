@@ -111,6 +111,9 @@ function main9(){
                                                                         <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
                                                                         </div>
+                                                                        <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
+                                                                        </div>
                                                                         <div class="flex flex-wrap items-center text-grey60 desktop:mb-20">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 조회<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.visit}</span>
@@ -155,6 +158,9 @@ function main9(){
                                                                         </div>
                                                                         <div class="typo-sm2 flex text-grey70 typo-sm2 mb-8 text-grey70">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
@@ -215,6 +221,9 @@ function main9(){
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 조회<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.visit}</span>
                                                                             </span>
@@ -266,6 +275,9 @@ function main9(){
                                                                         <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
                                                                         </div>
+                                                                        <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
+                                                                        </div>
                                                                         <div class="flex flex-wrap items-center text-grey60 desktop:mb-20">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 조회<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.visit}</span>
@@ -310,6 +322,9 @@ function main9(){
                                                                         </div>
                                                                         <div class="typo-sm2 flex text-grey70 typo-sm2 mb-8 text-grey70">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
@@ -370,6 +385,9 @@ function main9(){
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 조회<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.visit}</span>
                                                                             </span>
@@ -421,6 +439,9 @@ function main9(){
                                                                         <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
                                                                         </div>
+                                                                        <div class="typo-sm2 flex text-grey70 mb-16 text-grey70 desktop:typo-md3 desktop:mb-8">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
+                                                                        </div>
                                                                         <div class="flex flex-wrap items-center text-grey60 desktop:mb-20">
                                                                             <span class="typo-sm2 flex items-center">
                                                                                 조회<span class="typo-g-sm2 -mb-[0.2em] ml-4">${list.visit}</span>
@@ -465,6 +486,9 @@ function main9(){
                                                                         </div>
                                                                         <div class="typo-sm2 flex text-grey70 typo-sm2 mb-8 text-grey70">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
@@ -523,6 +547,9 @@ function main9(){
                                                                         </div>
                                                                         <div class="typo-sm2 flex text-grey70 typo-sm2 mb-8 text-grey70">
                                                                             <div class="truncate after:inline-block after:w-0">${list.id}</div>
+                                                                        </div>
+                                                                        <div class="flex flex-wrap items-center text-grey60">
+                                                                            <div class="typo-sm2 flex items-center"><c:choose><c:when test="${list.genre eq 1}">판타지</c:when><c:when test="${list.genre eq 2}">로맨스</c:when><c:otherwise>자유</c:otherwise></c:choose></div>
                                                                         </div>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">

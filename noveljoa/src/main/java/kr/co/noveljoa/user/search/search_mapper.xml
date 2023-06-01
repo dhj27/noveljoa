@@ -5,7 +5,7 @@
 <mapper namespace="searchMapper">	<!-- namespace : 아이디를 구분할때 사용 -->
 
 	<select id="selectSearch" parameterType="kr.co.noveljoa.user.search.SearchVO" resultType="kr.co.noveljoa.user.search.SearchDomain">
-	    select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make, n.age, n.end 
+	    select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make, n.age, n.end, n.genre 
 		from member m	
 		join novel n ON n.num_member = m.num_member 
 		LEFT JOIN (	
