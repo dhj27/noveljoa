@@ -26,16 +26,6 @@ import kr.co.noveljoa.user.newnovel.NewNovelVO;
 @Controller
 public class MyNovelController {
 
-	@GetMapping("/test.do")
-	public String test(Model model) {
-		
-		model.addAttribute("num_member",1);
-		model.addAttribute("id","aa");
-		model.addAttribute("name","김기린");
-		model.addAttribute("photo","a.png");
-		
-		return "forward:/my_novel.do";
-	}
 	@PostMapping("/my_novel.do")
 	public String myNovel(@RequestParam(defaultValue = "0") int order_novel,Model model) {
 			

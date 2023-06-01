@@ -87,7 +87,7 @@ public class WriterNovelController {
 			
 			if(photoName==null){	//update 이미지가 없다면 photoName을 기존과 같은 값으로 바꾼다
 				photoName=hidden;
-			}else if(mr.getOriginalFileName("upphoto").equals("photo_default")){
+			}else if(hidden.equals("photo_default.png")){
 			}else{	//update 이미지가 있다면 기존에 저장된 이미지를 지운다
 				File uploadFile=new File(saveDir.getAbsolutePath()+"/"+hidden);
 				uploadFile.delete();
